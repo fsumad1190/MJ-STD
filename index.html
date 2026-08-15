@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Save the Date — Mike & Jordan</title>
+  <meta name="description" content="Mike & Jordan are getting married on April 24th, 2027 at The Driskill Hotel in Austin, TX." />
+  
+  <!-- Google Fonts: Bebas Neue, Gasoek One, Monoton, Jaro, Playfair Display, Newsreader, Lora -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gasoek+One&family=Jaro:opsz@6..72&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Monoton&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+  <!-- El Camino Custom Fonts -->
+  <style>
+    /* Unified El Camino Family */
+    @font-face {
+      font-family: 'El Camino';
+      src: url('/fonts/ElCamino-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: 'El Camino';
+      src: url('/fonts/ElCamino-Slim.otf') format('opentype');
+      font-weight: 300;
+      font-style: normal;
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: 'El Camino';
+      src: url('/fonts/ElCamino-SoftEdges.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: block;
+    }
+
+    /* Named Aliases for direct font-family assignments */
+    @font-face {
+      font-family: 'El Camino Bold';
+      src: url('/fonts/ElCamino-Bold.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: 'El Camino Slim';
+      src: url('/fonts/ElCamino-Slim.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: 'El Camino Soft Edges';
+      src: url('/fonts/ElCamino-SoftEdges.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: block;
+    }
+
+    /* El Camino Soft Edges Caps */
+    @font-face {
+      font-family: 'El Camino Soft Edges Caps';
+      src: url('/fonts/ElCamino-SoftEdgesCaps.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: block;
+    }
+
+    /* El Camino Caps Outline */
+    @font-face {
+      font-family: 'El Camino Caps Outline';
+      src: url('/fonts/ElCamino-CapsOutline.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: block;
+    }
+
+    /* Rig Solid Bold Halftone */
+    @font-face {
+      font-family: 'Rig Solid Bold Halftone';
+      src: local('Rig Solid Bold Halftone'), local('RigSolid-BoldHalftone'), local('RigSolidBoldHalftone'), local('Rig Solid'), local('rig-solid-bold-halftone');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'rig-solid-bold-halftone';
+      src: local('Rig Solid Bold Halftone'), local('RigSolid-BoldHalftone'), local('RigSolidBoldHalftone'), local('Rig Solid'), local('rig-solid-bold-halftone');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Clarendon Bold */
+    @font-face {
+      font-family: 'Clarendon';
+      src: url('/fonts/Clarendon-Bold.otf') format('opentype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: block;
+    }
+
+    @font-face {
+      font-family: 'Clarendon Bold';
+      src: url('/fonts/Clarendon-Bold.otf') format('opentype');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: block;
+    }
+  </style>
+
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+  <style>
+    :root {
+      --sleeve-size: min(82vw, 560px);
+      --bg-color: #F8F5EE;
+      --cardboard-color: #EAE7DF;
+      --accent: #1A1A1A;
+      --paper-white: #FFFFFF;
+      --text-dark: #1A1A1A;
+      --text-muted: #555555;
+      
+      --font-jaro: 'Jaro', sans-serif;
+      --font-gasoek: 'Gasoek One', cursive, sans-serif;
+      --font-monoton: 'Monoton', cursive, sans-serif;
+      --font-ring: 'Monoton', cursive, sans-serif;
+      --font-bold: 'El Camino Bold', 'El Camino', sans-serif;
+      --font-slim: 'El Camino Slim', 'El Camino', sans-serif;
+      --font-soft: 'El Camino Soft Edges', 'El Camino', sans-serif;
+      --font-menu: 'Bebas Neue', 'El Camino Soft Edges Caps', sans-serif;
+      --font-editorial-title: 'Playfair Display', 'Clarendon', Georgia, serif;
+      --font-editorial-body: 'Newsreader', 'Lora', Georgia, serif;
+      --font-editorial-badge: 'Clarendon', 'Bebas Neue', serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      font-synthesis: none;
+    }
+
+    html {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+      overflow-y: auto;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      width: 100%;
+      min-height: 100%;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      font-family: var(--font-soft);
+      font-weight: normal;
+      overflow-x: hidden;
+      overflow-y: auto;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Scroll Height Spacer for ScrollTrigger Scrubbing */
+    #scroll-container {
+      height: 550vh;
+      width: 100%;
+      position: relative;
+      pointer-events: auto;
+    }
+
+    /* Fixed Stage Canvas */
+    #stage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      pointer-events: none;
+      z-index: 10;
+      isolation: isolate;
+    }
+
+    /* Simple Downwards Bouncing Arrow Scroll Cue */
+    .scroll-cue-arrow {
+      position: fixed;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      pointer-events: auto;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+      color: #7D7565;
+    }
+
+    .scroll-cue-arrow.is-visible {
+      opacity: 0.85;
+      visibility: visible;
+      animation: bounceArrow 2s ease-in-out infinite;
+    }
+
+    .scroll-cue-arrow:hover {
+      opacity: 1;
+      color: #EEBA2B;
+    }
+
+    .scroll-cue-arrow svg {
+      width: 26px;
+      height: 26px;
+      stroke: currentColor;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+      transition: stroke 0.2s ease, transform 0.2s ease;
+    }
+
+    @keyframes bounceArrow {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+      }
+      40% {
+        transform: translateX(-50%) translateY(9px);
+      }
+      60% {
+        transform: translateX(-50%) translateY(4px);
+      }
+    }
+
+    /* SCENE GROUP CONTAINER */
+    #scene-group {
+      position: relative;
+      width: var(--sleeve-size);
+      height: var(--sleeve-size);
+      transform-origin: center center;
+      z-index: 10;
+      backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+      transform-style: flat;
+    }
+
+    /* Back Cardboard Cover (Inner sleeve lining visible at bottom notch) */
+    .sleeve-back {
+      position: absolute;
+      inset: 0;
+      width: var(--sleeve-size);
+      height: var(--sleeve-size);
+      background-color: #55705E;
+      background-image: 
+        linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.1) 25px, transparent 50px),
+        radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+      border-radius: 4px;
+      box-shadow: 
+        0 35px 70px -15px rgba(0, 0, 0, 0.45),
+        0 15px 25px -10px rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    /* Inner Sleeve Pocket Depth Shadow (at bottom opening) */
+    .sleeve-back::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 25px;
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0%, transparent 100%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* VINYL RECORD */
+    .vinyl-record {
+      position: absolute;
+      top: 1%;
+      left: 1%;
+      width: 98%;
+      height: 98%;
+      border-radius: 50%;
+      z-index: 5;
+      background: 
+        /* Concentric sound groove micro-texture */
+        repeating-radial-gradient(
+          circle at center,
+          rgba(0, 0, 0, 0.4) 0px,
+          rgba(255, 255, 255, 0.02) 1px,
+          rgba(0, 0, 0, 0.4) 2px
+        ),
+        /* Classic bi-conic vinyl gloss reflections */
+        conic-gradient(
+          from 0deg at 50% 50%,
+          #161616 0%,
+          #2E2E2E 12%,
+          #141414 25%,
+          #2C2C2C 38%,
+          #161616 50%,
+          #2E2E2E 62%,
+          #141414 75%,
+          #2C2C2C 88%,
+          #161616 100%
+        );
+      box-shadow: 
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+        inset 0 0 0 3px rgba(0, 0, 0, 0.8),
+        inset 0 1px 2px rgba(255, 255, 255, 0.15);
+      border: 1px solid #0D0D0D;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      transform-style: flat;
+      backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+    }
+
+    /* Run-out groove band */
+    .vinyl-runout {
+      position: absolute;
+      width: 48%;
+      height: 48%;
+      border-radius: 50%;
+      background: repeating-radial-gradient(
+        circle at center,
+        transparent 0,
+        transparent 2px,
+        rgba(255, 255, 255, 0.03) 3px
+      );
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      pointer-events: none;
+    }
+
+    /* CENTER LABEL */
+    .center-label {
+      position: absolute;
+      width: 35%;
+      height: 35%;
+      border-radius: 50%;
+      background-color: #55705E;
+      background-image: 
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        repeating-radial-gradient(circle at center, transparent 0, transparent 4px, rgba(0, 0, 0, 0.02) 5px);
+      box-shadow: 
+        inset 0 0 0 1px rgba(255, 255, 255, 0.22),
+        inset 0 0 12px rgba(0, 0, 0, 0.35),
+        0 1px 4px rgba(0, 0, 0, 0.4);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      user-select: none;
+      backface-visibility: visible;
+      -webkit-backface-visibility: visible;
+      transform-style: flat;
+      pointer-events: auto;
+    }
+
+    /* Sticker Paper Texture */
+    .center-label::before {
+      display: none;
+    }
+
+    .center-label::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.4);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Center Label Typography & SVG container */
+    .label-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+      z-index: 4;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .label-wedding-text {
+      font-family: var(--font-monoton);
+      font-weight: 400;
+      fill: #EEBA2B;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .label-flourish-text {
+      font-family: var(--font-bold);
+      font-weight: 700;
+      fill: #EEBA2B;
+      text-rendering: optimizeLegibility;
+      dominant-baseline: central;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .label-flourish-sub {
+      font-family: var(--font-slim);
+      font-weight: 300;
+      fill: #EEBA2B;
+      text-rendering: optimizeLegibility;
+      dominant-baseline: central;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .label-ampersand {
+      font-family: var(--font-slim);
+      font-weight: 300;
+    }
+
+    /* =========================================================================
+       RECORD LABEL MENU TYPOGRAPHY & FONT SIZES
+       - Adjust font-size, letter-spacing, or opacity here for menu items
+       ========================================================================= */
+
+    /* COLUMN A (SIDE A) MENU ITEMS DEFAULT FONT SIZE */
+    .label-menu-item {
+      font-family: var(--font-slim);
+      font-weight: 300;
+      font-size: 44px;        /* <-- ADJUST SIDE A FONT SIZE HERE (Default: 37px) */
+      letter-spacing: 1.5px;  /* <-- ADJUST SIDE A LETTER SPACING HERE */
+      text-transform: uppercase;
+      fill: #FBF1C9;          /* Off-white cream color */
+      pointer-events: auto;
+      cursor: pointer;
+      stroke: transparent;
+      stroke-width: 20px;     /* Generous invisible padding around text to prevent cursor edge flickering */
+      paint-order: stroke fill;
+      transition: fill 0.15s ease-out, filter 0.15s ease-out, opacity 0.15s ease-out;
+      text-rendering: optimizeLegibility;
+      dominant-baseline: central;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
+    }
+
+    .label-menu-item:hover,
+    .label-menu-item.is-hovered {
+      transform: none;
+      filter: drop-shadow(0 0 0.4px rgba(238, 186, 43, 0.5)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
+    }
+
+    .label-menu-item.right-col:hover,
+    .label-menu-item.right-col.is-hovered {
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .label-menu-item,
+      .label-menu-item:hover,
+      .label-menu-item.is-hovered {
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* COLUMN B (SIDE B) MENU ITEMS FONT SIZE OVERRIDE */
+    .label-menu-item.right-col {
+      font-size: 35px;        /* <-- ADJUST SIDE B FONT SIZE HERE (Default: 30px) */
+      opacity: 0.85;
+    }
+
+    /* 'SIDE A' & 'SIDE B' HEADER TITLES FONT & PILL CONTAINER */
+    .label-menu-header {
+      font-family: var(--font-jaro);
+      font-weight: 400;
+      font-size: 28px;        /* <-- ADJUST SIDE A & SIDE B HEADERS FONT SIZE */
+      letter-spacing: 3px;    /* <-- ADJUST HEADER LETTER SPACING */
+      text-transform: uppercase;
+      fill: #FFC72C;          /* Intense vibrant warm gold */
+      text-rendering: optimizeLegibility;
+      dominant-baseline: central;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 4px rgba(255, 199, 44, 0.25));
+      pointer-events: none;
+    }
+
+    .label-menu-header-pill {
+      fill: transparent;
+      stroke: #FFC72C;        /* Intense vibrant warm gold */
+      stroke-width: 1.8px;
+      stroke-opacity: 1;
+      rx: 18px;
+      ry: 18px;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 3px rgba(255, 199, 44, 0.2));
+    }
+
+    /* Dead/Disabled Option (8. RSVP) with enhanced contrast and tooltip */
+    .label-menu-item.item-dead {
+      fill: #9E9EA6;
+      opacity: 0.85;
+      cursor: default;
+      stroke-width: 0;
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95));
+    }
+
+    .label-menu-item.item-dead:hover {
+      transform: none;
+      fill: #B0B0BA;
+      opacity: 0.95;
+      filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.98));
+    }
+
+    /* SVG In-Label Tooltip for Dead Menu Option */
+    .label-tooltip {
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+    }
+
+    #rsvp-item-group:hover .label-tooltip,
+    #rsvp-item-group:focus-within .label-tooltip,
+    #schedule-item-group:hover .label-tooltip,
+    #schedule-item-group:focus-within .label-tooltip {
+      opacity: 1;
+    }
+
+    .label-tooltip-rect {
+      fill: #1A1A1E;
+      stroke: #EEBA2B;
+      stroke-width: 2px;
+      stroke-opacity: 1;
+      rx: 8px;
+      ry: 8px;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.9));
+    }
+
+    .label-tooltip-text {
+      font-family: var(--font-slim);
+      font-size: 21px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      fill: #EEBA2B;
+      dominant-baseline: central;
+      text-anchor: middle;
+      text-transform: uppercase;
+    }
+
+    .label-menu-item:not(.item-dead):hover {
+      fill: #FFFFFF;
+      opacity: 1;
+      filter: 
+        drop-shadow(0 0 3px #FFFFFF)
+        drop-shadow(0 0 10px rgba(255, 240, 150, 0.98)) 
+        drop-shadow(0 0 20px rgba(238, 186, 43, 0.95));
+    }
+
+    /* Center Spindle Hole */
+    .spindle-hole {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 14px;
+      height: 14px;
+      background: #0E0E0E;
+      border-radius: 50%;
+      border: 2px solid #D5C088;
+      z-index: 20;
+      box-shadow: 
+        inset 0 1px 3px rgba(0, 0, 0, 0.9),
+        0 0 0 1px rgba(0, 0, 0, 0.6);
+      pointer-events: none;
+    }
+
+    /* SLEEVE FRONT COVER */
+    .sleeve-front {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #181715;
+      border-radius: 4px;
+      z-index: 10;
+      overflow: hidden;
+      box-shadow: 
+        0 35px 70px -15px rgba(0, 0, 0, 0.45),
+        0 15px 25px -10px rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+
+      /* Bottom U-Notch cutout using SVG clip-path */
+      -webkit-clip-path: url(#sleeveNotchClip);
+      clip-path: url(#sleeveNotchClip);
+    }
+
+    /* Cardboard Spine & Physical Edge Reflection */
+    .sleeve-front::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      background: 
+        /* Left spine light crease */
+        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 2%, transparent 5%),
+        /* Bottom opening subtle edge highlight */
+        linear-gradient(0deg, rgba(255, 255, 255, 0.15) 0%, transparent 2px);
+      box-shadow: 
+        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+        inset 0 2px 6px rgba(0, 0, 0, 0.35);
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    /* Album Cover Photo Layer */
+    .sleeve-photo {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: none;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Dusty Vintage Vinyl Ring & Edge Wear Overlay */
+    .sleeve-weathering {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+      background: 
+        /* Faint vintage vinyl circular ring wear impression */
+        radial-gradient(circle at 50% 50%, transparent 42%, rgba(255, 255, 255, 0.08) 49%, rgba(0, 0, 0, 0.12) 54%, transparent 62%),
+        /* Dusty edge vignette & worn paper corners */
+        radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.35) 100%),
+        /* Subtle warm sepia dust cast */
+        linear-gradient(135deg, rgba(238, 186, 43, 0.03) 0%, rgba(0, 0, 0, 0.08) 100%);
+      mix-blend-mode: overlay;
+    }
+
+    /* Film Grain / Dusty Patina Layer */
+    .sleeve-dust-grain {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 3;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.45'/%3E%3C/svg%3E");
+      mix-blend-mode: color-dodge;
+    }
+
+    /* Sleeve Title Container (Aligned with Slats) */
+    .sleeve-title-wrapper {
+      position: absolute;
+      top: 12.4%;
+      left: 10%;
+      right: 10%;
+      z-index: 4;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: calc(var(--sleeve-size) * 0.036);
+      pointer-events: none;
+      transform-origin: left center;
+      transform: rotate(2.0deg);
+    }
+
+    /* Weathered Orange Title & Date */
+    .sleeve-orange-title,
+    .sleeve-orange-date {
+      font-family: var(--font-slim);
+      font-weight: 300;
+      font-size: calc(var(--sleeve-size) * 0.051);
+      color: #EEBA2B;
+      line-height: 1.0;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-rendering: geometricPrecision;
+      margin: 0;
+      white-space: nowrap;
+      text-align: left;
+      
+      /* Subtle vintage letterpress ink weathering & depth */
+      text-shadow: 
+        1px 1px 0px rgba(0, 0, 0, 0.75),
+        0 0 6px rgba(238, 186, 43, 0.2),
+        -0.5px -0.5px 0.5px rgba(255, 255, 255, 0.12);
+      filter: contrast(1.05);
+      opacity: 0.95;
+    }
+
+    /* CONCENTRIC SURFACE MENU ON VINYL GROOVES */
+    .surface-menu-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      z-index: 12;
+      pointer-events: none;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      opacity: 0;
+    }
+
+    .surface-menu-header {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 700;
+      font-size: 21px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      fill: #EEBA2B;
+      pointer-events: none;
+      user-select: none;
+      text-rendering: optimizeLegibility;
+      dominant-baseline: central;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 10px rgba(238, 186, 43, 0.35));
+    }
+
+    .surface-menu-item {
+      font-family: 'Bebas Neue', sans-serif;
+      font-weight: 700;
+      font-size: 19.5px;
+      letter-spacing: 1.6px;
+      text-transform: uppercase;
+      fill: #EEBA2B;
+      pointer-events: auto;
+      cursor: pointer;
+      stroke: transparent;
+      stroke-width: 16px;
+      paint-order: stroke fill;
+      transition: fill 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.25s ease;
+      text-rendering: optimizeLegibility;
+      dominant-baseline: central;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 4px rgba(0, 0, 0, 0.8));
+    }
+
+    .surface-menu-item:hover {
+      fill: #FFFFFF;
+      filter: 
+        drop-shadow(0 0 3px #FFFFFF)
+        drop-shadow(0 0 10px rgba(255, 240, 150, 0.98)) 
+        drop-shadow(0 0 22px rgba(238, 186, 43, 0.95))
+        drop-shadow(0 0 40px rgba(238, 186, 43, 0.75));
+    }
+
+    /* MODAL OVERLAY FOR MENU SECTIONS - AUTHENTIC LINER NOTES AESTHETIC */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 11, 10, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 1.25rem;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: #FDFBF7;
+      background-image: radial-gradient(rgba(238, 186, 43, 0.04) 1px, transparent 0);
+      background-size: 16px 16px;
+      border: 1px solid rgba(238, 186, 43, 0.45);
+      border-radius: 6px;
+      width: 100%;
+      max-width: 540px;
+      padding: 2.25rem 2.5rem;
+      box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.45),
+        0 0 0 4px rgba(238, 186, 43, 0.12),
+        inset 0 0 0 1px rgba(238, 186, 43, 0.25);
+      transform: translateY(24px) scale(0.95);
+      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+      position: relative;
+      max-height: 88vh;
+      overflow-y: auto;
+    }
+
+    .modal-overlay.active .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    /* Liner Note Header Badge */
+    .modal-liner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 4px 11px;
+      background: rgba(238, 186, 43, 0.14);
+      border: 1px solid rgba(204, 160, 48, 0.4);
+      border-radius: 3px;
+      font-family: var(--font-editorial-badge);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      color: #8C6208;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-dark);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, transform 0.15s ease, color 0.2s ease;
+      font-family: var(--font-editorial-title);
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      background: rgba(238, 186, 43, 0.2);
+      border-color: rgba(238, 186, 43, 0.5);
+      color: #000000;
+      transform: scale(1.08);
+    }
+
+    .modal-title {
+      font-family: var(--font-editorial-title);
+      font-style: normal;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #1C1917;
+      margin-bottom: 1.15rem;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      text-rendering: geometricPrecision;
+    }
+
+    .modal-body {
+      color: #2A2521;
+      font-size: 1.04rem;
+      line-height: 1.72;
+      font-family: var(--font-editorial-body);
+      font-weight: 400;
+      text-rendering: geometricPrecision;
+    }
+
+    .modal-body p {
+      margin-bottom: 1rem;
+    }
+
+    .modal-body strong {
+      font-family: var(--font-editorial-body);
+      font-weight: 600;
+      color: #1A1715;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.85rem;
+      margin: 1.25rem 0;
+    }
+
+    .info-box {
+      background: rgba(238, 186, 43, 0.07);
+      padding: 0.9rem 1.05rem;
+      border-radius: 4px;
+      border-left: 3px solid #CCA030;
+      border-top: 1px solid rgba(204, 160, 48, 0.2);
+      border-right: 1px solid rgba(204, 160, 48, 0.2);
+      border-bottom: 1px solid rgba(204, 160, 48, 0.2);
+    }
+
+    .info-box-label {
+      font-family: var(--font-editorial-body);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #8A6D3B;
+      margin-bottom: 4px;
+      font-weight: 600;
+      text-rendering: geometricPrecision;
+    }
+
+    .info-box-val {
+      font-family: var(--font-editorial-title);
+      font-weight: 600;
+      color: #1C1917;
+      font-size: 1.06rem;
+      letter-spacing: -0.01em;
+      text-rendering: geometricPrecision;
+    }
+
+    .primary-btn {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      background: #1C1917;
+      color: #EEBA2B;
+      padding: 13px 22px;
+      border-radius: 4px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      border: 1px solid rgba(238, 186, 43, 0.4);
+      font-family: var(--font-editorial-title);
+      text-rendering: geometricPrecision;
+    }
+
+    .primary-btn:hover {
+      background: #000000;
+      color: #FFF2CC;
+      border-color: #EEBA2B;
+      box-shadow: 0 4px 15px rgba(238, 186, 43, 0.25);
+      transform: translateY(-1px);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .surface-menu-header {
+        font-size: 23px;
+        letter-spacing: 2.8px;
+      }
+
+      .surface-menu-item {
+        font-size: 21px;
+        letter-spacing: 1.3px;
+        stroke-width: 22px; /* Generous touch area for mobile taps */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .top-header {
+        padding: 0 1.2rem;
+      }
+
+      .sleeve-main-title {
+        font-size: 1.9rem;
+      }
+
+      .sleeve-main-title span {
+        font-size: 1.5rem;
+      }
+
+      .modal-card {
+        padding: 1.8rem 1.4rem;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-arc-item {
+        font-size: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Height Container for GSAP ScrollTrigger Scrubbing -->
+  <div id="scroll-container">
+
+    <!-- Pinned Viewport Stage -->
+    <main id="stage">
+      
+      <!-- Simple Downwards Bouncing Arrow Indicator Cue -->
+      <div id="scroll-cue-arrow" class="scroll-cue-arrow" role="button" aria-label="Scroll down">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M 6,9 L 12,15 L 18,9"></path>
+        </svg>
+      </div>
+
+      <!-- SVG Defs for Sleeve Notch Cutout (Bottom Notch) -->
+      <svg width="0" height="0" style="position: absolute; pointer-events: none;" aria-hidden="true">
+        <defs>
+          <clipPath id="sleeveNotchClip" clipPathUnits="objectBoundingBox">
+            <path d="M 0,0 L 1,0 L 1,1 L 0.62,1 C 0.60,1 0.59,0.968 0.575,0.968 L 0.425,0.968 C 0.41,0.968 0.40,1 0.38,1 L 0,1 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
+      <!-- MAIN SCENE GROUP (Sleeve + Vinyl) -->
+      <div id="scene-group">
+        
+        <!-- Back Sleeve Cardboard (z-index: 1) -->
+        <div class="sleeve-back"></div>
+
+        <!-- VINYL RECORD (z-index: 5, sits between sleeve-back and sleeve-front) -->
+        <div id="vinyl-record" class="vinyl-record">
+          
+          <!-- Runout Groove Ring -->
+          <div class="vinyl-runout"></div>
+
+          <!-- RADIAL SPOKE SURFACE MENU SVG ON VINYL GROOVES -->
+          <svg class="surface-menu-svg" viewBox="0 0 1000 1000">
+            <g id="spoke-menu-group">
+              <!-- Header Spoke (Angle: -31.5°) -->
+              <g id="spoke-g-0" transform="rotate(-31.5 500 500)">
+                <text class="surface-menu-header" id="menu-tracklist-header" x="715" y="500">SELECT A TRACK</text>
+                <line x1="865" y1="500" x2="975" y2="500" stroke="#EEBA2B" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="3 3" />
+              </g>
+              <!-- 1. The Details (Angle: -24.5°) -->
+              <g id="spoke-g-1" transform="rotate(-24.5 500 500)">
+                <text class="surface-menu-item" id="menu-details-text" data-target="modal-details" x="715" y="500">1. The Details</text>
+              </g>
+              <!-- 2. The Driskill (Angle: -17.5°) -->
+              <g id="spoke-g-2" transform="rotate(-17.5 500 500)">
+                <text class="surface-menu-item" id="menu-driskill-text" data-target="modal-driskill" x="715" y="500">2. The Driskill</text>
+              </g>
+              <!-- 3. Where to Stay (Angle: -10.5°) -->
+              <g id="spoke-g-3" transform="rotate(-10.5 500 500)">
+                <text class="surface-menu-item" id="menu-stay-text" data-target="modal-stay" x="715" y="500">3. Where to Stay</text>
+              </g>
+              <!-- 4. Some Favorite Spots (Angle: -3.5°) -->
+              <g id="spoke-g-4" transform="rotate(-3.5 500 500)">
+                <text class="surface-menu-item" id="menu-spots-text" data-target="modal-spots" x="715" y="500">4. Some Favorite Spots</text>
+              </g>
+              <!-- 5. About Us (Angle: +3.5°) -->
+              <g id="spoke-g-5" transform="rotate(3.5 500 500)">
+                <text class="surface-menu-item" id="menu-about-text" data-target="modal-about" x="715" y="500">5. About Us</text>
+              </g>
+              <!-- 6. Coming Soon (Angle: +10.5°) -->
+              <g id="spoke-g-6" transform="rotate(10.5 500 500)">
+                <text class="surface-menu-item" id="menu-coming-soon-text" data-target="modal-coming-soon" x="715" y="500">6. Coming Soon</text>
+              </g>
+              <!-- 7. Invitation to Follow (Angle: +17.5°) -->
+              <g id="spoke-g-7" transform="rotate(17.5 500 500)">
+                <text class="surface-menu-item" id="menu-invitation-text" data-target="modal-invitation" x="715" y="500">7. Invitation to Follow</text>
+              </g>
+              <!-- 8. Registry (Angle: +24.5°) -->
+              <g id="spoke-g-8" transform="rotate(24.5 500 500)">
+                <text class="surface-menu-item" id="menu-registry-text" data-target="modal-registry" x="715" y="500">8. Registry</text>
+              </g>
+              <!-- 9. FAQ (Angle: +31.5°) -->
+              <g id="spoke-g-9" transform="rotate(31.5 500 500)">
+                <text class="surface-menu-item" id="menu-faq-text" data-target="modal-faq" x="715" y="500">9. FAQ</text>
+              </g>
+            </g>
+          </svg>
+
+          <!-- CENTER LABEL -->
+          <div id="center-label" class="center-label">
+            
+            <!-- Vintage Record Label Typography SVG -->
+            <svg class="label-svg" viewBox="0 0 1000 1000">
+              <defs>
+                <!-- Top Arc: Baseline at R=423 (brought down 5px from R=428) -->
+                <path id="labelArcTop" d="M 77,500 A 423,423 0 0,1 923,500" />
+                <!-- Circular Loop Graphic Path: Loops clockwise from right of 'TRACK' around bottom to left of 'SELECT' at R=453 (extended ~60px closer to text) -->
+                <path id="labelArcLoop" d="M 815,174 A 453,453 0 1,1 185,174" />
+                <!-- Finley Arc: Baseline at R=430 (sits closely on top of the yellow loop at R=453) -->
+                <path id="labelArcFinley" d="M 70,500 A 430,430 0 0,0 930,500" />
+
+                <!-- Paper Fiber & Vintage Speckle Texture Filter -->
+                <filter id="paper-grain-filter" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="4" stitchTiles="stitch" result="fineNoise" />
+                  <feColorMatrix type="matrix" values="0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0.33 0.33 0.33 0 0  0 0 0 1 0" in="fineNoise" result="monoNoise" />
+                  <feComponentTransfer in="monoNoise" result="contrastNoise">
+                    <feFuncR type="linear" slope="1.4" intercept="-0.2"/>
+                    <feFuncG type="linear" slope="1.4" intercept="-0.2"/>
+                    <feFuncB type="linear" slope="1.4" intercept="-0.2"/>
+                  </feComponentTransfer>
+                  <feDiffuseLighting in="contrastNoise" lighting-color="#FFF8E7" surfaceScale="1.1" diffuseConstant="0.85" result="lightEmboss">
+                    <feDistantLight azimuth="135" elevation="45" />
+                  </feDiffuseLighting>
+                  <feBlend mode="multiply" in="lightEmboss" in2="contrastNoise" result="embossedFiber" />
+                </filter>
+
+                <!-- Dynamic Grazing Light Highlight / Shadow Filter on Hover -->
+                <radialGradient id="grazing-light-gradient" cx="42%" cy="40%" r="58%">
+                  <stop offset="0%" stop-color="#FFFDF5" stop-opacity="0.35" />
+                  <stop offset="45%" stop-color="#FFF0D0" stop-opacity="0.12" />
+                  <stop offset="85%" stop-color="#000000" stop-opacity="0.2" />
+                  <stop offset="100%" stop-color="#000000" stop-opacity="0.35" />
+                </radialGradient>
+
+                <!-- Radial Feather Mask for Local Paper Reveal (Updated via JS on hover) -->
+                <mask id="paper-reveal-mask">
+                  <rect width="1000" height="1000" fill="black" />
+                  <circle id="paper-mask-circle" cx="500" cy="500" r="0" fill="white" opacity="0" />
+                </mask>
+              </defs>
+
+              <!-- Base Matte Paper Texture Layer (Subtle 3% resting texture across entire label) -->
+              <rect width="1000" height="1000" filter="url(#paper-grain-filter)" opacity="0.04" style="mix-blend-mode: overlay; pointer-events: none;" />
+
+              <!-- LOCAL PAPER FIBER & EMBOSS REVEAL OVERLAY (Revealed under mask on hover) -->
+              <g id="local-paper-reveal" mask="url(#paper-reveal-mask)" style="pointer-events: none;">
+                <!-- High-contrast Paper Fibers -->
+                <rect width="1000" height="1000" filter="url(#paper-grain-filter)" opacity="0.45" style="mix-blend-mode: soft-light;" />
+                <!-- Raking Grazing Light (Warm highlight upper-left, soft shadow lower-right) -->
+                <rect id="raking-light-rect" width="1000" height="1000" fill="url(#grazing-light-gradient)" opacity="0.5" style="mix-blend-mode: overlay;" />
+              </g>
+
+              <!-- Circular Solid Line Graphic Connecting Right of 'TRACK' around bottom to Left of 'SELECT' (R=453, extended ~60px closer to text) -->
+              <g id="label-track-loop">
+                <!-- Clean Solid Gold Loop Arc with rounded end caps -->
+                <path d="M 815,174 A 453,453 0 1,1 185,174" fill="none" stroke="#EEBA2B" stroke-width="4.5" stroke-linecap="round" stroke-opacity="0.85" />
+              </g>
+
+              <!-- Top Arc: Select A Track (R=428, brought down 5px from R=433) -->
+              <text class="label-wedding-text" font-size="64" letter-spacing="3">
+                <textPath href="#labelArcTop" startOffset="50%" text-anchor="middle">
+                  SELECT <tspan font-size="48">A</tspan> TRACK
+                </textPath>
+              </text>
+
+              <!-- =========================================================================
+                   2-COLUMN USER MENU (SVG Coordinate System: 0 to 1000, Center is x=500, y=500)
+                   - Change 'x' to move item horizontally (left < 500 < right)
+                   - Change 'y' to move item vertically (top < 500 < bottom)
+                   - Use font-size="..." attribute to override font size individually if desired
+                   ========================================================================= -->
+              <g id="label-user-menu">
+
+                <!-- -------------------------------------------------------------
+                     COLUMN A: "SIDE A" HEADER & MENU ITEMS (Left side arc)
+                     ------------------------------------------------------------- -->
+
+                <!-- Header: SIDE A (Raised to y=235, x=325) -->
+                <g id="header-side-a">
+                  <!-- Pill container centered around x=325, y=235 -->
+                  <rect class="label-menu-header-pill" x="255" y="217" width="140" height="36" />
+                  <text class="label-menu-header" x="325" y="235" text-anchor="middle">SIDE A</text>
+                </g>
+
+                <!-- 1. Our Story (Row 1: y=295, x=325) -->
+                <text class="label-menu-item" data-target="modal-about" x="300" y="295" text-anchor="middle">1. Our Story</text>
+
+                <!-- 2. The Driskill (Row 2: y=430, x=250) -->
+                <text class="label-menu-item" data-target="modal-driskill" x="250" y="430" text-anchor="middle">2. The Driskill</text>
+
+                <!-- 3. Stuff to Do (Row 3: y=565, x=250) -->
+                <text class="label-menu-item" data-target="modal-spots" x="250" y="565" text-anchor="middle">3. Stuff to Do</text>
+
+                <!-- 4. Where to Stay (Row 4: y=700, x=325) -->
+                <text class="label-menu-item" data-target="modal-stay" x="325" y="700" text-anchor="middle">4. Where to Stay</text>
+
+
+                <!-- -------------------------------------------------------------
+                     COLUMN B: "SIDE B" HEADER & MENU ITEMS (Right side arc)
+                     ------------------------------------------------------------- -->
+
+                <!-- Header: SIDE B (Raised to y=235, x=675) -->
+                <g id="header-side-b">
+                  <!-- Pill container centered around x=675, y=235 -->
+                  <rect class="label-menu-header-pill" x="605" y="217" width="140" height="36" />
+                  <text class="label-menu-header" x="675" y="235" text-anchor="middle">SIDE B</text>
+                </g>
+
+                <!-- 5. Schedule (Row 1: y=295, shifted 40px left to x=665) - Disabled/Coming Soon -->
+                <g id="schedule-item-group" tabindex="0" role="button" aria-label="5. Schedule - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
+                  <text class="label-menu-item right-col item-dead" x="665" y="295" text-anchor="middle">5. Schedule</text>
+                  <!-- Hover Tooltip overlay: explicit SVG coordinates -->
+                  <g class="label-tooltip">
+                    <rect class="label-tooltip-rect" x="575" y="274" width="180" height="42" />
+                    <text class="label-tooltip-text" x="665" y="295">Coming Soon</text>
+                  </g>
+                </g>
+
+                <!-- 6. Registry (Row 2: y=430, shifted 40px left to x=740) -->
+                <text class="label-menu-item right-col" data-target="modal-registry" x="740" y="430" text-anchor="middle">6. Registry</text>
+
+                <!-- 7. FAQ (Row 3: y=565, shifted 60px left to x=720) -->
+                <text class="label-menu-item right-col" data-target="modal-faq" x="720" y="565" text-anchor="middle">7. FAQ</text>
+
+                <!-- 8. RSVP (Row 4: y=700, shifted 40px left to x=665) - Disabled/Coming Soon -->
+                <g id="rsvp-item-group" tabindex="0" role="button" aria-label="8. RSVP - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
+                  <text class="label-menu-item right-col item-dead" x="665" y="700" text-anchor="middle">8. RSVP</text>
+                  <!-- Hover Tooltip overlay: explicit SVG coordinates -->
+                  <g class="label-tooltip">
+                    <rect class="label-tooltip-rect" x="575" y="679" width="180" height="42" />
+                    <text class="label-tooltip-text" x="665" y="700">Coming Soon</text>
+                  </g>
+                </g>
+
+              </g>
+
+              <!-- VINTAGE BARCODE (Enlarged and positioned higher above the Finley text) -->
+              <g id="label-barcode" transform="translate(412, 820) scale(1.18)">
+                <path d="M 0,0 V 28 M 3,0 V 28 M 8,0 V 28 M 12,0 V 28 M 16,0 V 28 M 22,0 V 28 M 27,0 V 28 M 32,0 V 28 M 36,0 V 28 M 42,0 V 28 M 46,0 V 28 M 50,0 V 28 M 56,0 V 28 M 62,0 V 28 M 68,0 V 28 M 72,0 V 28 M 78,0 V 28 M 82,0 V 28 M 88,0 V 28 M 94,0 V 28 M 98,0 V 28 M 104,0 V 28 M 108,0 V 28 M 114,0 V 28 M 120,0 V 28 M 124,0 V 28 M 130,0 V 28 M 136,0 V 28 M 142,0 V 28 M 147,0 V 28 M 150,0 V 28" stroke="#CCA030" stroke-width="2.4" stroke-opacity="1" />
+                <text x="75" y="44" text-anchor="middle" font-family="var(--font-slim)" font-weight="400" font-size="15" letter-spacing="2.5" fill="#CCA030" fill-opacity="1">0 42420 27042 4</text>
+              </g>
+
+              <!-- Finley Recording Corp Note (Increased 1pt to 17px) -->
+              <text font-family="var(--font-slim)" font-weight="400" font-size="17" letter-spacing="2.8" fill="#CCA030" fill-opacity="1">
+                <textPath href="#labelArcFinley" startOffset="50%" text-anchor="middle">
+                  Finley Recording Corp • Recorded in Chicago, IL &amp; Austin, TX
+                </textPath>
+              </text>
+            </svg>
+
+            <!-- Spindle Hole -->
+            <div class="spindle-hole"></div>
+          </div>
+
+        </div><!-- /vinyl-record -->
+
+        <!-- SLEEVE FRONT COVER (z-index: 10, sits in front of vinyl-record with notch cutout) -->
+        <div class="sleeve-front">
+          <img id="sleeve-cover-image" src="/Weston-4.png" alt="Mike & Jordan Album Cover" class="sleeve-photo" referrerPolicy="no-referrer" />
+        </div><!-- /sleeve-front -->
+
+      </div><!-- /scene-group -->
+
+    </main>
+  </div><!-- /scroll-container -->
+
+  <!-- MODALS FOR VINYL RECORD & LABEL ITEMS -->
+  <!-- 1. Our Story Modal (Side A, Track 01) -->
+  <div id="modal-about" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 01</span> <span>•</span> <span>OUR STORY</span></div>
+      <h2 class="modal-title">Our Story</h2>
+      <div class="modal-body">
+        <p>Bonded by our shared passion for live music, collecting vinyl records, road trips, and exploring Austin's food scene, we have built a life filled with laughter, melody, and adventure.</p>
+        <p style="margin-top: 12px;">We could not be more thrilled to bring our favorite people from across the country together to celebrate our wedding at the historic Driskill Hotel!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. The Driskill Modal (Side A, Track 02) -->
+  <div id="modal-driskill" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 02</span> <span>•</span> <span>THE DRISKILL</span></div>
+      <h2 class="modal-title">The Driskill</h2>
+      <div class="modal-body">
+        <p>Built in 1886 by cattle baron Jesse Driskill, The Driskill is an iconic Romanesque landmark in the heart of downtown Austin. Blending storied Texas history, opulent Victorian ballrooms, and legendary Southern hospitality, it is one of our favorite places in the entire city.</p>
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-box-label">Date</p>
+            <p class="info-box-val">April 24, 2027</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Ceremony</p>
+            <p class="info-box-val">5:30 PM CST</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Address</p>
+            <p class="info-box-val">118 E 7th St, Austin, TX</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Architecture</p>
+            <p class="info-box-val">Historic Romanesque</p>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">Steps away from 6th Street, Lady Bird Lake, Congress Avenue, and world-class live music.</p>
+        <button id="add-cal-btn" class="primary-btn" style="margin-bottom: 8px;">Add to Google Calendar</button>
+        <button class="primary-btn" onclick="window.open('https://driskillhotel.com', '_blank')">Visit Driskill Hotel Website</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Stuff to Do Modal (Side A, Track 03) -->
+  <div id="modal-spots" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 03</span> <span>•</span> <span>STUFF TO DO</span></div>
+      <h2 class="modal-title">Stuff to Do</h2>
+      <div class="modal-body">
+        <p>Austin is filled with incredible music, food, and culture. Here are a few spots we love:</p>
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-box-label">Terry Black's BBQ</p>
+            <p class="info-box-val">Legendary Central Texas Brisket</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">South Congress (SoCo)</p>
+            <p class="info-box-val">Boutiques, Cafés &amp; Murals</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Lady Bird Lake</p>
+            <p class="info-box-val">Boardwalk Walks &amp; Kayaking</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Continental Club</p>
+            <p class="info-box-val">Historic Live Roots &amp; Blues</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Where to Stay Modal (Side A, Track 04) -->
+  <div id="modal-stay" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 04</span> <span>•</span> <span>WHERE TO STAY</span></div>
+      <h2 class="modal-title">Where to Stay</h2>
+      <div class="modal-body">
+        <p>A preferred room block has been reserved for our guests right at our historic wedding venue.</p>
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-box-label">Primary Venue Block</p>
+            <p class="info-box-val">The Driskill Hotel</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Group Block Code</p>
+            <p class="info-box-val">JORDAN-MIKE-27</p>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">Additional nearby hotels within walking distance include The Stephen F. Austin Royal Sonesta, Austin Marriott Downtown, and Hotel Van Zandt. We encourage guests to book early as late April is peak season in Austin!</p>
+        <button class="primary-btn" onclick="window.open('https://driskillhotel.com', '_blank')">Book Driskill Room Block</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Schedule Modal (Side B, Track 05 - Disabled) -->
+  <div id="modal-schedule" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <h2 class="modal-title">Schedule</h2>
+      <div class="modal-body">
+        <p>We are putting together a full weekend of fun and celebration in downtown Austin!</p>
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-box-label">Friday Evening</p>
+            <p class="info-box-val">Welcome Drinks &amp; Tacos</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Saturday 5:30 PM</p>
+            <p class="info-box-val">Ceremony at The Driskill</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Saturday Evening</p>
+            <p class="info-box-val">Cocktails, Dinner &amp; Dancing</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Sunday Morning</p>
+            <p class="info-box-val">Farewell Coffee &amp; Pastries</p>
+          </div>
+        </div>
+        <p style="font-size: 0.85rem; color: #666; margin-top: 12px;">Detailed times and venue room locations will be shared in formal invitations and updated here as the date approaches.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Registry Modal (Side B, Track 06) -->
+  <div id="modal-registry" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 06</span> <span>•</span> <span>REGISTRY</span></div>
+      <h2 class="modal-title">Registry</h2>
+      <div class="modal-body">
+        <p>Your love, presence, and friendship at our wedding are the greatest gifts we could ever ask for. For friends and family who have inquired about honoring us with a gift, we have created a Honeymoon &amp; Adventure Fund as well as a curated home registry.</p>
+        <p style="font-size: 0.85rem; color: #666; margin-top: 12px;">Registry links and gifting details will go live alongside formal invitations.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. FAQ Modal (Side B, Track 07) -->
+  <div id="modal-faq" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 07</span> <span>•</span> <span>FAQ</span></div>
+      <h2 class="modal-title">FAQ</h2>
+      <div class="modal-body">
+        <div class="info-grid">
+          <div class="info-box">
+            <p class="info-box-label">Dress Code</p>
+            <p class="info-box-val">Black-Tie Optional</p>
+          </div>
+          <div class="info-box">
+            <p class="info-box-label">Valet Parking</p>
+            <p class="info-box-val">Available at Hotel</p>
+          </div>
+        </div>
+        <p style="margin-top: 12px;"><strong>Are kids invited?</strong><br/>To allow all guests a night of uninhibited celebration and relaxation, our wedding weekend will be an adults-only event (21+).</p>
+        <p style="margin-top: 10px;"><strong>Transportation:</strong><br/>The Driskill is centrally located in downtown Austin. Rideshares (Uber / Lyft) are readily available and recommended.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. RSVP Modal (Side B, Track 08 - Disabled) -->
+  <div id="modal-invitation" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <h2 class="modal-title">RSVP</h2>
+      <div class="modal-body">
+        <p>Formal wedding invitations with dinner selections and online RSVP details will be mailed in late 2026 / early 2027.</p>
+        <p style="margin-top: 12px;">Please save the date on your calendar in the meantime! If your mailing address or contact info changes, please feel free to reach out so we can ensure your invitation finds its way to you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT CONFIG & GSAP SCROLLTRIGGER ANIMATION LOGIC -->
+  <script>
+    // -------------------------------------------------------------
+    // CONFIGURABLE TWEAK PARAMETERS (AS REQUESTED)
+    // -------------------------------------------------------------
+    const CONFIG = {
+      sleeveBaseSize: "min(82vw, 560px)",
+      labelZoomLevel: 3.0, // Record label fills viewport, vinyl edges spill out
+      labelLingerDuration: 0.3,
+      recordBottomAnchorOffset: "100vh",
+      totalRotationDegrees: 720,
+      menuArcRadius: "42vw"
+    };
+
+    // Initialize GSAP & ScrollTrigger when DOM is ready
+    window.addEventListener('DOMContentLoaded', () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const sceneGroup = document.getElementById('scene-group');
+      const sleeveContainer = document.querySelectorAll('.sleeve-back, .sleeve-front');
+      const vinylRecord = document.getElementById('vinyl-record');
+      const centerLabel = document.getElementById('center-label');
+      const menuArcContainer = document.getElementById('menu-arc-container');
+      const scrollCueArrow = document.getElementById('scroll-cue-arrow');
+
+      // Scroll Cue Arrow: Appear after a moment (1.2s) and allow click-to-scroll
+      setTimeout(() => {
+        if (scrollCueArrow && window.scrollY < 20) {
+          scrollCueArrow.classList.add('is-visible');
+        }
+      }, 1200);
+
+      if (scrollCueArrow) {
+        scrollCueArrow.addEventListener('click', () => {
+          window.scrollTo({
+            top: window.innerHeight * 1.5,
+            behavior: 'smooth'
+          });
+        });
+      }
+
+      // Ensure ScrollTrigger refreshes calculations after resources load
+      window.addEventListener('load', () => {
+        ScrollTrigger.refresh();
+      });
+
+      // Calculate dynamic zoom scales:
+      // 1. Cover Zoom Scale: Album cover scales to occupy ~90% of the screen height (vh * 0.90) from top to bottom before sleeve exits
+      function getCoverZoomScale() {
+        const vh = window.innerHeight;
+        const vw = window.innerWidth;
+        const sleeveSize = Math.min(vw * 0.82, 560);
+        const targetCoverHeightPx = vh * 0.90;
+        const scale = targetCoverHeightPx / sleeveSize;
+        return Math.max(scale, 1.0);
+      }
+
+      // 2. Center Label Zoom Scale:
+      // - Desktop (vw >= 768): Center record label expands so that top-to-bottom occupies ~85% of screen height (vh * 0.85)
+      // - Mobile (vw < 768): Center record label zooms in so the yellow circular track loop line extends slightly past left/right viewport edges (~118% width)
+      function getTargetZoomScale() {
+        const vh = window.innerHeight;
+        const vw = window.innerWidth;
+        // Base unscaled label diameter in px = sleeveSize * 0.98 * 0.35 = sleeveSize * 0.343
+        const sleeveSize = Math.min(vw * 0.82, 560);
+        const baseLabelPx = sleeveSize * 0.343;
+        
+        let targetLabelPx;
+        if (vw >= 768) {
+          targetLabelPx = Math.min(vw * 0.95, vh * 0.85);
+        } else {
+          targetLabelPx = vw * 1.18;
+        }
+        const scale = targetLabelPx / baseLabelPx;
+        return Math.min(Math.max(scale, 2.0), 12.0);
+      }
+
+      // Initial state
+      gsap.set(vinylRecord, { rotation: 0, force3D: false });
+      gsap.set(sceneGroup, { scale: 1, x: 0, y: 0, force3D: false });
+      gsap.set(sleeveContainer, { y: 0, opacity: 1 });
+
+      // Master Scroll Scrub Timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: "#scroll-container",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 1.2,
+          invalidateOnRefresh: true,
+          onUpdate: (self) => {
+            // Hide scroll cue on initial scroll
+            if (scrollCueArrow) {
+              if (self.progress > 0.02) {
+                scrollCueArrow.style.opacity = "0";
+                scrollCueArrow.style.pointerEvents = "none";
+              } else {
+                scrollCueArrow.style.opacity = "0.85";
+                scrollCueArrow.style.pointerEvents = "auto";
+              }
+            }
+          }
+        }
+      });
+
+      // Phase Timing Definitions
+      const coverZoomDuration = 0.5;
+      const sleeveExitDuration = 0.8;
+      const lingerDuration = 0.3;
+
+      // -------------------------------------------------------------
+      // PHASE 1: ZOOM INTO ALBUM COVER
+      // - Album cover scales up to occupy ~90% of viewport height from top to bottom
+      // - Vinyl record and sleeve stay together inside sceneGroup
+      // -------------------------------------------------------------
+      tl.to(sceneGroup, {
+        scale: () => getCoverZoomScale(),
+        x: 0,
+        y: 0,
+        ease: "power1.inOut",
+        duration: coverZoomDuration,
+        force3D: false
+      }, 0);
+
+      // -------------------------------------------------------------
+      // PHASE 2: SLEEVE SLIPS OFF TOP & VINYL RECORD REVEAL + LABEL ZOOM
+      // - Sleeve moves up and out of the TOP of the screen (y: "-140vh", 100% opaque)
+      // - Vinyl record spins a full 360° counter-clockwise (0° -> -360°, upright orientation)
+      // - Camera zooms from 90% cover view directly into the record center label
+      // -------------------------------------------------------------
+      tl.to(sleeveContainer, {
+        y: "-140vh",
+        opacity: 1,
+        ease: "power1.inOut",
+        duration: sleeveExitDuration
+      }, coverZoomDuration)
+      .fromTo(vinylRecord, {
+        rotation: 0
+      }, {
+        rotation: -360,
+        ease: "power1.inOut",
+        duration: sleeveExitDuration,
+        force3D: false
+      }, coverZoomDuration)
+      .to(sceneGroup, {
+        scale: () => getTargetZoomScale(),
+        x: 0,
+        y: 0,
+        ease: "power2.inOut",
+        duration: sleeveExitDuration,
+        force3D: false
+      }, coverZoomDuration);
+
+      // Linger Moment at peak zoom (label centered & readable)
+      tl.to(sceneGroup, {
+        duration: lingerDuration
+      }, coverZoomDuration + sleeveExitDuration);
+
+      // -------------------------------------------------------------
+      // INTERACTIVE MODAL EVENT LISTENERS
+      // -------------------------------------------------------------
+      const menuInteractiveItems = document.querySelectorAll('.label-menu-item, .surface-menu-item');
+      const modalOverlays = document.querySelectorAll('.modal-overlay');
+
+      menuInteractiveItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const targetId = item.getAttribute('data-target');
+          const targetModal = document.getElementById(targetId);
+          if (targetModal) {
+            targetModal.classList.add('active');
+          }
+        });
+      });
+
+      modalOverlays.forEach(overlay => {
+        const closeBtn = overlay.querySelector('.modal-close');
+        if (closeBtn) {
+          closeBtn.addEventListener('click', () => {
+            overlay.classList.remove('active');
+          });
+        }
+        overlay.addEventListener('click', (e) => {
+          if (e.target === overlay) {
+            overlay.classList.remove('active');
+          }
+        });
+      });
+
+      // Close open modals on Escape key press
+      window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+          modalOverlays.forEach(overlay => {
+            overlay.classList.remove('active');
+          });
+        }
+      });
+
+      // Google Calendar Add Button Handler
+      const addCalBtn = document.getElementById('add-cal-btn');
+      if (addCalBtn) {
+        addCalBtn.addEventListener('click', () => {
+          const title = encodeURIComponent("Mike & Jordan's Wedding");
+          const details = encodeURIComponent("Join us as Mike & Jordan get married at The Driskill Hotel in Austin, TX!");
+          const location = encodeURIComponent("The Driskill Hotel, 118 E 7th St, Austin, TX 78701");
+          const dates = "20270424T223000Z/20270425T050000Z";
+          const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}&dates=${dates}`;
+          window.open(gcalUrl, '_blank');
+        });
+      }
+
+    });
+  </script>
+</body>
+</html>

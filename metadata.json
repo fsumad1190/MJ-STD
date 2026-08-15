@@ -1,0 +1,8 @@
+{
+  "name": "Remix Remix 3 Save the Date - Vinyl Scrollytelling",
+  "description": "A hyper-minimal, single-viewport Save the Date web application featuring a vertical scrollytelling vinyl record experience with GSAP.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
