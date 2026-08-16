@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  
+  <!-- Strict Anti-Indexing & Anti-Scraping Directives (Private URL Access Only) -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate, noydir, noodp" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate" />
+  <meta name="googlebot-news" content="noindex, nofollow" />
+  <meta name="google-extended" content="noindex, noarchive" />
+  <meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet, noimageindex" />
+  <meta name="slurp" content="noindex, nofollow" />
+  <meta name="duckduckbot" content="noindex, nofollow" />
+  <meta name="baiduspider" content="noindex, nofollow" />
+  <meta name="yandex" content="noindex, nofollow" />
+  <meta name="referrer" content="no-referrer" />
+  
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
   <meta name="theme-color" content="#F1EBE1" />
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F1EBE1" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#F1EBE1" />
   <meta name="msapplication-navbutton-color" content="#F1EBE1" />
   <meta name="apple-touch-fullscreen" content="yes" />
   <meta name="format-detection" content="telephone=no" />
@@ -128,6 +143,9 @@
 
   <style>
     :root {
+      color-scheme: light;
+      background-color: #F1EBE1 !important;
+      background: #F1EBE1 !important;
       --sleeve-size: min(82vh, 85vw);
       --bg-color: #F8F5EE;
       --cardboard-color: #EAE7DF;
@@ -166,13 +184,14 @@
     }
 
     html {
+      color-scheme: light;
       width: 100%;
       height: 100%;
       min-height: 100%;
       min-height: -webkit-fill-available;
       min-height: 100dvh;
-      background-color: #F1EBE1;
-      background: #F1EBE1;
+      background-color: #F1EBE1 !important;
+      background: #F1EBE1 !important;
       overflow-x: hidden;
       overflow-y: auto;
       text-rendering: optimizeLegibility;
@@ -184,12 +203,13 @@
     }
 
     body {
+      color-scheme: light;
       width: 100%;
       min-height: 100%;
       min-height: -webkit-fill-available;
       min-height: 100dvh;
-      background-color: #F1EBE1;
-      background: #F1EBE1;
+      background-color: #F1EBE1 !important;
+      background: #F1EBE1 !important;
       color: var(--text-dark);
       font-family: var(--font-soft);
       font-weight: normal;
@@ -202,20 +222,19 @@
       margin: 0;
     }
 
-    /* Fixed Full-Bleed Tabletop Canvas Background Layer (Eliminates iOS Safari fixed-background scrolling glitches) */
+    /* Fixed Full-Bleed Tabletop Canvas Background Layer (Eliminates iOS Safari fixed-background scrolling glitches & bevel bars) */
     #tabletop-bg {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      width: 100vw;
-      width: 100dvw;
-      width: 100%;
-      height: 100vh;
-      height: 100dvh;
-      min-height: -webkit-fill-available;
-      background-color: #F1EBE1;
+      top: -25vh;
+      left: -25vw;
+      right: -25vw;
+      bottom: -25vh;
+      width: 150vw;
+      width: 150dvw;
+      height: 150vh;
+      height: 150dvh;
+      min-height: 150%;
+      background-color: #F1EBE1 !important;
       background-image: 
         /* Micro tabletop surface grain */
         url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.038'/%3E%3C/svg%3E"),
@@ -240,6 +259,8 @@
       width: 100%;
       position: relative;
       pointer-events: auto;
+      background-color: #F1EBE1;
+      background: #F1EBE1;
     }
 
     /* Fixed Stage Canvas spanning full bleed past Dynamic Island and Home bar */
@@ -966,6 +987,21 @@
         drop-shadow(0 0 40px rgba(238, 186, 43, 0.75));
     }
 
+    /* Global Modal Open Scroll Lock & Background Event Isolation */
+    html.modal-open,
+    body.modal-open {
+      overflow: hidden !important;
+      touch-action: none !important;
+      -webkit-overflow-scrolling: auto !important;
+    }
+
+    body.modal-open #stage,
+    body.modal-open #scroll-container,
+    body.modal-open #tabletop-bg {
+      pointer-events: none !important;
+      user-select: none !important;
+    }
+
     /* MODAL OVERLAY FOR MENU SECTIONS - AUTHENTIC LINER NOTES INSERT AESTHETIC */
     .modal-overlay {
       position: fixed;
@@ -992,6 +1028,8 @@
       pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s;
       padding: max(1.25rem, env(safe-area-inset-top, 0px)) max(1.25rem, env(safe-area-inset-right, 0px)) max(1.25rem, env(safe-area-inset-bottom, 0px)) max(1.25rem, env(safe-area-inset-left, 0px));
+      overscroll-behavior: contain;
+      touch-action: pan-y;
     }
 
     .modal-overlay.active {
@@ -1009,6 +1047,8 @@
       max-height: 88dvh;
       border-radius: 16px;
       font-family: 'Montserrat', sans-serif;
+      overscroll-behavior: contain;
+      touch-action: pan-y;
       /* Heavy Cream Cardstock Paper Texture with Micro-Grain & Lighting Sheen */
       background:
         /* Soft directional top-left sheen reflecting light across the paper */
@@ -2527,10 +2567,33 @@
       }, phase1Duration);
 
       // -------------------------------------------------------------
-      // INTERACTIVE MODAL EVENT LISTENERS
+      // INTERACTIVE MODAL EVENT LISTENERS & BACKGROUND SCROLL LOCK
       // -------------------------------------------------------------
       const menuInteractiveItems = document.querySelectorAll('.label-menu-item, .surface-menu-item');
       const modalOverlays = document.querySelectorAll('.modal-overlay');
+
+      const openModal = (targetModal) => {
+        if (!targetModal) return;
+        targetModal.classList.add('active');
+        document.documentElement.classList.add('modal-open');
+        document.body.classList.add('modal-open');
+
+        // Reset scroll position of modal inner card
+        const inner = targetModal.querySelector('.modal-card-inner') || targetModal.querySelector('.modal-card');
+        if (inner) {
+          inner.scrollTop = 0;
+        }
+      };
+
+      const closeModal = (overlay) => {
+        if (!overlay) return;
+        overlay.classList.remove('active');
+        const anyActive = Array.from(modalOverlays).some(m => m.classList.contains('active'));
+        if (!anyActive) {
+          document.documentElement.classList.remove('modal-open');
+          document.body.classList.remove('modal-open');
+        }
+      };
 
       menuInteractiveItems.forEach(item => {
         item.addEventListener('click', (e) => {
@@ -2538,7 +2601,7 @@
           const targetId = item.getAttribute('data-target');
           const targetModal = document.getElementById(targetId);
           if (targetModal) {
-            targetModal.classList.add('active');
+            openModal(targetModal);
           }
         });
       });
@@ -2546,22 +2609,36 @@
       modalOverlays.forEach(overlay => {
         const closeBtn = overlay.querySelector('.modal-close');
         if (closeBtn) {
-          closeBtn.addEventListener('click', () => {
-            overlay.classList.remove('active');
+          closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            closeModal(overlay);
           });
         }
         overlay.addEventListener('click', (e) => {
           if (e.target === overlay) {
-            overlay.classList.remove('active');
+            closeModal(overlay);
           }
         });
+
+        // Prevent wheel or touch drag on backdrop overlay from triggering background page scrub
+        overlay.addEventListener('wheel', (e) => {
+          if (!e.target.closest('.modal-card-inner')) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+
+        overlay.addEventListener('touchmove', (e) => {
+          if (!e.target.closest('.modal-card-inner')) {
+            e.preventDefault();
+          }
+        }, { passive: false });
       });
 
       // Close open modals on Escape key press
       window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           modalOverlays.forEach(overlay => {
-            overlay.classList.remove('active');
+            closeModal(overlay);
           });
         }
       });
@@ -2581,7 +2658,8 @@
 
       // -------------------------------------------------------------
       // OUR STORY MODAL SCROLLING TIMELINE INTERACTION
-      // - Highlights & scales ONLY the single active photo frame as it scrolls into focal view
+      // - Pop-in and pop-out as user scrolls through milestones
+      // - Pops when scrolling starts, and unpops after passing the final milestone
       // -------------------------------------------------------------
       const modalAbout = document.getElementById('modal-about');
       if (modalAbout) {
@@ -2591,22 +2669,27 @@
         const updateStoryTimeline = () => {
           if (!scrollContainer) return;
           const cardRect = scrollContainer.getBoundingClientRect();
-          const focusLine = cardRect.top + cardRect.height * 0.40;
+          const focusLine = cardRect.top + cardRect.height * 0.42;
 
-          // If scrolled near the top of the modal, lock focus to ONLY the first milestone
-          if (scrollContainer.scrollTop < 35) {
-            timelineNodes.forEach((node, idx) => {
-              if (idx === 0) {
-                node.classList.add('is-active');
-              } else {
-                node.classList.remove('is-active');
-              }
-            });
+          const scrollTop = scrollContainer.scrollTop;
+          const scrollHeight = scrollContainer.scrollHeight;
+          const clientHeight = scrollContainer.clientHeight;
+          const isAtBottom = (scrollTop + clientHeight) >= (scrollHeight - 30);
+
+          // If at the very top (before scroll starts), no node is popped
+          if (scrollTop < 15) {
+            timelineNodes.forEach(node => node.classList.remove('is-active'));
             return;
           }
 
-          // Otherwise determine which single node is closest to the reading focal center line
-          let closestIndex = 0;
+          // If scrolled to the bottom / end of modal, last node unpops
+          if (isAtBottom) {
+            timelineNodes.forEach(node => node.classList.remove('is-active'));
+            return;
+          }
+
+          // Determine which single node is closest to the focal line
+          let closestIndex = -1;
           let minDistance = Infinity;
 
           timelineNodes.forEach((node, idx) => {
@@ -2620,8 +2703,9 @@
             }
           });
 
+          // Only activate if closest node is within active focal threshold (~115px)
           timelineNodes.forEach((node, idx) => {
-            if (idx === closestIndex) {
+            if (idx === closestIndex && minDistance < 115) {
               node.classList.add('is-active');
             } else {
               node.classList.remove('is-active');
