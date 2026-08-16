@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Save the Date — Mike & Jordan</title>
   <meta name="description" content="Mike & Jordan are getting married on April 24th, 2027 at The Driskill Hotel in Austin, TX." />
   
-  <!-- Google Fonts: Bebas Neue, Gasoek One, Monoton, Jaro, Playfair Display, Newsreader, Lora -->
+  <!-- Google Fonts: Bebas Neue, Gasoek One, Monoton, Jaro, Playfair Display, Newsreader, Lora, Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gasoek+One&family=Jaro:opsz@6..72&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Monoton&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gasoek+One&family=Jaro:opsz@6..72&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Monoton&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400;1,6..72,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
   <!-- El Camino Custom Fonts -->
   <style>
@@ -122,7 +122,7 @@
 
   <style>
     :root {
-      --sleeve-size: min(82vw, 560px);
+      --sleeve-size: min(82vh, 85vw);
       --bg-color: #F8F5EE;
       --cardboard-color: #EAE7DF;
       --accent: #1A1A1A;
@@ -143,6 +143,12 @@
       --font-editorial-badge: 'Clarendon', 'Bebas Neue', serif;
     }
 
+    @media (max-width: 768px) {
+      :root {
+        --sleeve-size: 95vw;
+      }
+    }
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -160,12 +166,22 @@
       overflow-y: auto;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      touch-action: pan-y;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
       width: 100%;
       min-height: 100%;
-      background-color: var(--bg-color);
+      background-color: #F1EBE1;
+      background-image: 
+        /* Micro tabletop surface grain */
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.038'/%3E%3C/svg%3E"),
+        /* Directional top-left studio key light */
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.72) 0%, rgba(255, 252, 245, 0.32) 40%, transparent 75%),
+        /* Directional tabletop wash from upper-left to lower-right */
+        linear-gradient(135deg, #F8F4EB 0%, #EFE8DB 45%, #E3DAC9 85%, #DDD1BF 100%);
+      background-attachment: fixed;
       color: var(--text-dark);
       font-family: var(--font-soft);
       font-weight: normal;
@@ -173,11 +189,12 @@
       overflow-y: auto;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
+      touch-action: pan-y;
     }
 
     /* Scroll Height Spacer for ScrollTrigger Scrubbing */
     #scroll-container {
-      height: 550vh;
+      height: 420vh;
       width: 100%;
       position: relative;
       pointer-events: auto;
@@ -201,46 +218,49 @@
       isolation: isolate;
     }
 
-    /* Simple Downwards Bouncing Arrow Scroll Cue */
+    /* Downward Pointing Arrow Scroll Cue with Stem (no circle, completely under album cover) */
     .scroll-cue-arrow {
       position: fixed;
-      bottom: 2.2rem;
+      bottom: 1.1rem;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      z-index: 100;
+      z-index: 999;
       pointer-events: auto;
       cursor: pointer;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.5s ease, visibility 0.5s ease;
-      color: #7D7565;
+      transition: opacity 0.5s ease, visibility 0.5s ease, transform 0.2s ease;
+      color: #000000;
+      background: transparent;
+      border: none;
+      width: 38px;
+      height: 38px;
     }
 
     .scroll-cue-arrow.is-visible {
-      opacity: 0.85;
+      opacity: 1;
       visibility: visible;
-      animation: bounceArrow 2s ease-in-out infinite;
+      animation: bounceArrow 2.2s ease-in-out infinite;
     }
 
     .scroll-cue-arrow:hover {
       opacity: 1;
-      color: #EEBA2B;
+      color: #000000;
     }
 
     .scroll-cue-arrow svg {
-      width: 26px;
-      height: 26px;
-      stroke: currentColor;
-      stroke-width: 2.2;
+      width: 28px;
+      height: 28px;
+      stroke: #000000;
+      stroke-width: 3.0;
       stroke-linecap: round;
       stroke-linejoin: round;
       fill: none;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
-      transition: stroke 0.2s ease, transform 0.2s ease;
+      filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.45));
+      transition: transform 0.2s ease;
     }
 
     @keyframes bounceArrow {
@@ -248,10 +268,16 @@
         transform: translateX(-50%) translateY(0);
       }
       40% {
-        transform: translateX(-50%) translateY(9px);
+        transform: translateX(-50%) translateY(6px);
       }
       60% {
-        transform: translateX(-50%) translateY(4px);
+        transform: translateX(-50%) translateY(2.5px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .scroll-cue-arrow {
+        bottom: 0.9rem;
       }
     }
 
@@ -260,6 +286,7 @@
       position: relative;
       width: var(--sleeve-size);
       height: var(--sleeve-size);
+      margin-top: -1.2vh;
       transform-origin: center center;
       z-index: 10;
       backface-visibility: visible;
@@ -267,20 +294,33 @@
       transform-style: flat;
     }
 
-    /* Back Cardboard Cover (Inner sleeve lining visible at bottom notch) */
+    @media (max-width: 768px) {
+      #scene-group {
+        margin-top: 0;
+      }
+    }
+
+    /* Back Cardboard Cover (Mustard Yellow inner sleeve lining visible at bottom notch) */
     .sleeve-back {
       position: absolute;
       inset: 0;
       width: var(--sleeve-size);
       height: var(--sleeve-size);
-      background-color: #55705E;
+      background-color: #D49B28;
       background-image: 
-        linear-gradient(0deg, rgba(0, 0, 0, 0.28) 0%, rgba(0, 0, 0, 0.1) 25px, transparent 50px),
-        radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+        linear-gradient(0deg, rgba(0, 0, 0, 0.32) 0%, rgba(0, 0, 0, 0.12) 25px, transparent 50px),
+        radial-gradient(circle at 50% 100%, rgba(255, 255, 255, 0.14) 0%, transparent 60%),
+        repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.015) 0px, rgba(0, 0, 0, 0.015) 2px, transparent 2px, transparent 4px);
       border-radius: 4px;
       box-shadow: 
-        0 35px 70px -15px rgba(0, 0, 0, 0.45),
-        0 15px 25px -10px rgba(0, 0, 0, 0.3);
+        /* Occlusion contact shadow cast to the right */
+        8px 10px 18px -2px rgba(28, 20, 10, 0.35),
+        /* Directional mid shadow extending rightward */
+        25px 30px 50px -8px rgba(32, 24, 14, 0.28),
+        /* Broad soft diffuse shadow to the right */
+        50px 60px 95px -12px rgba(38, 28, 16, 0.20),
+        /* Atmospheric soft wash */
+        80px 90px 140px -20px rgba(45, 32, 18, 0.12);
       z-index: 1;
       pointer-events: auto;
     }
@@ -298,7 +338,7 @@
       z-index: 2;
     }
 
-    /* VINYL RECORD */
+    /* VINYL RECORD BODY */
     .vinyl-record {
       position: absolute;
       top: 1%;
@@ -311,27 +351,30 @@
         /* Concentric sound groove micro-texture */
         repeating-radial-gradient(
           circle at center,
-          rgba(0, 0, 0, 0.4) 0px,
-          rgba(255, 255, 255, 0.02) 1px,
-          rgba(0, 0, 0, 0.4) 2px
+          rgba(0, 0, 0, 0.45) 0px,
+          rgba(255, 255, 255, 0.025) 1px,
+          rgba(0, 0, 0, 0.45) 2px
         ),
-        /* Classic bi-conic vinyl gloss reflections */
+        /* Classic bi-conic vinyl gloss reflections aligned with left light source (45° angle) */
         conic-gradient(
-          from 0deg at 50% 50%,
-          #161616 0%,
+          from 45deg at 50% 50%,
+          #121212 0%,
           #2E2E2E 12%,
-          #141414 25%,
-          #2C2C2C 38%,
-          #161616 50%,
-          #2E2E2E 62%,
-          #141414 75%,
-          #2C2C2C 88%,
-          #161616 100%
+          #3C3C3C 18%,
+          #101010 26%,
+          #2C2C2C 40%,
+          #101010 54%,
+          #2E2E2E 68%,
+          #3A3A3A 74%,
+          #101010 82%,
+          #2A2A2A 94%,
+          #121212 100%
         );
       box-shadow: 
-        inset 0 0 0 1px rgba(255, 255, 255, 0.12),
-        inset 0 0 0 3px rgba(0, 0, 0, 0.8),
-        inset 0 1px 2px rgba(255, 255, 255, 0.15);
+        /* Directional high-gloss rim bevel catching the top-left light (purely inset to prevent spill outside sleeve) */
+        inset 2px 2px 3px rgba(255, 255, 255, 0.42),
+        inset -2.5px -2.5px 3.5px rgba(0, 0, 0, 0.95),
+        inset 0 0 0 3px rgba(0, 0, 0, 0.90);
       border: 1px solid #0D0D0D;
       display: flex;
       align-items: center;
@@ -342,20 +385,100 @@
       -webkit-backface-visibility: visible;
     }
 
-    /* Run-out groove band */
+    /* Multi-Track Music Sound Bands (Varying groove cut luster & song separation gaps) */
+    .vinyl-track-bands {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: 
+        /* Lead-in smooth outer ring */
+        radial-gradient(circle at center, transparent 48%, rgba(255, 255, 255, 0.04) 48.5%, rgba(0, 0, 0, 0.7) 49.5%, transparent 50%),
+        /* Track 4 / 3 spacer gap */
+        radial-gradient(circle at center, transparent 41%, rgba(0, 0, 0, 0.75) 41.5%, rgba(255, 255, 255, 0.03) 42%, transparent 42.8%),
+        /* Track 3 / 2 spacer gap */
+        radial-gradient(circle at center, transparent 34%, rgba(0, 0, 0, 0.8) 34.5%, rgba(255, 255, 255, 0.035) 35%, transparent 35.8%),
+        /* Track 2 / 1 spacer gap */
+        radial-gradient(circle at center, transparent 27%, rgba(0, 0, 0, 0.75) 27.5%, rgba(255, 255, 255, 0.03) 28%, transparent 28.8%),
+        /* Run-out transition zone */
+        radial-gradient(circle at center, transparent 20%, rgba(255, 255, 255, 0.03) 20.5%, rgba(0, 0, 0, 0.6) 21.5%, transparent 22%);
+      pointer-events: none;
+      z-index: 6;
+    }
+
+    /* Polished Run-out Groove Band */
     .vinyl-runout {
       position: absolute;
       width: 48%;
       height: 48%;
       border-radius: 50%;
-      background: repeating-radial-gradient(
-        circle at center,
-        transparent 0,
-        transparent 2px,
-        rgba(255, 255, 255, 0.03) 3px
-      );
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      background: 
+        radial-gradient(circle at center, rgba(255, 255, 255, 0.03) 0%, transparent 60%),
+        repeating-radial-gradient(
+          circle at center,
+          transparent 0,
+          transparent 2.5px,
+          rgba(255, 255, 255, 0.035) 3.5px
+        );
+      border: 1px solid rgba(255, 255, 255, 0.07);
       pointer-events: none;
+      z-index: 6;
+    }
+
+    /* Anisotropic Double-Cone Specular Sheen (Aligned with Top-Left Key Light) */
+    .vinyl-sheen {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 7;
+      mix-blend-mode: screen;
+      opacity: 0.90;
+      background: 
+        /* Prismatic anisotropic bowtie highlight with subtle iridescent chromatic fringing */
+        conic-gradient(
+          from 42deg at 50% 50%,
+          rgba(255, 255, 255, 0) 0deg,
+          rgba(255, 235, 190, 0.10) 14deg,
+          rgba(255, 255, 255, 0.42) 28deg,
+          rgba(225, 245, 255, 0.28) 38deg,
+          rgba(255, 210, 240, 0.12) 48deg,
+          rgba(255, 255, 255, 0) 68deg,
+          rgba(255, 255, 255, 0) 180deg,
+          rgba(255, 235, 190, 0.08) 194deg,
+          rgba(255, 255, 255, 0.36) 208deg,
+          rgba(225, 245, 255, 0.22) 218deg,
+          rgba(255, 210, 240, 0.08) 228deg,
+          rgba(255, 255, 255, 0) 248deg,
+          rgba(255, 255, 255, 0) 360deg
+        );
+      transform-origin: center center;
+    }
+
+    /* Dynamic Groove Glint Dance (Light sweeps & dances across spinning grooves on scroll) */
+    .vinyl-glint {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 8;
+      mix-blend-mode: color-dodge;
+      opacity: 0.70;
+      background: 
+        conic-gradient(
+          from 38deg at 50% 50%,
+          transparent 0deg,
+          rgba(255, 220, 130, 0.15) 20deg,
+          rgba(190, 245, 255, 0.35) 32deg,
+          rgba(255, 170, 225, 0.20) 44deg,
+          transparent 60deg,
+          transparent 218deg,
+          rgba(255, 220, 130, 0.12) 238deg,
+          rgba(190, 245, 255, 0.30) 250deg,
+          rgba(255, 170, 225, 0.16) 262deg,
+          transparent 278deg,
+          transparent 360deg
+        );
+      transform-origin: center center;
     }
 
     /* CENTER LABEL */
@@ -615,8 +738,11 @@
       z-index: 10;
       overflow: hidden;
       box-shadow: 
-        0 35px 70px -15px rgba(0, 0, 0, 0.45),
-        0 15px 25px -10px rgba(0, 0, 0, 0.3);
+        /* Directional cast shadow matching left light source */
+        8px 10px 18px -2px rgba(28, 20, 10, 0.35),
+        25px 30px 50px -8px rgba(32, 24, 14, 0.28),
+        50px 60px 95px -12px rgba(38, 28, 16, 0.20),
+        80px 90px 140px -20px rgba(45, 32, 18, 0.12);
       pointer-events: none;
 
       /* Bottom U-Notch cutout using SVG clip-path */
@@ -624,20 +750,26 @@
       clip-path: url(#sleeveNotchClip);
     }
 
-    /* Cardboard Spine & Physical Edge Reflection */
+    /* Cardboard Spine & Directional Physical Edge Reflection */
     .sleeve-front::after {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: 4px;
       background: 
-        /* Left spine light crease */
-        linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 2%, transparent 5%),
-        /* Bottom opening subtle edge highlight */
-        linear-gradient(0deg, rgba(255, 255, 255, 0.15) 0%, transparent 2px);
+        /* Crisp light catch on left spine edge from left light source */
+        linear-gradient(90deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.08) 1.5%, transparent 4%),
+        /* Top edge subtle highlight */
+        linear-gradient(180deg, rgba(255, 255, 255, 0.18) 0%, transparent 2px),
+        /* Right edge ambient shadow falloff */
+        linear-gradient(270deg, rgba(0, 0, 0, 0.22) 0%, transparent 3%),
+        /* Bottom opening subtle shadow */
+        linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0%, transparent 3px);
       box-shadow: 
-        inset 0 0 0 1px rgba(255, 255, 255, 0.08),
-        inset 0 2px 6px rgba(0, 0, 0, 0.35);
+        inset 1.5px 0 0 rgba(255, 255, 255, 0.24),
+        inset -1.5px 0 0 rgba(0, 0, 0, 0.30),
+        inset 0 1.5px 0 rgba(255, 255, 255, 0.16),
+        inset 0 -1.5px 0 rgba(0, 0, 0, 0.22);
       z-index: 6;
       pointer-events: none;
     }
@@ -786,126 +918,210 @@
         drop-shadow(0 0 40px rgba(238, 186, 43, 0.75));
     }
 
-    /* MODAL OVERLAY FOR MENU SECTIONS - AUTHENTIC LINER NOTES AESTHETIC */
+    /* MODAL OVERLAY FOR MENU SECTIONS - AUTHENTIC LINER NOTES INSERT AESTHETIC */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(12, 11, 10, 0.82);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(14, 13, 12, 0.72);
+      backdrop-filter: blur(10px) brightness(0.88);
+      -webkit-backdrop-filter: blur(10px) brightness(0.88);
       z-index: 200;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
+      visibility: hidden;
       pointer-events: none;
-      transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s;
       padding: 1.25rem;
     }
 
     .modal-overlay.active {
       opacity: 1;
+      visibility: visible;
       pointer-events: auto;
     }
 
+    /* Record Liner Paper Card with Tactile Grain, Sheen, and Rounded Corners */
     .modal-card {
-      background: #FDFBF7;
-      background-image: radial-gradient(rgba(238, 186, 43, 0.04) 1px, transparent 0);
-      background-size: 16px 16px;
-      border: 1px solid rgba(238, 186, 43, 0.45);
-      border-radius: 6px;
+      position: relative;
       width: 100%;
       max-width: 540px;
-      padding: 2.25rem 2.5rem;
+      max-height: 88vh;
+      border-radius: 16px;
+      font-family: 'Montserrat', sans-serif;
+      /* Heavy Cream Cardstock Paper Texture with Micro-Grain & Lighting Sheen */
+      background:
+        /* Soft directional top-left sheen reflecting light across the paper */
+        linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(240, 232, 216, 0.45) 100%),
+        /* Micro-fine organic paper fiber noise */
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16   0 0 0 0 0.12   0 0 0 0 0.08  0 0 0 0.038 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E"),
+        #FAF6ED;
+      /* Tactile physical paper drop shadow & crisp fiber edge */
       box-shadow: 
-        0 25px 60px rgba(0, 0, 0, 0.45),
-        0 0 0 4px rgba(238, 186, 43, 0.12),
-        inset 0 0 0 1px rgba(238, 186, 43, 0.25);
-      transform: translateY(24px) scale(0.95);
-      transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+        0 30px 80px -15px rgba(26, 22, 18, 0.46),
+        0 14px 32px -8px rgba(26, 22, 18, 0.22),
+        0 2px 6px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+      /* Opening Animation State: Unfolding tactile paper transition */
+      opacity: 0;
+      transform: translateY(30px) scale(0.93) rotate(-1.2deg);
+      transform-origin: 50% 85%;
+      transition: transform 0.42s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* SAGE GREEN RING AROUND INSIDE OF MODAL (5px thick, 5px from edge) */
+    .modal-card::before {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 5px solid #5B7566; /* Authentic vintage sage green */
+      border-radius: 11px; /* Nested border radius: 16px outer - 5px inset = 11px */
+      pointer-events: none;
+      z-index: 15;
+      box-shadow: 
+        inset 0 1px 2px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(255, 255, 255, 0.45);
+    }
+
+    /* 5PX CREAM RING (Between sage green ring and outer edge, seamlessly masking scrolling content) */
+    .modal-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 5px solid #FAF6ED; /* Matches archival cream paper background */
+      border-radius: 16px;
+      pointer-events: none;
+      z-index: 16;
+      box-shadow: 
+        inset 0 1px 0 rgba(255, 255, 255, 0.95),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+    }
+
+    .modal-card-inner {
       position: relative;
+      z-index: 1;
+      width: 100%;
       max-height: 88vh;
       overflow-y: auto;
+      padding: 2.35rem 2.5rem;
+      box-sizing: border-box;
+    }
+
+    /* Custom elegant scrollbar inside modal */
+    .modal-card-inner::-webkit-scrollbar {
+      width: 6px;
+    }
+    .modal-card-inner::-webkit-scrollbar-track {
+      background: transparent;
+      margin: 16px 0;
+    }
+    .modal-card-inner::-webkit-scrollbar-thumb {
+      background: rgba(91, 117, 102, 0.3);
+      border-radius: 4px;
+    }
+    .modal-card-inner::-webkit-scrollbar-thumb:hover {
+      background: rgba(91, 117, 102, 0.6);
     }
 
     .modal-overlay.active .modal-card {
-      transform: translateY(0) scale(1);
+      opacity: 1;
+      transform: translateY(0) scale(1) rotate(0deg);
     }
 
-    /* Liner Note Header Badge */
+    /* Liner Note Header Badge (Side & Track Details) */
     .modal-liner-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 4px 11px;
-      background: rgba(238, 186, 43, 0.14);
-      border: 1px solid rgba(204, 160, 48, 0.4);
-      border-radius: 3px;
-      font-family: var(--font-editorial-badge);
-      font-size: 0.78rem;
-      font-weight: 700;
+      padding: 4px 12px;
+      background: rgba(91, 117, 102, 0.12);
+      border: 1px solid rgba(91, 117, 102, 0.35);
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
       letter-spacing: 0.16em;
-      color: #8C6208;
+      color: #385141;
       text-transform: uppercase;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.75rem;
     }
 
     .modal-close {
       position: absolute;
       top: 1.25rem;
       right: 1.25rem;
-      background: rgba(0, 0, 0, 0.04);
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      font-size: 1.5rem;
+      z-index: 25;
+      background: rgba(91, 117, 102, 0.08);
+      border: 1px solid rgba(91, 117, 102, 0.25);
+      font-size: 1.35rem;
       cursor: pointer;
-      color: var(--text-dark);
+      color: #2D2824;
       width: 34px;
       height: 34px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.2s ease, transform 0.15s ease, color 0.2s ease;
-      font-family: var(--font-editorial-title);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
       line-height: 1;
     }
 
     .modal-close:hover {
-      background: rgba(238, 186, 43, 0.2);
-      border-color: rgba(238, 186, 43, 0.5);
-      color: #000000;
-      transform: scale(1.08);
+      background: #5B7566;
+      border-color: #5B7566;
+      color: #FFFFFF;
+      transform: scale(1.08) rotate(90deg);
+      box-shadow: 0 4px 10px rgba(91, 117, 102, 0.35);
     }
 
     .modal-title {
-      font-family: var(--font-editorial-title);
+      font-family: 'Montserrat', sans-serif;
       font-style: normal;
-      font-size: 2.25rem;
-      font-weight: 700;
-      color: #1C1917;
-      margin-bottom: 1.15rem;
-      line-height: 1.15;
-      letter-spacing: -0.015em;
+      font-size: 2.15rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      color: #1A1715;
+      margin-bottom: 1.25rem;
+      line-height: 1.12;
       text-rendering: geometricPrecision;
     }
 
     .modal-body {
-      color: #2A2521;
-      font-size: 1.04rem;
-      line-height: 1.72;
-      font-family: var(--font-editorial-body);
+      color: #2D2824;
+      font-size: 0.98rem;
+      line-height: 1.7;
+      font-family: 'Montserrat', sans-serif;
       font-weight: 400;
       text-rendering: geometricPrecision;
     }
 
     .modal-body p {
       margin-bottom: 1rem;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .modal-body strong {
-      font-family: var(--font-editorial-body);
-      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
       color: #1A1715;
+    }
+
+    .modal-body em {
+      font-style: italic;
+      font-weight: 500;
     }
 
     .info-grid {
@@ -916,31 +1132,32 @@
     }
 
     .info-box {
-      background: rgba(238, 186, 43, 0.07);
-      padding: 0.9rem 1.05rem;
-      border-radius: 4px;
-      border-left: 3px solid #CCA030;
-      border-top: 1px solid rgba(204, 160, 48, 0.2);
-      border-right: 1px solid rgba(204, 160, 48, 0.2);
-      border-bottom: 1px solid rgba(204, 160, 48, 0.2);
+      background: #F2EADA;
+      padding: 0.95rem 1.15rem;
+      border-radius: 8px;
+      border-left: 3.5px solid #5B7566;
+      border-top: 1px solid rgba(91, 117, 102, 0.18);
+      border-right: 1px solid rgba(91, 117, 102, 0.18);
+      border-bottom: 1px solid rgba(91, 117, 102, 0.18);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
     .info-box-label {
-      font-family: var(--font-editorial-body);
+      font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #8A6D3B;
+      color: #5B7566;
       margin-bottom: 4px;
-      font-weight: 600;
+      font-weight: 800;
       text-rendering: geometricPrecision;
     }
 
     .info-box-val {
-      font-family: var(--font-editorial-title);
-      font-weight: 600;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
       color: #1C1917;
-      font-size: 1.06rem;
+      font-size: 1.02rem;
       letter-spacing: -0.01em;
       text-rendering: geometricPrecision;
     }
@@ -952,17 +1169,17 @@
       background: #1C1917;
       color: #EEBA2B;
       padding: 13px 22px;
-      border-radius: 4px;
-      font-size: 0.88rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
       font-weight: 700;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       text-decoration: none;
       margin-top: 1rem;
       transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
       border: 1px solid rgba(238, 186, 43, 0.4);
-      font-family: var(--font-editorial-title);
+      font-family: 'Montserrat', sans-serif;
       text-rendering: geometricPrecision;
     }
 
@@ -972,6 +1189,300 @@
       border-color: #EEBA2B;
       box-shadow: 0 4px 15px rgba(238, 186, 43, 0.25);
       transform: translateY(-1px);
+    }
+
+    /* Driskill Room Block Card with Thumbnail & Link */
+    .room-block-card {
+      margin: 1.4rem 0 1.25rem 0;
+      background: #F2EADA;
+      border: 1px solid rgba(91, 117, 102, 0.28);
+      border-radius: 8px;
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: row;
+      gap: 1.15rem;
+      align-items: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .room-block-thumb {
+      width: 105px;
+      height: 95px;
+      flex-shrink: 0;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 0 2px 6px rgba(0, 0, 0, 0.08);
+      background: #E8DECC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .room-block-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .room-block-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .room-block-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1C1917;
+      margin-bottom: 0.25rem;
+      line-height: 1.25;
+    }
+
+    .room-block-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.86rem;
+      line-height: 1.45;
+      color: #554D42;
+      margin-bottom: 0.65rem;
+      font-weight: 400;
+    }
+
+    .room-block-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      background: #1C1917;
+      color: #EEBA2B;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.80rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: 1px solid rgba(238, 186, 43, 0.4);
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      max-width: 100%;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: 1.35;
+    }
+
+    .room-block-btn:hover {
+      background: #000000;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 15px rgba(238, 186, 43, 0.3);
+      transform: translateY(-1px);
+    }
+
+    /* DRISKILL VENUE DETAILS CARD (Address, Hotel Website & Google Maps) */
+    .venue-details-card {
+      margin-top: 1.25rem;
+      background: #F2EADA;
+      border: 1px solid rgba(91, 117, 102, 0.25);
+      border-radius: 8px;
+      padding: 1.25rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .venue-address-row {
+      display: flex;
+      gap: 0.85rem;
+      align-items: flex-start;
+      margin-bottom: 1.15rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(91, 117, 102, 0.18);
+    }
+
+    .venue-address-icon {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(91, 117, 102, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .venue-address-text-wrap {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .venue-detail-label {
+      display: block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #5B7566;
+      margin-bottom: 0.2rem;
+    }
+
+    .venue-address-val {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.96rem;
+      font-weight: 600;
+      color: #1C1917;
+      line-height: 1.45;
+      margin-bottom: 0;
+      word-break: break-word;
+    }
+
+    .venue-action-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      width: 100%;
+    }
+
+    .venue-link-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.80rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: #1C1917;
+      background: #E5DEC9;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      min-width: 0;
+      box-sizing: border-box;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .venue-link-btn:hover {
+      background: #D8D0BA;
+      color: #000000;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .venue-link-btn-highlight {
+      background: #1C1917;
+      color: #EEBA2B;
+      border-color: rgba(238, 186, 43, 0.4);
+    }
+
+    .venue-link-btn-highlight:hover {
+      background: #000000;
+      color: #FFFFFF;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 12px rgba(238, 186, 43, 0.25);
+    }
+
+    /* STORY SCROLLING TIMELINE COMPONENT */
+    .story-timeline {
+      position: relative;
+      margin: 1.85rem 0 0.5rem 0;
+      padding: 0;
+    }
+
+    /* Individual Milestone Node */
+    .timeline-node {
+      position: relative;
+      display: flex;
+      gap: 1.35rem;
+      align-items: center;
+      margin-bottom: 1.85rem;
+      opacity: 0.55;
+      transform: translateY(5px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .timeline-node:last-child {
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-node.is-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Circular Photo Frame */
+    .timeline-frame-wrap {
+      position: relative;
+      flex-shrink: 0;
+      z-index: 2;
+    }
+
+    .timeline-photo-frame {
+      width: 86px;
+      height: 86px;
+      border-radius: 50%;
+      border: 3px solid #E0D7BE;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10), inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+      overflow: hidden;
+      background: #E8DECC;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+    }
+
+    .timeline-node.is-active .timeline-photo-frame {
+      border-color: #EEBA2B;
+      box-shadow: 
+        0 0 0 3px rgba(238, 186, 43, 0.35),
+        0 8px 24px rgba(238, 186, 43, 0.35),
+        0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: scale(1.06);
+    }
+
+    .timeline-photo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(0.85) sepia(0.12) contrast(1.05);
+      transition: filter 0.35s ease;
+    }
+
+    .timeline-node.is-active .timeline-photo-img {
+      filter: saturate(1.05) sepia(0) contrast(1.05);
+    }
+
+    .timeline-info {
+      flex: 1;
+    }
+
+    .timeline-date-badge {
+      display: inline-block;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #8C6208;
+      margin-bottom: 0.25rem;
+    }
+
+    .timeline-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #1C1917;
+      line-height: 1.35;
+      margin-bottom: 0;
     }
 
     /* Responsive Adjustments */
@@ -1001,12 +1512,128 @@
         font-size: 1.5rem;
       }
 
-      .modal-card {
-        padding: 1.8rem 1.4rem;
+      .modal-overlay {
+        padding: 0.85rem 0.65rem;
+      }
+
+      .modal-card-inner {
+        padding: 1.75rem 1.35rem;
+      }
+
+      .modal-title {
+        font-size: 1.85rem;
+        margin-bottom: 1rem;
+      }
+
+      .modal-liner-badge {
+        font-size: 0.68rem;
+        padding: 3px 10px;
+        margin-bottom: 0.6rem;
+      }
+
+      .modal-body {
+        font-size: 0.94rem;
+        line-height: 1.62;
       }
 
       .info-grid {
+        gap: 0.65rem;
+        margin: 1.1rem 0;
+      }
+
+      .info-box {
+        padding: 0.8rem 0.85rem;
+      }
+
+      .info-box-label {
+        font-size: 0.66rem;
+        letter-spacing: 0.12em;
+        margin-bottom: 2px;
+      }
+
+      .info-box-val {
+        font-size: 0.94rem;
+        line-height: 1.25;
+      }
+
+      .room-block-card {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 0.85rem;
+        margin: 1.15rem 0 1rem 0;
+      }
+
+      .room-block-thumb {
+        width: 100%;
+        height: 110px;
+      }
+
+      .room-block-heading {
+        font-size: 1.02rem;
+      }
+
+      .room-block-sub {
+        font-size: 0.84rem;
+        margin-bottom: 0.75rem;
+      }
+
+      .room-block-btn {
+        width: 100%;
+        font-size: 0.78rem;
+        padding: 10px 14px;
+        letter-spacing: 0.08em;
+      }
+
+      .venue-details-card {
+        padding: 1rem;
+        margin-top: 1rem;
+      }
+
+      .venue-address-row {
+        gap: 0.75rem;
+        margin-bottom: 0.9rem;
+        padding-bottom: 0.85rem;
+      }
+
+      .venue-address-icon {
+        width: 32px;
+        height: 32px;
+      }
+
+      .venue-address-val {
+        font-size: 0.90rem;
+      }
+
+      .venue-action-links {
         grid-template-columns: 1fr;
+        gap: 0.6rem;
+      }
+
+      .venue-link-btn {
+        width: 100%;
+        padding: 10px 12px;
+        font-size: 0.76rem;
+        letter-spacing: 0.06em;
+      }
+
+      .timeline-node {
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .timeline-photo-frame {
+        width: 74px;
+        height: 74px;
+      }
+
+      .timeline-date-badge {
+        font-size: 0.72rem;
+      }
+
+      .timeline-heading {
+        font-size: 0.98rem;
+        line-height: 1.3;
       }
 
       .menu-arc-item {
@@ -1023,10 +1650,11 @@
     <!-- Pinned Viewport Stage -->
     <main id="stage">
       
-      <!-- Simple Downwards Bouncing Arrow Indicator Cue -->
+      <!-- Downward Pointing Arrow with Stem Indicator Cue -->
       <div id="scroll-cue-arrow" class="scroll-cue-arrow" role="button" aria-label="Scroll down">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M 6,9 L 12,15 L 18,9"></path>
+          <line x1="12" y1="4" x2="12" y2="19"></line>
+          <polyline points="6 13 12 19 18 13"></polyline>
         </svg>
       </div>
 
@@ -1048,8 +1676,17 @@
         <!-- VINYL RECORD (z-index: 5, sits between sleeve-back and sleeve-front) -->
         <div id="vinyl-record" class="vinyl-record">
           
+          <!-- Concentric Audio Track Separator Bands -->
+          <div class="vinyl-track-bands"></div>
+
           <!-- Runout Groove Ring -->
           <div class="vinyl-runout"></div>
+
+          <!-- Anisotropic Double-Cone Specular Sheen (Aligned with Top-Left Key Light) -->
+          <div id="vinyl-sheen" class="vinyl-sheen"></div>
+
+          <!-- Dynamic Prismatic Groove Glint (Dances across grooves as record spins on scroll) -->
+          <div id="vinyl-glint" class="vinyl-glint"></div>
 
           <!-- RADIAL SPOKE SURFACE MENU SVG ON VINYL GROOVES -->
           <svg class="surface-menu-svg" viewBox="0 0 1000 1000">
@@ -1271,11 +1908,131 @@
   <div id="modal-about" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 01</span> <span>•</span> <span>OUR STORY</span></div>
-      <h2 class="modal-title">Our Story</h2>
-      <div class="modal-body">
-        <p>Bonded by our shared passion for live music, collecting vinyl records, road trips, and exploring Austin's food scene, we have built a life filled with laughter, melody, and adventure.</p>
-        <p style="margin-top: 12px;">We could not be more thrilled to bring our favorite people from across the country together to celebrate our wedding at the historic Driskill Hotel!</p>
+      <div class="modal-card-inner">
+        <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 01</span> <span>•</span> <span>OUR STORY</span></div>
+        <h2 class="modal-title">Our Story</h2>
+        <div class="modal-body">
+          <p style="margin-bottom: 1.5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          
+          <!-- SCROLLING STORYTELLING TIMELINE -->
+          <div class="story-timeline" id="story-timeline">
+
+            <!-- 1. Chicago Meet (May 2017) -->
+            <div class="timeline-node is-active" data-index="0">
+              <div class="timeline-frame-wrap">
+                <div class="timeline-photo-frame">
+                  <!-- Retro Illustration Placeholder: Chicago Skyline & Drinks -->
+                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
+                    <rect width="100" height="100" fill="#E8DECC" />
+                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
+                    <!-- Martini / Drinks glass icon -->
+                    <path d="M 32 32 L 68 32 L 50 54 Z" fill="#D49B28" fill-opacity="0.85" />
+                    <line x1="50" y1="54" x2="50" y2="72" stroke="#4A3B22" stroke-width="3.5" stroke-linecap="round" />
+                    <line x1="36" y1="72" x2="64" y2="72" stroke="#4A3B22" stroke-width="3.5" stroke-linecap="round" />
+                    <circle cx="50" cy="40" r="4.5" fill="#55705E" />
+                  </svg>
+                </div>
+              </div>
+              <div class="timeline-info">
+                <span class="timeline-date-badge">May 2017</span>
+                <h3 class="timeline-heading">Mike &amp; Jordan meet for drinks in Chicago, IL</h3>
+              </div>
+            </div>
+
+            <!-- 2. Move to Austin (December 2020) -->
+            <div class="timeline-node" data-index="1">
+              <div class="timeline-frame-wrap">
+                <div class="timeline-photo-frame">
+                  <!-- Retro Illustration Placeholder: Texas Star & Moving -->
+                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
+                    <rect width="100" height="100" fill="#E8DECC" />
+                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
+                    <!-- Lone Star / Austin Icon -->
+                    <polygon points="50,22 57,38 74,40 61,52 65,69 50,60 35,69 39,52 26,40 43,38" fill="#55705E" />
+                    <circle cx="50" cy="47" r="5" fill="#D49B28" />
+                  </svg>
+                </div>
+              </div>
+              <div class="timeline-info">
+                <span class="timeline-date-badge">December 2020</span>
+                <h3 class="timeline-heading">We move to Austin, TX</h3>
+              </div>
+            </div>
+
+            <!-- 3. Finley Joins Family (April 2021) -->
+            <div class="timeline-node" data-index="2">
+              <div class="timeline-frame-wrap">
+                <div class="timeline-photo-frame">
+                  <!-- Retro Illustration Placeholder: Puppy / Finley -->
+                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
+                    <rect width="100" height="100" fill="#E8DECC" />
+                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
+                    <!-- Dog Paw / Puppy Icon -->
+                    <ellipse cx="50" cy="58" rx="14" ry="11" fill="#4A3B22" />
+                    <circle cx="34" cy="42" r="6" fill="#4A3B22" />
+                    <circle cx="66" cy="42" r="6" fill="#4A3B22" />
+                    <circle cx="43" cy="34" r="5.5" fill="#4A3B22" />
+                    <circle cx="57" cy="34" r="5.5" fill="#4A3B22" />
+                  </svg>
+                </div>
+              </div>
+              <div class="timeline-info">
+                <span class="timeline-date-badge">April 2021</span>
+                <h3 class="timeline-heading">Finley joins our family</h3>
+              </div>
+            </div>
+
+            <!-- 4. Engaged (December 2025) -->
+            <div class="timeline-node" data-index="3">
+              <div class="timeline-frame-wrap">
+                <div class="timeline-photo-frame">
+                  <!-- Retro Illustration Placeholder: Engagement Ring -->
+                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
+                    <rect width="100" height="100" fill="#E8DECC" />
+                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
+                    <!-- Diamond Ring Icon -->
+                    <circle cx="50" cy="56" r="16" stroke="#D49B28" stroke-width="4" />
+                    <polygon points="50,26 62,38 38,38" fill="#55705E" stroke="#2C3D32" stroke-width="1.5" />
+                    <line x1="50" y1="20" x2="50" y2="24" stroke="#D49B28" stroke-width="2.5" stroke-linecap="round" />
+                    <line x1="40" y1="23" x2="43" y2="26" stroke="#D49B28" stroke-width="2" stroke-linecap="round" />
+                    <line x1="60" y1="23" x2="57" y2="26" stroke="#D49B28" stroke-width="2" stroke-linecap="round" />
+                  </svg>
+                </div>
+              </div>
+              <div class="timeline-info">
+                <span class="timeline-date-badge">December 2025</span>
+                <h3 class="timeline-heading">Engaged!</h3>
+              </div>
+            </div>
+
+            <!-- 5. Getting Married (April 2027) -->
+            <div class="timeline-node" data-index="4">
+              <div class="timeline-frame-wrap">
+                <div class="timeline-photo-frame">
+                  <!-- Retro Illustration Placeholder: Wedding Bells & Celebration -->
+                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
+                    <rect width="100" height="100" fill="#E8DECC" />
+                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
+                    <!-- Champagne Flutes Cheers Icon -->
+                    <path d="M 38 30 L 46 48 L 46 64 M 40 64 L 52 64" stroke="#D49B28" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M 62 30 L 54 48 L 54 64 M 48 64 L 60 64" stroke="#D49B28" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                    <!-- Sparkles -->
+                    <circle cx="50" cy="24" r="3" fill="#EEBA2B" />
+                    <circle cx="36" cy="22" r="2" fill="#EEBA2B" />
+                    <circle cx="64" cy="22" r="2" fill="#EEBA2B" />
+                  </svg>
+                </div>
+              </div>
+              <div class="timeline-info">
+                <span class="timeline-date-badge">April 2027</span>
+                <h3 class="timeline-heading">We're getting married!</h3>
+              </div>
+            </div>
+
+          </div><!-- /story-timeline -->
+
+          <p style="margin-top: 1.5rem;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1284,31 +2041,76 @@
   <div id="modal-driskill" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 02</span> <span>•</span> <span>THE DRISKILL</span></div>
-      <h2 class="modal-title">The Driskill</h2>
-      <div class="modal-body">
-        <p>Built in 1886 by cattle baron Jesse Driskill, The Driskill is an iconic Romanesque landmark in the heart of downtown Austin. Blending storied Texas history, opulent Victorian ballrooms, and legendary Southern hospitality, it is one of our favorite places in the entire city.</p>
-        <div class="info-grid">
-          <div class="info-box">
-            <p class="info-box-label">Date</p>
-            <p class="info-box-val">April 24, 2027</p>
+      <div class="modal-card-inner">
+        <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 02</span> <span>•</span> <span>THE DRISKILL</span></div>
+        <h2 class="modal-title">The Driskill</h2>
+        <div class="modal-body">
+          <p>The Driskill has been part of Austin since 1886, and we're pretty stoked to add our names to the guest book.</p>
+          <p>It's a great place to spend a weekend, and an even better place to throw a party.</p>
+
+          <!-- Room Block Feature Card with Thumbnail & Link -->
+          <div class="room-block-card">
+            <div class="room-block-thumb">
+              <!-- Vintage Architectural Silhouette Thumbnail of The Driskill Hotel -->
+              <svg viewBox="0 0 120 100" width="100%" height="100%" fill="none" style="background: #D9CDB8;">
+                <rect width="120" height="100" fill="#E8DEC9" />
+                <!-- Driskill Victorian Romanesque Architectural Facade -->
+                <rect x="25" y="32" width="70" height="68" fill="#6B5945" />
+                <polygon points="20,32 60,10 100,32" fill="#8C6E4E" />
+                <!-- Romanesque Arched Windows -->
+                <path d="M 35 48 A 6 6 0 0 1 47 48 V 60 H 35 Z" fill="#F5EFE0" />
+                <path d="M 54 48 A 6 6 0 0 1 66 48 V 60 H 54 Z" fill="#F5EFE0" />
+                <path d="M 73 48 A 6 6 0 0 1 85 48 V 60 H 73 Z" fill="#F5EFE0" />
+                <!-- Grand Center Arch Entry -->
+                <path d="M 50 78 A 10 10 0 0 1 70 78 V 100 H 50 Z" fill="#3D3021" />
+                <circle cx="60" cy="22" r="5" fill="#D49B28" />
+              </svg>
+            </div>
+            <div class="room-block-content">
+              <h4 class="room-block-heading">Guest Room Block</h4>
+              <p class="room-block-sub">Special preferred rates have been reserved for our wedding guests right at the venue.</p>
+              <a href="https://driskillhotel.com" target="_blank" rel="noopener noreferrer" class="room-block-btn">
+                BOOK WITH OUR ROOM BLOCK &rarr;
+              </a>
+            </div>
           </div>
-          <div class="info-box">
-            <p class="info-box-label">Ceremony</p>
-            <p class="info-box-val">5:30 PM CST</p>
+
+          <!-- Venue Location & Links Block -->
+          <div class="venue-details-card">
+            <div class="venue-address-row">
+              <div class="venue-address-icon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#8C6208" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+              </div>
+              <div class="venue-address-text-wrap">
+                <span class="venue-detail-label">Address</span>
+                <p class="venue-address-val">The Driskill<br/>604 Brazos St, Austin, TX 78701</p>
+              </div>
+            </div>
+
+            <div class="venue-action-links">
+              <a href="https://driskillhotel.com" target="_blank" rel="noopener noreferrer" class="venue-link-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+                Hotel Website
+              </a>
+              <a href="https://maps.google.com/?q=The+Driskill+604+Brazos+St+Austin+TX+78701" target="_blank" rel="noopener noreferrer" class="venue-link-btn venue-link-btn-highlight">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
+                  <line x1="8" y1="2" x2="8" y2="18"></line>
+                  <line x1="16" y1="6" x2="16" y2="22"></line>
+                </svg>
+                View on Google Maps
+              </a>
+            </div>
           </div>
-          <div class="info-box">
-            <p class="info-box-label">Address</p>
-            <p class="info-box-val">118 E 7th St, Austin, TX</p>
-          </div>
-          <div class="info-box">
-            <p class="info-box-label">Architecture</p>
-            <p class="info-box-val">Historic Romanesque</p>
-          </div>
+
         </div>
-        <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">Steps away from 6th Street, Lady Bird Lake, Congress Avenue, and world-class live music.</p>
-        <button id="add-cal-btn" class="primary-btn" style="margin-bottom: 8px;">Add to Google Calendar</button>
-        <button class="primary-btn" onclick="window.open('https://driskillhotel.com', '_blank')">Visit Driskill Hotel Website</button>
       </div>
     </div>
   </div>
@@ -1317,26 +2119,28 @@
   <div id="modal-spots" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 03</span> <span>•</span> <span>STUFF TO DO</span></div>
-      <h2 class="modal-title">Stuff to Do</h2>
-      <div class="modal-body">
-        <p>Austin is filled with incredible music, food, and culture. Here are a few spots we love:</p>
-        <div class="info-grid">
-          <div class="info-box">
-            <p class="info-box-label">Terry Black's BBQ</p>
-            <p class="info-box-val">Legendary Central Texas Brisket</p>
-          </div>
-          <div class="info-box">
-            <p class="info-box-label">South Congress (SoCo)</p>
-            <p class="info-box-val">Boutiques, Cafés &amp; Murals</p>
-          </div>
-          <div class="info-box">
-            <p class="info-box-label">Lady Bird Lake</p>
-            <p class="info-box-val">Boardwalk Walks &amp; Kayaking</p>
-          </div>
-          <div class="info-box">
-            <p class="info-box-label">Continental Club</p>
-            <p class="info-box-val">Historic Live Roots &amp; Blues</p>
+      <div class="modal-card-inner">
+        <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 03</span> <span>•</span> <span>STUFF TO DO</span></div>
+        <h2 class="modal-title">Stuff to Do</h2>
+        <div class="modal-body">
+          <p>Austin is filled with incredible music, food, and culture. Here are a few spots we love:</p>
+          <div class="info-grid">
+            <div class="info-box">
+              <p class="info-box-label">Terry Black's BBQ</p>
+              <p class="info-box-val">Legendary Central Texas Brisket</p>
+            </div>
+            <div class="info-box">
+              <p class="info-box-label">South Congress (SoCo)</p>
+              <p class="info-box-val">Boutiques, Cafés &amp; Murals</p>
+            </div>
+            <div class="info-box">
+              <p class="info-box-label">Lady Bird Lake</p>
+              <p class="info-box-val">Boardwalk Walks &amp; Kayaking</p>
+            </div>
+            <div class="info-box">
+              <p class="info-box-label">Continental Club</p>
+              <p class="info-box-val">Historic Live Roots &amp; Blues</p>
+            </div>
           </div>
         </div>
       </div>
@@ -1347,22 +2151,24 @@
   <div id="modal-stay" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 04</span> <span>•</span> <span>WHERE TO STAY</span></div>
-      <h2 class="modal-title">Where to Stay</h2>
-      <div class="modal-body">
-        <p>A preferred room block has been reserved for our guests right at our historic wedding venue.</p>
-        <div class="info-grid">
-          <div class="info-box">
-            <p class="info-box-label">Primary Venue Block</p>
-            <p class="info-box-val">The Driskill Hotel</p>
+      <div class="modal-card-inner">
+        <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 04</span> <span>•</span> <span>WHERE TO STAY</span></div>
+        <h2 class="modal-title">Where to Stay</h2>
+        <div class="modal-body">
+          <p>A preferred room block has been reserved for our guests right at our historic wedding venue.</p>
+          <div class="info-grid">
+            <div class="info-box">
+              <p class="info-box-label">Primary Venue Block</p>
+              <p class="info-box-val">The Driskill Hotel</p>
+            </div>
+            <div class="info-box">
+              <p class="info-box-label">Group Block Code</p>
+              <p class="info-box-val">JORDAN-MIKE-27</p>
+            </div>
           </div>
-          <div class="info-box">
-            <p class="info-box-label">Group Block Code</p>
-            <p class="info-box-val">JORDAN-MIKE-27</p>
-          </div>
+          <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">Additional nearby hotels within walking distance include The Stephen F. Austin Royal Sonesta, Austin Marriott Downtown, and Hotel Van Zandt. We encourage guests to book early as late April is peak season in Austin!</p>
+          <button class="primary-btn" onclick="window.open('https://driskillhotel.com', '_blank')">Book Driskill Room Block</button>
         </div>
-        <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">Additional nearby hotels within walking distance include The Stephen F. Austin Royal Sonesta, Austin Marriott Downtown, and Hotel Van Zandt. We encourage guests to book early as late April is peak season in Austin!</p>
-        <button class="primary-btn" onclick="window.open('https://driskillhotel.com', '_blank')">Book Driskill Room Block</button>
       </div>
     </div>
   </div>
@@ -1371,28 +2177,31 @@
   <div id="modal-schedule" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
-      <h2 class="modal-title">Schedule</h2>
-      <div class="modal-body">
-        <p>We are putting together a full weekend of fun and celebration in downtown Austin!</p>
-        <div class="info-grid">
-          <div class="info-box">
-            <p class="info-box-label">Friday Evening</p>
-            <p class="info-box-val">Welcome Drinks &amp; Tacos</p>
+      <div class="modal-card-inner">
+        <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 05</span> <span>•</span> <span>SCHEDULE</span></div>
+        <h2 class="modal-title">Schedule</h2>
+        <div class="modal-body">
+          <p>We are putting together a full weekend of fun and celebration in downtown Austin!</p>
+          <div class="info-grid">
+            <div class="info-box">
+              <p class="info-box-label">Friday Evening</p>
+              <p class="info-box-val">Welcome Drinks &amp; Tacos</p>
+            </div>
+            <div class="info-box">
+              <p class="info-box-label">Saturday 5:30 PM</p>
+              <p class="info-box-val">Ceremony at The Driskill</p>
+            </div>
+            <div class="info-box">
+              <p class="info-box-label">Saturday Evening</p>
+              <p class="info-box-val">Cocktails, Dinner &amp; Dancing</p>
+            </div>
+            <div class="info-box">
+              <p class="info-box-label">Sunday Morning</p>
+              <p class="info-box-val">Farewell Coffee &amp; Pastries</p>
+            </div>
           </div>
-          <div class="info-box">
-            <p class="info-box-label">Saturday 5:30 PM</p>
-            <p class="info-box-val">Ceremony at The Driskill</p>
-          </div>
-          <div class="info-box">
-            <p class="info-box-label">Saturday Evening</p>
-            <p class="info-box-val">Cocktails, Dinner &amp; Dancing</p>
-          </div>
-          <div class="info-box">
-            <p class="info-box-label">Sunday Morning</p>
-            <p class="info-box-val">Farewell Coffee &amp; Pastries</p>
-          </div>
+          <p style="font-size: 0.85rem; color: #666; margin-top: 12px;">Detailed times and venue room locations will be shared in formal invitations and updated here as the date approaches.</p>
         </div>
-        <p style="font-size: 0.85rem; color: #666; margin-top: 12px;">Detailed times and venue room locations will be shared in formal invitations and updated here as the date approaches.</p>
       </div>
     </div>
   </div>
@@ -1401,11 +2210,13 @@
   <div id="modal-registry" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 06</span> <span>•</span> <span>REGISTRY</span></div>
-      <h2 class="modal-title">Registry</h2>
-      <div class="modal-body">
-        <p>Your love, presence, and friendship at our wedding are the greatest gifts we could ever ask for. For friends and family who have inquired about honoring us with a gift, we have created a Honeymoon &amp; Adventure Fund as well as a curated home registry.</p>
-        <p style="font-size: 0.85rem; color: #666; margin-top: 12px;">Registry links and gifting details will go live alongside formal invitations.</p>
+      <div class="modal-card-inner">
+        <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 06</span> <span>•</span> <span>REGISTRY</span></div>
+        <h2 class="modal-title">Registry</h2>
+        <div class="modal-body">
+          <p>Your love, presence, and friendship at our wedding are the greatest gifts we could ever ask for. For friends and family who have inquired about honoring us with a gift, we have created a Honeymoon &amp; Adventure Fund as well as a curated home registry.</p>
+          <p style="font-size: 0.85rem; color: #666; margin-top: 12px;">Registry links and gifting details will go live alongside formal invitations.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1414,21 +2225,23 @@
   <div id="modal-faq" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 07</span> <span>•</span> <span>FAQ</span></div>
-      <h2 class="modal-title">FAQ</h2>
-      <div class="modal-body">
-        <div class="info-grid">
-          <div class="info-box">
-            <p class="info-box-label">Dress Code</p>
-            <p class="info-box-val">Black-Tie Optional</p>
+      <div class="modal-card-inner">
+        <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 07</span> <span>•</span> <span>FAQ</span></div>
+        <h2 class="modal-title">FAQ</h2>
+        <div class="modal-body">
+          <div class="info-grid">
+            <div class="info-box">
+              <p class="info-box-label">Dress Code</p>
+              <p class="info-box-val">Black-Tie Optional</p>
+            </div>
+            <div class="info-box">
+              <p class="info-box-label">Valet Parking</p>
+              <p class="info-box-val">Available at Hotel</p>
+            </div>
           </div>
-          <div class="info-box">
-            <p class="info-box-label">Valet Parking</p>
-            <p class="info-box-val">Available at Hotel</p>
-          </div>
+          <p style="margin-top: 12px;"><strong>Are kids invited?</strong><br/>To allow all guests a night of uninhibited celebration and relaxation, our wedding weekend will be an adults-only event (21+).</p>
+          <p style="margin-top: 10px;"><strong>Transportation:</strong><br/>The Driskill is centrally located in downtown Austin. Rideshares (Uber / Lyft) are readily available and recommended.</p>
         </div>
-        <p style="margin-top: 12px;"><strong>Are kids invited?</strong><br/>To allow all guests a night of uninhibited celebration and relaxation, our wedding weekend will be an adults-only event (21+).</p>
-        <p style="margin-top: 10px;"><strong>Transportation:</strong><br/>The Driskill is centrally located in downtown Austin. Rideshares (Uber / Lyft) are readily available and recommended.</p>
       </div>
     </div>
   </div>
@@ -1437,10 +2250,13 @@
   <div id="modal-invitation" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
-      <h2 class="modal-title">RSVP</h2>
-      <div class="modal-body">
-        <p>Formal wedding invitations with dinner selections and online RSVP details will be mailed in late 2026 / early 2027.</p>
-        <p style="margin-top: 12px;">Please save the date on your calendar in the meantime! If your mailing address or contact info changes, please feel free to reach out so we can ensure your invitation finds its way to you.</p>
+      <div class="modal-card-inner">
+        <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 08</span> <span>•</span> <span>RSVP</span></div>
+        <h2 class="modal-title">RSVP</h2>
+        <div class="modal-body">
+          <p>Formal wedding invitations with dinner selections and online RSVP details will be mailed in late 2026 / early 2027.</p>
+          <p style="margin-top: 12px;">Please save the date on your calendar in the meantime! If your mailing address or contact info changes, please feel free to reach out so we can ensure your invitation finds its way to you.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1470,6 +2286,9 @@
       const menuArcContainer = document.getElementById('menu-arc-container');
       const scrollCueArrow = document.getElementById('scroll-cue-arrow');
 
+      const vinylSheen = document.getElementById('vinyl-sheen');
+      const vinylGlint = document.getElementById('vinyl-glint');
+
       // Scroll Cue Arrow: Appear after a moment (1.2s) and allow click-to-scroll
       setTimeout(() => {
         if (scrollCueArrow && window.scrollY < 20) {
@@ -1491,54 +2310,52 @@
         ScrollTrigger.refresh();
       });
 
-      // Calculate dynamic zoom scales:
-      // 1. Cover Zoom Scale: Album cover scales to occupy ~90% of the screen height (vh * 0.90) from top to bottom before sleeve exits
-      function getCoverZoomScale() {
-        const vh = window.innerHeight;
-        const vw = window.innerWidth;
-        const sleeveSize = Math.min(vw * 0.82, 560);
-        const targetCoverHeightPx = vh * 0.90;
-        const scale = targetCoverHeightPx / sleeveSize;
-        return Math.max(scale, 1.0);
-      }
-
-      // 2. Center Label Zoom Scale:
-      // - Desktop (vw >= 768): Center record label expands so that top-to-bottom occupies ~85% of screen height (vh * 0.85)
-      // - Mobile (vw < 768): Center record label zooms in so the yellow circular track loop line extends slightly past left/right viewport edges (~118% width)
+      // Calculate dynamic zoom scale:
+      // - Desktop (vw >= 768): Sleeve is 90vh on load. Center record label expands so that top-to-bottom occupies ~85% of the screen height (vh * 0.85), with the vinyl record body extending off screen
+      // - Mobile (vw < 768): Sleeve is 95vw on load. Center record label zooms in so the yellow circular label line extends slightly past the left & right viewport edges (~118% width) to maximize text legibility
       function getTargetZoomScale() {
         const vh = window.innerHeight;
         const vw = window.innerWidth;
+        const isDesktop = vw >= 768;
+        
+        // Base dimensions before GSAP scale:
+        // #scene-group has width: var(--sleeve-size)
+        // Desktop: min(82vh, 85vw), Mobile: 95vw
+        // #vinyl-record has width: 98% of #scene-group
+        // .center-label has width: 35% of #vinyl-record
         // Base unscaled label diameter in px = sleeveSize * 0.98 * 0.35 = sleeveSize * 0.343
-        const sleeveSize = Math.min(vw * 0.82, 560);
+        const sleeveSize = isDesktop ? Math.min(vh * 0.82, vw * 0.85) : vw * 0.95;
         const baseLabelPx = sleeveSize * 0.343;
         
         let targetLabelPx;
-        if (vw >= 768) {
+        if (isDesktop) {
           targetLabelPx = Math.min(vw * 0.95, vh * 0.85);
         } else {
+          // On mobile, zoom in so the yellow circular track loop line (R=453 / D=906 out of 1000) goes slightly past the viewport boundaries (~1.18x viewport width)
           targetLabelPx = vw * 1.18;
         }
         const scale = targetLabelPx / baseLabelPx;
-        return Math.min(Math.max(scale, 2.0), 12.0);
+        return Math.min(Math.max(scale, 1.2), 12.0);
       }
 
-      // Initial state
+      // Initial record state: starts at 0° upright
       gsap.set(vinylRecord, { rotation: 0, force3D: false });
-      gsap.set(sceneGroup, { scale: 1, x: 0, y: 0, force3D: false });
-      gsap.set(sleeveContainer, { y: 0, opacity: 1 });
+      gsap.set(sceneGroup, { force3D: false });
+      if (vinylSheen) gsap.set(vinylSheen, { rotation: 0, force3D: false });
+      if (vinylGlint) gsap.set(vinylGlint, { rotation: 0, force3D: false });
 
-      // Master Scroll Scrub Timeline
+      // Master Scroll Scrub Timeline (Crisp, snappy scrub)
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: "#scroll-container",
           start: "top top",
           end: "bottom bottom",
-          scrub: 1.2,
+          scrub: 0.9,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
             // Hide scroll cue on initial scroll
             if (scrollCueArrow) {
-              if (self.progress > 0.02) {
+              if (self.progress > 0.03) {
                 scrollCueArrow.style.opacity = "0";
                 scrollCueArrow.style.pointerEvents = "none";
               } else {
@@ -1551,57 +2368,71 @@
       });
 
       // Phase Timing Definitions
-      const coverZoomDuration = 0.5;
-      const sleeveExitDuration = 0.8;
-      const lingerDuration = 0.3;
+      const phase1Duration = 0.75;
+      const lingerDuration = 0.25;
 
       // -------------------------------------------------------------
-      // PHASE 1: ZOOM INTO ALBUM COVER
-      // - Album cover scales up to occupy ~90% of viewport height from top to bottom
-      // - Vinyl record and sleeve stay together inside sceneGroup
-      // -------------------------------------------------------------
-      tl.to(sceneGroup, {
-        scale: () => getCoverZoomScale(),
-        x: 0,
-        y: 0,
-        ease: "power1.inOut",
-        duration: coverZoomDuration,
-        force3D: false
-      }, 0);
-
-      // -------------------------------------------------------------
-      // PHASE 2: SLEEVE SLIPS OFF TOP & VINYL RECORD REVEAL + LABEL ZOOM
-      // - Sleeve moves up and out of the TOP of the screen (y: "-140vh", 100% opaque)
-      // - Vinyl record spins a full 360° counter-clockwise (0° -> -360°, upright orientation)
-      // - Camera zooms from 90% cover view directly into the record center label
+      // PHASE 1: SLEEVE EXITS OUT THE TOP & CAMERA ZOOMS IN ON RECORD LABEL
+      // - Fast & Responsive: Sleeve exits briskly out the top with zero lag
+      // - Subtle Tactile Lift: Crisp micro-tilt (+0.25° / -0.20°) during initial lift-off
+      // - Record starts at 0° and spins a full 360° counter-clockwise 0° -> -360° (upright orientation)
+      // - Dynamic specular light dances and sweeps across spinning grooves
+      // - Camera (sceneGroup) zooms in smoothly ending with record label centered (x: 0, y: 0)
       // -------------------------------------------------------------
       tl.to(sleeveContainer, {
         y: "-140vh",
         opacity: 1,
         ease: "power1.inOut",
-        duration: sleeveExitDuration
-      }, coverZoomDuration)
+        duration: phase1Duration,
+        force3D: false
+      }, 0)
+      .to(sleeveContainer, {
+        keyframes: [
+          { rotation: 0.25,  x: "-1px",  duration: phase1Duration * 0.07, ease: "power1.out" },
+          { rotation: -0.20, x: "1.2px", duration: phase1Duration * 0.09, ease: "sine.inOut" },
+          { rotation: 0,     x: "0px",   duration: phase1Duration * 0.10, ease: "power1.out" }
+        ],
+        force3D: false
+      }, 0)
       .fromTo(vinylRecord, {
         rotation: 0
       }, {
-        rotation: -360,
+        rotation: -360, // Full 360° counter-clockwise spin ending upright at 0°
         ease: "power1.inOut",
-        duration: sleeveExitDuration,
+        duration: phase1Duration,
         force3D: false
-      }, coverZoomDuration)
+      }, 0)
+      .fromTo(vinylGlint, {
+        rotation: 0,
+        opacity: 0.45
+      }, {
+        rotation: 140, // Prismatic light sweeps across spinning grooves as vinyl rotates
+        opacity: 0.85,
+        ease: "power1.inOut",
+        duration: phase1Duration,
+        force3D: false
+      }, 0)
+      .fromTo(vinylSheen, {
+        rotation: -6
+      }, {
+        rotation: 8, // Subtle organic light shift anchoring to top-left key light
+        ease: "sine.inOut",
+        duration: phase1Duration,
+        force3D: false
+      }, 0)
       .to(sceneGroup, {
-        scale: () => getTargetZoomScale(),
+        scale: () => getTargetZoomScale(), // Smooth dynamic zoom to center label
         x: 0,
-        y: 0,
+        y: 0,                              // Centered in viewport
         ease: "power2.inOut",
-        duration: sleeveExitDuration,
+        duration: phase1Duration,
         force3D: false
-      }, coverZoomDuration);
+      }, 0);
 
       // Linger Moment at peak zoom (label centered & readable)
       tl.to(sceneGroup, {
         duration: lingerDuration
-      }, coverZoomDuration + sleeveExitDuration);
+      }, phase1Duration);
 
       // -------------------------------------------------------------
       // INTERACTIVE MODAL EVENT LISTENERS
@@ -1655,6 +2486,114 @@
           window.open(gcalUrl, '_blank');
         });
       }
+
+      // -------------------------------------------------------------
+      // OUR STORY MODAL SCROLLING TIMELINE INTERACTION
+      // - Highlights & scales ONLY the single active photo frame as it scrolls into focal view
+      // -------------------------------------------------------------
+      const modalAbout = document.getElementById('modal-about');
+      if (modalAbout) {
+        const scrollContainer = modalAbout.querySelector('.modal-card-inner') || modalAbout.querySelector('.modal-card');
+        const timelineNodes = modalAbout.querySelectorAll('.timeline-node');
+
+        const updateStoryTimeline = () => {
+          if (!scrollContainer) return;
+          const cardRect = scrollContainer.getBoundingClientRect();
+          const focusLine = cardRect.top + cardRect.height * 0.40;
+
+          // If scrolled near the top of the modal, lock focus to ONLY the first milestone
+          if (scrollContainer.scrollTop < 35) {
+            timelineNodes.forEach((node, idx) => {
+              if (idx === 0) {
+                node.classList.add('is-active');
+              } else {
+                node.classList.remove('is-active');
+              }
+            });
+            return;
+          }
+
+          // Otherwise determine which single node is closest to the reading focal center line
+          let closestIndex = 0;
+          let minDistance = Infinity;
+
+          timelineNodes.forEach((node, idx) => {
+            const nodeRect = node.getBoundingClientRect();
+            const nodeCenter = nodeRect.top + nodeRect.height * 0.5;
+            const dist = Math.abs(nodeCenter - focusLine);
+
+            if (dist < minDistance) {
+              minDistance = dist;
+              closestIndex = idx;
+            }
+          });
+
+          timelineNodes.forEach((node, idx) => {
+            if (idx === closestIndex) {
+              node.classList.add('is-active');
+            } else {
+              node.classList.remove('is-active');
+            }
+          });
+        };
+
+        if (scrollContainer) {
+          scrollContainer.addEventListener('scroll', updateStoryTimeline, { passive: true });
+        }
+
+        // When Our Story modal opens, reset scroll and trigger initial check
+        const storyTriggerItems = document.querySelectorAll('[data-target="modal-about"]');
+        storyTriggerItems.forEach(trigger => {
+          trigger.addEventListener('click', () => {
+            if (scrollContainer) {
+              scrollContainer.scrollTop = 0;
+            }
+            updateStoryTimeline();
+            setTimeout(updateStoryTimeline, 100);
+          });
+        });
+      }
+
+      // -------------------------------------------------------------
+      // PINCH-TO-ZOOM RESTRICTION HANDLERS
+      // - Prevents multi-touch gesture zoom on iOS Safari & mobile Chrome
+      // - Prevents trackpad pinch gesture zoom (Ctrl + Wheel)
+      // -------------------------------------------------------------
+      document.addEventListener('touchstart', (e) => {
+        if (e.touches.length > 1) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      document.addEventListener('touchmove', (e) => {
+        if (e.touches.length > 1) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      document.addEventListener('gesturestart', (e) => {
+        e.preventDefault();
+      });
+
+      document.addEventListener('gesturechange', (e) => {
+        e.preventDefault();
+      });
+
+      document.addEventListener('gestureend', (e) => {
+        e.preventDefault();
+      });
+
+      window.addEventListener('wheel', (e) => {
+        if (e.ctrlKey) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+
+      window.addEventListener('keydown', (e) => {
+        if ((e.ctrlKey || e.metaKey) && (e.key === '+' || e.key === '-' || e.key === '=' || e.key === '0')) {
+          e.preventDefault();
+        }
+      });
 
     });
   </script>
