@@ -1491,32 +1491,309 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 12px rgba(238, 186, 43, 0.25);
     }
 
+    /* ============================================================= */
+    /* RETRO VINYL / CASSETTE "STUFF TO DO" MODAL STYLING            */
+    /* ============================================================= */
+    #modal-spots .modal-card {
+      max-width: 680px;
+      background: #F6F4EB;
+      border: 2px solid #3A4D39;
+      box-shadow: 6px 6px 0px 0px #3A4D39, 0 25px 60px -12px rgba(26, 22, 18, 0.45);
+    }
+
+    #modal-spots .modal-card-inner {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      max-height: 88dvh;
+      overflow: hidden;
+    }
+
+    .spots-header-fixed {
+      padding: 2.2rem 2.2rem 1.15rem 2.2rem;
+      background: #F6F4EB;
+      border-bottom: 1.5px solid rgba(58, 77, 57, 0.22);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* =============================================================
+       STUFF TO DO / AUSTIN GUIDE - BESPOKE MIDCENTURY EDITORIAL DIRECTORY
+       ============================================================= */
+    #modal-spots .modal-card {
+      max-width: 640px;
+      background: #F7F4EB;
+      border: 1px solid rgba(91, 117, 102, 0.25);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .spots-header-fixed {
+      padding: 2.25rem 2.25rem 0.85rem 2.25rem;
+      border-bottom: 1px solid rgba(91, 117, 102, 0.16);
+      background: #F7F4EB;
+    }
+
+    .spots-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 3px 9px;
+      background: rgba(91, 117, 102, 0.08);
+      border: 1px solid rgba(91, 117, 102, 0.22);
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: #3D5244;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .spots-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.15rem;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      color: #1F2923;
+      line-height: 1.12;
+      margin-bottom: 0.35rem;
+    }
+
+    .spots-intro {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      color: #3A352F;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      max-width: 540px;
+    }
+
+    /* Refined Midcentury Category Tabs */
+    .spots-tabs {
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+      border-bottom: 1px solid rgba(91, 117, 102, 0.20);
+      margin-top: 0.25rem;
+      overflow-x: auto;
+      no-scrollbar: true;
+    }
+
+    .spots-tab-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.55rem 0.95rem 0.75rem 0.95rem;
+      border: none;
+      background: transparent;
+      color: #5B7566;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.18s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .spots-tab-btn:hover {
+      color: #1F2923;
+    }
+
+    .spots-tab-btn.active {
+      color: #C86446;
+      font-weight: 800;
+    }
+
+    .spots-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2.5px;
+      background: #C86446;
+      border-radius: 2px 2px 0 0;
+    }
+
+    /* Scrollable Editorial Directory Area */
+    .spots-cards-scroll {
+      flex: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 0.75rem 2.25rem 2rem 2.25rem;
+    }
+
+    .spots-editorial-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Editorial Row Item */
+    .spots-entry-row {
+      padding: 1.15rem 0.65rem;
+      margin: 0 -0.65rem;
+      border-bottom: 1px dashed rgba(91, 117, 102, 0.20);
+      border-radius: 8px;
+      transition: background 0.15s ease;
+    }
+
+    .spots-entry-row:last-child {
+      border-bottom: none;
+    }
+
+    .spots-entry-row:hover {
+      background: rgba(239, 234, 217, 0.65);
+    }
+
+    .spots-entry-top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .spots-entry-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1F2923;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: baseline;
+      gap: 0.35rem;
+      transition: color 0.15s ease;
+    }
+
+    .spots-entry-row:hover .spots-entry-title {
+      color: #C86446;
+    }
+
+    .spots-entry-title .ext-icon {
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      width: 11px;
+      height: 11px;
+      transform: translateY(1px);
+    }
+
+    .spots-entry-row:hover .spots-entry-title .ext-icon {
+      opacity: 0.65;
+    }
+
+    .spots-entry-meta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-shrink: 0;
+    }
+
+    .spots-neighborhood-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #5B7566;
+      background: rgba(91, 117, 102, 0.10);
+      border: 1px solid rgba(91, 117, 102, 0.20);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .spots-map-link {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #C86446;
+      text-decoration: none;
+      transition: color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .spots-map-link:hover {
+      text-decoration: underline;
+      color: #A6472D;
+    }
+
+    .spots-entry-blurb {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: #3A352F;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    @media (max-width: 640px) {
+      .spots-header-fixed {
+        padding: 1.6rem 1.4rem 0.6rem 1.4rem;
+      }
+      .spots-title {
+        font-size: 1.75rem;
+      }
+      .spots-cards-scroll {
+        padding: 0.6rem 1.4rem 1.75rem 1.4rem;
+      }
+      .spots-entry-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+      .spots-entry-meta {
+        margin-top: 2px;
+      }
+    }
+
+    /* OUR STORY LEAD-IN INTRO TYPOGRAPHY & SPACING */
+    .story-lead-intro {
+      font-size: 1.12rem;
+      font-style: italic;
+      font-weight: 500;
+      line-height: 1.65;
+      color: #342D26;
+      margin-top: 0.35rem;
+      margin-bottom: 2.25rem;
+      max-width: 540px;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px dashed rgba(91, 117, 102, 0.25);
+    }
+
     /* STORY SCROLLING TIMELINE COMPONENT */
     .story-timeline {
       position: relative;
-      margin: 2.25rem 0 1.5rem 0;
+      margin: 1.5rem 0 1.5rem 0;
       padding: 0.5rem 0;
     }
 
-    /* Individual Milestone Node */
+    /* Continuous vertical connecting line between circular nodes */
+    .story-timeline::before {
+      content: '';
+      position: absolute;
+      top: 45px;
+      bottom: 45px;
+      left: 45px;
+      width: 2px;
+      background: #D6CCB2;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    /* Individual Milestone Node (Uniform presentation) */
     .timeline-node {
       position: relative;
       display: flex;
       gap: 1.45rem;
       align-items: center;
       margin-bottom: 2.75rem;
-      opacity: 0.55;
-      transform: translateY(6px) scale(0.97);
-      transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      opacity: 1;
+      transform: none;
     }
 
     .timeline-node:last-child {
       margin-bottom: 1.5rem;
-    }
-
-    .timeline-node.is-active {
-      opacity: 1;
-      transform: translateY(0) scale(1);
     }
 
     /* Circular Photo Frame */
@@ -1537,13 +1814,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25);
-    }
-
-    .timeline-node.is-active .timeline-photo-frame {
-      border-color: #B5A482;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
-      transform: scale(1.10);
     }
 
     .timeline-photo-img {
@@ -1552,13 +1822,17 @@
       object-fit: cover;
       display: block;
       border-radius: 50%;
-      filter: saturate(0.92) contrast(1.04);
-      transition: filter 0.35s ease;
+      filter: saturate(1.02) contrast(1.04);
     }
 
     .timeline-photo-img.img-2017 {
       object-position: center 22%;
       transform: scale(1.06);
+    }
+
+    .timeline-photo-img.img-atx {
+      object-position: center 45%;
+      transform: scale(1.12);
     }
 
     .timeline-photo-img.img-finley {
@@ -1571,8 +1845,9 @@
       transform: scale(1.04);
     }
 
-    .timeline-node.is-active .timeline-photo-img {
-      filter: saturate(1.02) contrast(1.05);
+    .timeline-photo-img.img-driskill {
+      object-position: 36% 35%;
+      transform: scale(1.22);
     }
 
     .timeline-info {
@@ -2034,7 +2309,7 @@
         <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 01</span> <span>•</span> <span>OUR STORY</span></div>
         <h2 class="modal-title">Our Story</h2>
         <div class="modal-body">
-          <p style="margin-bottom: 1.65rem; font-size: 0.98rem; line-height: 1.7; color: #2D2721;">It all started with beers at the second oldest bar in Chicago. Nearly a decade later, and we're full-on Texans, we've added one very good boy to our family, and next year, we're finally making it official in the city we've come to call home.</p>
+          <p class="story-lead-intro">From beers in Printer's Row to building a life in Central Texas, here's an overview of our relationship for the last decade!</p>
           
           <!-- SCROLLING STORYTELLING TIMELINE -->
           <div class="story-timeline" id="story-timeline">
@@ -2043,46 +2318,29 @@
             <div class="timeline-node" data-index="0">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="/2017.png" alt="Mike & Jordan in Chicago 2017" class="timeline-photo-img img-2017" referrerPolicy="no-referrer" />
+                  <img src="/2017.png" alt="Met for a drink at Kasey's Tavern in Chicago" class="timeline-photo-img img-2017" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">May 2017</span>
-                <h3 class="timeline-heading">Mike &amp; Jordan meet for drinks in Chicago, IL</h3>
+                <h3 class="timeline-heading">Met for a drink at Kasey’s Tavern in Chicago</h3>
               </div>
             </div>
 
-            <!-- 2. Move to Austin (December 2020) -> Authentic Texas Flag Graphic -->
+            <!-- 2. Move to Austin (December 2020) -> atx.jpeg with Austin skyline -->
             <div class="timeline-node" data-index="1">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <!-- Texas State Flag: Blue vertical stripe on left with lone star, top white stripe, bottom red stripe on right -->
-                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="txFlagClip">
-                      <circle cx="50" cy="50" r="48" />
-                    </clipPath>
-                    <g clip-path="url(#txFlagClip)">
-                      <!-- Right Top: White stripe -->
-                      <rect x="33.33" y="0" width="66.67" height="50" fill="#F8F6F0" />
-                      <!-- Right Bottom: Red stripe -->
-                      <rect x="33.33" y="50" width="66.67" height="50" fill="#BF2E2B" />
-                      <!-- Left: Blue vertical stripe (1/3 width) -->
-                      <rect x="0" y="0" width="33.33" height="100" fill="#1C355E" />
-                      <!-- Lone White Star centered vertically in blue stripe (x = 16.66, y = 50) -->
-                      <polygon points="16.66,35 19.9,44.5 29.8,44.5 21.8,50.3 24.8,59.8 16.66,54 8.5,59.8 11.5,50.3 3.5,44.5 13.4,44.5" fill="#FFFFFF" />
-                      <!-- Inner shadow / antique border ring -->
-                      <circle cx="50" cy="50" r="48" stroke="rgba(0,0,0,0.12)" stroke-width="2" />
-                    </g>
-                  </svg>
+                  <img src="/atx.jpeg" alt="Packed up and relocated to Austin, TX" class="timeline-photo-img img-atx" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">December 2020</span>
-                <h3 class="timeline-heading">We move to Austin, TX</h3>
+                <h3 class="timeline-heading">Packed up and relocated to Austin, TX</h3>
               </div>
             </div>
 
-            <!-- 3. Finley Joins Family (April 2021) -> finley.png with dog's face centered -->
+            <!-- 3. Adopted Finley (March 2021) -> finley.png with dog's face centered -->
             <div class="timeline-node" data-index="2">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
@@ -2090,8 +2348,8 @@
                 </div>
               </div>
               <div class="timeline-info">
-                <span class="timeline-date-badge">April 2021</span>
-                <h3 class="timeline-heading">Finley joins our family</h3>
+                <span class="timeline-date-badge">March 2021</span>
+                <h3 class="timeline-heading">Adopted Finley</h3>
               </div>
             </div>
 
@@ -2104,66 +2362,26 @@
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">December 2025</span>
-                <h3 class="timeline-heading">Engaged!</h3>
+                <h3 class="timeline-heading">Got engaged!</h3>
               </div>
             </div>
 
-            <!-- 5. Getting Married (April 2027) -> Classic Tuxedo Shirt with Black Bow Tie & Stud Buttons -->
+            <!-- 5. Getting Married (April 2027) -> driskill.jpeg -->
             <div class="timeline-node" data-index="4">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <clipPath id="tuxedoClip">
-                      <circle cx="50" cy="50" r="48" />
-                    </clipPath>
-                    <g clip-path="url(#tuxedoClip)">
-                      <!-- Crisp Pleated Tuxedo Shirt Background -->
-                      <rect width="100" height="100" fill="#FDFBF7" />
-                      <!-- Vertical Shirt Placket & Pleats -->
-                      <line x1="38" y1="0" x2="38" y2="100" stroke="#EAE4D5" stroke-width="1.2" stroke-dasharray="2,2" />
-                      <line x1="44" y1="0" x2="44" y2="100" stroke="#E5DEC9" stroke-width="1.5" />
-                      <line x1="56" y1="0" x2="56" y2="100" stroke="#E5DEC9" stroke-width="1.5" />
-                      <line x1="62" y1="0" x2="62" y2="100" stroke="#EAE4D5" stroke-width="1.2" stroke-dasharray="2,2" />
-                      
-                      <!-- Tuxedo Stud Buttons (black with gold outer rim) -->
-                      <!-- Button 1 -->
-                      <circle cx="50" cy="54" r="3.6" fill="#1C1917" stroke="#CCA030" stroke-width="1.2" />
-                      <!-- Button 2 -->
-                      <circle cx="50" cy="72" r="3.6" fill="#1C1917" stroke="#CCA030" stroke-width="1.2" />
-                      <!-- Button 3 -->
-                      <circle cx="50" cy="90" r="3.6" fill="#1C1917" stroke="#CCA030" stroke-width="1.2" />
-
-                      <!-- Wingtip Tuxedo Collar Tips -->
-                      <polygon points="34,16 50,30 42,32" fill="#F5F0E4" stroke="#D6CCB2" stroke-width="1" />
-                      <polygon points="66,16 50,30 58,32" fill="#F5F0E4" stroke="#D6CCB2" stroke-width="1" />
-
-                      <!-- Classic Black Satin Bow Tie -->
-                      <!-- Left Bow Wing -->
-                      <polygon points="50,25 24,14 26,36" fill="#1C1917" stroke="#0D0B0A" stroke-width="0.8" />
-                      <polygon points="50,25 28,17 30,33" fill="#292524" />
-                      <!-- Right Bow Wing -->
-                      <polygon points="50,25 76,14 74,36" fill="#1C1917" stroke="#0D0B0A" stroke-width="0.8" />
-                      <polygon points="50,25 72,17 70,33" fill="#292524" />
-                      <!-- Center Bow Tie Knot with gold highlight gleam -->
-                      <rect x="45.5" y="19.5" width="9" height="11" rx="2.5" fill="#1C1917" stroke="#0D0B0A" stroke-width="0.8" />
-                      <ellipse cx="50" cy="25" rx="3.5" ry="4.5" fill="#2D2824" />
-                      <line x1="48" y1="21" x2="48" y2="29" stroke="#3E3832" stroke-width="1" />
-
-                      <!-- Outer soft vintage rim -->
-                      <circle cx="50" cy="50" r="48" stroke="rgba(0,0,0,0.14)" stroke-width="2" />
-                    </g>
-                  </svg>
+                  <img src="/driskill.jpeg" alt="Getting married at The Driskill" class="timeline-photo-img img-driskill" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">April 2027</span>
-                <h3 class="timeline-heading">We're getting married!</h3>
+                <h3 class="timeline-heading">Getting married!</h3>
               </div>
             </div>
 
           </div><!-- /story-timeline -->
 
-          <p style="margin-top: 1.85rem; margin-bottom: 2.5rem; font-size: 0.98rem; line-height: 1.7; color: #2D2721; font-weight: 500;">We're glad you're here, and we can't wait to celebrate with y'all in Austin.</p>
+          <p style="margin-top: 1.85rem; margin-bottom: 2.5rem; font-size: 0.98rem; line-height: 1.7; color: #2D2721; font-weight: 500;">We can't wait to celebrate with y'all in Austin!</p>
         </div>
       </div>
     </div>
@@ -2252,29 +2470,280 @@
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-card-inner">
-        <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 03</span> <span>•</span> <span>STUFF TO DO</span></div>
-        <h2 class="modal-title">Stuff to Do</h2>
-        <div class="modal-body">
-          <p>Austin is filled with incredible music, food, and culture. Here are a few spots we love:</p>
-          <div class="info-grid">
-            <div class="info-box">
-              <p class="info-box-label">Terry Black's BBQ</p>
-              <p class="info-box-val">Legendary Central Texas Brisket</p>
-            </div>
-            <div class="info-box">
-              <p class="info-box-label">South Congress (SoCo)</p>
-              <p class="info-box-val">Boutiques, Cafés &amp; Murals</p>
-            </div>
-            <div class="info-box">
-              <p class="info-box-label">Lady Bird Lake</p>
-              <p class="info-box-val">Boardwalk Walks &amp; Kayaking</p>
-            </div>
-            <div class="info-box">
-              <p class="info-box-label">Continental Club</p>
-              <p class="info-box-val">Historic Live Roots &amp; Blues</p>
-            </div>
+        
+        <!-- Fixed Header Area -->
+        <div class="spots-header-fixed">
+          <div class="spots-header-badge">
+            <span>SIDE A</span> <span>•</span> <span>TRACK 03</span> <span>•</span> <span>AUSTIN GUIDE</span>
+          </div>
+          <h2 class="spots-title">Stuff to Do</h2>
+          <p class="spots-intro">A curated editorial directory of our favorite neighborhood spots, coffee, eats, and Austin staples to explore:</p>
+          
+          <!-- Sticky / Fixed Category Tabs -->
+          <div class="spots-tabs" role="tablist" aria-label="Stuff to Do Categories">
+            <button class="spots-tab-btn active" data-category="food-drink" role="tab" aria-selected="true">Food &amp; Drink</button>
+            <button class="spots-tab-btn" data-category="parks-outdoors" role="tab" aria-selected="false">Parks &amp; Outdoors</button>
+            <button class="spots-tab-btn" data-category="sights-culture" role="tab" aria-selected="false">Sights &amp; Culture</button>
           </div>
         </div>
+
+        <!-- Scrollable Editorial Directory Area -->
+        <div class="spots-cards-scroll">
+          
+          <!-- Category Panel 1: Food & Drink -->
+          <div class="spots-category-panel" data-panel="food-drink">
+            <div class="spots-editorial-list">
+              
+              <!-- 1. Whisler's -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.whislersatx.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Whisler's</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">East Austin</span>
+                    <a href="https://maps.app.goo.gl/hENcunwcRqbhDHTn8" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">One of Mike's favorite spots - the best smoky Old Fashioned!</p>
+              </div>
+
+              <!-- 2. Terry Black's BBQ -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://terryblacksbbq.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Terry Black's BBQ</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Barton Springs Rd</span>
+                    <a href="https://maps.app.goo.gl/nRZ4MZbjo2mw7gmWA" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Iconic Texas barbecue just south of the river. Worth the wait!</p>
+              </div>
+
+              <!-- 3. El Chilito -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.elchilito.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>El Chilito</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">East Austin</span>
+                    <a href="https://maps.app.goo.gl/tJg66wHrkTriGTAWA" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Jordan's go-to breakfast taco spot—get the Cherrywood!</p>
+              </div>
+
+              <!-- 4. Sour Duck -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.sourduckmarket.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Sour Duck</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">East Austin</span>
+                    <a href="https://maps.app.goo.gl/H3o75phMYTY2gS9f7" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Mike &amp; Jordan's favorite east side dinner spot and bakery</p>
+              </div>
+
+              <!-- 5. Meanwhile Brewing -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.meanwhilebeer.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Meanwhile Brewing</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">South Austin</span>
+                    <a href="https://maps.app.goo.gl/7RR1dZ3cpXLf5DeS9" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Great brewery with food trucks, massive tree canopy, and plenty of space.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Category Panel 2: Parks & Outdoors -->
+          <div class="spots-category-panel" data-panel="parks-outdoors" style="display: none;">
+            <div class="spots-editorial-list">
+              
+              <!-- 1. Barton Springs Pool -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.austintexas.gov/parks/locations/about-barton-springs-pool" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Barton Springs Pool</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Zilker Park</span>
+                    <a href="https://maps.app.goo.gl/2Pm23iBdrNsgMMR37" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Historic natural spring-fed pool that stays 68° year-round.</p>
+              </div>
+
+              <!-- 2. Lady Bird Lake -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.austintexas.gov/parks/locations/lady-bird-lake" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Lady Bird Lake</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Downtown</span>
+                    <a href="https://maps.app.goo.gl/3iccE6WRLtp7NJrx7" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Ideal spot for kayaking, paddleboarding, or a stroll along the Ann &amp; Roy Butler Hike-and-Bike Trail.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Category Panel 3: Sights & Culture -->
+          <div class="spots-category-panel" data-panel="sights-culture" style="display: none;">
+            <div class="spots-editorial-list">
+              
+              <!-- 1. Blanton Museum of Art -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://blantonmuseum.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Blanton Museum of Art</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">UT Campus</span>
+                    <a href="https://maps.app.goo.gl/dzof1RKfw7CitYq66" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Iconic art museum featuring Ellsworth Kelly's Austin.</p>
+              </div>
+
+              <!-- 2. The Thinkery -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://thinkeryaustin.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>The Thinkery</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Mueller</span>
+                    <a href="https://maps.app.goo.gl/C8gsgnBBM6NP5RK9A" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Interactive discovery museum surrounded by great food and park space.</p>
+              </div>
+
+              <!-- 3. Bats at Congress Ave Bridge -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.austinbats.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Bats at Congress Ave Bridge</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">South Congress</span>
+                    <a href="https://maps.app.goo.gl/3wsqpgujsk5LN8Mm9" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Watch over 1M Mexican free-tailed bats take flight at sunset.</p>
+              </div>
+
+              <!-- 4. Austin Moontowers -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://savingplaces.org/stories/austin-moontowers-by-the-numbers" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Austin Moontowers</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Citywide</span>
+                    <a href="https://maps.app.goo.gl/rFXCBEriNFGkaVyDA" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map ↗
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">The only remaining historic moonlight towers in the world.</p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
       </div>
     </div>
   </div>
@@ -2657,75 +3126,65 @@
       }
 
       // -------------------------------------------------------------
-      // OUR STORY MODAL SCROLLING TIMELINE INTERACTION
-      // - Pop-in and pop-out as user scrolls through milestones
-      // - Pops when scrolling starts, and unpops after passing the final milestone
+      // OUR STORY MODAL TIMELINE
+      // - Uniform presentation with continuous connecting spine
       // -------------------------------------------------------------
       const modalAbout = document.getElementById('modal-about');
       if (modalAbout) {
         const scrollContainer = modalAbout.querySelector('.modal-card-inner') || modalAbout.querySelector('.modal-card');
-        const timelineNodes = modalAbout.querySelectorAll('.timeline-node');
-
-        const updateStoryTimeline = () => {
-          if (!scrollContainer) return;
-          const cardRect = scrollContainer.getBoundingClientRect();
-          const focusLine = cardRect.top + cardRect.height * 0.42;
-
-          const scrollTop = scrollContainer.scrollTop;
-          const scrollHeight = scrollContainer.scrollHeight;
-          const clientHeight = scrollContainer.clientHeight;
-          const isAtBottom = (scrollTop + clientHeight) >= (scrollHeight - 30);
-
-          // If at the very top (before scroll starts), no node is popped
-          if (scrollTop < 15) {
-            timelineNodes.forEach(node => node.classList.remove('is-active'));
-            return;
-          }
-
-          // If scrolled to the bottom / end of modal, last node unpops
-          if (isAtBottom) {
-            timelineNodes.forEach(node => node.classList.remove('is-active'));
-            return;
-          }
-
-          // Determine which single node is closest to the focal line
-          let closestIndex = -1;
-          let minDistance = Infinity;
-
-          timelineNodes.forEach((node, idx) => {
-            const nodeRect = node.getBoundingClientRect();
-            const nodeCenter = nodeRect.top + nodeRect.height * 0.5;
-            const dist = Math.abs(nodeCenter - focusLine);
-
-            if (dist < minDistance) {
-              minDistance = dist;
-              closestIndex = idx;
-            }
-          });
-
-          // Only activate if closest node is within active focal threshold (~115px)
-          timelineNodes.forEach((node, idx) => {
-            if (idx === closestIndex && minDistance < 115) {
-              node.classList.add('is-active');
-            } else {
-              node.classList.remove('is-active');
-            }
-          });
-        };
-
-        if (scrollContainer) {
-          scrollContainer.addEventListener('scroll', updateStoryTimeline, { passive: true });
-        }
-
-        // When Our Story modal opens, reset scroll and trigger initial check
         const storyTriggerItems = document.querySelectorAll('[data-target="modal-about"]');
         storyTriggerItems.forEach(trigger => {
           trigger.addEventListener('click', () => {
             if (scrollContainer) {
               scrollContainer.scrollTop = 0;
             }
-            updateStoryTimeline();
-            setTimeout(updateStoryTimeline, 100);
+          });
+        });
+      }
+
+      // -------------------------------------------------------------
+      // STUFF TO DO MODAL CATEGORY FILTER INTERACTION
+      // - Fast immediate tab switching between categories
+      // - Resets scroll container position to top on tab switch
+      // -------------------------------------------------------------
+      const modalSpots = document.getElementById('modal-spots');
+      if (modalSpots) {
+        const tabButtons = modalSpots.querySelectorAll('.spots-tab-btn');
+        const panels = modalSpots.querySelectorAll('.spots-category-panel');
+        const scrollContainer = modalSpots.querySelector('.spots-cards-scroll');
+
+        tabButtons.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const category = btn.getAttribute('data-category');
+
+            // Update active state on tab buttons
+            tabButtons.forEach(b => {
+              const isCurrent = b === btn;
+              b.classList.toggle('active', isCurrent);
+              b.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+            });
+
+            // Update category panels display
+            panels.forEach(panel => {
+              const matches = panel.getAttribute('data-panel') === category;
+              panel.style.display = matches ? 'block' : 'none';
+            });
+
+            // Reset scroll position on tab switch
+            if (scrollContainer) {
+              scrollContainer.scrollTop = 0;
+            }
+          });
+        });
+
+        // Reset to first tab and scroll top when opening modal
+        const spotsTriggerItems = document.querySelectorAll('[data-target="modal-spots"]');
+        spotsTriggerItems.forEach(trigger => {
+          trigger.addEventListener('click', () => {
+            if (scrollContainer) {
+              scrollContainer.scrollTop = 0;
+            }
           });
         });
       }
