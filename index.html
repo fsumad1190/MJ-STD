@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#F1EBE1" />
+  <meta name="msapplication-navbutton-color" content="#F1EBE1" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
   <title>Save the Date — Mike & Jordan</title>
   <meta name="description" content="Mike & Jordan are getting married on April 24th, 2027 at The Driskill Hotel in Austin, TX." />
   
@@ -161,27 +167,29 @@
 
     html {
       width: 100%;
+      height: 100%;
       min-height: 100%;
+      min-height: -webkit-fill-available;
+      min-height: 100dvh;
+      background-color: #F1EBE1;
+      background: #F1EBE1;
       overflow-x: hidden;
       overflow-y: auto;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       touch-action: pan-y;
       -webkit-text-size-adjust: 100%;
+      padding: 0;
+      margin: 0;
     }
 
     body {
       width: 100%;
       min-height: 100%;
+      min-height: -webkit-fill-available;
+      min-height: 100dvh;
       background-color: #F1EBE1;
-      background-image: 
-        /* Micro tabletop surface grain */
-        url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.038'/%3E%3C/svg%3E"),
-        /* Directional top-left studio key light */
-        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.72) 0%, rgba(255, 252, 245, 0.32) 40%, transparent 75%),
-        /* Directional tabletop wash from upper-left to lower-right */
-        linear-gradient(135deg, #F8F4EB 0%, #EFE8DB 45%, #E3DAC9 85%, #DDD1BF 100%);
-      background-attachment: fixed;
+      background: #F1EBE1;
       color: var(--text-dark);
       font-family: var(--font-soft);
       font-weight: normal;
@@ -190,23 +198,63 @@
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       touch-action: pan-y;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Fixed Full-Bleed Tabletop Canvas Background Layer (Eliminates iOS Safari fixed-background scrolling glitches) */
+    #tabletop-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      width: 100dvw;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      min-height: -webkit-fill-available;
+      background-color: #F1EBE1;
+      background-image: 
+        /* Micro tabletop surface grain */
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.038'/%3E%3C/svg%3E"),
+        /* Directional top-left studio key light */
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.72) 0%, rgba(255, 252, 245, 0.32) 40%, transparent 75%),
+        /* Directional tabletop wash from upper-left to lower-right */
+        linear-gradient(135deg, #F8F4EB 0%, #EFE8DB 45%, #E3DAC9 85%, #DDD1BF 100%);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      pointer-events: none;
+      z-index: 0;
+      transform: translate3d(0, 0, 0);
+      -webkit-transform: translate3d(0, 0, 0);
+      will-change: transform;
     }
 
     /* Scroll Height Spacer for ScrollTrigger Scrubbing */
     #scroll-container {
       height: 420vh;
+      height: 420dvh;
       width: 100%;
       position: relative;
       pointer-events: auto;
     }
 
-    /* Fixed Stage Canvas */
+    /* Fixed Stage Canvas spanning full bleed past Dynamic Island and Home bar */
     #stage {
       position: fixed;
       top: 0;
       left: 0;
+      right: 0;
+      bottom: 0;
       width: 100vw;
+      width: 100dvw;
+      width: 100%;
       height: 100vh;
+      height: 100dvh;
+      min-height: -webkit-fill-available;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -221,7 +269,7 @@
     /* Downward Pointing Arrow Scroll Cue with Stem (no circle, completely under album cover) */
     .scroll-cue-arrow {
       position: fixed;
-      bottom: 1.1rem;
+      bottom: max(1.1rem, calc(0.6rem + env(safe-area-inset-bottom, 0px)));
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -921,7 +969,17 @@
     /* MODAL OVERLAY FOR MENU SECTIONS - AUTHENTIC LINER NOTES INSERT AESTHETIC */
     .modal-overlay {
       position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       inset: 0;
+      width: 100vw;
+      width: 100dvw;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      min-height: -webkit-fill-available;
       background: rgba(14, 13, 12, 0.72);
       backdrop-filter: blur(10px) brightness(0.88);
       -webkit-backdrop-filter: blur(10px) brightness(0.88);
@@ -933,7 +991,7 @@
       visibility: hidden;
       pointer-events: none;
       transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.35s;
-      padding: 1.25rem;
+      padding: max(1.25rem, env(safe-area-inset-top, 0px)) max(1.25rem, env(safe-area-inset-right, 0px)) max(1.25rem, env(safe-area-inset-bottom, 0px)) max(1.25rem, env(safe-area-inset-left, 0px));
     }
 
     .modal-overlay.active {
@@ -948,6 +1006,7 @@
       width: 100%;
       max-width: 540px;
       max-height: 88vh;
+      max-height: 88dvh;
       border-radius: 16px;
       font-family: 'Montserrat', sans-serif;
       /* Heavy Cream Cardstock Paper Texture with Micro-Grain & Lighting Sheen */
@@ -1013,6 +1072,7 @@
       z-index: 1;
       width: 100%;
       max-height: 88vh;
+      max-height: 88dvh;
       overflow-y: auto;
       padding: 2.35rem 2.5rem;
       box-sizing: border-box;
@@ -1394,29 +1454,29 @@
     /* STORY SCROLLING TIMELINE COMPONENT */
     .story-timeline {
       position: relative;
-      margin: 1.85rem 0 0.5rem 0;
-      padding: 0;
+      margin: 2.25rem 0 1.5rem 0;
+      padding: 0.5rem 0;
     }
 
     /* Individual Milestone Node */
     .timeline-node {
       position: relative;
       display: flex;
-      gap: 1.35rem;
+      gap: 1.45rem;
       align-items: center;
-      margin-bottom: 1.85rem;
+      margin-bottom: 2.75rem;
       opacity: 0.55;
-      transform: translateY(5px);
-      transition: opacity 0.35s ease, transform 0.35s ease;
+      transform: translateY(6px) scale(0.97);
+      transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .timeline-node:last-child {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .timeline-node.is-active {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
 
     /* Circular Photo Frame */
@@ -1427,38 +1487,52 @@
     }
 
     .timeline-photo-frame {
-      width: 86px;
-      height: 86px;
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
-      border: 3px solid #E0D7BE;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10), inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+      border: 3px solid #D6CCB2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
       overflow: hidden;
       background: #E8DECC;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+      transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.25);
     }
 
     .timeline-node.is-active .timeline-photo-frame {
-      border-color: #EEBA2B;
-      box-shadow: 
-        0 0 0 3px rgba(238, 186, 43, 0.35),
-        0 8px 24px rgba(238, 186, 43, 0.35),
-        0 4px 12px rgba(0, 0, 0, 0.15);
-      transform: scale(1.06);
+      border-color: #B5A482;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18), inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+      transform: scale(1.10);
     }
 
     .timeline-photo-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      filter: saturate(0.85) sepia(0.12) contrast(1.05);
+      display: block;
+      border-radius: 50%;
+      filter: saturate(0.92) contrast(1.04);
       transition: filter 0.35s ease;
     }
 
+    .timeline-photo-img.img-2017 {
+      object-position: center 22%;
+      transform: scale(1.06);
+    }
+
+    .timeline-photo-img.img-finley {
+      object-position: center 30%;
+      transform: scale(1.08);
+    }
+
+    .timeline-photo-img.img-engaged {
+      object-position: center 18%;
+      transform: scale(1.04);
+    }
+
     .timeline-node.is-active .timeline-photo-img {
-      filter: saturate(1.05) sepia(0) contrast(1.05);
+      filter: saturate(1.02) contrast(1.05);
     }
 
     .timeline-info {
@@ -1513,10 +1587,15 @@
       }
 
       .modal-overlay {
-        padding: 0.85rem 0.65rem;
+        padding: max(0.85rem, env(safe-area-inset-top, 0px)) max(0.65rem, env(safe-area-inset-right, 0px)) max(0.85rem, env(safe-area-inset-bottom, 0px)) max(0.65rem, env(safe-area-inset-left, 0px));
+      }
+
+      .modal-card {
+        max-height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 1.25rem);
       }
 
       .modal-card-inner {
+        max-height: calc(100dvh - env(safe-area-inset-top, 0px) - env(safe-area-inset-bottom, 0px) - 1.25rem);
         padding: 1.75rem 1.35rem;
       }
 
@@ -1643,6 +1722,9 @@
   </style>
 </head>
 <body>
+
+  <!-- Fixed Full-Bleed Tabletop Canvas Background Layer (Eliminates iOS Safari fixed-background scrolling glitches) -->
+  <div id="tabletop-bg" aria-hidden="true"></div>
 
   <!-- Scroll Height Container for GSAP ScrollTrigger Scrubbing -->
   <div id="scroll-container">
@@ -1912,25 +1994,16 @@
         <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 01</span> <span>•</span> <span>OUR STORY</span></div>
         <h2 class="modal-title">Our Story</h2>
         <div class="modal-body">
-          <p style="margin-bottom: 1.5rem;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          <p style="margin-bottom: 1.65rem; font-size: 0.98rem; line-height: 1.7; color: #2D2721;">It all started with beers at the second oldest bar in Chicago. Nearly a decade later, and we're full-on Texans, we've added one very good boy to our family, and next year, we're finally making it official in the city we've come to call home.</p>
           
           <!-- SCROLLING STORYTELLING TIMELINE -->
           <div class="story-timeline" id="story-timeline">
 
-            <!-- 1. Chicago Meet (May 2017) -->
-            <div class="timeline-node is-active" data-index="0">
+            <!-- 1. Chicago Meet (May 2017) -> 2017.png with faces centered -->
+            <div class="timeline-node" data-index="0">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <!-- Retro Illustration Placeholder: Chicago Skyline & Drinks -->
-                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
-                    <rect width="100" height="100" fill="#E8DECC" />
-                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
-                    <!-- Martini / Drinks glass icon -->
-                    <path d="M 32 32 L 68 32 L 50 54 Z" fill="#D49B28" fill-opacity="0.85" />
-                    <line x1="50" y1="54" x2="50" y2="72" stroke="#4A3B22" stroke-width="3.5" stroke-linecap="round" />
-                    <line x1="36" y1="72" x2="64" y2="72" stroke="#4A3B22" stroke-width="3.5" stroke-linecap="round" />
-                    <circle cx="50" cy="40" r="4.5" fill="#55705E" />
-                  </svg>
+                  <img src="/2017.png" alt="Mike & Jordan in Chicago 2017" class="timeline-photo-img img-2017" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
@@ -1939,17 +2012,27 @@
               </div>
             </div>
 
-            <!-- 2. Move to Austin (December 2020) -->
+            <!-- 2. Move to Austin (December 2020) -> Authentic Texas Flag Graphic -->
             <div class="timeline-node" data-index="1">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <!-- Retro Illustration Placeholder: Texas Star & Moving -->
-                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
-                    <rect width="100" height="100" fill="#E8DECC" />
-                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
-                    <!-- Lone Star / Austin Icon -->
-                    <polygon points="50,22 57,38 74,40 61,52 65,69 50,60 35,69 39,52 26,40 43,38" fill="#55705E" />
-                    <circle cx="50" cy="47" r="5" fill="#D49B28" />
+                  <!-- Texas State Flag: Blue vertical stripe on left with lone star, top white stripe, bottom red stripe on right -->
+                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <clipPath id="txFlagClip">
+                      <circle cx="50" cy="50" r="48" />
+                    </clipPath>
+                    <g clip-path="url(#txFlagClip)">
+                      <!-- Right Top: White stripe -->
+                      <rect x="33.33" y="0" width="66.67" height="50" fill="#F8F6F0" />
+                      <!-- Right Bottom: Red stripe -->
+                      <rect x="33.33" y="50" width="66.67" height="50" fill="#BF2E2B" />
+                      <!-- Left: Blue vertical stripe (1/3 width) -->
+                      <rect x="0" y="0" width="33.33" height="100" fill="#1C355E" />
+                      <!-- Lone White Star centered vertically in blue stripe (x = 16.66, y = 50) -->
+                      <polygon points="16.66,35 19.9,44.5 29.8,44.5 21.8,50.3 24.8,59.8 16.66,54 8.5,59.8 11.5,50.3 3.5,44.5 13.4,44.5" fill="#FFFFFF" />
+                      <!-- Inner shadow / antique border ring -->
+                      <circle cx="50" cy="50" r="48" stroke="rgba(0,0,0,0.12)" stroke-width="2" />
+                    </g>
                   </svg>
                 </div>
               </div>
@@ -1959,21 +2042,11 @@
               </div>
             </div>
 
-            <!-- 3. Finley Joins Family (April 2021) -->
+            <!-- 3. Finley Joins Family (April 2021) -> finley.png with dog's face centered -->
             <div class="timeline-node" data-index="2">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <!-- Retro Illustration Placeholder: Puppy / Finley -->
-                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
-                    <rect width="100" height="100" fill="#E8DECC" />
-                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
-                    <!-- Dog Paw / Puppy Icon -->
-                    <ellipse cx="50" cy="58" rx="14" ry="11" fill="#4A3B22" />
-                    <circle cx="34" cy="42" r="6" fill="#4A3B22" />
-                    <circle cx="66" cy="42" r="6" fill="#4A3B22" />
-                    <circle cx="43" cy="34" r="5.5" fill="#4A3B22" />
-                    <circle cx="57" cy="34" r="5.5" fill="#4A3B22" />
-                  </svg>
+                  <img src="/finley.png" alt="Finley" class="timeline-photo-img img-finley" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
@@ -1982,21 +2055,11 @@
               </div>
             </div>
 
-            <!-- 4. Engaged (December 2025) -->
+            <!-- 4. Engaged (December 2025) -> engaged.png with torsos and faces centered -->
             <div class="timeline-node" data-index="3">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <!-- Retro Illustration Placeholder: Engagement Ring -->
-                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
-                    <rect width="100" height="100" fill="#E8DECC" />
-                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
-                    <!-- Diamond Ring Icon -->
-                    <circle cx="50" cy="56" r="16" stroke="#D49B28" stroke-width="4" />
-                    <polygon points="50,26 62,38 38,38" fill="#55705E" stroke="#2C3D32" stroke-width="1.5" />
-                    <line x1="50" y1="20" x2="50" y2="24" stroke="#D49B28" stroke-width="2.5" stroke-linecap="round" />
-                    <line x1="40" y1="23" x2="43" y2="26" stroke="#D49B28" stroke-width="2" stroke-linecap="round" />
-                    <line x1="60" y1="23" x2="57" y2="26" stroke="#D49B28" stroke-width="2" stroke-linecap="round" />
-                  </svg>
+                  <img src="/engaged.png" alt="Engaged in 2025" class="timeline-photo-img img-engaged" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
@@ -2005,21 +2068,50 @@
               </div>
             </div>
 
-            <!-- 5. Getting Married (April 2027) -->
+            <!-- 5. Getting Married (April 2027) -> Classic Tuxedo Shirt with Black Bow Tie & Stud Buttons -->
             <div class="timeline-node" data-index="4">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <!-- Retro Illustration Placeholder: Wedding Bells & Celebration -->
-                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none">
-                    <rect width="100" height="100" fill="#E8DECC" />
-                    <circle cx="50" cy="50" r="46" fill="#F4EDE0" />
-                    <!-- Champagne Flutes Cheers Icon -->
-                    <path d="M 38 30 L 46 48 L 46 64 M 40 64 L 52 64" stroke="#D49B28" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                    <path d="M 62 30 L 54 48 L 54 64 M 48 64 L 60 64" stroke="#D49B28" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
-                    <!-- Sparkles -->
-                    <circle cx="50" cy="24" r="3" fill="#EEBA2B" />
-                    <circle cx="36" cy="22" r="2" fill="#EEBA2B" />
-                    <circle cx="64" cy="22" r="2" fill="#EEBA2B" />
+                  <svg class="timeline-photo-img" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <clipPath id="tuxedoClip">
+                      <circle cx="50" cy="50" r="48" />
+                    </clipPath>
+                    <g clip-path="url(#tuxedoClip)">
+                      <!-- Crisp Pleated Tuxedo Shirt Background -->
+                      <rect width="100" height="100" fill="#FDFBF7" />
+                      <!-- Vertical Shirt Placket & Pleats -->
+                      <line x1="38" y1="0" x2="38" y2="100" stroke="#EAE4D5" stroke-width="1.2" stroke-dasharray="2,2" />
+                      <line x1="44" y1="0" x2="44" y2="100" stroke="#E5DEC9" stroke-width="1.5" />
+                      <line x1="56" y1="0" x2="56" y2="100" stroke="#E5DEC9" stroke-width="1.5" />
+                      <line x1="62" y1="0" x2="62" y2="100" stroke="#EAE4D5" stroke-width="1.2" stroke-dasharray="2,2" />
+                      
+                      <!-- Tuxedo Stud Buttons (black with gold outer rim) -->
+                      <!-- Button 1 -->
+                      <circle cx="50" cy="54" r="3.6" fill="#1C1917" stroke="#CCA030" stroke-width="1.2" />
+                      <!-- Button 2 -->
+                      <circle cx="50" cy="72" r="3.6" fill="#1C1917" stroke="#CCA030" stroke-width="1.2" />
+                      <!-- Button 3 -->
+                      <circle cx="50" cy="90" r="3.6" fill="#1C1917" stroke="#CCA030" stroke-width="1.2" />
+
+                      <!-- Wingtip Tuxedo Collar Tips -->
+                      <polygon points="34,16 50,30 42,32" fill="#F5F0E4" stroke="#D6CCB2" stroke-width="1" />
+                      <polygon points="66,16 50,30 58,32" fill="#F5F0E4" stroke="#D6CCB2" stroke-width="1" />
+
+                      <!-- Classic Black Satin Bow Tie -->
+                      <!-- Left Bow Wing -->
+                      <polygon points="50,25 24,14 26,36" fill="#1C1917" stroke="#0D0B0A" stroke-width="0.8" />
+                      <polygon points="50,25 28,17 30,33" fill="#292524" />
+                      <!-- Right Bow Wing -->
+                      <polygon points="50,25 76,14 74,36" fill="#1C1917" stroke="#0D0B0A" stroke-width="0.8" />
+                      <polygon points="50,25 72,17 70,33" fill="#292524" />
+                      <!-- Center Bow Tie Knot with gold highlight gleam -->
+                      <rect x="45.5" y="19.5" width="9" height="11" rx="2.5" fill="#1C1917" stroke="#0D0B0A" stroke-width="0.8" />
+                      <ellipse cx="50" cy="25" rx="3.5" ry="4.5" fill="#2D2824" />
+                      <line x1="48" y1="21" x2="48" y2="29" stroke="#3E3832" stroke-width="1" />
+
+                      <!-- Outer soft vintage rim -->
+                      <circle cx="50" cy="50" r="48" stroke="rgba(0,0,0,0.14)" stroke-width="2" />
+                    </g>
                   </svg>
                 </div>
               </div>
@@ -2031,7 +2123,7 @@
 
           </div><!-- /story-timeline -->
 
-          <p style="margin-top: 1.5rem;">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <p style="margin-top: 1.85rem; margin-bottom: 2.5rem; font-size: 0.98rem; line-height: 1.7; color: #2D2721; font-weight: 500;">We're glad you're here, and we can't wait to celebrate with y'all in Austin.</p>
         </div>
       </div>
     </div>
