@@ -256,8 +256,8 @@
 
     /* Scroll Height Spacer for ScrollTrigger Scrubbing */
     #scroll-container {
-      height: 420vh;
-      height: 420dvh;
+      height: 220vh;
+      height: 220dvh;
       width: 100%;
       position: relative;
       pointer-events: auto;
@@ -2514,6 +2514,16 @@
       filter: saturate(1.02) contrast(1.04);
     }
 
+    .timeline-photo-img.img-kaceys {
+      object-position: center center;
+      transform: scale(1.04);
+    }
+
+    .timeline-photo-img.img-graduation {
+      object-position: center 25%;
+      transform: scale(1.08);
+    }
+
     .timeline-photo-img.img-2017 {
       object-position: center 22%;
       transform: scale(1.06);
@@ -2921,39 +2931,39 @@
 
 
                 <!-- -------------------------------------------------------------
-                     COLUMN B: "SIDE B" HEADER & MENU ITEMS (Right side arc)
+                     COLUMN B: "SIDE B" HEADER & MENU ITEMS (Right side arc - Tighter Spacing)
                      ------------------------------------------------------------- -->
 
-                <!-- Header: SIDE B (y=278, x=675 - sitting 60px above Item 5) -->
+                <!-- Header: SIDE B (y=310, x=675 - sitting 66px above Item 5) -->
                 <g id="header-side-b">
-                  <!-- Pill container centered around x=675, y=278 -->
-                  <rect class="label-menu-header-pill" x="605" y="260" width="140" height="36" />
-                  <text class="label-menu-header" x="675" y="278" text-anchor="middle">SIDE B</text>
+                  <!-- Pill container centered around x=675, y=310 -->
+                  <rect class="label-menu-header-pill" x="605" y="292" width="140" height="36" />
+                  <text class="label-menu-header" x="675" y="310" text-anchor="middle">SIDE B</text>
                 </g>
 
-                <!-- 5. Schedule (Row 1: y=338, shifted 40px left to x=665) - Disabled/Coming Soon -->
+                <!-- 5. Schedule (Row 1: y=376, shifted 40px left to x=665) - Disabled/Coming Soon -->
                 <g id="schedule-item-group" tabindex="0" role="button" aria-label="5. Schedule - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
-                  <text class="label-menu-item right-col item-dead" x="665" y="338" text-anchor="middle">5. Schedule</text>
+                  <text class="label-menu-item right-col item-dead" x="665" y="376" text-anchor="middle">5. Schedule</text>
                   <!-- Hover Tooltip overlay: explicit SVG coordinates -->
                   <g class="label-tooltip">
-                    <rect class="label-tooltip-rect" x="575" y="317" width="180" height="42" />
-                    <text class="label-tooltip-text" x="665" y="338">Coming Soon</text>
+                    <rect class="label-tooltip-rect" x="575" y="355" width="180" height="42" />
+                    <text class="label-tooltip-text" x="665" y="376">Coming Soon</text>
                   </g>
                 </g>
 
-                <!-- 6. Registry (Row 2: y=446, shifted 40px left to x=740) -->
-                <text class="label-menu-item right-col" data-target="modal-registry" x="740" y="446" text-anchor="middle">6. Registry</text>
+                <!-- 6. Registry (Row 2: y=458, shifted 40px left to x=740) -->
+                <text class="label-menu-item right-col" data-target="modal-registry" x="740" y="458" text-anchor="middle">6. Registry</text>
 
-                <!-- 7. FAQ (Row 3: y=554, shifted 60px left to x=720) -->
-                <text class="label-menu-item right-col" data-target="modal-faq" x="720" y="554" text-anchor="middle">7. FAQ</text>
+                <!-- 7. FAQ (Row 3: y=540, shifted 60px left to x=720) -->
+                <text class="label-menu-item right-col" data-target="modal-faq" x="720" y="540" text-anchor="middle">7. FAQ</text>
 
-                <!-- 8. RSVP (Row 4: y=662, shifted 40px left to x=665) - Disabled/Coming Soon -->
+                <!-- 8. RSVP (Row 4: y=622, shifted 40px left to x=665) - Disabled/Coming Soon -->
                 <g id="rsvp-item-group" tabindex="0" role="button" aria-label="8. RSVP - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
-                  <text class="label-menu-item right-col item-dead" x="665" y="662" text-anchor="middle">8. RSVP</text>
+                  <text class="label-menu-item right-col item-dead" x="665" y="622" text-anchor="middle">8. RSVP</text>
                   <!-- Hover Tooltip overlay: explicit SVG coordinates -->
                   <g class="label-tooltip">
-                    <rect class="label-tooltip-rect" x="575" y="641" width="180" height="42" />
-                    <text class="label-tooltip-text" x="665" y="662">Coming Soon</text>
+                    <rect class="label-tooltip-rect" x="575" y="601" width="180" height="42" />
+                    <text class="label-tooltip-text" x="665" y="622">Coming Soon</text>
                   </g>
                 </g>
 
@@ -2981,7 +2991,7 @@
 
         <!-- SLEEVE FRONT COVER (z-index: 10, sits in front of vinyl-record with notch cutout) -->
         <div class="sleeve-front">
-          <img id="sleeve-cover-image" src="./Weston-4.png" alt="Mike & Jordan Album Cover" class="sleeve-photo" referrerPolicy="no-referrer" />
+          <img id="sleeve-cover-image" src="https://www.brammermiller.com/assets/Weston-4-Xn9Jxyem.png" alt="Mike & Jordan Album Cover" class="sleeve-photo" referrerPolicy="no-referrer" />
         </div><!-- /sleeve-front -->
 
       </div><!-- /scene-group -->
@@ -3002,68 +3012,81 @@
           <!-- SCROLLING STORYTELLING TIMELINE -->
           <div class="story-timeline" id="story-timeline">
 
-            <!-- 1. Chicago Meet (May 2017) -> 2017.png with faces centered -->
+            <!-- 1. Chicago Meet (May 2017) -> kaceys tavern.png -->
             <div class="timeline-node" data-index="0">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="./2017.png" alt="Met for a drink at Kasey's Tavern in Chicago" class="timeline-photo-img img-2017" referrerPolicy="no-referrer" />
+                  <img src="./kaceys tavern.png" alt="Mike and Jordan first meet for a drink at Kasey's Tavern in Chicago, IL" class="timeline-photo-img img-kaceys" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">May 2017</span>
-                <h3 class="timeline-heading">Met for a drink at Kasey’s Tavern in Chicago</h3>
+                <h3 class="timeline-heading">Mike and Jordan first meet for a drink at Kasey's Tavern in Chicago, IL</h3>
               </div>
             </div>
 
-            <!-- 2. Move to Austin (December 2020) -> atx.jpeg with Austin skyline -->
+            <!-- 2. Grad School & Ravenswood (Spring 2020) -> graduation.png -->
             <div class="timeline-node" data-index="1">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="./atx.jpeg" alt="Packed up and relocated to Austin, TX" class="timeline-photo-img img-atx" referrerPolicy="no-referrer" />
+                  <img src="./graduation.png" alt="Mike graduates grad school, and we move in together in Ravenswood" class="timeline-photo-img img-graduation" referrerPolicy="no-referrer" />
+                </div>
+              </div>
+              <div class="timeline-info">
+                <span class="timeline-date-badge">Spring 2020</span>
+                <h3 class="timeline-heading">Mike graduates grad school, and we move in together in Ravenswood</h3>
+              </div>
+            </div>
+
+            <!-- 3. Move to Austin (December 2020) -> atx.jpeg with Austin skyline -->
+            <div class="timeline-node" data-index="2">
+              <div class="timeline-frame-wrap">
+                <div class="timeline-photo-frame">
+                  <img src="https://www.brammermiller.com/assets/atx-C2r_DPoN.jpeg" alt="We pack up our things and head down south to Austin, TX" class="timeline-photo-img img-atx" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">December 2020</span>
-                <h3 class="timeline-heading">Packed up and relocated to Austin, TX</h3>
+                <h3 class="timeline-heading">We pack up our things and head down south to Austin, TX</h3>
               </div>
             </div>
 
-            <!-- 3. Adopted Finley (March 2021) -> finley.png with dog's face centered -->
-            <div class="timeline-node" data-index="2">
+            <!-- 4. Adopted Finley (March 2021) -> finley.png with dog's face centered -->
+            <div class="timeline-node" data-index="3">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="./finley.png" alt="Finley" class="timeline-photo-img img-finley" referrerPolicy="no-referrer" />
+                  <img src="https://www.brammermiller.com/assets/finley-7OhjYGlx.png" alt="We adopt Finley" class="timeline-photo-img img-finley" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">March 2021</span>
-                <h3 class="timeline-heading">Adopted Finley</h3>
+                <h3 class="timeline-heading">We adopt Finley</h3>
               </div>
             </div>
 
-            <!-- 4. Engaged (December 2025) -> engaged.png with torsos and faces centered -->
-            <div class="timeline-node" data-index="3">
+            <!-- 5. Engaged (December 2025) -> engaged.png with torsos and faces centered -->
+            <div class="timeline-node" data-index="4">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="./engaged.png" alt="Engaged in 2025" class="timeline-photo-img img-engaged" referrerPolicy="no-referrer" />
+                  <img src="https://www.brammermiller.com/assets/engaged-LwnPPT6U.png" alt="We get engaged in Texas via mutual proposal" class="timeline-photo-img img-engaged" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">December 2025</span>
-                <h3 class="timeline-heading">Got engaged in Texas via mutual proposal</h3>
+                <h3 class="timeline-heading">We get engaged in Texas via mutual proposal</h3>
               </div>
             </div>
 
-            <!-- 5. Getting Married (April 24th, 2027) -> Driskill.jpg -->
-            <div class="timeline-node" data-index="4">
+            <!-- 6. Getting Married (April 24th, 2027) -> Driskill.jpg -->
+            <div class="timeline-node" data-index="5">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="./Driskill.jpg" alt="Getting married at The Driskill" class="timeline-photo-img img-driskill" referrerPolicy="no-referrer" />
+                  <img src="https://www.brammermiller.com/assets/Driskill-B_gHX-26.jpg" alt="We're getting married in Austin; we can't wait to see you there!" class="timeline-photo-img img-driskill" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">April 24th, 2027</span>
-                <h3 class="timeline-heading">Getting married in Austin; we can't wait to see you there!</h3>
+                <h3 class="timeline-heading">We're getting married in Austin; we can't wait to see you there!</h3>
               </div>
             </div>
 
@@ -3099,7 +3122,7 @@
             <!-- Article Title Photo Frame -->
             <div class="driskill-photo-card">
               <div class="driskill-photo-frame">
-                <img src="./usa-driskill-hotel-2.webp" alt="The Historic Driskill Hotel" class="driskill-article-img" referrerPolicy="no-referrer" />
+                <img src="https://www.brammermiller.com/assets/usa-driskill-hotel-2-C4SsgBt9.webp" alt="The Historic Driskill Hotel" class="driskill-article-img" referrerPolicy="no-referrer" />
               </div>
               <div class="driskill-photo-link-wrap">
                 <a href="https://driskillhotel.com" target="_blank" rel="noopener noreferrer" class="driskill-website-subtle-link">
@@ -3797,7 +3820,7 @@
                 <p>Call, text, or email either Mike or Jordan for any questions!</p>
                 <div class="faq-contact-card">
                   <div class="faq-contact-row">
-                    Mike: <a href="mailto:mikegmiller11@gmail.com">mikegmiller11@gmail.com</a>; <a href="tel:3127994553">312 799 4553</a>
+                    Mike: <a href="mailto:mikegmiller11@gmail.com">mikegmiller11@gmail.com</a>; <a href="tel:3147994553">314 799 4553</a>
                   </div>
                   <div class="faq-contact-row">
                     Jordan: <a href="mailto:jordanlbrammer@gmail.com">jordanlbrammer@gmail.com</a>; <a href="tel:7277417929">727 741 7929</a>
@@ -3822,7 +3845,7 @@
       labelZoomLevel: 3.0, // Record label fills viewport, vinyl edges spill out
       labelLingerDuration: 0.3,
       recordBottomAnchorOffset: "100vh",
-      totalRotationDegrees: 720,
+      totalRotationDegrees: 180,
       menuArcRadius: "42vw"
     };
 
@@ -3850,7 +3873,7 @@
       if (scrollCueArrow) {
         scrollCueArrow.addEventListener('click', () => {
           window.scrollTo({
-            top: window.innerHeight * 1.5,
+            top: window.innerHeight * 1.0,
             behavior: 'smooth'
           });
         });
@@ -3889,8 +3912,8 @@
         return Math.min(Math.max(scale, 1.2), 12.0);
       }
 
-      // Initial record state: starts at 0° upright
-      gsap.set(vinylRecord, { rotation: 0, force3D: false });
+      // Initial record state: starts at 180° orientation (spins 180° CCW into 0° horizontal upright)
+      gsap.set(vinylRecord, { rotation: 180, force3D: false });
       gsap.set(sceneGroup, { force3D: false });
       if (vinylSheen) gsap.set(vinylSheen, { rotation: 0, force3D: false });
       if (vinylGlint) gsap.set(vinylGlint, { rotation: 0, force3D: false });
@@ -3901,7 +3924,7 @@
           trigger: "#scroll-container",
           start: "top top",
           end: "bottom bottom",
-          scrub: 0.9,
+          scrub: 0.8,
           invalidateOnRefresh: true,
           onUpdate: (self) => {
             // Hide scroll cue on initial scroll
@@ -3926,7 +3949,7 @@
       // PHASE 1: SLEEVE EXITS OUT THE TOP & CAMERA ZOOMS IN ON RECORD LABEL
       // - Fast & Responsive: Sleeve exits briskly out the top with zero lag
       // - Subtle Tactile Lift: Crisp micro-tilt (+0.25° / -0.20°) during initial lift-off
-      // - Record starts at 0° and spins a full 360° counter-clockwise 0° -> -360° (upright orientation)
+      // - Record starts at 180° and spins 180° counter-clockwise into 0° (horizontal upright orientation)
       // - Dynamic specular light dances and sweeps across spinning grooves
       // - Camera (sceneGroup) zooms in smoothly ending with record label centered (x: 0, y: 0)
       // -------------------------------------------------------------
@@ -3946,9 +3969,9 @@
         force3D: false
       }, 0)
       .fromTo(vinylRecord, {
-        rotation: 0
+        rotation: 180
       }, {
-        rotation: -360, // Full 360° counter-clockwise spin ending upright at 0°
+        rotation: 0, // 180° counter-clockwise spin ending upright and horizontal at 0°
         ease: "power1.inOut",
         duration: phase1Duration,
         force3D: false
@@ -3957,7 +3980,7 @@
         rotation: 0,
         opacity: 0.45
       }, {
-        rotation: 140, // Prismatic light sweeps across spinning grooves as vinyl rotates
+        rotation: 70, // Prismatic light sweeps across spinning grooves as vinyl rotates
         opacity: 0.85,
         ease: "power1.inOut",
         duration: phase1Duration,
@@ -3966,7 +3989,7 @@
       .fromTo(vinylSheen, {
         rotation: -6
       }, {
-        rotation: 8, // Subtle organic light shift anchoring to top-left key light
+        rotation: 6, // Subtle organic light shift anchoring to top-left key light
         ease: "sine.inOut",
         duration: phase1Duration,
         force3D: false
@@ -4049,6 +4072,16 @@
       });
 
       modalOverlays.forEach(overlay => {
+        const modalCard = overlay.querySelector('.modal-card');
+        if (modalCard) {
+          modalCard.addEventListener('pointerdown', (e) => {
+            e.stopPropagation();
+          });
+          modalCard.addEventListener('click', (e) => {
+            e.stopPropagation();
+          });
+        }
+
         const closeBtn = overlay.querySelector('.modal-close');
         if (closeBtn) {
           closeBtn.addEventListener('click', (e) => {
@@ -4056,10 +4089,17 @@
             closeModal(overlay);
           });
         }
+
+        let isBackdropPointerDown = false;
+        overlay.addEventListener('pointerdown', (e) => {
+          isBackdropPointerDown = (e.target === overlay);
+        });
+
         overlay.addEventListener('click', (e) => {
-          if (e.target === overlay) {
+          if (e.target === overlay && isBackdropPointerDown) {
             closeModal(overlay);
           }
+          isBackdropPointerDown = false;
         });
       });
 
