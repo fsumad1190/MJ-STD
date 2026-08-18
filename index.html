@@ -2290,10 +2290,12 @@
 
     .driskill-booking-desc {
       font-family: 'Montserrat', sans-serif;
-      font-size: 0.88rem;
-      line-height: 1.6;
-      color: #3A352F;
+      font-size: 0.95rem;
+      line-height: 1.72;
+      color: #2D2824;
+      font-weight: 500;
       margin-bottom: 1.25rem;
+      text-rendering: geometricPrecision;
     }
 
     @media (max-width: 640px) {
@@ -3083,7 +3085,7 @@
           <div class="driskill-tabs" role="tablist" aria-label="The Driskill Details">
             <button class="driskill-tab-btn active" data-tab="hotel" role="tab" aria-selected="true">Hotel Overview</button>
             <button class="driskill-tab-btn" data-tab="location" role="tab" aria-selected="false">Location</button>
-            <button class="driskill-tab-btn" data-tab="booking" role="tab" aria-selected="false">Book Your Room</button>
+            <button class="driskill-tab-btn" data-tab="booking" role="tab" aria-selected="false">Room Block</button>
           </div>
         </div>
 
@@ -3557,7 +3559,7 @@
             </div>
 
             <div class="driskill-contact-help" style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed rgba(91, 117, 102, 0.25);">
-              <p style="font-family: 'Montserrat', sans-serif; font-size: 0.88rem; line-height: 1.6; color: #2D2824; font-weight: 500; margin-bottom: 0.85rem;">
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.72; color: #2D2824; font-weight: 500; margin-bottom: 0.85rem;">
                 Having trouble with the booking link or your reservation? Give either of us a call or text and we'll help get it sorted:
               </p>
               <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: #1F2923; display: flex; flex-direction: column; gap: 0.4rem;">
@@ -3569,7 +3571,7 @@
 
           <!-- Tab Panel 2: Other Hotels Nearby -->
           <div class="stay-tab-panel" data-panel="other-hotels" style="display: none;">
-            <p class="driskill-booking-desc" style="margin-bottom: 1.15rem; font-size: 0.88rem; line-height: 1.6; color: #2D2824;">
+            <p class="driskill-booking-desc" style="margin-bottom: 1.15rem;">
               While we're only holding a room block at the Driskill, there are plenty of other hotels and rentals nearby. Here are a few options within walking distance:
             </p>
             <div class="spots-editorial-list">
@@ -3634,7 +3636,27 @@
                 <p class="spots-entry-blurb">Centrally located downtown hotel offering full amenities, multiple on-site restaurants, a spa, and an outdoor pool deck.</p>
               </div>
 
-              <!-- 4. Airbnb / Vacation Rentals in Austin -->
+              <!-- 4. JW Marriott Austin -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.marriott.com/en-us/hotels/ausjw-jw-marriott-austin/overview/" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>JW Marriott Austin</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">4 Blocks Away</span>
+                    <a href="https://maps.google.com/?q=JW+Marriott+Austin,+110+E+2nd+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Upscale downtown hotel featuring a rooftop pool and cabana bar, on-site Italian steakhouse, and full-service spa.</p>
+              </div>
+
+              <!-- 5. Airbnb / Vacation Rentals in Austin -->
               <div class="spots-entry-row" style="background: rgba(91, 117, 102, 0.05); border: 1px dashed rgba(91, 117, 102, 0.3); border-radius: 8px; padding: 1rem 1.15rem; margin-top: 0.5rem;">
                 <div class="spots-entry-top">
                   <a href="https://www.airbnb.com/s/Austin--TX/homes" target="_blank" rel="noopener noreferrer" class="spots-entry-title" style="color: #C86446;">
