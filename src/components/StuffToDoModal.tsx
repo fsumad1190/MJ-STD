@@ -57,11 +57,11 @@ export const StuffToDoModal: React.FC<StuffToDoModalProps> = ({ isOpen, onClose 
             Stuff to Do
           </h2>
           <p className="text-sm text-[#2D2824]/80 mt-1 font-sans leading-relaxed max-w-xl">
-            A curated editorial directory of our favorite neighborhood spots, coffee, eats, and Austin staples to explore:
+            A few of our favorite spots around Austin to explore:
           </p>
 
           {/* Refined Midcentury Category Tabs */}
-          <div className="flex items-center gap-1.5 sm:gap-2 mt-5 pt-1 overflow-x-auto no-scrollbar border-b border-[#5B7566]/20">
+          <div className="flex items-center gap-1.5 sm:gap-2 mt-5 pt-1 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden touch-pan-x overscroll-contain border-b border-[#5B7566]/20">
             {categories.map((cat) => {
               const isActive = activeCategory === cat;
               return (

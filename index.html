@@ -987,12 +987,13 @@
         drop-shadow(0 0 40px rgba(238, 186, 43, 0.75));
     }
 
-    /* Global Modal Open Scroll Lock & Background Event Isolation */
+    /* Global Modal Open Scroll Lock & Background Event Isolation
+       NOTE: We avoid setting overflow: hidden on html/body to prevent browsers
+       from resetting window.scrollY and collapsing GSAP ScrollTrigger timeline. */
     html.modal-open,
     body.modal-open {
-      overflow: hidden !important;
-      touch-action: none !important;
-      -webkit-overflow-scrolling: auto !important;
+      /* Keep document dimensions intact to preserve window.scrollY */
+      -webkit-overflow-scrolling: touch;
     }
 
     body.modal-open #stage,
@@ -1262,6 +1263,160 @@
       text-rendering: geometricPrecision;
     }
 
+    /* FAQ List Layout & Typography */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+      padding-top: 0.35rem;
+      padding-bottom: 1rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(91, 117, 102, 0.20);
+      padding-bottom: 1.35rem;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0.25rem;
+    }
+
+    .faq-q {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      color: #1F2923;
+      margin-bottom: 0.45rem;
+      line-height: 1.32;
+    }
+
+    .faq-a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      color: #2D2824;
+      line-height: 1.68;
+      font-weight: 400;
+    }
+
+    .faq-a p {
+      margin-bottom: 0.75rem;
+    }
+
+    .faq-a p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-inline-link {
+      color: #A6472D;
+      text-decoration: underline;
+      font-weight: 700;
+      transition: color 0.18s ease;
+      cursor: pointer;
+    }
+
+    .faq-inline-link:hover {
+      color: #7D2B16;
+    }
+
+    .faq-contact-card {
+      background: #F2EADA;
+      border: 1px solid rgba(91, 117, 102, 0.25);
+      border-radius: 8px;
+      padding: 0.95rem 1.15rem;
+      margin-top: 0.65rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .faq-contact-row {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      color: #1F2923;
+      font-weight: 700;
+    }
+
+    .faq-contact-row a {
+      color: #A6472D;
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.18s ease;
+    }
+
+    .faq-contact-row a:hover {
+      text-decoration: underline;
+      color: #7D2B16;
+    }
+
+    /* Registry Placeholder Link Cards */
+    .registry-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      padding-top: 0.35rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .registry-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.15rem 1.35rem;
+      background: #F2EADA;
+      border: 1px solid rgba(91, 117, 102, 0.25);
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .registry-card:hover {
+      background: #ECE3D0;
+      border-color: rgba(91, 117, 102, 0.45);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .registry-card-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .registry-vendor-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #5B7566;
+    }
+
+    .registry-vendor-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      color: #1F2923;
+      margin: 0;
+    }
+
+    .registry-link-arrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: #C86446;
+      line-height: 1;
+      display: inline-block;
+      transition: transform 0.2s ease;
+    }
+
+    .registry-card:hover .registry-link-arrow {
+      transform: translateX(5px);
+    }
+
     .primary-btn {
       display: inline-block;
       width: 100%;
@@ -1491,33 +1646,6 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 12px rgba(238, 186, 43, 0.25);
     }
 
-    /* ============================================================= */
-    /* RETRO VINYL / CASSETTE "STUFF TO DO" MODAL STYLING            */
-    /* ============================================================= */
-    #modal-spots .modal-card {
-      max-width: 680px;
-      background: #F6F4EB;
-      border: 2px solid #3A4D39;
-      box-shadow: 6px 6px 0px 0px #3A4D39, 0 25px 60px -12px rgba(26, 22, 18, 0.45);
-    }
-
-    #modal-spots .modal-card-inner {
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      max-height: 88dvh;
-      overflow: hidden;
-    }
-
-    .spots-header-fixed {
-      padding: 2.2rem 2.2rem 1.15rem 2.2rem;
-      background: #F6F4EB;
-      border-bottom: 1.5px solid rgba(58, 77, 57, 0.22);
-      flex-shrink: 0;
-      position: relative;
-      z-index: 10;
-    }
-
     /* =============================================================
        STUFF TO DO / AUSTIN GUIDE - BESPOKE MIDCENTURY EDITORIAL DIRECTORY
        ============================================================= */
@@ -1526,12 +1654,31 @@
       background: #F7F4EB;
       border: 1px solid rgba(91, 117, 102, 0.25);
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      max-height: 88vh;
+      max-height: 88dvh;
+    }
+
+    #modal-spots .modal-card-inner {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      max-height: 88vh;
+      max-height: 88dvh;
+      overflow: hidden;
     }
 
     .spots-header-fixed {
-      padding: 2.25rem 2.25rem 0.85rem 2.25rem;
-      border-bottom: 1px solid rgba(91, 117, 102, 0.16);
+      padding: 2.25rem 2.25rem 0 2.25rem;
+      border-bottom: none;
       background: #F7F4EB;
+      flex-shrink: 0;
+      overflow: hidden;
     }
 
     .spots-header-badge {
@@ -1577,8 +1724,17 @@
       align-items: center;
       border-bottom: 1px solid rgba(91, 117, 102, 0.20);
       margin-top: 0.25rem;
+      margin-bottom: 0;
       overflow-x: auto;
-      no-scrollbar: true;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      touch-action: pan-x;
+      overscroll-behavior: contain;
+    }
+
+    .spots-tabs::-webkit-scrollbar {
+      display: none;
     }
 
     .spots-tab-btn {
@@ -1622,7 +1778,534 @@
       flex: 1;
       overflow-y: auto;
       overscroll-behavior: contain;
-      padding: 0.75rem 2.25rem 2rem 2.25rem;
+      padding: 1.25rem 2.25rem 2.25rem 2.25rem;
+    }
+
+    /* =============================================================
+       THE DRISKILL & WHERE TO STAY & AUSTIN GUIDE TABBED DIRECTORIES
+       ============================================================= */
+    #modal-driskill .modal-card,
+    #modal-spots .modal-card,
+    #modal-stay .modal-card {
+      max-width: 640px;
+      background: #F7F4EB;
+      border: 1px solid rgba(91, 117, 102, 0.25);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      max-height: 88vh;
+      max-height: 88dvh;
+    }
+
+    #modal-driskill .modal-card-inner,
+    #modal-spots .modal-card-inner,
+    #modal-stay .modal-card-inner {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 0;
+      max-height: 88vh;
+      max-height: 88dvh;
+      overflow: hidden;
+    }
+
+    .stay-header-fixed {
+      padding: 2.25rem 2.25rem 0 2.25rem;
+      border-bottom: none;
+      background: #F7F4EB;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .stay-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.15rem;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      color: #1F2923;
+      line-height: 1.12;
+      margin-bottom: 0.35rem;
+    }
+
+    .stay-intro {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      color: #3A352F;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      max-width: 540px;
+    }
+
+    .stay-tabs {
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+      border-bottom: 1px solid rgba(91, 117, 102, 0.20);
+      margin-top: 0.25rem;
+      margin-bottom: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      touch-action: pan-x;
+      overscroll-behavior: contain;
+    }
+
+    .stay-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .stay-tab-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.55rem 0.95rem 0.75rem 0.95rem;
+      border: none;
+      background: transparent;
+      color: #5B7566;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.18s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .stay-tab-btn:hover {
+      color: #1F2923;
+    }
+
+    .stay-tab-btn.active {
+      color: #C86446;
+      font-weight: 800;
+    }
+
+    .stay-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2.5px;
+      background: #C86446;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .stay-cards-scroll {
+      flex: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 1.25rem 2.25rem 2.25rem 2.25rem;
+    }
+
+    @media (max-width: 640px) {
+      .stay-header-fixed {
+        padding: 1.6rem 1.4rem 0 1.4rem;
+      }
+      .stay-title {
+        font-size: 1.75rem;
+      }
+      .stay-cards-scroll {
+        padding: 1rem 1.4rem 1.75rem 1.4rem;
+      }
+    }
+
+    .driskill-header-fixed {
+      padding: 2.25rem 2.25rem 0 2.25rem;
+      border-bottom: none;
+      background: #F7F4EB;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+
+    .driskill-header-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 3px 9px;
+      background: rgba(91, 117, 102, 0.08);
+      border: 1px solid rgba(91, 117, 102, 0.22);
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      color: #3D5244;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .driskill-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2.15rem;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      color: #1F2923;
+      line-height: 1.12;
+      margin-bottom: 0.35rem;
+    }
+
+    .driskill-intro {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      color: #3A352F;
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      max-width: 540px;
+    }
+
+    .driskill-tabs {
+      display: flex;
+      gap: 0.35rem;
+      align-items: center;
+      border-bottom: 1px solid rgba(91, 117, 102, 0.20);
+      margin-top: 0.25rem;
+      margin-bottom: 0;
+      overflow-x: auto;
+      overflow-y: hidden;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      touch-action: pan-x;
+      overscroll-behavior: contain;
+    }
+
+    .driskill-tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .driskill-tab-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.55rem 0.95rem 0.75rem 0.95rem;
+      border: none;
+      background: transparent;
+      color: #5B7566;
+      cursor: pointer;
+      position: relative;
+      transition: color 0.18s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+
+    .driskill-tab-btn:hover {
+      color: #1F2923;
+    }
+
+    .driskill-tab-btn.active {
+      color: #C86446;
+      font-weight: 800;
+    }
+
+    .driskill-tab-btn.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2.5px;
+      background: #C86446;
+      border-radius: 2px 2px 0 0;
+    }
+
+    .driskill-cards-scroll {
+      flex: 1;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      padding: 1.25rem 2.25rem 2.25rem 2.25rem;
+    }
+
+    /* Editorial Photo Card with Art Gallery Matting & Shadow */
+    .driskill-photo-card {
+      background: #EFE9D9;
+      border: 1px solid rgba(91, 117, 102, 0.28);
+      border-radius: 12px;
+      padding: 7px;
+      box-shadow: 
+        0 14px 34px -8px rgba(26, 22, 18, 0.22),
+        0 4px 10px rgba(0, 0, 0, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      margin-bottom: 1.35rem;
+    }
+
+    .driskill-photo-frame {
+      width: 100%;
+      height: 250px;
+      border-radius: 7px;
+      overflow: hidden;
+      border: 1px solid rgba(91, 117, 102, 0.20);
+      background: #202A24;
+      position: relative;
+    }
+
+    .driskill-article-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 42%;
+      display: block;
+      filter: saturate(1.05) contrast(1.02);
+      transform: scale(0.92);
+      transform-origin: center center;
+    }
+
+    .driskill-photo-link-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0.45rem 0.25rem 0.15rem 0.25rem;
+    }
+
+    .driskill-website-subtle-link {
+      font-family: 'Montserrat', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #5B7566;
+      text-decoration: none;
+      transition: color 0.15s ease, opacity 0.15s ease;
+      opacity: 0.9;
+    }
+
+    .driskill-website-subtle-link:hover {
+      color: #1F2923;
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    /* Editorial Text Block beneath Picture */
+    .driskill-editorial-body {
+      margin-bottom: 1.15rem;
+    }
+
+    .driskill-editorial-p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      line-height: 1.72;
+      color: #2D2824;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      text-rendering: geometricPrecision;
+    }
+
+    .driskill-editorial-p:last-child {
+      margin-bottom: 0;
+    }
+
+    .driskill-link-row {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-top: 1.15rem;
+      padding-top: 0.85rem;
+      border-top: 1px dashed rgba(91, 117, 102, 0.25);
+    }
+
+    .driskill-btn-primary {
+      font-family: 'Montserrat', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.65rem 1.25rem;
+      background: #C86446;
+      color: #FFFDF8;
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+
+    .driskill-btn-primary:hover {
+      background: #B35235;
+      transform: translateY(-1px);
+    }
+
+    .driskill-btn-secondary {
+      font-family: 'Montserrat', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 0.95rem;
+      background: #F7F4EB;
+      color: #3D5244;
+      font-weight: 700;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid rgba(91, 117, 102, 0.35);
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .driskill-btn-secondary:hover {
+      background: #ECE5D2;
+      border-color: #3D5244;
+    }
+
+    .driskill-btn-subtle {
+      font-family: 'Montserrat', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 1rem;
+      background: rgba(91, 117, 102, 0.08);
+      color: #3D5244;
+      font-weight: 700;
+      font-size: 0.82rem;
+      border-radius: 6px;
+      text-decoration: none;
+      border: 1px solid rgba(91, 117, 102, 0.25);
+      transition: all 0.15s ease;
+    }
+
+    .driskill-btn-subtle:hover {
+      background: rgba(91, 117, 102, 0.16);
+      border-color: #3D5244;
+      color: #1F2923;
+    }
+
+    /* Location Tab Elements */
+    .driskill-map-card {
+      border: 1px solid rgba(91, 117, 102, 0.22);
+      border-radius: 12px;
+      background: #EFEAD9;
+      padding: 1.15rem;
+      margin-bottom: 1.25rem;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
+
+    .driskill-map-graphic {
+      width: 100%;
+      height: 220px;
+      border-radius: 8px;
+      border: 1px solid rgba(91, 117, 102, 0.25);
+      overflow: hidden;
+      margin-bottom: 0.9rem;
+      background: #E5DFC9;
+      position: relative;
+    }
+
+    .driskill-address-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #1F2923;
+      margin-bottom: 0.25rem;
+    }
+
+    .driskill-address-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem;
+      color: #5B7566;
+      font-weight: 600;
+      margin-bottom: 0.85rem;
+    }
+
+    .driskill-map-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .driskill-transit-section {
+      display: flex;
+      flex-direction: column;
+      gap: 1.15rem;
+      margin-top: 1.25rem;
+    }
+
+    .driskill-transit-card {
+      padding: 0.75rem 0.2rem;
+      border-bottom: 1px dashed rgba(91, 117, 102, 0.25);
+    }
+
+    .driskill-transit-card:last-child {
+      border-bottom: none;
+    }
+
+    .driskill-transit-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .driskill-transit-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 800;
+      color: #1F2923;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .driskill-transit-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #C86446;
+      background: rgba(200, 100, 70, 0.10);
+      border: 1px solid rgba(200, 100, 70, 0.25);
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .driskill-transit-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.84rem;
+      color: #3A352F;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Booking Tab Elements */
+    .driskill-booking-hero {
+      padding: 0.25rem 0.2rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .driskill-booking-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 900;
+      color: #1F2923;
+      margin-bottom: 0.45rem;
+    }
+
+    .driskill-booking-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: #3A352F;
+      margin-bottom: 1.25rem;
+    }
+
+    @media (max-width: 640px) {
+      .driskill-header-fixed {
+        padding: 1.6rem 1.4rem 0 1.4rem;
+      }
+      .driskill-title {
+        font-size: 1.75rem;
+      }
+      .driskill-cards-scroll {
+        padding: 1rem 1.4rem 1.75rem 1.4rem;
+      }
     }
 
     .spots-editorial-list {
@@ -1673,14 +2356,16 @@
 
     .spots-entry-title .ext-icon {
       opacity: 0;
-      transition: opacity 0.15s ease;
-      width: 11px;
-      height: 11px;
-      transform: translateY(1px);
+      transition: opacity 0.18s ease, transform 0.18s ease;
+      width: 14px;
+      height: 14px;
+      transform: translateX(-4px);
+      flex-shrink: 0;
     }
 
     .spots-entry-row:hover .spots-entry-title .ext-icon {
-      opacity: 0.65;
+      opacity: 0.95;
+      transform: translateX(0);
     }
 
     .spots-entry-meta {
@@ -1729,13 +2414,13 @@
 
     @media (max-width: 640px) {
       .spots-header-fixed {
-        padding: 1.6rem 1.4rem 0.6rem 1.4rem;
+        padding: 1.6rem 1.4rem 0 1.4rem;
       }
       .spots-title {
         font-size: 1.75rem;
       }
       .spots-cards-scroll {
-        padding: 0.6rem 1.4rem 1.75rem 1.4rem;
+        padding: 1rem 1.4rem 1.75rem 1.4rem;
       }
       .spots-entry-top {
         flex-direction: column;
@@ -1842,7 +2527,7 @@
 
     .timeline-photo-img.img-engaged {
       object-position: center 18%;
-      transform: scale(1.04);
+      transform: scale(1.24);
     }
 
     .timeline-photo-img.img-driskill {
@@ -2211,60 +2896,60 @@
                      COLUMN A: "SIDE A" HEADER & MENU ITEMS (Left side arc)
                      ------------------------------------------------------------- -->
 
-                <!-- Header: SIDE A (Raised to y=235, x=325) -->
+                <!-- Header: SIDE A (y=278, x=325 - sitting 60px above Item 1) -->
                 <g id="header-side-a">
-                  <!-- Pill container centered around x=325, y=235 -->
-                  <rect class="label-menu-header-pill" x="255" y="217" width="140" height="36" />
-                  <text class="label-menu-header" x="325" y="235" text-anchor="middle">SIDE A</text>
+                  <!-- Pill container centered around x=325, y=278 -->
+                  <rect class="label-menu-header-pill" x="255" y="260" width="140" height="36" />
+                  <text class="label-menu-header" x="325" y="278" text-anchor="middle">SIDE A</text>
                 </g>
 
-                <!-- 1. Our Story (Row 1: y=295, x=325) -->
-                <text class="label-menu-item" data-target="modal-about" x="300" y="295" text-anchor="middle">1. Our Story</text>
+                <!-- 1. Our Story (Row 1: y=338, x=300) -->
+                <text class="label-menu-item" data-target="modal-about" x="300" y="338" text-anchor="middle">1. Our Story</text>
 
-                <!-- 2. The Driskill (Row 2: y=430, x=250) -->
-                <text class="label-menu-item" data-target="modal-driskill" x="250" y="430" text-anchor="middle">2. The Driskill</text>
+                <!-- 2. The Driskill (Row 2: y=446, x=250) -->
+                <text class="label-menu-item" data-target="modal-driskill" x="250" y="446" text-anchor="middle">2. The Driskill</text>
 
-                <!-- 3. Stuff to Do (Row 3: y=565, x=250) -->
-                <text class="label-menu-item" data-target="modal-spots" x="250" y="565" text-anchor="middle">3. Stuff to Do</text>
+                <!-- 3. Stuff to Do (Row 3: y=554, x=250) -->
+                <text class="label-menu-item" data-target="modal-spots" x="250" y="554" text-anchor="middle">3. Stuff to Do</text>
 
-                <!-- 4. Where to Stay (Row 4: y=700, x=325) -->
-                <text class="label-menu-item" data-target="modal-stay" x="325" y="700" text-anchor="middle">4. Where to Stay</text>
+                <!-- 4. Where to Stay (Row 4: y=662, x=325) -->
+                <text class="label-menu-item" data-target="modal-stay" x="325" y="662" text-anchor="middle">4. Where to Stay</text>
 
 
                 <!-- -------------------------------------------------------------
                      COLUMN B: "SIDE B" HEADER & MENU ITEMS (Right side arc)
                      ------------------------------------------------------------- -->
 
-                <!-- Header: SIDE B (Raised to y=235, x=675) -->
+                <!-- Header: SIDE B (y=278, x=675 - sitting 60px above Item 5) -->
                 <g id="header-side-b">
-                  <!-- Pill container centered around x=675, y=235 -->
-                  <rect class="label-menu-header-pill" x="605" y="217" width="140" height="36" />
-                  <text class="label-menu-header" x="675" y="235" text-anchor="middle">SIDE B</text>
+                  <!-- Pill container centered around x=675, y=278 -->
+                  <rect class="label-menu-header-pill" x="605" y="260" width="140" height="36" />
+                  <text class="label-menu-header" x="675" y="278" text-anchor="middle">SIDE B</text>
                 </g>
 
-                <!-- 5. Schedule (Row 1: y=295, shifted 40px left to x=665) - Disabled/Coming Soon -->
+                <!-- 5. Schedule (Row 1: y=338, shifted 40px left to x=665) - Disabled/Coming Soon -->
                 <g id="schedule-item-group" tabindex="0" role="button" aria-label="5. Schedule - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
-                  <text class="label-menu-item right-col item-dead" x="665" y="295" text-anchor="middle">5. Schedule</text>
+                  <text class="label-menu-item right-col item-dead" x="665" y="338" text-anchor="middle">5. Schedule</text>
                   <!-- Hover Tooltip overlay: explicit SVG coordinates -->
                   <g class="label-tooltip">
-                    <rect class="label-tooltip-rect" x="575" y="274" width="180" height="42" />
-                    <text class="label-tooltip-text" x="665" y="295">Coming Soon</text>
+                    <rect class="label-tooltip-rect" x="575" y="317" width="180" height="42" />
+                    <text class="label-tooltip-text" x="665" y="338">Coming Soon</text>
                   </g>
                 </g>
 
-                <!-- 6. Registry (Row 2: y=430, shifted 40px left to x=740) -->
-                <text class="label-menu-item right-col" data-target="modal-registry" x="740" y="430" text-anchor="middle">6. Registry</text>
+                <!-- 6. Registry (Row 2: y=446, shifted 40px left to x=740) -->
+                <text class="label-menu-item right-col" data-target="modal-registry" x="740" y="446" text-anchor="middle">6. Registry</text>
 
-                <!-- 7. FAQ (Row 3: y=565, shifted 60px left to x=720) -->
-                <text class="label-menu-item right-col" data-target="modal-faq" x="720" y="565" text-anchor="middle">7. FAQ</text>
+                <!-- 7. FAQ (Row 3: y=554, shifted 60px left to x=720) -->
+                <text class="label-menu-item right-col" data-target="modal-faq" x="720" y="554" text-anchor="middle">7. FAQ</text>
 
-                <!-- 8. RSVP (Row 4: y=700, shifted 40px left to x=665) - Disabled/Coming Soon -->
+                <!-- 8. RSVP (Row 4: y=662, shifted 40px left to x=665) - Disabled/Coming Soon -->
                 <g id="rsvp-item-group" tabindex="0" role="button" aria-label="8. RSVP - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
-                  <text class="label-menu-item right-col item-dead" x="665" y="700" text-anchor="middle">8. RSVP</text>
+                  <text class="label-menu-item right-col item-dead" x="665" y="662" text-anchor="middle">8. RSVP</text>
                   <!-- Hover Tooltip overlay: explicit SVG coordinates -->
                   <g class="label-tooltip">
-                    <rect class="label-tooltip-rect" x="575" y="679" width="180" height="42" />
-                    <text class="label-tooltip-text" x="665" y="700">Coming Soon</text>
+                    <rect class="label-tooltip-rect" x="575" y="641" width="180" height="42" />
+                    <text class="label-tooltip-text" x="665" y="662">Coming Soon</text>
                   </g>
                 </g>
 
@@ -2306,10 +2991,9 @@
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-card-inner">
-        <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 01</span> <span>•</span> <span>OUR STORY</span></div>
         <h2 class="modal-title">Our Story</h2>
         <div class="modal-body">
-          <p class="story-lead-intro">From beers in Printer's Row to building a life in Central Texas, here's an overview of our relationship for the last decade!</p>
+          <p class="story-lead-intro">From beers in Printer's Row to building a life in Central Texas, here's an overview of our relationship for the last decade:</p>
           
           <!-- SCROLLING STORYTELLING TIMELINE -->
           <div class="story-timeline" id="story-timeline">
@@ -2362,26 +3046,24 @@
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">December 2025</span>
-                <h3 class="timeline-heading">Got engaged!</h3>
+                <h3 class="timeline-heading">Got engaged in Texas via mutual proposal</h3>
               </div>
             </div>
 
-            <!-- 5. Getting Married (April 2027) -> driskill.jpeg -->
+            <!-- 5. Getting Married (April 24th, 2027) -> Driskill.jpg -->
             <div class="timeline-node" data-index="4">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="/driskill.jpeg" alt="Getting married at The Driskill" class="timeline-photo-img img-driskill" referrerPolicy="no-referrer" />
+                  <img src="/Driskill.jpg" alt="Getting married at The Driskill" class="timeline-photo-img img-driskill" referrerPolicy="no-referrer" />
                 </div>
               </div>
               <div class="timeline-info">
-                <span class="timeline-date-badge">April 2027</span>
-                <h3 class="timeline-heading">Getting married!</h3>
+                <span class="timeline-date-badge">April 24th, 2027</span>
+                <h3 class="timeline-heading">Getting married in Austin; we can't wait to see you there!</h3>
               </div>
             </div>
 
           </div><!-- /story-timeline -->
-
-          <p style="margin-top: 1.85rem; margin-bottom: 2.5rem; font-size: 0.98rem; line-height: 1.7; color: #2D2721; font-weight: 500;">We can't wait to celebrate with y'all in Austin!</p>
         </div>
       </div>
     </div>
@@ -2392,75 +3074,172 @@
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-card-inner">
-        <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 02</span> <span>•</span> <span>THE DRISKILL</span></div>
-        <h2 class="modal-title">The Driskill</h2>
-        <div class="modal-body">
-          <p>The Driskill has been part of Austin since 1886, and we're pretty stoked to add our names to the guest book.</p>
-          <p>It's a great place to spend a weekend, and an even better place to throw a party.</p>
+        
+        <!-- Fixed Header Area -->
+        <div class="driskill-header-fixed">
+          <h2 class="driskill-title">The Driskill</h2>
+          
+          <!-- Sticky / Fixed Category Tabs -->
+          <div class="driskill-tabs" role="tablist" aria-label="The Driskill Details">
+            <button class="driskill-tab-btn active" data-tab="hotel" role="tab" aria-selected="true">Hotel Overview</button>
+            <button class="driskill-tab-btn" data-tab="location" role="tab" aria-selected="false">Location</button>
+            <button class="driskill-tab-btn" data-tab="booking" role="tab" aria-selected="false">Book Your Room</button>
+          </div>
+        </div>
 
-          <!-- Room Block Feature Card with Thumbnail & Link -->
-          <div class="room-block-card">
-            <div class="room-block-thumb">
-              <!-- Vintage Architectural Silhouette Thumbnail of The Driskill Hotel -->
-              <svg viewBox="0 0 120 100" width="100%" height="100%" fill="none" style="background: #D9CDB8;">
-                <rect width="120" height="100" fill="#E8DEC9" />
-                <!-- Driskill Victorian Romanesque Architectural Facade -->
-                <rect x="25" y="32" width="70" height="68" fill="#6B5945" />
-                <polygon points="20,32 60,10 100,32" fill="#8C6E4E" />
-                <!-- Romanesque Arched Windows -->
-                <path d="M 35 48 A 6 6 0 0 1 47 48 V 60 H 35 Z" fill="#F5EFE0" />
-                <path d="M 54 48 A 6 6 0 0 1 66 48 V 60 H 54 Z" fill="#F5EFE0" />
-                <path d="M 73 48 A 6 6 0 0 1 85 48 V 60 H 73 Z" fill="#F5EFE0" />
-                <!-- Grand Center Arch Entry -->
-                <path d="M 50 78 A 10 10 0 0 1 70 78 V 100 H 50 Z" fill="#3D3021" />
-                <circle cx="60" cy="22" r="5" fill="#D49B28" />
-              </svg>
+        <!-- Scrollable Modal Content Area -->
+        <div class="driskill-cards-scroll">
+          
+          <!-- Tab Panel 1: Hotel Overview -->
+          <div class="driskill-tab-panel" data-panel="hotel">
+            <!-- Article Title Photo Frame -->
+            <div class="driskill-photo-card">
+              <div class="driskill-photo-frame">
+                <img src="/usa-driskill-hotel-2.webp" alt="The Historic Driskill Hotel" class="driskill-article-img" referrerPolicy="no-referrer" />
+              </div>
+              <div class="driskill-photo-link-wrap">
+                <a href="https://driskillhotel.com" target="_blank" rel="noopener noreferrer" class="driskill-website-subtle-link">
+                  <span>driskillhotel.com &rarr;</span>
+                </a>
+              </div>
             </div>
-            <div class="room-block-content">
-              <h4 class="room-block-heading">Guest Room Block</h4>
-              <p class="room-block-sub">Special preferred rates have been reserved for our wedding guests right at the venue.</p>
-              <a href="https://driskillhotel.com" target="_blank" rel="noopener noreferrer" class="room-block-btn">
-                BOOK WITH OUR ROOM BLOCK &rarr;
-              </a>
+
+            <!-- Editorial Text Block Dropped Beneath Picture -->
+            <div class="driskill-editorial-body">
+              <p class="driskill-editorial-p">
+                One of our favorite places in the world, The Driskill has been around since 1886, famously hosting LBJ and Lady Bird Johnson's first date in 1934.
+              </p>
+              <p class="driskill-editorial-p">
+                We love the history, the architecture, the old-school oil baron vibes, and, of course, the bar. Rumor has it there are even some spirits wandering the halls, so keep an eye out for ghostly wedding crashers.
+              </p>
+              <p class="driskill-editorial-p">
+                Mostly though, it's just a dang good hotel (and we know a lot about those), and they throw a killer party. We're pretty stoked to add our names to the guest book, and we look forward to celebrating here with all of you.
+              </p>
             </div>
           </div>
 
-          <!-- Venue Location & Links Block -->
-          <div class="venue-details-card">
-            <div class="venue-address-row">
-              <div class="venue-address-icon">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#8C6208" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>
+          <!-- Tab Panel 2: Location -->
+          <div class="driskill-tab-panel" data-panel="location" style="display: none;">
+            
+            <!-- Address & Map Card with Real Google Maps Inlay -->
+            <div class="driskill-map-card">
+              <!-- Real Google Maps Embedded Inlay -->
+              <div class="driskill-map-graphic">
+                <iframe 
+                  title="The Driskill Location Map"
+                  src="https://maps.google.com/maps?q=The+Driskill,+604+Brazos+St,+Austin,+TX+78701&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                  width="100%" 
+                  height="100%" 
+                  style="border:0; width:100%; height:100%; display:block;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
               </div>
-              <div class="venue-address-text-wrap">
-                <span class="venue-detail-label">Address</span>
-                <p class="venue-address-val">The Driskill<br/>604 Brazos St, Austin, TX 78701</p>
+
+              <div class="driskill-address-heading">The Driskill</div>
+              <div class="driskill-address-sub" style="margin-bottom: 0;">604 Brazos St, Austin, TX 78701 (Corner of 6th &amp; Brazos)</div>
+            </div>
+
+            <!-- Location Intro Description -->
+            <p class="driskill-editorial-p" style="margin-top: 1.15rem; margin-bottom: 0.35rem; font-size: 0.9rem; line-height: 1.65; color: #2D2824;">
+              The Driskill is right in the middle of downtown Austin, near the corner of 6th St and Congress, with an easy walk to a lot of our favorite spots.
+            </p>
+
+            <!-- Transit & Airport Details -->
+            <div class="driskill-transit-section">
+              <!-- Austin-Bergstrom (AUS) -->
+              <div class="driskill-transit-card">
+                <div class="driskill-transit-top">
+                  <div class="driskill-transit-title">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#C86446" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/>
+                    </svg>
+                    <span>Austin-Bergstrom Airport (AUS)</span>
+                  </div>
+                  <span class="driskill-transit-tag">~15–20 Mins</span>
+                </div>
+                <p class="driskill-transit-desc">
+                  Located approximately 10 miles southeast of downtown. Quick rideshare or taxi pickup directly from the terminal to the hotel's Brazos Street entrance.
+                </p>
+              </div>
+
+              <!-- San Antonio International (SAT) -->
+              <div class="driskill-transit-card">
+                <div class="driskill-transit-top">
+                  <div class="driskill-transit-title">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#5B7566" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.3c.4-.2.6-.6.5-1.1z"/>
+                    </svg>
+                    <span>San Antonio Airport (SAT)</span>
+                  </div>
+                  <span class="driskill-transit-tag">~1 Hr 20 Mins</span>
+                </div>
+                <p class="driskill-transit-desc">
+                  Located ~75 miles south via I-35 N. A great alternative airport option with extensive direct flights and straightforward rental car access.
+                </p>
+              </div>
+
+              <!-- Rideshare / Uber / Lyft -->
+              <div class="driskill-transit-card">
+                <div class="driskill-transit-top">
+                  <div class="driskill-transit-title">
+                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="#3D5244" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                      <circle cx="7" cy="17" r="2"></circle>
+                      <circle cx="17" cy="17" r="2"></circle>
+                      <path d="M5 11l2-6h10l2 6"></path>
+                    </svg>
+                    <span>Rideshare &amp; Getting Around</span>
+                  </div>
+                  <span class="driskill-transit-tag">24/7 Available</span>
+                </div>
+                <p class="driskill-transit-desc">
+                  Uber and Lyft operate continuously throughout Austin with typical wait times under 3–5 minutes.
+                </p>
               </div>
             </div>
 
-            <div class="venue-action-links">
-              <a href="https://driskillhotel.com" target="_blank" rel="noopener noreferrer" class="venue-link-btn">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="2" y1="12" x2="22" y2="12"></line>
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                </svg>
-                Hotel Website
-              </a>
-              <a href="https://maps.google.com/?q=The+Driskill+604+Brazos+St+Austin+TX+78701" target="_blank" rel="noopener noreferrer" class="venue-link-btn venue-link-btn-highlight">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
-                  <line x1="8" y1="2" x2="8" y2="18"></line>
-                  <line x1="16" y1="6" x2="16" y2="22"></line>
-                </svg>
-                View on Google Maps
+          </div>
+
+          <!-- Tab Panel 3: Book Your Room -->
+          <div class="driskill-tab-panel" data-panel="booking" style="display: none;">
+            
+            <div class="driskill-booking-hero">
+              <p class="driskill-booking-desc" style="margin-bottom: 0.85rem;">
+                Our room block with a discounted rate is open, and you can book your room though the special booking link below.
+              </p>
+              <p class="driskill-booking-desc" style="margin-bottom: 1.5rem;">
+                The group rate is available for a few days before and after the wedding, too, so feel free to make a trip of it and stick around a little longer.
+              </p>
+
+              <!-- Direct Reservation Link -->
+              <a 
+                href="https://www.hyatt.com/events/en-US/group-booking/AUSHD/G-MB27" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                id="btn-driskill-room-block" 
+                class="driskill-btn-primary" 
+                style="width: 100%; justify-content: center; padding: 0.85rem 1.4rem; font-size: 0.92rem; text-decoration: none; display: inline-flex; box-sizing: border-box;"
+              >
+                <span>Book Now &rarr;</span>
               </a>
             </div>
+
+            <div class="driskill-contact-help" style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed rgba(91, 117, 102, 0.25);">
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 0.88rem; line-height: 1.6; color: #2D2824; font-weight: 500; margin-bottom: 0.85rem;">
+                Having trouble with the booking link or your reservation? Give either of us a call or text and we'll help get it sorted:
+              </p>
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: #1F2923; display: flex; flex-direction: column; gap: 0.4rem;">
+                <div>Mike: <a href="tel:3147994553" style="color: #A6472D; text-decoration: none; font-weight: 700;">314 799 4553</a></div>
+                <div>Jordan: <a href="tel:7277417929" style="color: #A6472D; text-decoration: none; font-weight: 700;">727 741 7929</a></div>
+              </div>
+            </div>
+
           </div>
 
         </div>
+
       </div>
     </div>
   </div>
@@ -2473,11 +3252,8 @@
         
         <!-- Fixed Header Area -->
         <div class="spots-header-fixed">
-          <div class="spots-header-badge">
-            <span>SIDE A</span> <span>•</span> <span>TRACK 03</span> <span>•</span> <span>AUSTIN GUIDE</span>
-          </div>
           <h2 class="spots-title">Stuff to Do</h2>
-          <p class="spots-intro">A curated editorial directory of our favorite neighborhood spots, coffee, eats, and Austin staples to explore:</p>
+          <p class="spots-intro">A few of our favorite spots around Austin to explore:</p>
           
           <!-- Sticky / Fixed Category Tabs -->
           <div class="spots-tabs" role="tablist" aria-label="Stuff to Do Categories">
@@ -2499,16 +3275,15 @@
                 <div class="spots-entry-top">
                   <a href="https://www.whislersatx.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Whisler's</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">East Austin</span>
                     <a href="https://maps.app.goo.gl/hENcunwcRqbhDHTn8" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2520,16 +3295,15 @@
                 <div class="spots-entry-top">
                   <a href="https://terryblacksbbq.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Terry Black's BBQ</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">Barton Springs Rd</span>
                     <a href="https://maps.app.goo.gl/nRZ4MZbjo2mw7gmWA" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2541,16 +3315,15 @@
                 <div class="spots-entry-top">
                   <a href="https://www.elchilito.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>El Chilito</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">East Austin</span>
                     <a href="https://maps.app.goo.gl/tJg66wHrkTriGTAWA" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2562,16 +3335,15 @@
                 <div class="spots-entry-top">
                   <a href="https://www.sourduckmarket.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Sour Duck</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">East Austin</span>
                     <a href="https://maps.app.goo.gl/H3o75phMYTY2gS9f7" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2583,16 +3355,15 @@
                 <div class="spots-entry-top">
                   <a href="https://www.meanwhilebeer.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Meanwhile Brewing</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">South Austin</span>
                     <a href="https://maps.app.goo.gl/7RR1dZ3cpXLf5DeS9" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2611,16 +3382,15 @@
                 <div class="spots-entry-top">
                   <a href="https://www.austintexas.gov/parks/locations/about-barton-springs-pool" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Barton Springs Pool</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">Zilker Park</span>
                     <a href="https://maps.app.goo.gl/2Pm23iBdrNsgMMR37" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2632,16 +3402,15 @@
                 <div class="spots-entry-top">
                   <a href="https://www.austintexas.gov/parks/locations/lady-bird-lake" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Lady Bird Lake</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">Downtown</span>
                     <a href="https://maps.app.goo.gl/3iccE6WRLtp7NJrx7" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2660,16 +3429,15 @@
                 <div class="spots-entry-top">
                   <a href="https://blantonmuseum.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Blanton Museum of Art</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">UT Campus</span>
                     <a href="https://maps.app.goo.gl/dzof1RKfw7CitYq66" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2681,16 +3449,15 @@
                 <div class="spots-entry-top">
                   <a href="https://thinkeryaustin.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>The Thinkery</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">Mueller</span>
                     <a href="https://maps.app.goo.gl/C8gsgnBBM6NP5RK9A" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2702,16 +3469,15 @@
                 <div class="spots-entry-top">
                   <a href="https://www.austinbats.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Bats at Congress Ave Bridge</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">South Congress</span>
                     <a href="https://maps.app.goo.gl/3wsqpgujsk5LN8Mm9" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2723,16 +3489,15 @@
                 <div class="spots-entry-top">
                   <a href="https://savingplaces.org/stories/austin-moontowers-by-the-numbers" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Austin Moontowers</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                      <polyline points="15 3 21 3 21 9"></polyline>
-                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
                     <span class="spots-neighborhood-tag">Citywide</span>
                     <a href="https://maps.app.goo.gl/rFXCBEriNFGkaVyDA" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map ↗
+                      Map &rarr;
                     </a>
                   </div>
                 </div>
@@ -2753,110 +3518,271 @@
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-card-inner">
-        <div class="modal-liner-badge"><span>SIDE A</span> <span>•</span> <span>TRACK 04</span> <span>•</span> <span>WHERE TO STAY</span></div>
-        <h2 class="modal-title">Where to Stay</h2>
-        <div class="modal-body">
-          <p>A preferred room block has been reserved for our guests right at our historic wedding venue.</p>
-          <div class="info-grid">
-            <div class="info-box">
-              <p class="info-box-label">Primary Venue Block</p>
-              <p class="info-box-val">The Driskill Hotel</p>
+        
+        <!-- Fixed Header Area -->
+        <div class="stay-header-fixed">
+          <h2 class="stay-title">Where to Stay</h2>
+          
+          <!-- Sticky / Fixed Category Tabs -->
+          <div class="stay-tabs" role="tablist" aria-label="Where to Stay Options">
+            <button class="stay-tab-btn active" data-tab="driskill" role="tab" aria-selected="true">Stay at The Driskill</button>
+            <button class="stay-tab-btn" data-tab="other-hotels" role="tab" aria-selected="false">More Options Nearby</button>
+          </div>
+        </div>
+
+        <!-- Scrollable Modal Content Area -->
+        <div class="stay-cards-scroll">
+          
+          <!-- Tab Panel 1: The Driskill (Reproduced from Book Your Room tab in The Driskill modal) -->
+          <div class="stay-tab-panel" data-panel="driskill">
+            <div class="driskill-booking-hero">
+              <p class="driskill-booking-desc" style="margin-bottom: 0.85rem;">
+                We recommend to stay at the venue: we think it's pretty convenient when your room is just steps away from the dance floor. Our room block with a discounted rate is open, and you can book your room though the special booking link below.
+              </p>
+              <p class="driskill-booking-desc" style="margin-bottom: 1.5rem;">
+                The group rate is available for a few days before and after the wedding, too, so feel free to make a trip of it and stick around a little longer.
+              </p>
+
+              <!-- Direct Reservation Link -->
+              <a 
+                href="https://www.hyatt.com/events/en-US/group-booking/AUSHD/G-MB27" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                id="btn-stay-driskill-room-block" 
+                class="driskill-btn-primary stay-driskill-btn" 
+                style="width: 100%; justify-content: center; padding: 0.85rem 1.4rem; font-size: 0.92rem; text-decoration: none; display: inline-flex; box-sizing: border-box;"
+              >
+                <span>Book Now &rarr;</span>
+              </a>
             </div>
-            <div class="info-box">
-              <p class="info-box-label">Group Block Code</p>
-              <p class="info-box-val">JORDAN-MIKE-27</p>
+
+            <div class="driskill-contact-help" style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed rgba(91, 117, 102, 0.25);">
+              <p style="font-family: 'Montserrat', sans-serif; font-size: 0.88rem; line-height: 1.6; color: #2D2824; font-weight: 500; margin-bottom: 0.85rem;">
+                Having trouble with the booking link or your reservation? Give either of us a call or text and we'll help get it sorted:
+              </p>
+              <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: #1F2923; display: flex; flex-direction: column; gap: 0.4rem;">
+                <div>Mike: <a href="tel:3147994553" style="color: #A6472D; text-decoration: none; font-weight: 700;">314 799 4553</a></div>
+                <div>Jordan: <a href="tel:7277417929" style="color: #A6472D; text-decoration: none; font-weight: 700;">727 741 7929</a></div>
+              </div>
             </div>
           </div>
-          <p style="font-size: 0.85rem; color: #666; margin-top: 10px;">Additional nearby hotels within walking distance include The Stephen F. Austin Royal Sonesta, Austin Marriott Downtown, and Hotel Van Zandt. We encourage guests to book early as late April is peak season in Austin!</p>
-          <button class="primary-btn" onclick="window.open('https://driskillhotel.com', '_blank')">Book Driskill Room Block</button>
+
+          <!-- Tab Panel 2: Other Hotels Nearby -->
+          <div class="stay-tab-panel" data-panel="other-hotels" style="display: none;">
+            <p class="driskill-booking-desc" style="margin-bottom: 1.15rem; font-size: 0.88rem; line-height: 1.6; color: #2D2824;">
+              While we're only holding a room block at the Driskill, there are plenty of other hotels and rentals nearby. Here are a few options within walking distance:
+            </p>
+            <div class="spots-editorial-list">
+              
+              <!-- 1. Hyatt Centric Austin -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.hyatt.com/hyatt-centric/ausct-hyatt-centric-congress-avenue-austin" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Hyatt Centric Austin</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">1 Block Away</span>
+                    <a href="https://maps.google.com/?q=Hyatt+Centric+Congress+Avenue+Austin,+721+Congress+Ave,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Boutique lifestyle hotel located just a block away on Congress Avenue, featuring modern rooms and a rooftop terrace bar.</p>
+              </div>
+
+              <!-- 2. Hyatt Place Austin -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.hyatt.com/hyatt-place/en-US/ausda-hyatt-place-austin-downtown" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Hyatt Place Austin</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">3 Blocks Away</span>
+                    <a href="https://maps.google.com/?q=Hyatt+Place+Austin+Downtown,+211+E+3rd+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Convenient downtown hotel just three blocks away with spacious rooms, complimentary breakfast, and an indoor pool.</p>
+              </div>
+
+              <!-- 3. Hilton Austin -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.hilton.com/en/hotels/auscvhh-hilton-austin/" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Hilton Austin</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">4 Blocks Away</span>
+                    <a href="https://maps.google.com/?q=Hilton+Austin,+500+E+4th+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Centrally located downtown hotel offering full amenities, multiple on-site restaurants, a spa, and an outdoor pool deck.</p>
+              </div>
+
+              <!-- 4. Airbnb / Vacation Rentals in Austin -->
+              <div class="spots-entry-row" style="background: rgba(91, 117, 102, 0.05); border: 1px dashed rgba(91, 117, 102, 0.3); border-radius: 8px; padding: 1rem 1.15rem; margin-top: 0.5rem;">
+                <div class="spots-entry-top">
+                  <a href="https://www.airbnb.com/s/Austin--TX/homes" target="_blank" rel="noopener noreferrer" class="spots-entry-title" style="color: #C86446;">
+                    <span>Airbnb &amp; Vacation Rentals</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Austin Area</span>
+                    <a href="https://www.airbnb.com/s/Austin--TX/homes" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Search &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">If you prefer a house or condo rental, we recommend looking around Downtown, East Austin, Clarksville, or South Congress (all within a 5–10 min rideshare to The Driskill).</p>
+              </div>
+
+            </div>
+          </div>
+
         </div>
+
       </div>
     </div>
   </div>
 
-  <!-- 5. Schedule Modal (Side B, Track 05 - Disabled) -->
-  <div id="modal-schedule" class="modal-overlay" role="dialog" aria-modal="true">
-    <div class="modal-card">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-card-inner">
-        <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 05</span> <span>•</span> <span>SCHEDULE</span></div>
-        <h2 class="modal-title">Schedule</h2>
-        <div class="modal-body">
-          <p>We are putting together a full weekend of fun and celebration in downtown Austin!</p>
-          <div class="info-grid">
-            <div class="info-box">
-              <p class="info-box-label">Friday Evening</p>
-              <p class="info-box-val">Welcome Drinks &amp; Tacos</p>
-            </div>
-            <div class="info-box">
-              <p class="info-box-label">Saturday 5:30 PM</p>
-              <p class="info-box-val">Ceremony at The Driskill</p>
-            </div>
-            <div class="info-box">
-              <p class="info-box-label">Saturday Evening</p>
-              <p class="info-box-val">Cocktails, Dinner &amp; Dancing</p>
-            </div>
-            <div class="info-box">
-              <p class="info-box-label">Sunday Morning</p>
-              <p class="info-box-val">Farewell Coffee &amp; Pastries</p>
-            </div>
-          </div>
-          <p style="font-size: 0.85rem; color: #666; margin-top: 12px;">Detailed times and venue room locations will be shared in formal invitations and updated here as the date approaches.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 6. Registry Modal (Side B, Track 06) -->
+  <!-- 5. Registry Modal (Side B, Track 06) -->
   <div id="modal-registry" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-card-inner">
-        <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 06</span> <span>•</span> <span>REGISTRY</span></div>
         <h2 class="modal-title">Registry</h2>
         <div class="modal-body">
-          <p>Your love, presence, and friendship at our wedding are the greatest gifts we could ever ask for. For friends and family who have inquired about honoring us with a gift, we have created a Honeymoon &amp; Adventure Fund as well as a curated home registry.</p>
-          <p style="font-size: 0.85rem; color: #666; margin-top: 12px;">Registry links and gifting details will go live alongside formal invitations.</p>
+          <div class="registry-grid">
+            <a href="https://www.zola.com" target="_blank" rel="noopener noreferrer" class="registry-card">
+              <div class="registry-card-content">
+                <span class="registry-vendor-tag">Registry</span>
+                <h3 class="registry-vendor-title">Zola</h3>
+              </div>
+              <span class="registry-link-arrow">&rarr;</span>
+            </a>
+
+            <a href="https://www.crateandbarrel.com" target="_blank" rel="noopener noreferrer" class="registry-card">
+              <div class="registry-card-content">
+                <span class="registry-vendor-tag">Registry</span>
+                <h3 class="registry-vendor-title">Crate &amp; Barrel</h3>
+              </div>
+              <span class="registry-link-arrow">&rarr;</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 7. FAQ Modal (Side B, Track 07) -->
+  <!-- 6. FAQ Modal (Side B, Track 07) -->
   <div id="modal-faq" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-card-inner">
-        <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 07</span> <span>•</span> <span>FAQ</span></div>
         <h2 class="modal-title">FAQ</h2>
         <div class="modal-body">
-          <div class="info-grid">
-            <div class="info-box">
-              <p class="info-box-label">Dress Code</p>
-              <p class="info-box-val">Black-Tie Optional</p>
+          <div class="faq-list">
+            
+            <!-- Q1 -->
+            <div class="faq-item">
+              <h3 class="faq-q">When is the wedding?</h3>
+              <div class="faq-a">
+                <p>Saturday, April 24th, 2027.</p>
+              </div>
             </div>
-            <div class="info-box">
-              <p class="info-box-label">Valet Parking</p>
-              <p class="info-box-val">Available at Hotel</p>
-            </div>
-          </div>
-          <p style="margin-top: 12px;"><strong>Are kids invited?</strong><br/>To allow all guests a night of uninhibited celebration and relaxation, our wedding weekend will be an adults-only event (21+).</p>
-          <p style="margin-top: 10px;"><strong>Transportation:</strong><br/>The Driskill is centrally located in downtown Austin. Rideshares (Uber / Lyft) are readily available and recommended.</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- 8. RSVP Modal (Side B, Track 08 - Disabled) -->
-  <div id="modal-invitation" class="modal-overlay" role="dialog" aria-modal="true">
-    <div class="modal-card">
-      <button class="modal-close" aria-label="Close modal">&times;</button>
-      <div class="modal-card-inner">
-        <div class="modal-liner-badge"><span>SIDE B</span> <span>•</span> <span>TRACK 08</span> <span>•</span> <span>RSVP</span></div>
-        <h2 class="modal-title">RSVP</h2>
-        <div class="modal-body">
-          <p>Formal wedding invitations with dinner selections and online RSVP details will be mailed in late 2026 / early 2027.</p>
-          <p style="margin-top: 12px;">Please save the date on your calendar in the meantime! If your mailing address or contact info changes, please feel free to reach out so we can ensure your invitation finds its way to you.</p>
+            <!-- Q2 -->
+            <div class="faq-item">
+              <h3 class="faq-q">Where is the wedding?</h3>
+              <div class="faq-a">
+                <p>The ceremony and reception will both be held at The Driskill Hotel in downtown Austin.</p>
+              </div>
+            </div>
+
+            <!-- Q3 -->
+            <div class="faq-item">
+              <h3 class="faq-q">Will there be something on Friday too?</h3>
+              <div class="faq-a">
+                <p>Yes! We are planning a welcome event on Friday evening with food and drink provided. More details to come soon with location and times.</p>
+              </div>
+            </div>
+
+            <!-- Q4 -->
+            <div class="faq-item">
+              <h3 class="faq-q">Where should I stay?</h3>
+              <div class="faq-a">
+                <p>We recommend to stay at the Driskill to be close to the action, but there are other great options nearby too. <a href="https://www.hyatt.com/events/en-US/group-booking/AUSHD/G-MB27" target="_blank" rel="noopener noreferrer" class="faq-inline-link">Click here</a> to book in our block, or check out &ldquo;Where to Stay&rdquo; in the main menu for other recommendations nearby.</p>
+              </div>
+            </div>
+
+            <!-- Q5 -->
+            <div class="faq-item">
+              <h3 class="faq-q">Can I stay at the Driskill before or after the wedding?</h3>
+              <div class="faq-a">
+                <p>Yes, the group rate is available for surrounding dates, subject to availability.</p>
+              </div>
+            </div>
+
+            <!-- Q6 -->
+            <div class="faq-item">
+              <h3 class="faq-q">Can I bring my kids?</h3>
+              <div class="faq-a">
+                <p>We&rsquo;re keeping the wedding itself mostly adults-only, with an exception for children in our immediate families.</p>
+                <p>That said, we know a trip to Austin can be easier when you don&rsquo;t have to figure out what to do with the little ones. We&rsquo;re working on some childcare options and will share those details as we get closer.</p>
+              </div>
+            </div>
+
+            <!-- Q7 -->
+            <div class="faq-item">
+              <h3 class="faq-q">Do I need a car?</h3>
+              <div class="faq-a">
+                <p>Probably not. The Driskill is in the middle of downtown, not too far from the airport, and a lot of what you&rsquo;ll want to do is within walking distance or easily accessible with a quick Uber or Lyft. If you&rsquo;re planning to explore beyond downtown, though, or stick around for a while, then Austin is a city where having a car can come in handy.</p>
+              </div>
+            </div>
+
+            <!-- Q8 -->
+            <div class="faq-item">
+              <h3 class="faq-q">When will invitations / the full wedding details arrive?</h3>
+              <div class="faq-a">
+                <p>You can expect to receive invitations in early 2027, and we'll continue to add more details to this website as they become available.</p>
+              </div>
+            </div>
+
+            <!-- Q9 -->
+            <div class="faq-item">
+              <h3 class="faq-q">Who do I contact if I have a question?</h3>
+              <div class="faq-a">
+                <p>Call, text, or email either Mike or Jordan for any questions!</p>
+                <div class="faq-contact-card">
+                  <div class="faq-contact-row">
+                    Mike: <a href="mailto:mikegmiller11@gmail.com">mikegmiller11@gmail.com</a>; <a href="tel:3127994553">312 799 4553</a>
+                  </div>
+                  <div class="faq-contact-row">
+                    Jordan: <a href="mailto:jordanlbrammer@gmail.com">jordanlbrammer@gmail.com</a>; <a href="tel:7277417929">727 741 7929</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
     </div>
@@ -3036,33 +3962,56 @@
       }, phase1Duration);
 
       // -------------------------------------------------------------
-      // INTERACTIVE MODAL EVENT LISTENERS & BACKGROUND SCROLL LOCK
+      // INTERACTIVE MODAL EVENT LISTENERS & BACKDROP ISOLATION
+      // Clean, seamless modal interaction with standard internal scrolling
       // -------------------------------------------------------------
       const menuInteractiveItems = document.querySelectorAll('.label-menu-item, .surface-menu-item');
       const modalOverlays = document.querySelectorAll('.modal-overlay');
 
       const openModal = (targetModal) => {
         if (!targetModal) return;
+        
         targetModal.classList.add('active');
         document.documentElement.classList.add('modal-open');
         document.body.classList.add('modal-open');
 
-        // Reset scroll position of modal inner card
-        const inner = targetModal.querySelector('.modal-card-inner') || targetModal.querySelector('.modal-card');
-        if (inner) {
-          inner.scrollTop = 0;
+        // Reset scroll position of inner scrollable containers in the opened modal
+        const innerScroll = targetModal.querySelector('.stay-cards-scroll') ||
+                            targetModal.querySelector('.driskill-cards-scroll') ||
+                            targetModal.querySelector('.spots-cards-scroll') ||
+                            targetModal.querySelector('.timeline-scroller') ||
+                            targetModal.querySelector('.modal-card-inner') ||
+                            targetModal.querySelector('.modal-card');
+        if (innerScroll) {
+          innerScroll.scrollTop = 0;
         }
       };
 
       const closeModal = (overlay) => {
         if (!overlay) return;
         overlay.classList.remove('active');
-        const anyActive = Array.from(modalOverlays).some(m => m.classList.contains('active'));
-        if (!anyActive) {
+        
+        const activeModals = Array.from(modalOverlays).filter(m => m.classList.contains('active'));
+        if (activeModals.length === 0) {
           document.documentElement.classList.remove('modal-open');
           document.body.classList.remove('modal-open');
         }
       };
+
+      // Modal Backdrop Isolation: prevent background window from scrolling when mousewheel/touch is on the backdrop
+      modalOverlays.forEach(overlay => {
+        overlay.addEventListener('wheel', (e) => {
+          if (!e.target.closest('.modal-card')) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+
+        overlay.addEventListener('touchmove', (e) => {
+          if (!e.target.closest('.modal-card')) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+      });
 
       menuInteractiveItems.forEach(item => {
         item.addEventListener('click', (e) => {
@@ -3088,19 +4037,6 @@
             closeModal(overlay);
           }
         });
-
-        // Prevent wheel or touch drag on backdrop overlay from triggering background page scrub
-        overlay.addEventListener('wheel', (e) => {
-          if (!e.target.closest('.modal-card-inner')) {
-            e.preventDefault();
-          }
-        }, { passive: false });
-
-        overlay.addEventListener('touchmove', (e) => {
-          if (!e.target.closest('.modal-card-inner')) {
-            e.preventDefault();
-          }
-        }, { passive: false });
       });
 
       // Close open modals on Escape key press
@@ -3137,6 +4073,56 @@
           trigger.addEventListener('click', () => {
             if (scrollContainer) {
               scrollContainer.scrollTop = 0;
+            }
+          });
+        });
+      }
+
+      // -------------------------------------------------------------
+      // THE DRISKILL MODAL TAB INTERACTION & SECURE BOOKING HANDLER
+      // - Fast tab switching between The Driskill / Location / Book Your Room
+      // - Scraper-protected group booking link opening
+      // -------------------------------------------------------------
+      const modalDriskill = document.getElementById('modal-driskill');
+      if (modalDriskill) {
+        const driskillTabs = modalDriskill.querySelectorAll('.driskill-tab-btn');
+        const driskillPanels = modalDriskill.querySelectorAll('.driskill-tab-panel');
+        const driskillScroll = modalDriskill.querySelector('.driskill-cards-scroll');
+
+        driskillTabs.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const tabKey = btn.getAttribute('data-tab');
+
+            // Update tab button active states
+            driskillTabs.forEach(b => {
+              const isCurrent = b === btn;
+              b.classList.toggle('active', isCurrent);
+              b.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+            });
+
+            // Update tab panel visibility
+            driskillPanels.forEach(panel => {
+              const matches = panel.getAttribute('data-panel') === tabKey;
+              panel.style.display = matches ? 'block' : 'none';
+            });
+
+            // Reset scroll position on tab switch
+            if (driskillScroll) {
+              driskillScroll.scrollTop = 0;
+            }
+          });
+        });
+
+        // Reset to first tab and top scroll on modal open
+        const driskillTriggers = document.querySelectorAll('[data-target="modal-driskill"]');
+        driskillTriggers.forEach(trigger => {
+          trigger.addEventListener('click', () => {
+            if (driskillTabs.length > 0) {
+              driskillTabs[0].click();
+            }
+            if (driskillScroll) {
+              driskillScroll.scrollTop = 0;
             }
           });
         });
@@ -3184,6 +4170,55 @@
           trigger.addEventListener('click', () => {
             if (scrollContainer) {
               scrollContainer.scrollTop = 0;
+            }
+          });
+        });
+      }
+
+      // -------------------------------------------------------------
+      // WHERE TO STAY MODAL TAB INTERACTION & BOOKING HANDLER
+      // - Fast tab switching between "The Driskill" & "Other Hotels Nearby"
+      // -------------------------------------------------------------
+      const modalStay = document.getElementById('modal-stay');
+      if (modalStay) {
+        const stayTabs = modalStay.querySelectorAll('.stay-tab-btn');
+        const stayPanels = modalStay.querySelectorAll('.stay-tab-panel');
+        const stayScroll = modalStay.querySelector('.stay-cards-scroll');
+
+        stayTabs.forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const tabKey = btn.getAttribute('data-tab');
+
+            // Update tab button active states
+            stayTabs.forEach(b => {
+              const isCurrent = b === btn;
+              b.classList.toggle('active', isCurrent);
+              b.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+            });
+
+            // Update tab panel visibility
+            stayPanels.forEach(panel => {
+              const matches = panel.getAttribute('data-panel') === tabKey;
+              panel.style.display = matches ? 'block' : 'none';
+            });
+
+            // Reset scroll position on tab switch
+            if (stayScroll) {
+              stayScroll.scrollTop = 0;
+            }
+          });
+        });
+
+        // Reset to first tab and top scroll on modal open
+        const stayTriggers = document.querySelectorAll('[data-target="modal-stay"]');
+        stayTriggers.forEach(trigger => {
+          trigger.addEventListener('click', () => {
+            if (stayTabs.length > 0) {
+              stayTabs[0].click();
+            }
+            if (stayScroll) {
+              stayScroll.scrollTop = 0;
             }
           });
         });
