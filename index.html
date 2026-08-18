@@ -18,6 +18,8 @@
   
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="screen-orientation" content="portrait" />
+  <meta name="x5-orientation" content="portrait" />
   <meta name="theme-color" content="#F1EBE1" />
   <meta name="theme-color" media="(prefers-color-scheme: light)" content="#F1EBE1" />
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#F1EBE1" />
@@ -4286,6 +4288,24 @@
           e.preventDefault();
         }
       });
+
+      // -------------------------------------------------------------
+      // MOBILE PORTRAIT ORIENTATION LOCK
+      // - Locks orientation to portrait when supported by browser
+      // -------------------------------------------------------------
+      const enforcePortraitOrientation = () => {
+        try {
+          if (screen.orientation && typeof screen.orientation.lock === 'function') {
+            screen.orientation.lock('portrait-primary').catch(() => {
+              screen.orientation.lock('portrait').catch(() => {});
+            });
+          }
+        } catch (err) {}
+      };
+
+      enforcePortraitOrientation();
+      window.addEventListener('orientationchange', enforcePortraitOrientation);
+      window.addEventListener('resize', enforcePortraitOrientation);
 
     });
   </script>
