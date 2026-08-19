@@ -730,7 +730,7 @@
       width: 35%;
       height: 35%;
       border-radius: 50%;
-      background-color: #55705E;
+      background-color: #394B3C;
       background-image: 
         radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0%, transparent 60%),
         radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
@@ -783,7 +783,24 @@
     .label-wedding-text {
       font-family: var(--font-monoton);
       font-weight: 400;
-      fill: #EEBA2B;
+      fill: #C29F62;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* FAINT ARCHIVAL MONOGRAM CATALOG SUB-MARK */
+    .label-monogram-submark {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      fill: #C29F62;
+      fill-opacity: 0.35;
+      dominant-baseline: central;
+      pointer-events: none;
+      user-select: none;
       text-rendering: optimizeLegibility;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
@@ -792,7 +809,7 @@
     .label-flourish-text {
       font-family: var(--font-bold);
       font-weight: 700;
-      fill: #EEBA2B;
+      fill: #C29F62;
       text-rendering: optimizeLegibility;
       dominant-baseline: central;
       -webkit-font-smoothing: antialiased;
@@ -802,7 +819,7 @@
     .label-flourish-sub {
       font-family: var(--font-slim);
       font-weight: 300;
-      fill: #EEBA2B;
+      fill: #C29F62;
       text-rendering: optimizeLegibility;
       dominant-baseline: central;
       -webkit-font-smoothing: antialiased;
@@ -819,14 +836,14 @@
        - Adjust font-size, letter-spacing, or opacity here for menu items
        ========================================================================= */
 
-    /* COLUMN A (SIDE A) MENU ITEMS DEFAULT FONT SIZE */
+    /* COLUMN A (SIDE A) MENU ITEMS - WARM CREAM (#F0E5D1) PRIMARY INTERACTIVE */
     .label-menu-item {
       font-family: var(--font-slim);
       font-weight: 300;
-      font-size: 44px;        /* <-- ADJUST SIDE A FONT SIZE HERE (Default: 37px) */
+      font-size: 46px;        /* <-- ADJUST SIDE A FONT SIZE HERE (Default: 37px) */
       letter-spacing: 1.5px;  /* <-- ADJUST SIDE A LETTER SPACING HERE */
       text-transform: uppercase;
-      fill: #FBF1C9;          /* Off-white cream color */
+      fill: #F0E5D1;          /* Warm Cream */
       pointer-events: auto;
       cursor: pointer;
       stroke: transparent;
@@ -843,7 +860,7 @@
     .label-menu-item:hover,
     .label-menu-item.is-hovered {
       transform: none;
-      filter: drop-shadow(0 0 0.4px rgba(238, 186, 43, 0.5)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
+      filter: drop-shadow(0 0 0.4px rgba(194, 159, 98, 0.5)) drop-shadow(0 1px 2px rgba(0, 0, 0, 0.85));
     }
 
     .label-menu-item.right-col:hover,
@@ -860,42 +877,64 @@
       }
     }
 
-    /* COLUMN B (SIDE B) MENU ITEMS FONT SIZE OVERRIDE */
+    /* COLUMN B (SIDE B) ACTIVE MENU ITEMS - WARM RUST (#C97A59) SECONDARY INTERACTIVE */
     .label-menu-item.right-col {
       font-size: 35px;        /* <-- ADJUST SIDE B FONT SIZE HERE (Default: 30px) */
-      opacity: 0.85;
+      fill: #C97A59;          /* Warm Rust - Secondary Interactive */
+      opacity: 0.95;
     }
 
-    /* 'SIDE A' & 'SIDE B' HEADER TITLES FONT & PILL CONTAINER */
+    /* 'SIDE A' & 'SIDE B' HEADER TITLES & PILL CONTAINER */
     .label-menu-header {
       font-family: var(--font-jaro);
       font-weight: 400;
       font-size: 28px;        /* <-- ADJUST SIDE A & SIDE B HEADERS FONT SIZE */
       letter-spacing: 3px;    /* <-- ADJUST HEADER LETTER SPACING */
       text-transform: uppercase;
-      fill: #FFC72C;          /* Intense vibrant warm gold */
+      fill: #C29F62;          /* Mustard Gold */
       text-rendering: optimizeLegibility;
       dominant-baseline: central;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 4px rgba(255, 199, 44, 0.25));
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 4px rgba(194, 159, 98, 0.3));
       pointer-events: none;
+    }
+
+    #header-side-a .label-menu-header {
+      font-size: 32px;
+      letter-spacing: 3.5px;
+      fill: #C29F62;          /* Mustard Gold - Primary Header */
+    }
+
+    #header-side-a .label-menu-header-pill {
+      stroke: #C29F62;        /* Mustard Gold */
+    }
+
+    /* SIDE B BADGE - MUTED RUST (#B26A4C) SIDE B HEADER */
+    #header-side-b .label-menu-header {
+      fill: #B26A4C;          /* Muted Rust */
+      filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 4px rgba(178, 106, 76, 0.25));
+    }
+
+    #header-side-b .label-menu-header-pill {
+      stroke: #B26A4C;        /* Muted Rust */
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 3px rgba(178, 106, 76, 0.2));
     }
 
     .label-menu-header-pill {
       fill: transparent;
-      stroke: #FFC72C;        /* Intense vibrant warm gold */
+      stroke: #C29F62;        /* Mustard Gold */
       stroke-width: 1.8px;
       stroke-opacity: 1;
       rx: 18px;
       ry: 18px;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 3px rgba(255, 199, 44, 0.2));
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 3px rgba(194, 159, 98, 0.2));
     }
 
-    /* Dead/Disabled Option (8. RSVP) with enhanced contrast and tooltip */
+    /* COLUMN B DISABLED OPTIONS (5. Schedule & 8. RSVP) - FADED SAGE (#6A7C6E) */
     .label-menu-item.item-dead {
-      fill: #9E9EA6;
-      opacity: 0.85;
+      fill: #6A7C6E;          /* Faded Sage - Disabled */
+      opacity: 0.95;
       cursor: default;
       stroke-width: 0;
       filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95));
@@ -903,8 +942,8 @@
 
     .label-menu-item.item-dead:hover {
       transform: none;
-      fill: #B0B0BA;
-      opacity: 0.95;
+      fill: #7B8E7F;
+      opacity: 1;
       filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.98));
     }
 
@@ -923,8 +962,8 @@
     }
 
     .label-tooltip-rect {
-      fill: #1A1A1E;
-      stroke: #EEBA2B;
+      fill: #1E2B20;
+      stroke: #C29F62;
       stroke-width: 2px;
       stroke-opacity: 1;
       rx: 8px;
@@ -937,19 +976,30 @@
       font-size: 21px;
       font-weight: 700;
       letter-spacing: 1.5px;
-      fill: #EEBA2B;
+      fill: #F0E5D1;
       dominant-baseline: central;
       text-anchor: middle;
       text-transform: uppercase;
     }
 
+    /* SIDE A HOVER GLOW */
     .label-menu-item:not(.item-dead):hover {
       fill: #FFFFFF;
       opacity: 1;
       filter: 
         drop-shadow(0 0 3px #FFFFFF)
-        drop-shadow(0 0 10px rgba(255, 240, 150, 0.98)) 
-        drop-shadow(0 0 20px rgba(238, 186, 43, 0.95));
+        drop-shadow(0 0 10px rgba(240, 229, 209, 0.98)) 
+        drop-shadow(0 0 20px rgba(194, 159, 98, 0.90));
+    }
+
+    /* SIDE B ACTIVE HOVER GLOW (Registry & FAQ) */
+    .label-menu-item.right-col:not(.item-dead):hover {
+      fill: #FFFFFF;
+      opacity: 1;
+      filter: 
+        drop-shadow(0 0 3px #FFFFFF)
+        drop-shadow(0 0 10px rgba(201, 122, 89, 0.98)) 
+        drop-shadow(0 0 22px rgba(178, 106, 76, 0.85));
     }
 
     /* Center Spindle Hole */
@@ -1122,14 +1172,14 @@
       font-size: 21px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      fill: #EEBA2B;
+      fill: #C29F62;
       pointer-events: none;
       user-select: none;
       text-rendering: optimizeLegibility;
       dominant-baseline: central;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 10px rgba(238, 186, 43, 0.35));
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 10px rgba(194, 159, 98, 0.35));
     }
 
     .surface-menu-item {
@@ -1138,7 +1188,7 @@
       font-size: 19.5px;
       letter-spacing: 1.6px;
       text-transform: uppercase;
-      fill: #EEBA2B;
+      fill: #F0E5D1;
       pointer-events: auto;
       cursor: pointer;
       stroke: transparent;
@@ -1156,9 +1206,23 @@
       fill: #FFFFFF;
       filter: 
         drop-shadow(0 0 3px #FFFFFF)
-        drop-shadow(0 0 10px rgba(255, 240, 150, 0.98)) 
-        drop-shadow(0 0 22px rgba(238, 186, 43, 0.95))
-        drop-shadow(0 0 40px rgba(238, 186, 43, 0.75));
+        drop-shadow(0 0 10px rgba(240, 229, 209, 0.98)) 
+        drop-shadow(0 0 22px rgba(194, 159, 98, 0.95))
+        drop-shadow(0 0 40px rgba(194, 159, 98, 0.75));
+    }
+
+    .surface-menu-item.side-b-spoke {
+      fill: #C97A59;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 4px rgba(201, 122, 89, 0.35));
+    }
+
+    .surface-menu-item.side-b-spoke:hover {
+      fill: #FFFFFF;
+      filter: 
+        drop-shadow(0 0 3px #FFFFFF)
+        drop-shadow(0 0 10px rgba(201, 122, 89, 0.98)) 
+        drop-shadow(0 0 22px rgba(178, 106, 76, 0.95))
+        drop-shadow(0 0 40px rgba(178, 106, 76, 0.75));
     }
 
     /* Global Modal Open Scroll Lock & Background Event Isolation
@@ -1224,13 +1288,13 @@
       font-family: 'Montserrat', sans-serif;
       overscroll-behavior: contain;
       touch-action: pan-y;
-      /* Heavy Cream Cardstock Paper Texture with Micro-Grain & Lighting Sheen */
+      /* Heavy Warm Linen Cream Cardstock Paper Texture with Micro-Grain & Lighting Sheen */
       background:
         /* Soft directional top-left sheen reflecting light across the paper */
         linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.1) 40%, rgba(240, 232, 216, 0.45) 100%),
         /* Micro-fine organic paper fiber noise */
         url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='paperNoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.16   0 0 0 0 0.12   0 0 0 0 0.08  0 0 0 0.038 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23paperNoise)'/%3E%3C/svg%3E"),
-        #FAF6ED;
+        #F6F3EC;
       /* Tactile physical paper drop shadow & crisp fiber edge */
       box-shadow: 
         0 30px 80px -15px rgba(26, 22, 18, 0.46),
@@ -1248,7 +1312,7 @@
       flex-direction: column;
     }
 
-    /* SAGE GREEN RING AROUND INSIDE OF MODAL (5px thick, 5px from edge) */
+    /* MINERAL GREEN RING AROUND INSIDE OF MODAL (5px thick, 5px from edge) */
     .modal-card::before {
       content: '';
       position: absolute;
@@ -1256,7 +1320,7 @@
       left: 5px;
       right: 5px;
       bottom: 5px;
-      border: 5px solid #5B7566; /* Authentic vintage sage green */
+      border: 5px solid #394B3C; /* Mineral green tie-in to vinyl label */
       border-radius: 11px; /* Nested border radius: 16px outer - 5px inset = 11px */
       pointer-events: none;
       z-index: 15;
@@ -1265,7 +1329,7 @@
         0 1px 2px rgba(255, 255, 255, 0.45);
     }
 
-    /* 5PX CREAM RING (Between sage green ring and outer edge, seamlessly masking scrolling content) */
+    /* 5PX WARM LINEN CREAM RING (Between mineral green ring and outer edge) */
     .modal-card::after {
       content: '';
       position: absolute;
@@ -1273,7 +1337,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      border: 5px solid #FAF6ED; /* Matches archival cream paper background */
+      border: 5px solid #F6F3EC; /* Matches warm linen cream paper background */
       border-radius: 16px;
       pointer-events: none;
       z-index: 16;
@@ -1302,11 +1366,11 @@
       margin: 16px 0;
     }
     .modal-card-inner::-webkit-scrollbar-thumb {
-      background: rgba(91, 117, 102, 0.3);
+      background: rgba(57, 75, 60, 0.3);
       border-radius: 4px;
     }
     .modal-card-inner::-webkit-scrollbar-thumb:hover {
-      background: rgba(91, 117, 102, 0.6);
+      background: rgba(57, 75, 60, 0.6);
     }
 
     .modal-overlay.active .modal-card {
@@ -1320,14 +1384,14 @@
       align-items: center;
       gap: 0.5rem;
       padding: 4px 12px;
-      background: rgba(91, 117, 102, 0.12);
-      border: 1px solid rgba(91, 117, 102, 0.35);
+      background: #E6E1D4;
+      border: 1px solid #DDD7C8;
       border-radius: 4px;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.16em;
-      color: #385141;
+      color: #3F4941;
       text-transform: uppercase;
       margin-bottom: 0.75rem;
     }
@@ -1337,11 +1401,11 @@
       top: 1.25rem;
       right: 1.25rem;
       z-index: 25;
-      background: rgba(91, 117, 102, 0.08);
-      border: 1px solid rgba(91, 117, 102, 0.25);
+      background: #EAE4D7;
+      border: 1px solid #DDD7C8;
       font-size: 1.35rem;
       cursor: pointer;
-      color: #2D2824;
+      color: #2B312D;
       width: 34px;
       height: 34px;
       border-radius: 50%;
@@ -1355,11 +1419,11 @@
     }
 
     .modal-close:hover {
-      background: #5B7566;
-      border-color: #5B7566;
-      color: #FFFFFF;
+      background: #394B3C;
+      border-color: #394B3C;
+      color: #FAF8F2;
       transform: scale(1.08) rotate(90deg);
-      box-shadow: 0 4px 10px rgba(91, 117, 102, 0.35);
+      box-shadow: 0 4px 10px rgba(57, 75, 60, 0.35);
     }
 
     .modal-title {
@@ -1368,14 +1432,14 @@
       font-size: 2.15rem;
       font-weight: 900;
       letter-spacing: -0.03em;
-      color: #1A1715;
+      color: #1E2320;
       margin-bottom: 1.25rem;
       line-height: 1.12;
       text-rendering: geometricPrecision;
     }
 
     .modal-body {
-      color: #2D2824;
+      color: #454E47;
       font-size: 0.98rem;
       line-height: 1.7;
       font-family: 'Montserrat', sans-serif;
@@ -1391,7 +1455,7 @@
     .modal-body strong {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      color: #1A1715;
+      color: #1E2320;
     }
 
     .modal-body em {
@@ -1407,13 +1471,13 @@
     }
 
     .info-box {
-      background: #F2EADA;
+      background: #EFE9D8;
       padding: 0.95rem 1.15rem;
       border-radius: 8px;
-      border-left: 3.5px solid #5B7566;
-      border-top: 1px solid rgba(91, 117, 102, 0.18);
-      border-right: 1px solid rgba(91, 117, 102, 0.18);
-      border-bottom: 1px solid rgba(91, 117, 102, 0.18);
+      border-left: 3.5px solid #394B3C;
+      border-top: 1px solid #DDD7C8;
+      border-right: 1px solid #DDD7C8;
+      border-bottom: 1px solid #DDD7C8;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
@@ -1422,7 +1486,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #5B7566;
+      color: #3F4941;
       margin-bottom: 4px;
       font-weight: 800;
       text-rendering: geometricPrecision;
@@ -1431,7 +1495,7 @@
     .info-box-val {
       font-family: 'Montserrat', sans-serif;
       font-weight: 700;
-      color: #1C1917;
+      color: #1E2320;
       font-size: 1.02rem;
       letter-spacing: -0.01em;
       text-rendering: geometricPrecision;
@@ -1447,7 +1511,7 @@
     }
 
     .faq-item {
-      border-bottom: 1px solid rgba(91, 117, 102, 0.20);
+      border-bottom: 1px solid #DDD7C8;
       padding-bottom: 1.35rem;
     }
 
@@ -1461,7 +1525,7 @@
       font-size: 1.08rem;
       font-weight: 800;
       letter-spacing: -0.015em;
-      color: #1F2923;
+      color: #1E2320;
       margin-bottom: 0.45rem;
       line-height: 1.32;
     }
@@ -1469,7 +1533,7 @@
     .faq-a {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
-      color: #2D2824;
+      color: #454E47;
       line-height: 1.68;
       font-weight: 400;
     }
@@ -1483,7 +1547,7 @@
     }
 
     .faq-inline-link {
-      color: #A6472D;
+      color: #B86B47;
       text-decoration: underline;
       font-weight: 700;
       transition: color 0.18s ease;
@@ -1491,12 +1555,12 @@
     }
 
     .faq-inline-link:hover {
-      color: #7D2B16;
+      color: #9E5434;
     }
 
     .faq-contact-card {
-      background: #F2EADA;
-      border: 1px solid rgba(91, 117, 102, 0.25);
+      background: #EFE9D8;
+      border: 1px solid #DDD7C8;
       border-radius: 8px;
       padding: 0.95rem 1.15rem;
       margin-top: 0.65rem;
@@ -1508,12 +1572,12 @@
     .faq-contact-row {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.92rem;
-      color: #1F2923;
+      color: #1E2320;
       font-weight: 700;
     }
 
     .faq-contact-row a {
-      color: #A6472D;
+      color: #B86B47;
       text-decoration: none;
       font-weight: 700;
       transition: color 0.18s ease;
@@ -1521,7 +1585,7 @@
 
     .faq-contact-row a:hover {
       text-decoration: underline;
-      color: #7D2B16;
+      color: #9E5434;
     }
 
     /* Registry Placeholder Link Cards */
@@ -1538,8 +1602,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 1.15rem 1.35rem;
-      background: #F2EADA;
-      border: 1px solid rgba(91, 117, 102, 0.25);
+      background: #F6F3EC;
+      border: 1px solid #DDD7C8;
       border-radius: 10px;
       text-decoration: none;
       transition: all 0.2s ease;
@@ -1547,8 +1611,8 @@
     }
 
     .registry-card:hover {
-      background: #ECE3D0;
-      border-color: rgba(91, 117, 102, 0.45);
+      background: #EFE9D8;
+      border-color: #394B3C;
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
@@ -1565,7 +1629,7 @@
       font-weight: 800;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #5B7566;
+      color: #3F4941;
     }
 
     .registry-vendor-title {
@@ -1573,7 +1637,7 @@
       font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: -0.015em;
-      color: #1F2923;
+      color: #1E2320;
       margin: 0;
     }
 
@@ -1581,7 +1645,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 1.5rem;
       font-weight: 900;
-      color: #C86446;
+      color: #B86B47;
       line-height: 1;
       display: inline-block;
       transition: transform 0.2s ease;
@@ -1595,8 +1659,8 @@
       display: inline-block;
       width: 100%;
       text-align: center;
-      background: #1C1917;
-      color: #EEBA2B;
+      background: #B86B47;
+      color: #FAF8F2;
       padding: 13px 22px;
       border-radius: 6px;
       font-size: 0.85rem;
@@ -1607,24 +1671,23 @@
       margin-top: 1rem;
       transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
-      border: 1px solid rgba(238, 186, 43, 0.4);
+      border: 1px solid rgba(0, 0, 0, 0.12);
       font-family: 'Montserrat', sans-serif;
       text-rendering: geometricPrecision;
     }
 
     .primary-btn:hover {
-      background: #000000;
-      color: #FFF2CC;
-      border-color: #EEBA2B;
-      box-shadow: 0 4px 15px rgba(238, 186, 43, 0.25);
+      background: #9E5434;
+      color: #FAF8F2;
+      box-shadow: 0 4px 15px rgba(184, 107, 71, 0.35);
       transform: translateY(-1px);
     }
 
     /* Driskill Room Block Card with Thumbnail & Link */
     .room-block-card {
       margin: 1.4rem 0 1.25rem 0;
-      background: #F2EADA;
-      border: 1px solid rgba(91, 117, 102, 0.28);
+      background: #EFE9D8;
+      border: 1px solid #DDD7C8;
       border-radius: 8px;
       padding: 1.15rem;
       display: flex;
@@ -1644,7 +1707,7 @@
       overflow: hidden;
       border: 1px solid rgba(0, 0, 0, 0.15);
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 0 2px 6px rgba(0, 0, 0, 0.08);
-      background: #E8DECC;
+      background: #E6E1D4;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1666,7 +1729,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 1.05rem;
       font-weight: 700;
-      color: #1C1917;
+      color: #1E2320;
       margin-bottom: 0.25rem;
       line-height: 1.25;
     }
@@ -1675,7 +1738,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.86rem;
       line-height: 1.45;
-      color: #554D42;
+      color: #454E47;
       margin-bottom: 0.65rem;
       font-weight: 400;
     }
@@ -1685,8 +1748,8 @@
       align-items: center;
       justify-content: center;
       gap: 0.4rem;
-      background: #1C1917;
-      color: #EEBA2B;
+      background: #B86B47;
+      color: #FAF8F2;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.80rem;
       font-weight: 700;
@@ -1695,7 +1758,7 @@
       padding: 9px 16px;
       border-radius: 4px;
       text-decoration: none;
-      border: 1px solid rgba(238, 186, 43, 0.4);
+      border: 1px solid rgba(0, 0, 0, 0.12);
       transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
       cursor: pointer;
       max-width: 100%;
@@ -1705,17 +1768,17 @@
     }
 
     .room-block-btn:hover {
-      background: #000000;
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), 0 0 15px rgba(238, 186, 43, 0.3);
+      background: #9E5434;
+      color: #FAF8F2;
+      box-shadow: 0 4px 12px rgba(184, 107, 71, 0.35);
       transform: translateY(-1px);
     }
 
     /* DRISKILL VENUE DETAILS CARD (Address, Hotel Website & Google Maps) */
     .venue-details-card {
       margin-top: 1.25rem;
-      background: #F2EADA;
-      border: 1px solid rgba(91, 117, 102, 0.25);
+      background: #EFE9D8;
+      border: 1px solid #DDD7C8;
       border-radius: 8px;
       padding: 1.25rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
@@ -1729,7 +1792,7 @@
       align-items: flex-start;
       margin-bottom: 1.15rem;
       padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(91, 117, 102, 0.18);
+      border-bottom: 1px solid #DDD7C8;
     }
 
     .venue-address-icon {
@@ -1737,7 +1800,7 @@
       width: 36px;
       height: 36px;
       border-radius: 50%;
-      background: rgba(91, 117, 102, 0.15);
+      background: #E6E1D4;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1756,7 +1819,7 @@
       font-weight: 800;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #5B7566;
+      color: #3F4941;
       margin-bottom: 0.2rem;
     }
 
@@ -1764,7 +1827,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.96rem;
       font-weight: 600;
-      color: #1C1917;
+      color: #1E2320;
       line-height: 1.45;
       margin-bottom: 0;
       word-break: break-word;
@@ -1790,9 +1853,9 @@
       letter-spacing: 0.06em;
       text-transform: uppercase;
       text-decoration: none;
-      color: #1C1917;
-      background: #E5DEC9;
-      border: 1px solid rgba(0, 0, 0, 0.12);
+      color: #1E2320;
+      background: #E6E1D4;
+      border: 1px solid #DDD7C8;
       transition: all 0.2s ease;
       cursor: pointer;
       min-width: 0;
@@ -1802,22 +1865,22 @@
     }
 
     .venue-link-btn:hover {
-      background: #D8D0BA;
-      color: #000000;
+      background: #DDD7C8;
+      color: #1E2320;
       transform: translateY(-1px);
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
     }
 
     .venue-link-btn-highlight {
-      background: #1C1917;
-      color: #EEBA2B;
-      border-color: rgba(238, 186, 43, 0.4);
+      background: #B86B47;
+      color: #FAF8F2;
+      border-color: rgba(0, 0, 0, 0.12);
     }
 
     .venue-link-btn-highlight:hover {
-      background: #000000;
-      color: #FFFFFF;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 12px rgba(238, 186, 43, 0.25);
+      background: #9E5434;
+      color: #FAF8F2;
+      box-shadow: 0 4px 12px rgba(184, 107, 71, 0.35);
     }
 
     /* =============================================================
@@ -1825,8 +1888,8 @@
        ============================================================= */
     #modal-spots .modal-card {
       max-width: 640px;
-      background: #F7F4EB;
-      border: 1px solid rgba(91, 117, 102, 0.25);
+      background: #F6F3EC;
+      border: 1px solid #394B3C;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
       border-radius: 16px;
       display: flex;
@@ -1850,7 +1913,7 @@
     .spots-header-fixed {
       padding: 2.25rem 2.25rem 0 2.25rem;
       border-bottom: none;
-      background: #F7F4EB;
+      background: #F6F3EC;
       flex-shrink: 0;
       overflow: hidden;
     }
@@ -1860,14 +1923,14 @@
       align-items: center;
       gap: 0.45rem;
       padding: 3px 9px;
-      background: rgba(91, 117, 102, 0.08);
-      border: 1px solid rgba(91, 117, 102, 0.22);
+      background: #E6E1D4;
+      border: 1px solid #DDD7C8;
       border-radius: 4px;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.68rem;
       font-weight: 800;
       letter-spacing: 0.16em;
-      color: #3D5244;
+      color: #3F4941;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
@@ -1877,7 +1940,7 @@
       font-size: 2.15rem;
       font-weight: 900;
       letter-spacing: -0.025em;
-      color: #1F2923;
+      color: #1E2320;
       line-height: 1.12;
       margin-bottom: 0.35rem;
     }
@@ -1885,7 +1948,7 @@
     .spots-intro {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.92rem;
-      color: #3A352F;
+      color: #454E47;
       line-height: 1.55;
       margin-bottom: 1.25rem;
       max-width: 540px;
@@ -1896,7 +1959,7 @@
       display: flex;
       gap: 0.35rem;
       align-items: center;
-      border-bottom: 1px solid rgba(91, 117, 102, 0.20);
+      border-bottom: 1px solid #DDD7C8;
       margin-top: 0.25rem;
       margin-bottom: 0;
       overflow-x: auto;
@@ -1919,7 +1982,7 @@
       padding: 0.55rem 0.95rem 0.75rem 0.95rem;
       border: none;
       background: transparent;
-      color: #5B7566;
+      color: #5A665D;
       cursor: pointer;
       position: relative;
       transition: color 0.18s ease;
@@ -1928,11 +1991,11 @@
     }
 
     .spots-tab-btn:hover {
-      color: #1F2923;
+      color: #1E2320;
     }
 
     .spots-tab-btn.active {
-      color: #C86446;
+      color: #B86B47;
       font-weight: 800;
     }
 
@@ -1943,7 +2006,7 @@
       left: 0;
       right: 0;
       height: 2.5px;
-      background: #C86446;
+      background: #B86B47;
       border-radius: 2px 2px 0 0;
     }
 
@@ -1962,8 +2025,8 @@
     #modal-spots .modal-card,
     #modal-stay .modal-card {
       max-width: 640px;
-      background: #F7F4EB;
-      border: 1px solid rgba(91, 117, 102, 0.25);
+      background: #F6F3EC;
+      border: 1px solid #394B3C;
       box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
       border-radius: 16px;
       display: flex;
@@ -1989,7 +2052,7 @@
     .stay-header-fixed {
       padding: 2.25rem 2.25rem 0 2.25rem;
       border-bottom: none;
-      background: #F7F4EB;
+      background: #F6F3EC;
       flex-shrink: 0;
       overflow: hidden;
     }
@@ -1999,7 +2062,7 @@
       font-size: 2.15rem;
       font-weight: 900;
       letter-spacing: -0.025em;
-      color: #1F2923;
+      color: #1E2320;
       line-height: 1.12;
       margin-bottom: 0.35rem;
     }
@@ -2007,7 +2070,7 @@
     .stay-intro {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.92rem;
-      color: #3A352F;
+      color: #454E47;
       line-height: 1.55;
       margin-bottom: 1.25rem;
       max-width: 540px;
@@ -2017,7 +2080,7 @@
       display: flex;
       gap: 0.35rem;
       align-items: center;
-      border-bottom: 1px solid rgba(91, 117, 102, 0.20);
+      border-bottom: 1px solid #DDD7C8;
       margin-top: 0.25rem;
       margin-bottom: 0;
       overflow-x: auto;
@@ -2040,7 +2103,7 @@
       padding: 0.55rem 0.95rem 0.75rem 0.95rem;
       border: none;
       background: transparent;
-      color: #5B7566;
+      color: #5A665D;
       cursor: pointer;
       position: relative;
       transition: color 0.18s ease;
@@ -2049,11 +2112,11 @@
     }
 
     .stay-tab-btn:hover {
-      color: #1F2923;
+      color: #1E2320;
     }
 
     .stay-tab-btn.active {
-      color: #C86446;
+      color: #B86B47;
       font-weight: 800;
     }
 
@@ -2064,7 +2127,7 @@
       left: 0;
       right: 0;
       height: 2.5px;
-      background: #C86446;
+      background: #B86B47;
       border-radius: 2px 2px 0 0;
     }
 
@@ -2090,7 +2153,7 @@
     .driskill-header-fixed {
       padding: 2.25rem 2.25rem 0 2.25rem;
       border-bottom: none;
-      background: #F7F4EB;
+      background: #F6F3EC;
       flex-shrink: 0;
       overflow: hidden;
     }
@@ -2100,14 +2163,14 @@
       align-items: center;
       gap: 0.45rem;
       padding: 3px 9px;
-      background: rgba(91, 117, 102, 0.08);
-      border: 1px solid rgba(91, 117, 102, 0.22);
+      background: #E6E1D4;
+      border: 1px solid #DDD7C8;
       border-radius: 4px;
       font-family: 'Montserrat', sans-serif;
       font-size: 0.68rem;
       font-weight: 800;
       letter-spacing: 0.16em;
-      color: #3D5244;
+      color: #3F4941;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
@@ -2117,7 +2180,7 @@
       font-size: 2.15rem;
       font-weight: 900;
       letter-spacing: -0.025em;
-      color: #1F2923;
+      color: #1E2320;
       line-height: 1.12;
       margin-bottom: 0.35rem;
     }
@@ -2125,7 +2188,7 @@
     .driskill-intro {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.92rem;
-      color: #3A352F;
+      color: #454E47;
       line-height: 1.55;
       margin-bottom: 1.25rem;
       max-width: 540px;
@@ -2135,7 +2198,7 @@
       display: flex;
       gap: 0.35rem;
       align-items: center;
-      border-bottom: 1px solid rgba(91, 117, 102, 0.20);
+      border-bottom: 1px solid #DDD7C8;
       margin-top: 0.25rem;
       margin-bottom: 0;
       overflow-x: auto;
@@ -2158,7 +2221,7 @@
       padding: 0.55rem 0.95rem 0.75rem 0.95rem;
       border: none;
       background: transparent;
-      color: #5B7566;
+      color: #5A665D;
       cursor: pointer;
       position: relative;
       transition: color 0.18s ease;
@@ -2167,11 +2230,11 @@
     }
 
     .driskill-tab-btn:hover {
-      color: #1F2923;
+      color: #1E2320;
     }
 
     .driskill-tab-btn.active {
-      color: #C86446;
+      color: #B86B47;
       font-weight: 800;
     }
 
@@ -2182,7 +2245,7 @@
       left: 0;
       right: 0;
       height: 2.5px;
-      background: #C86446;
+      background: #B86B47;
       border-radius: 2px 2px 0 0;
     }
 
@@ -2195,8 +2258,8 @@
 
     /* Editorial Photo Card with Art Gallery Matting & Shadow */
     .driskill-photo-card {
-      background: #EFE9D9;
-      border: 1px solid rgba(91, 117, 102, 0.28);
+      background: #EFE9D8;
+      border: 1px solid #DDD7C8;
       border-radius: 12px;
       padding: 7px;
       box-shadow: 
@@ -2211,7 +2274,7 @@
       height: 250px;
       border-radius: 7px;
       overflow: hidden;
-      border: 1px solid rgba(91, 117, 102, 0.20);
+      border: 1px solid #DDD7C8;
       background: #202A24;
       position: relative;
     }
@@ -2243,14 +2306,14 @@
       font-weight: 700;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #5B7566;
+      color: #5A665D;
       text-decoration: none;
       transition: color 0.15s ease, opacity 0.15s ease;
       opacity: 0.9;
     }
 
     .driskill-website-subtle-link:hover {
-      color: #1F2923;
+      color: #1E2320;
       opacity: 1;
       text-decoration: underline;
     }
@@ -2264,7 +2327,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
       line-height: 1.72;
-      color: #2D2824;
+      color: #454E47;
       font-weight: 500;
       margin-bottom: 1rem;
       text-rendering: geometricPrecision;
@@ -2280,7 +2343,7 @@
       align-items: center;
       margin-top: 1.15rem;
       padding-top: 0.85rem;
-      border-top: 1px dashed rgba(91, 117, 102, 0.25);
+      border-top: 1px dashed #DDD7C8;
     }
 
     .driskill-btn-primary {
@@ -2289,21 +2352,22 @@
       align-items: center;
       gap: 0.45rem;
       padding: 0.65rem 1.25rem;
-      background: #C86446;
-      color: #FFFDF8;
+      background: #B86B47;
+      color: #FAF8F2;
       font-weight: 800;
       font-size: 0.82rem;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       border-radius: 6px;
       text-decoration: none;
-      border: 1px solid rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(0, 0, 0, 0.12);
       cursor: pointer;
       transition: background 0.15s ease, transform 0.1s ease;
     }
 
     .driskill-btn-primary:hover {
-      background: #B35235;
+      background: #9E5434;
+      color: #FAF8F2;
       transform: translateY(-1px);
     }
 
@@ -2313,19 +2377,19 @@
       align-items: center;
       gap: 0.4rem;
       padding: 0.55rem 0.95rem;
-      background: #F7F4EB;
-      color: #3D5244;
+      background: #F6F3EC;
+      color: #3F4941;
       font-weight: 700;
       font-size: 0.8rem;
       border-radius: 6px;
       text-decoration: none;
-      border: 1px solid rgba(91, 117, 102, 0.35);
+      border: 1px solid #DDD7C8;
       transition: background 0.15s ease, border-color 0.15s ease;
     }
 
     .driskill-btn-secondary:hover {
-      background: #ECE5D2;
-      border-color: #3D5244;
+      background: #EFE9D8;
+      border-color: #3F4941;
     }
 
     .driskill-btn-subtle {
@@ -2334,27 +2398,27 @@
       align-items: center;
       gap: 0.45rem;
       padding: 0.55rem 1rem;
-      background: rgba(91, 117, 102, 0.08);
-      color: #3D5244;
+      background: #E6E1D4;
+      color: #3F4941;
       font-weight: 700;
       font-size: 0.82rem;
       border-radius: 6px;
       text-decoration: none;
-      border: 1px solid rgba(91, 117, 102, 0.25);
+      border: 1px solid #DDD7C8;
       transition: all 0.15s ease;
     }
 
     .driskill-btn-subtle:hover {
-      background: rgba(91, 117, 102, 0.16);
-      border-color: #3D5244;
-      color: #1F2923;
+      background: #DDD7C8;
+      border-color: #394B3C;
+      color: #1E2320;
     }
 
     /* Location Tab Elements */
     .driskill-map-card {
-      border: 1px solid rgba(91, 117, 102, 0.22);
+      border: 1px solid #DDD7C8;
       border-radius: 12px;
-      background: #EFEAD9;
+      background: #EFE9D8;
       padding: 1.15rem;
       margin-bottom: 1.25rem;
       box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
@@ -2364,10 +2428,10 @@
       width: 100%;
       height: 220px;
       border-radius: 8px;
-      border: 1px solid rgba(91, 117, 102, 0.25);
+      border: 1px solid #DDD7C8;
       overflow: hidden;
       margin-bottom: 0.9rem;
-      background: #E5DFC9;
+      background: #E6E1D4;
       position: relative;
     }
 
@@ -2375,14 +2439,14 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 1.05rem;
       font-weight: 800;
-      color: #1F2923;
+      color: #1E2320;
       margin-bottom: 0.25rem;
     }
 
     .driskill-address-sub {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.85rem;
-      color: #5B7566;
+      color: #5A665D;
       font-weight: 600;
       margin-bottom: 0.85rem;
     }
@@ -2402,7 +2466,7 @@
 
     .driskill-transit-card {
       padding: 0.75rem 0.2rem;
-      border-bottom: 1px dashed rgba(91, 117, 102, 0.25);
+      border-bottom: 1px dashed #DDD7C8;
     }
 
     .driskill-transit-card:last-child {
@@ -2421,7 +2485,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.92rem;
       font-weight: 800;
-      color: #1F2923;
+      color: #1E2320;
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
@@ -2433,9 +2497,9 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #C86446;
-      background: rgba(200, 100, 70, 0.10);
-      border: 1px solid rgba(200, 100, 70, 0.25);
+      color: #3F4941;
+      background: #E6E1D4;
+      border: 1px solid #DDD7C8;
       padding: 2px 7px;
       border-radius: 4px;
     }
@@ -2443,7 +2507,7 @@
     .driskill-transit-desc {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.84rem;
-      color: #3A352F;
+      color: #454E47;
       line-height: 1.55;
       margin: 0;
     }
@@ -2458,7 +2522,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 1.25rem;
       font-weight: 900;
-      color: #1F2923;
+      color: #1E2320;
       margin-bottom: 0.45rem;
     }
 
@@ -2466,7 +2530,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.95rem;
       line-height: 1.72;
-      color: #2D2824;
+      color: #454E47;
       font-weight: 500;
       margin-bottom: 1.25rem;
       text-rendering: geometricPrecision;
@@ -2493,7 +2557,7 @@
     .spots-entry-row {
       padding: 1.15rem 0.65rem;
       margin: 0 -0.65rem;
-      border-bottom: 1px dashed rgba(91, 117, 102, 0.20);
+      border-bottom: 1px dashed #DDD7C8;
       border-radius: 8px;
       transition: background 0.15s ease;
     }
@@ -2503,7 +2567,7 @@
     }
 
     .spots-entry-row:hover {
-      background: rgba(239, 234, 217, 0.65);
+      background: #EFE9D8;
     }
 
     .spots-entry-top {
@@ -2518,7 +2582,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 1.05rem;
       font-weight: 800;
-      color: #1F2923;
+      color: #1E2320;
       text-decoration: none;
       display: inline-flex;
       align-items: baseline;
@@ -2527,7 +2591,7 @@
     }
 
     .spots-entry-row:hover .spots-entry-title {
-      color: #C86446;
+      color: #B86B47;
     }
 
     .spots-entry-title .ext-icon {
@@ -2557,9 +2621,9 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: #5B7566;
-      background: rgba(91, 117, 102, 0.10);
-      border: 1px solid rgba(91, 117, 102, 0.20);
+      color: #3F4941;
+      background: #E6E1D4;
+      border: 1px solid #DDD7C8;
       padding: 2px 7px;
       border-radius: 4px;
     }
@@ -2568,7 +2632,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.75rem;
       font-weight: 700;
-      color: #C86446;
+      color: #B86B47;
       text-decoration: none;
       transition: color 0.15s ease;
       white-space: nowrap;
@@ -2576,14 +2640,14 @@
 
     .spots-map-link:hover {
       text-decoration: underline;
-      color: #A6472D;
+      color: #9E5434;
     }
 
     .spots-entry-blurb {
       font-family: 'Montserrat', sans-serif;
       font-size: 0.88rem;
       line-height: 1.55;
-      color: #3A352F;
+      color: #454E47;
       margin: 0;
       font-weight: 400;
     }
@@ -2610,16 +2674,16 @@
 
     /* OUR STORY LEAD-IN INTRO TYPOGRAPHY & SPACING */
     .story-lead-intro {
-      font-size: 1.12rem;
-      font-style: italic;
+      font-size: 1.05rem;
+      font-style: normal;
       font-weight: 500;
       line-height: 1.65;
-      color: #342D26;
+      color: #454E47;
       margin-top: 0.35rem;
-      margin-bottom: 2.25rem;
+      margin-bottom: 1.75rem;
       max-width: 540px;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px dashed rgba(91, 117, 102, 0.25);
+      padding-bottom: 0;
+      border-bottom: none;
     }
 
     /* STORY SCROLLING TIMELINE COMPONENT */
@@ -2637,7 +2701,7 @@
       bottom: 45px;
       left: 45px;
       width: 2px;
-      background: #D6CCB2;
+      background: #DDD7C8;
       transform: translateX(-50%);
       z-index: 1;
     }
@@ -2668,10 +2732,10 @@
       width: 90px;
       height: 90px;
       border-radius: 50%;
-      border: 3px solid #D6CCB2;
+      border: 3px solid #DDD7C8;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(0, 0, 0, 0.08);
       overflow: hidden;
-      background: #E8DECC;
+      background: #E6E1D4;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -2686,15 +2750,16 @@
       filter: saturate(1.02) contrast(1.04);
     }
 
+    .timeline-photo-img.img-beers,
     .timeline-photo-img.img-kaceys {
       object-position: center center;
-      transform: scale(1.04);
+      transform: scale(1.02);
     }
 
     .timeline-photo-img.img-graduation,
     .timeline-photo-img.img-kellogg {
       object-position: 82% 32%;
-      transform: scale(1.35);
+      transform: scale(1.52);
       transform-origin: 82% center;
     }
 
@@ -2715,7 +2780,7 @@
 
     .timeline-photo-img.img-engaged {
       object-position: center 18%;
-      transform: scale(1.24);
+      transform: scale(1.42);
     }
 
     .timeline-photo-img.img-driskill {
@@ -2734,7 +2799,7 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #8C6208;
+      color: #3F4941;
       margin-bottom: 0.25rem;
     }
 
@@ -2742,7 +2807,7 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 1.08rem;
       font-weight: 700;
-      color: #1C1917;
+      color: #1E2320;
       line-height: 1.35;
       margin-bottom: 0;
     }
@@ -2757,7 +2822,11 @@
       .surface-menu-item {
         font-size: 21px;
         letter-spacing: 1.3px;
-        stroke-width: 22px; /* Generous touch area for mobile taps */
+        stroke-width: 26px; /* Generous touch area for mobile taps (>=44px touch target) */
+      }
+
+      .label-menu-item {
+        stroke-width: 26px; /* Touch target insurance on tablet/mobile */
       }
     }
 
@@ -2964,7 +3033,7 @@
               <!-- Header Spoke (Angle: -31.5°) -->
               <g id="spoke-g-0" transform="rotate(-31.5 500 500)">
                 <text class="surface-menu-header" id="menu-tracklist-header" x="715" y="500">SELECT A TRACK</text>
-                <line x1="865" y1="500" x2="975" y2="500" stroke="#EEBA2B" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="3 3" />
+                <line x1="865" y1="500" x2="975" y2="500" stroke="#C29F62" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="3 3" />
               </g>
               <!-- 1. The Details (Angle: -24.5°) -->
               <g id="spoke-g-1" transform="rotate(-24.5 500 500)">
@@ -2978,9 +3047,9 @@
               <g id="spoke-g-3" transform="rotate(-10.5 500 500)">
                 <text class="surface-menu-item" id="menu-stay-text" data-target="modal-stay" x="715" y="500">3. Where to Stay</text>
               </g>
-              <!-- 4. Some Favorite Spots (Angle: -3.5°) -->
+              <!-- 4. Around Town (Angle: -3.5°) -->
               <g id="spoke-g-4" transform="rotate(-3.5 500 500)">
-                <text class="surface-menu-item" id="menu-spots-text" data-target="modal-spots" x="715" y="500">4. Some Favorite Spots</text>
+                <text class="surface-menu-item" id="menu-spots-text" data-target="modal-spots" x="715" y="500">4. Around Town</text>
               </g>
               <!-- 5. About Us (Angle: +3.5°) -->
               <g id="spoke-g-5" transform="rotate(3.5 500 500)">
@@ -2996,11 +3065,11 @@
               </g>
               <!-- 8. Registry (Angle: +24.5°) -->
               <g id="spoke-g-8" transform="rotate(24.5 500 500)">
-                <text class="surface-menu-item" id="menu-registry-text" data-target="modal-registry" x="715" y="500">8. Registry</text>
+                <text class="surface-menu-item side-b-spoke" id="menu-registry-text" data-target="modal-registry" x="715" y="500">8. Registry</text>
               </g>
               <!-- 9. FAQ (Angle: +31.5°) -->
               <g id="spoke-g-9" transform="rotate(31.5 500 500)">
-                <text class="surface-menu-item" id="menu-faq-text" data-target="modal-faq" x="715" y="500">9. FAQ</text>
+                <text class="surface-menu-item side-b-spoke" id="menu-faq-text" data-target="modal-faq" x="715" y="500">9. FAQ</text>
               </g>
             </g>
           </svg>
@@ -3011,10 +3080,10 @@
             <!-- Vintage Record Label Typography SVG -->
             <svg class="label-svg" viewBox="0 0 1000 1000">
               <defs>
-                <!-- Top Arc: Baseline at R=423 (brought down 5px from R=428) -->
-                <path id="labelArcTop" d="M 77,500 A 423,423 0 0,1 923,500" />
-                <!-- Circular Loop Graphic Path: Loops clockwise from right of 'TRACK' around bottom to left of 'SELECT' at R=453 (extended ~60px closer to text) -->
-                <path id="labelArcLoop" d="M 815,174 A 453,453 0 1,1 185,174" />
+                <!-- Top Arc: Baseline at R=412 (ensuring >=8% radial breathing room from outer yellow ring) -->
+                <path id="labelArcTop" d="M 88,500 A 412,412 0 0,1 912,500" />
+                <!-- Circular Loop Graphic Path: Loops clockwise from right of 'TRACK' around bottom to left of 'SELECT' at R=453 -->
+                <path id="labelArcLoop" d="M 818,172 A 453,453 0 1,1 182,172" />
                 <!-- Finley Arc: Baseline at R=430 (sits closely on top of the yellow loop at R=453) -->
                 <path id="labelArcFinley" d="M 70,500 A 430,430 0 0,0 930,500" />
 
@@ -3059,16 +3128,25 @@
                 <rect id="raking-light-rect" width="1000" height="1000" fill="url(#grazing-light-gradient)" opacity="0.5" style="mix-blend-mode: overlay;" />
               </g>
 
-              <!-- Circular Solid Line Graphic Connecting Right of 'TRACK' around bottom to Left of 'SELECT' (R=453, extended ~60px closer to text) -->
-              <g id="label-track-loop">
-                <!-- Clean Solid Gold Loop Arc with rounded end caps -->
-                <path d="M 815,174 A 453,453 0 1,1 185,174" fill="none" stroke="#EEBA2B" stroke-width="4.5" stroke-linecap="round" stroke-opacity="0.85" />
+              <!-- Concentric Vinyl Pressing Indentation Ring (25% Diameter, authentic physical 2.75" pressing ring groove) -->
+              <g id="vinyl-pressing-indentation" style="pointer-events: none;">
+                <circle cx="500" cy="500" r="126" fill="none" stroke="#000000" stroke-width="1.2" stroke-opacity="0.25" />
+                <circle cx="500" cy="500" r="125" fill="none" stroke="#C29F62" stroke-width="1.5" stroke-opacity="0.22" />
               </g>
 
-              <!-- Top Arc: Select A Track (R=428, brought down 5px from R=433) -->
-              <text class="label-wedding-text" font-size="64" letter-spacing="3">
+              <!-- Faint Archival Monogram Catalog Sub-Mark (Centered at X: 50%, Y: 57%) -->
+              <text class="label-monogram-submark" x="500" y="570" text-anchor="middle">JB • MM</text>
+
+              <!-- Circular Solid Line Graphic Connecting Right of 'TRACK' around bottom to Left of 'SELECT' (R=453) -->
+              <g id="label-track-loop">
+                <!-- Clean Solid Warm Mustard Ochre Loop Arc with rounded end caps -->
+                <path d="M 818,172 A 453,453 0 1,1 182,172" fill="none" stroke="#C29F62" stroke-width="4.5" stroke-linecap="round" stroke-opacity="0.9" />
+              </g>
+
+              <!-- Top Arc: Select A Track (R=412 with increased letter-spacing to prevent apex crowding) -->
+              <text class="label-wedding-text" font-size="56" letter-spacing="6">
                 <textPath href="#labelArcTop" startOffset="50%" text-anchor="middle">
-                  SELECT <tspan font-size="48">A</tspan> TRACK
+                  SELECT <tspan font-size="42">A</tspan> TRACK
                 </textPath>
               </text>
 
@@ -3087,7 +3165,7 @@
                 <!-- Header: SIDE A (y=278, x=325 - sitting 60px above Item 1) -->
                 <g id="header-side-a">
                   <!-- Pill container centered around x=325, y=278 -->
-                  <rect class="label-menu-header-pill" x="255" y="260" width="140" height="36" />
+                  <rect class="label-menu-header-pill" x="248" y="258" width="154" height="40" rx="20" ry="20" />
                   <text class="label-menu-header" x="325" y="278" text-anchor="middle">SIDE A</text>
                 </g>
 
@@ -3097,60 +3175,60 @@
                 <!-- 2. The Driskill (Row 2: y=446, x=250) -->
                 <text class="label-menu-item" data-target="modal-driskill" x="250" y="446" text-anchor="middle">2. The Driskill</text>
 
-                <!-- 3. Stuff to Do (Row 3: y=554, x=250) -->
-                <text class="label-menu-item" data-target="modal-spots" x="250" y="554" text-anchor="middle">3. Stuff to Do</text>
+                <!-- 3. Around Town (Row 3: y=554, x=250) -->
+                <text class="label-menu-item" data-target="modal-spots" x="250" y="554" text-anchor="middle">3. Around Town</text>
 
                 <!-- 4. Where to Stay (Row 4: y=662, x=325) -->
                 <text class="label-menu-item" data-target="modal-stay" x="325" y="662" text-anchor="middle">4. Where to Stay</text>
 
 
                 <!-- -------------------------------------------------------------
-                     COLUMN B: "SIDE B" HEADER & MENU ITEMS (Right side arc - Tighter Spacing)
+                     COLUMN B: "SIDE B" HEADER & MENU ITEMS (Right side arc - Shifted +30px right)
                      ------------------------------------------------------------- -->
 
-                <!-- Header: SIDE B (y=310, x=675 - sitting 66px above Item 5) -->
+                <!-- Header: SIDE B (y=323, x=685 - sitting above Item 5) -->
                 <g id="header-side-b">
-                  <!-- Pill container centered around x=675, y=310 -->
-                  <rect class="label-menu-header-pill" x="605" y="292" width="140" height="36" />
-                  <text class="label-menu-header" x="675" y="310" text-anchor="middle">SIDE B</text>
+                  <!-- Pill container centered around x=685, y=323 -->
+                  <rect class="label-menu-header-pill" x="615" y="305" width="140" height="36" />
+                  <text class="label-menu-header" x="685" y="323" text-anchor="middle">SIDE B</text>
                 </g>
 
-                <!-- 5. Schedule (Row 1: y=376, shifted 40px left to x=665) - Disabled/Coming Soon -->
+                <!-- 5. Schedule (Row 1: y=382, x=680) - Disabled/Coming Soon -->
                 <g id="schedule-item-group" tabindex="0" role="button" aria-label="5. Schedule - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
-                  <text class="label-menu-item right-col item-dead" x="665" y="376" text-anchor="middle">5. Schedule</text>
+                  <text class="label-menu-item right-col item-dead" x="680" y="382" text-anchor="middle">5. Schedule</text>
                   <!-- Hover Tooltip overlay: explicit SVG coordinates -->
                   <g class="label-tooltip">
-                    <rect class="label-tooltip-rect" x="575" y="355" width="180" height="42" />
-                    <text class="label-tooltip-text" x="665" y="376">Coming Soon</text>
+                    <rect class="label-tooltip-rect" x="590" y="361" width="180" height="42" />
+                    <text class="label-tooltip-text" x="680" y="382">Coming Soon</text>
                   </g>
                 </g>
 
-                <!-- 6. Registry (Row 2: y=458, shifted 40px left to x=740) -->
-                <text class="label-menu-item right-col" data-target="modal-registry" x="740" y="458" text-anchor="middle">6. Registry</text>
+                <!-- 6. Registry (Row 2: y=460, x=745) -->
+                <text class="label-menu-item right-col" data-target="modal-registry" x="745" y="460" text-anchor="middle">6. Registry</text>
 
-                <!-- 7. FAQ (Row 3: y=540, shifted 60px left to x=720) -->
-                <text class="label-menu-item right-col" data-target="modal-faq" x="720" y="540" text-anchor="middle">7. FAQ</text>
+                <!-- 7. FAQ (Row 3: y=538, x=730) -->
+                <text class="label-menu-item right-col" data-target="modal-faq" x="730" y="538" text-anchor="middle">7. FAQ</text>
 
-                <!-- 8. RSVP (Row 4: y=622, shifted 40px left to x=665) - Disabled/Coming Soon -->
+                <!-- 8. RSVP (Row 4: y=616, x=680) - Disabled/Coming Soon -->
                 <g id="rsvp-item-group" tabindex="0" role="button" aria-label="8. RSVP - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
-                  <text class="label-menu-item right-col item-dead" x="665" y="622" text-anchor="middle">8. RSVP</text>
+                  <text class="label-menu-item right-col item-dead" x="680" y="616" text-anchor="middle">8. RSVP</text>
                   <!-- Hover Tooltip overlay: explicit SVG coordinates -->
                   <g class="label-tooltip">
-                    <rect class="label-tooltip-rect" x="575" y="601" width="180" height="42" />
-                    <text class="label-tooltip-text" x="665" y="622">Coming Soon</text>
+                    <rect class="label-tooltip-rect" x="590" y="595" width="180" height="42" />
+                    <text class="label-tooltip-text" x="680" y="616">Coming Soon</text>
                   </g>
                 </g>
 
               </g>
 
-              <!-- VINTAGE BARCODE (Enlarged and positioned higher above the Finley text) -->
-              <g id="label-barcode" transform="translate(412, 820) scale(1.18)">
-                <path d="M 0,0 V 28 M 3,0 V 28 M 8,0 V 28 M 12,0 V 28 M 16,0 V 28 M 22,0 V 28 M 27,0 V 28 M 32,0 V 28 M 36,0 V 28 M 42,0 V 28 M 46,0 V 28 M 50,0 V 28 M 56,0 V 28 M 62,0 V 28 M 68,0 V 28 M 72,0 V 28 M 78,0 V 28 M 82,0 V 28 M 88,0 V 28 M 94,0 V 28 M 98,0 V 28 M 104,0 V 28 M 108,0 V 28 M 114,0 V 28 M 120,0 V 28 M 124,0 V 28 M 130,0 V 28 M 136,0 V 28 M 142,0 V 28 M 147,0 V 28 M 150,0 V 28" stroke="#CCA030" stroke-width="2.4" stroke-opacity="1" />
-                <text x="75" y="44" text-anchor="middle" font-family="var(--font-slim)" font-weight="400" font-size="15" letter-spacing="2.5" fill="#CCA030" fill-opacity="1">0 42420 27042 4</text>
+              <!-- VINTAGE BARCODE (Deep Charcoal stamped mark centered at Y: 82% with equal radial margins) -->
+              <g id="label-barcode" transform="translate(411.5, 808) scale(1.18)">
+                <path d="M 0,0 V 28 M 3,0 V 28 M 8,0 V 28 M 12,0 V 28 M 16,0 V 28 M 22,0 V 28 M 27,0 V 28 M 32,0 V 28 M 36,0 V 28 M 42,0 V 28 M 46,0 V 28 M 50,0 V 28 M 56,0 V 28 M 62,0 V 28 M 68,0 V 28 M 72,0 V 28 M 78,0 V 28 M 82,0 V 28 M 88,0 V 28 M 94,0 V 28 M 98,0 V 28 M 104,0 V 28 M 108,0 V 28 M 114,0 V 28 M 120,0 V 28 M 124,0 V 28 M 130,0 V 28 M 136,0 V 28 M 142,0 V 28 M 147,0 V 28 M 150,0 V 28" stroke="#2B2B2B" stroke-width="2.4" stroke-opacity="1" />
+                <text x="75" y="44" text-anchor="middle" font-family="var(--font-slim)" font-weight="400" font-size="15" letter-spacing="2.5" fill="#2B2B2B" fill-opacity="1">0 42420 27042 4</text>
               </g>
 
-              <!-- Finley Recording Corp Note (Increased 1pt to 17px) -->
-              <text font-family="var(--font-slim)" font-weight="400" font-size="17" letter-spacing="2.8" fill="#CCA030" fill-opacity="1">
+              <!-- Finley Recording Corp Note (Deep Charcoal footer text) -->
+              <text font-family="var(--font-slim)" font-weight="400" font-size="17" letter-spacing="2.8" fill="#2B2B2B" fill-opacity="1">
                 <textPath href="#labelArcFinley" startOffset="50%" text-anchor="middle">
                   Finley Recording Corp • Recorded in Chicago, IL &amp; Austin, TX
                 </textPath>
@@ -3165,7 +3243,7 @@
 
         <!-- SLEEVE FRONT COVER (z-index: 10, sits in front of vinyl-record with notch cutout) -->
         <div class="sleeve-front">
-          <img id="sleeve-cover-image" src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/Weston-4.png" alt="Mike & Jordan Album Cover" class="sleeve-photo" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./Weston-4.png';" />
+          <img id="sleeve-cover-image" src="./Weston-5.png" alt="Mike & Jordan Album Cover" class="sleeve-photo" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/Weston-5.png'; if(!this.src) this.src='./Weston-5.png';" />
         </div><!-- /sleeve-front -->
 
       </div><!-- /scene-group -->
@@ -3181,21 +3259,21 @@
       <div class="modal-card-inner">
         <h2 class="modal-title">Our Story</h2>
         <div class="modal-body">
-          <p class="story-lead-intro">From beers in Printer's Row to building a life in Central Texas, here's an overview of our relationship for the last decade:</p>
+          <p class="story-lead-intro">It started with a couple of beers after work in Printer's Row. A brief timeline:</p>
           
           <!-- SCROLLING STORYTELLING TIMELINE -->
           <div class="story-timeline" id="story-timeline">
 
-            <!-- 1. Chicago Meet (May 2017) -> kaceys tavern.png -->
+            <!-- 1. Chicago Meet (May 2017) -> beers.png -->
             <div class="timeline-node" data-index="0">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/kaceys%20tavern.png" alt="Mike and Jordan first meet for a drink at Kasey's Tavern in Chicago, IL" class="timeline-photo-img img-kaceys" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./kaceys tavern.png';" />
+                  <img src="./beers.png" alt="First drink at Kasey’s Tavern in Printer's Row, Chicago." class="timeline-photo-img img-beers" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/beers.png'; if(!this.src) this.src='./beers.png';" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">May 2017</span>
-                <h3 class="timeline-heading">Mike and Jordan first meet for a drink at Kasey's Tavern in Chicago, IL</h3>
+                <h3 class="timeline-heading">First drink at Kasey’s Tavern in Printer's Row, Chicago.</h3>
               </div>
             </div>
 
@@ -3203,12 +3281,12 @@
             <div class="timeline-node" data-index="1">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/kellogg.png" alt="Mike finishes his MBA and they move in together in Ravenswood, Chicago" class="timeline-photo-img img-kellogg" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/kellogg.png'; if(!this.src) this.src='./kellogg.png';" />
+                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/kellogg.png" alt="Mike finishes his MBA; we move into an apartment in Ravenswood." class="timeline-photo-img img-kellogg" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/kellogg.png'; if(!this.src) this.src='./kellogg.png';" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">Spring 2020</span>
-                <h3 class="timeline-heading">Mike finishes his MBA and they move in together in Ravenswood, Chicago</h3>
+                <h3 class="timeline-heading">Mike finishes his MBA; we move into an apartment in Ravenswood.</h3>
               </div>
             </div>
 
@@ -3216,12 +3294,12 @@
             <div class="timeline-node" data-index="2">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/atx.jpeg" alt="We pack up our things and head down south to Austin, TX" class="timeline-photo-img img-atx" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./atx.jpeg';" />
+                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/atx.jpeg" alt="We pack up our things and head south to Austin." class="timeline-photo-img img-atx" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./atx.jpeg';" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">December 2020</span>
-                <h3 class="timeline-heading">We pack up our things and head down south to Austin, TX</h3>
+                <h3 class="timeline-heading">We pack up our things and head south to Austin.</h3>
               </div>
             </div>
 
@@ -3229,12 +3307,12 @@
             <div class="timeline-node" data-index="3">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/finley.png" alt="We adopt Finley" class="timeline-photo-img img-finley" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./finley.png';" />
+                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/finley.png" alt="Finley enters the picture." class="timeline-photo-img img-finley" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./finley.png';" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">March 2021</span>
-                <h3 class="timeline-heading">We adopt Finley</h3>
+                <h3 class="timeline-heading">Finley enters the picture.</h3>
               </div>
             </div>
 
@@ -3242,25 +3320,25 @@
             <div class="timeline-node" data-index="4">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/engaged.png" alt="We get engaged in Texas via mutual proposal" class="timeline-photo-img img-engaged" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./engaged.png';" />
+                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/engaged.png" alt="Mutual proposal in Texas." class="timeline-photo-img img-engaged" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./engaged.png';" />
                 </div>
               </div>
               <div class="timeline-info">
                 <span class="timeline-date-badge">December 2025</span>
-                <h3 class="timeline-heading">We get engaged in Texas via mutual proposal</h3>
+                <h3 class="timeline-heading">Mutual proposal in Texas.</h3>
               </div>
             </div>
 
-            <!-- 6. Getting Married (April 24th, 2027) -> Driskill.jpg -->
+            <!-- 6. Getting Married (April 24, 2027) -> Driskill.jpg -->
             <div class="timeline-node" data-index="5">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/Driskill.jpg" alt="We're getting married in Austin; we can't wait to see you there!" class="timeline-photo-img img-driskill" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./Driskill.jpg';" />
+                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/Driskill.jpg" alt="The Driskill. We get married. We can't wait to see you there." class="timeline-photo-img img-driskill" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./Driskill.jpg';" />
                 </div>
               </div>
               <div class="timeline-info">
-                <span class="timeline-date-badge">April 24th, 2027</span>
-                <h3 class="timeline-heading">We're getting married in Austin; we can't wait to see you there!</h3>
+                <span class="timeline-date-badge">April 24, 2027</span>
+                <h3 class="timeline-heading">The Driskill. We get married. We can't wait to see you there.</h3>
               </div>
             </div>
 
@@ -3282,8 +3360,8 @@
           
           <!-- Sticky / Fixed Category Tabs -->
           <div class="driskill-tabs" role="tablist" aria-label="The Driskill Details">
-            <button class="driskill-tab-btn active" data-tab="hotel" role="tab" aria-selected="true">Hotel Overview</button>
-            <button class="driskill-tab-btn" data-tab="location" role="tab" aria-selected="false">Location</button>
+            <button class="driskill-tab-btn active" data-tab="hotel" role="tab" aria-selected="true">Overview</button>
+            <button class="driskill-tab-btn" data-tab="location" role="tab" aria-selected="false">Location &amp; Transit</button>
             <button class="driskill-tab-btn" data-tab="booking" role="tab" aria-selected="false">Room Block</button>
           </div>
         </div>
@@ -3308,18 +3386,15 @@
             <!-- Editorial Text Block Dropped Beneath Picture -->
             <div class="driskill-editorial-body">
               <p class="driskill-editorial-p">
-                One of our favorite places in the world, The Driskill has been around since 1886, famously hosting LBJ and Lady Bird Johnson's first date in 1934.
+                The Driskill has anchored downtown Austin since 1886. It famously hosted LBJ and Lady Bird’s first date in 1934, survived over a century of Texas politics, and still runs one of the best bars in the city. We love the architecture, the history, the old-school oil baron vibes, and the unconfirmed ghost stories.
               </p>
               <p class="driskill-editorial-p">
-                We love the history, the architecture, the old-school oil baron vibes, and, of course, the bar. Rumor has it there are even some spirits wandering the halls, so keep an eye out for ghostly wedding crashers.
-              </p>
-              <p class="driskill-editorial-p">
-                Mostly though, it's just a dang good hotel (and we know a lot about those), and they throw a killer party. We're pretty stoked to add our names to the guest book, and we look forward to celebrating here with all of you.
+                Mostly, it’s just a great hotel that throws a great party. We're excited to celebrate here with everyone.
               </p>
             </div>
           </div>
 
-          <!-- Tab Panel 2: Location -->
+          <!-- Tab Panel 2: Location & Transit -->
           <div class="driskill-tab-panel" data-panel="location" style="display: none;">
             
             <!-- Address & Map Card with Real Google Maps Inlay -->
@@ -3342,11 +3417,6 @@
               <div class="driskill-address-sub" style="margin-bottom: 0;">604 Brazos St, Austin, TX 78701 (Corner of 6th &amp; Brazos)</div>
             </div>
 
-            <!-- Location Intro Description -->
-            <p class="driskill-editorial-p" style="margin-top: 1.15rem; margin-bottom: 0.35rem; font-size: 0.9rem; line-height: 1.65; color: #2D2824;">
-              The Driskill is right in the middle of downtown Austin, near the corner of 6th St and Congress, with an easy walk to a lot of our favorite spots.
-            </p>
-
             <!-- Transit & Airport Details -->
             <div class="driskill-transit-section">
               <!-- Austin-Bergstrom (AUS) -->
@@ -3361,7 +3431,7 @@
                   <span class="driskill-transit-tag">~15–20 Mins</span>
                 </div>
                 <p class="driskill-transit-desc">
-                  Located approximately 10 miles southeast of downtown. Quick rideshare or taxi pickup directly from the terminal to the hotel's Brazos Street entrance.
+                  ~15–20 minutes away. Direct rideshares and taxis drop off at the Brazos Street entrance.
                 </p>
               </div>
 
@@ -3377,11 +3447,11 @@
                   <span class="driskill-transit-tag">~1 Hr 20 Mins</span>
                 </div>
                 <p class="driskill-transit-desc">
-                  Located ~75 miles south via I-35 N. A great alternative airport option with extensive direct flights and straightforward rental car access.
+                  ~1 hour 20 minutes south via I-35. A solid backup with direct flights and easy rental pickups if AUS is crowded.
                 </p>
               </div>
 
-              <!-- Rideshare / Uber / Lyft -->
+              <!-- Getting Around -->
               <div class="driskill-transit-card">
                 <div class="driskill-transit-top">
                   <div class="driskill-transit-title">
@@ -3391,27 +3461,24 @@
                       <circle cx="17" cy="17" r="2"></circle>
                       <path d="M5 11l2-6h10l2 6"></path>
                     </svg>
-                    <span>Rideshare &amp; Getting Around</span>
+                    <span>Getting Around</span>
                   </div>
-                  <span class="driskill-transit-tag">24/7 Available</span>
+                  <span class="driskill-transit-tag">Walkable &amp; Rideshare</span>
                 </div>
                 <p class="driskill-transit-desc">
-                  Uber and Lyft operate continuously throughout Austin with typical wait times under 3–5 minutes.
+                  Downtown Austin is walkable, and Ubers/Lyfts are consistently 3 minutes away.
                 </p>
               </div>
             </div>
 
           </div>
 
-          <!-- Tab Panel 3: Book Your Room -->
+          <!-- Tab Panel 3: Room Block -->
           <div class="driskill-tab-panel" data-panel="booking" style="display: none;">
             
             <div class="driskill-booking-hero">
-              <p class="driskill-booking-desc" style="margin-bottom: 0.85rem;">
-                Our room block with a discounted rate is open, and you can book your room though the special booking link below.
-              </p>
               <p class="driskill-booking-desc" style="margin-bottom: 1.5rem;">
-                The group rate is available for a few days before and after the wedding, too, so feel free to make a trip of it and stick around a little longer.
+                Our group block is open at a discounted rate via the link below. The rate extends a few days before and after Saturday, so feel free to turn the weekend into a longer trip.
               </p>
 
               <!-- Direct Reservation Link -->
@@ -3423,13 +3490,13 @@
                 class="driskill-btn-primary" 
                 style="width: 100%; justify-content: center; padding: 0.85rem 1.4rem; font-size: 0.92rem; text-decoration: none; display: inline-flex; box-sizing: border-box;"
               >
-                <span>Book Now &rarr;</span>
+                <span>Book a Room &rarr;</span>
               </a>
             </div>
 
             <div class="driskill-contact-help" style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed rgba(91, 117, 102, 0.25);">
               <p style="font-family: 'Montserrat', sans-serif; font-size: 0.88rem; line-height: 1.6; color: #2D2824; font-weight: 500; margin-bottom: 0.85rem;">
-                Having trouble with the booking link or your reservation? Give either of us a call or text and we'll help get it sorted:
+                Questions or issues with the reservation link? Text or call us:
               </p>
               <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: #1F2923; display: flex; flex-direction: column; gap: 0.4rem;">
                 <div>Mike: <a href="tel:3147994553" style="color: #A6472D; text-decoration: none; font-weight: 700;">314 799 4553</a></div>
@@ -3445,7 +3512,7 @@
     </div>
   </div>
 
-  <!-- 3. Stuff to Do Modal (Side A, Track 03) -->
+  <!-- 3. Around Town Modal (Side A, Track 03) -->
   <div id="modal-spots" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
@@ -3453,8 +3520,8 @@
         
         <!-- Fixed Header Area -->
         <div class="spots-header-fixed">
-          <h2 class="spots-title">Stuff to Do</h2>
-          <p class="spots-intro">A few of our favorite spots around Austin to explore:</p>
+          <h2 class="spots-title">Around Town</h2>
+          <p class="spots-intro">A few of our favorite spots around Austin:</p>
           
           <!-- Sticky / Fixed Category Tabs -->
           <div class="spots-tabs" role="tablist" aria-label="Stuff to Do Categories">
@@ -3475,7 +3542,7 @@
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
                   <a href="https://www.whislersatx.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
-                    <span>Whisler's</span>
+                    <span>Whisler’s</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
                       <polyline points="13 5 20 12 13 19"></polyline>
@@ -3488,14 +3555,14 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">One of Mike's favorite spots - the best smoky Old Fashioned!</p>
+                <p class="spots-entry-blurb">Outstanding mezcal bar and patio; Mike’s pick for a smoky Old Fashioned.</p>
               </div>
 
               <!-- 2. Terry Black's BBQ -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
                   <a href="https://terryblacksbbq.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
-                    <span>Terry Black's BBQ</span>
+                    <span>Terry Black’s BBQ</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
                       <polyline points="13 5 20 12 13 19"></polyline>
@@ -3508,7 +3575,7 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Iconic Texas barbecue just south of the river. Worth the wait!</p>
+                <p class="spots-entry-blurb">Texas barbecue done right. Don't skip the brisket or the creamed corn.</p>
               </div>
 
               <!-- 3. El Chilito -->
@@ -3528,14 +3595,14 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Jordan's go-to breakfast taco spot—get the Cherrywood!</p>
+                <p class="spots-entry-blurb">Jordan’s breakfast taco standard. Order the Cherrywood.</p>
               </div>
 
-              <!-- 4. Sour Duck -->
+              <!-- 4. Sour Duck Market -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
                   <a href="https://www.sourduckmarket.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
-                    <span>Sour Duck</span>
+                    <span>Sour Duck Market</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
                       <polyline points="13 5 20 12 13 19"></polyline>
@@ -3548,7 +3615,7 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Mike &amp; Jordan's favorite east side dinner spot and bakery</p>
+                <p class="spots-entry-blurb">Our default east side dinner and bakery. Great patio, incredible burger.</p>
               </div>
 
               <!-- 5. Meanwhile Brewing -->
@@ -3568,7 +3635,7 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Great brewery with food trucks, massive tree canopy, and plenty of space.</p>
+                <p class="spots-entry-blurb">Massive tree canopy, stellar house beers, and high-caliber food trucks.</p>
               </div>
 
             </div>
@@ -3595,27 +3662,27 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Historic natural spring-fed pool that stays 68° year-round.</p>
+                <p class="spots-entry-blurb">68° spring-fed pool year-round. An Austin essential.</p>
               </div>
 
-              <!-- 2. Lady Bird Lake -->
+              <!-- 2. Ann & Roy Butler Hike-and-Bike Trail -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
                   <a href="https://www.austintexas.gov/parks/locations/lady-bird-lake" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
-                    <span>Lady Bird Lake</span>
+                    <span>Ann &amp; Roy Butler Hike-and-Bike Trail</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
                       <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
-                    <span class="spots-neighborhood-tag">Downtown</span>
+                    <span class="spots-neighborhood-tag">Lady Bird Lake</span>
                     <a href="https://maps.app.goo.gl/3iccE6WRLtp7NJrx7" target="_blank" rel="noopener noreferrer" class="spots-map-link">
                       Map &rarr;
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Ideal spot for kayaking, paddleboarding, or a stroll along the Ann &amp; Roy Butler Hike-and-Bike Trail.</p>
+                <p class="spots-entry-blurb">10 miles of trail looping the river right next to downtown.</p>
               </div>
 
             </div>
@@ -3642,50 +3709,10 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Iconic art museum featuring Ellsworth Kelly's Austin.</p>
+                <p class="spots-entry-blurb">Worth the trip alone for Ellsworth Kelly’s standalone stone structure, "Austin."</p>
               </div>
 
-              <!-- 2. The Thinkery -->
-              <div class="spots-entry-row">
-                <div class="spots-entry-top">
-                  <a href="https://thinkeryaustin.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
-                    <span>The Thinkery</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="4" y1="12" x2="20" y2="12"></line>
-                      <polyline points="13 5 20 12 13 19"></polyline>
-                    </svg>
-                  </a>
-                  <div class="spots-entry-meta">
-                    <span class="spots-neighborhood-tag">Mueller</span>
-                    <a href="https://maps.app.goo.gl/C8gsgnBBM6NP5RK9A" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map &rarr;
-                    </a>
-                  </div>
-                </div>
-                <p class="spots-entry-blurb">Interactive discovery museum surrounded by great food and park space.</p>
-              </div>
-
-              <!-- 3. Bats at Congress Ave Bridge -->
-              <div class="spots-entry-row">
-                <div class="spots-entry-top">
-                  <a href="https://www.austinbats.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
-                    <span>Bats at Congress Ave Bridge</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="4" y1="12" x2="20" y2="12"></line>
-                      <polyline points="13 5 20 12 13 19"></polyline>
-                    </svg>
-                  </a>
-                  <div class="spots-entry-meta">
-                    <span class="spots-neighborhood-tag">South Congress</span>
-                    <a href="https://maps.app.goo.gl/3wsqpgujsk5LN8Mm9" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map &rarr;
-                    </a>
-                  </div>
-                </div>
-                <p class="spots-entry-blurb">Watch over 1M Mexican free-tailed bats take flight at sunset.</p>
-              </div>
-
-              <!-- 4. Austin Moontowers -->
+              <!-- 2. Austin Moontowers -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
                   <a href="https://savingplaces.org/stories/austin-moontowers-by-the-numbers" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
@@ -3702,7 +3729,47 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">The only remaining historic moonlight towers in the world.</p>
+                <p class="spots-entry-blurb">The world's only surviving 19th-century moonlight towers. Spot them throughout the historic neighborhoods at night.</p>
+              </div>
+
+              <!-- 3. Congress Avenue Bats -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.austinbats.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Congress Avenue Bats</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">South Congress</span>
+                    <a href="https://maps.app.goo.gl/3wsqpgujsk5LN8Mm9" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Roughly a million Mexican free-tailed bats emerging from beneath the bridge at sunset.</p>
+              </div>
+
+              <!-- 4. The Thinkery -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://thinkeryaustin.org" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>The Thinkery</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Mueller</span>
+                    <a href="https://maps.app.goo.gl/C8gsgnBBM6NP5RK9A" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Interactive children's museum surrounded by parks and bakeries (for those traveling with kids).</p>
               </div>
 
             </div>
@@ -3726,8 +3793,8 @@
           
           <!-- Sticky / Fixed Category Tabs -->
           <div class="stay-tabs" role="tablist" aria-label="Where to Stay Options">
-            <button class="stay-tab-btn active" data-tab="driskill" role="tab" aria-selected="true">Stay at The Driskill</button>
-            <button class="stay-tab-btn" data-tab="other-hotels" role="tab" aria-selected="false">More Options Nearby</button>
+            <button class="stay-tab-btn active" data-tab="driskill" role="tab" aria-selected="true">The Driskill</button>
+            <button class="stay-tab-btn" data-tab="other-hotels" role="tab" aria-selected="false">Other Nearby Options</button>
           </div>
         </div>
 
@@ -3737,11 +3804,8 @@
           <!-- Tab Panel 1: The Driskill (Reproduced from Book Your Room tab in The Driskill modal) -->
           <div class="stay-tab-panel" data-panel="driskill">
             <div class="driskill-booking-hero">
-              <p class="driskill-booking-desc" style="margin-bottom: 0.85rem;">
-                We recommend to stay at the venue: we think it's pretty convenient when your room is just steps away from the dance floor. Our room block with a discounted rate is open, and you can book your room though the special booking link below.
-              </p>
               <p class="driskill-booking-desc" style="margin-bottom: 1.5rem;">
-                The group rate is available for a few days before and after the wedding, too, so feel free to make a trip of it and stick around a little longer.
+                We suggest staying on-site. Taking an elevator up at the end of the night beats hunting down a ride on 6th Street every time. Our room block rate is live below and applies to dates surrounding the weekend if you're making a trip out of it.
               </p>
 
               <!-- Direct Reservation Link -->
@@ -3753,13 +3817,13 @@
                 class="driskill-btn-primary stay-driskill-btn" 
                 style="width: 100%; justify-content: center; padding: 0.85rem 1.4rem; font-size: 0.92rem; text-decoration: none; display: inline-flex; box-sizing: border-box;"
               >
-                <span>Book Now &rarr;</span>
+                <span>Book Your Room &rarr;</span>
               </a>
             </div>
 
             <div class="driskill-contact-help" style="margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px dashed rgba(91, 117, 102, 0.25);">
               <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.72; color: #2D2824; font-weight: 500; margin-bottom: 0.85rem;">
-                Having trouble with the booking link or your reservation? Give either of us a call or text and we'll help get it sorted:
+                Issues with the booking block? Let us know:
               </p>
               <div style="font-family: 'Montserrat', sans-serif; font-size: 0.9rem; font-weight: 700; color: #1F2923; display: flex; flex-direction: column; gap: 0.4rem;">
                 <div>Mike: <a href="tel:3147994553" style="color: #A6472D; text-decoration: none; font-weight: 700;">314 799 4553</a></div>
@@ -3768,10 +3832,10 @@
             </div>
           </div>
 
-          <!-- Tab Panel 2: Other Hotels Nearby -->
+          <!-- Tab Panel 2: Other Nearby Options -->
           <div class="stay-tab-panel" data-panel="other-hotels" style="display: none;">
             <p class="driskill-booking-desc" style="margin-bottom: 1.15rem;">
-              While we're only holding a room block at the Driskill, there are plenty of other hotels and rentals nearby. Here are a few options within walking distance:
+              If you'd rather stay elsewhere downtown or get an Airbnb, these are all solid, walkable alternatives:
             </p>
             <div class="spots-editorial-list">
               
@@ -3786,33 +3850,33 @@
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
-                    <span class="spots-neighborhood-tag">1 Block Away</span>
+                    <span class="spots-neighborhood-tag">1 block away</span>
                     <a href="https://maps.google.com/?q=Hyatt+Centric+Congress+Avenue+Austin,+721+Congress+Ave,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
                       Map &rarr;
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Boutique lifestyle hotel located just a block away on Congress Avenue, featuring modern rooms and a rooftop terrace bar.</p>
+                <p class="spots-entry-blurb">Direct boutique option on Congress Avenue with a great rooftop bar.</p>
               </div>
 
-              <!-- 2. Hyatt Place Austin -->
+              <!-- 2. Hyatt Place Downtown -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
                   <a href="https://www.hyatt.com/hyatt-place/en-US/ausda-hyatt-place-austin-downtown" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
-                    <span>Hyatt Place Austin</span>
+                    <span>Hyatt Place Downtown</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
                       <polyline points="13 5 20 12 13 19"></polyline>
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
-                    <span class="spots-neighborhood-tag">3 Blocks Away</span>
+                    <span class="spots-neighborhood-tag">3 blocks away</span>
                     <a href="https://maps.google.com/?q=Hyatt+Place+Austin+Downtown,+211+E+3rd+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
                       Map &rarr;
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Convenient downtown hotel just three blocks away with spacious rooms, complimentary breakfast, and an indoor pool.</p>
+                <p class="spots-entry-blurb">Practical, spacious rooms with complimentary breakfast.</p>
               </div>
 
               <!-- 3. Hilton Austin -->
@@ -3826,13 +3890,13 @@
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
-                    <span class="spots-neighborhood-tag">4 Blocks Away</span>
+                    <span class="spots-neighborhood-tag">4 blocks away</span>
                     <a href="https://maps.google.com/?q=Hilton+Austin,+500+E+4th+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
                       Map &rarr;
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Centrally located downtown hotel offering full amenities, multiple on-site restaurants, a spa, and an outdoor pool deck.</p>
+                <p class="spots-entry-blurb">Full-service, classic downtown hub near the convention district.</p>
               </div>
 
               <!-- 4. JW Marriott Austin -->
@@ -3846,20 +3910,20 @@
                     </svg>
                   </a>
                   <div class="spots-entry-meta">
-                    <span class="spots-neighborhood-tag">4 Blocks Away</span>
+                    <span class="spots-neighborhood-tag">4 blocks away</span>
                     <a href="https://maps.google.com/?q=JW+Marriott+Austin,+110+E+2nd+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
                       Map &rarr;
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Upscale downtown hotel featuring a rooftop pool and cabana bar, on-site Italian steakhouse, and full-service spa.</p>
+                <p class="spots-entry-blurb">Large-format luxury hotel with rooftop pool cabanas and an on-site steakhouse.</p>
               </div>
 
-              <!-- 5. Airbnb / Vacation Rentals in Austin -->
+              <!-- 5. House & Condo Rentals in Austin -->
               <div class="spots-entry-row" style="background: rgba(91, 117, 102, 0.05); border: 1px dashed rgba(91, 117, 102, 0.3); border-radius: 8px; padding: 1rem 1.15rem; margin-top: 0.5rem;">
                 <div class="spots-entry-top">
                   <a href="https://www.airbnb.com/s/Austin--TX/homes" target="_blank" rel="noopener noreferrer" class="spots-entry-title" style="color: #C86446;">
-                    <span>Airbnb &amp; Vacation Rentals</span>
+                    <span>House &amp; Condo Rentals</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
                       <polyline points="13 5 20 12 13 19"></polyline>
@@ -3872,7 +3936,7 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">If you prefer a house or condo rental, we recommend looking around Downtown, East Austin, Clarksville, or South Congress (all within a 5–10 min rideshare to The Driskill).</p>
+                <p class="spots-entry-blurb">If booking via Airbnb or Vrbo, we suggest staying in Downtown, East Austin, Clarksville, or South Congress.</p>
               </div>
 
             </div>
@@ -3924,80 +3988,71 @@
             
             <!-- Q1 -->
             <div class="faq-item">
-              <h3 class="faq-q">When is the wedding?</h3>
+              <h3 class="faq-q">When and where is the wedding?</h3>
               <div class="faq-a">
-                <p>Saturday, April 24th, 2027.</p>
+                <p>Saturday, April 24, 2027, at The Driskill Hotel in downtown Austin. Both ceremony and reception are on-site.</p>
               </div>
             </div>
 
             <!-- Q2 -->
             <div class="faq-item">
-              <h3 class="faq-q">Where is the wedding?</h3>
+              <h3 class="faq-q">Will there be events on Friday?</h3>
               <div class="faq-a">
-                <p>The ceremony and reception will both be held at The Driskill Hotel in downtown Austin.</p>
+                <p>Yes. We are hosting a welcome party on Friday evening with food and drinks. Full timing and location details will follow with formal invitations.</p>
               </div>
             </div>
 
             <!-- Q3 -->
             <div class="faq-item">
-              <h3 class="faq-q">Will there be something on Friday too?</h3>
+              <h3 class="faq-q">Where should I stay?</h3>
               <div class="faq-a">
-                <p>Yes! We are planning a welcome event on Friday evening with food and drink provided. More details to come soon with location and times.</p>
+                <p>We recommend booking within <a href="https://www.hyatt.com/events/en-US/group-booking/AUSHD/G-MB27" target="_blank" rel="noopener noreferrer" class="faq-inline-link">our room block at the Driskill</a> so everything is under one roof. If you prefer other accommodations, check out <a href="javascript:void(0)" class="faq-inline-link" data-open-modal="modal-stay" data-open-tab="other-hotels">Other Nearby Options</a> for nearby hotel and neighborhood suggestions.</p>
               </div>
             </div>
 
             <!-- Q4 -->
             <div class="faq-item">
-              <h3 class="faq-q">Where should I stay?</h3>
+              <h3 class="faq-q">Can I extend my stay at the Driskill?</h3>
               <div class="faq-a">
-                <p>We recommend to stay at the Driskill to be close to the action, but there are other great options nearby too. <a href="https://www.hyatt.com/events/en-US/group-booking/AUSHD/G-MB27" target="_blank" rel="noopener noreferrer" class="faq-inline-link">Click here</a> to book in our block, or check out &ldquo;Where to Stay&rdquo; in the main menu for other recommendations nearby.</p>
+                <p>Yes. The discounted group rate applies for surrounding dates before and after the weekend (subject to hotel availability).</p>
               </div>
             </div>
 
             <!-- Q5 -->
             <div class="faq-item">
-              <h3 class="faq-q">Can I stay at the Driskill before or after the wedding?</h3>
+              <h3 class="faq-q">Are kids invited?</h3>
               <div class="faq-a">
-                <p>Yes, the group rate is available for surrounding dates, subject to availability.</p>
+                <p>The wedding itself will be adults-only, with an exception for immediate family. We want parents to have a night off, but we know traveling with family takes planning. We’ll be sharing vetted local childcare recommendations as we get closer to the date.</p>
               </div>
             </div>
 
             <!-- Q6 -->
             <div class="faq-item">
-              <h3 class="faq-q">Can I bring my kids?</h3>
+              <h3 class="faq-q">Do I need to rent a car?</h3>
               <div class="faq-a">
-                <p>We&rsquo;re keeping the wedding itself mostly adults-only, with an exception for children in our immediate families.</p>
-                <p>That said, we know a trip to Austin can be easier when you don&rsquo;t have to figure out what to do with the little ones. We&rsquo;re working on some childcare options and will share those details as we get closer.</p>
+                <p>Only if you plan to explore the Hill Country or outer Austin. The Driskill sits in the heart of downtown; everything from restaurants to the river is either walkable or a quick rideshare away.</p>
               </div>
             </div>
 
             <!-- Q7 -->
             <div class="faq-item">
-              <h3 class="faq-q">Do I need a car?</h3>
+              <h3 class="faq-q">When will formal invitations go out?</h3>
               <div class="faq-a">
-                <p>Probably not. The Driskill is in the middle of downtown, not too far from the airport, and a lot of what you&rsquo;ll want to do is within walking distance or easily accessible with a quick Uber or Lyft. If you&rsquo;re planning to explore beyond downtown, though, or stick around for a while, then Austin is a city where having a car can come in handy.</p>
+                <p>Early 2027. We’ll keep updating this site with finer timeline details as we get closer.</p>
               </div>
             </div>
 
             <!-- Q8 -->
             <div class="faq-item">
-              <h3 class="faq-q">When will invitations / the full wedding details arrive?</h3>
+              <h3 class="faq-q">Have another question?</h3>
               <div class="faq-a">
-                <p>You can expect to receive invitations in early 2027, and we'll continue to add more details to this website as they become available.</p>
-              </div>
-            </div>
-
-            <!-- Q9 -->
-            <div class="faq-item">
-              <h3 class="faq-q">Who do I contact if I have a question?</h3>
-              <div class="faq-a">
-                <p>Call, text, or email either Mike or Jordan for any questions!</p>
+                <p style="margin-bottom: 0.6rem;">Reach out directly anytime:</p>
                 <div class="faq-contact-card">
                   <div class="faq-contact-row">
-                    Mike: <a href="mailto:mikegmiller11@gmail.com">mikegmiller11@gmail.com</a>; <a href="tel:3147994553">314 799 4553</a>
+                    &bull; Mike: <a href="mailto:mikegmiller11@gmail.com">mikegmiller11@gmail.com</a> | <a href="tel:3147994553">314 799 4553</a>
                   </div>
                   <div class="faq-contact-row">
-                    Jordan: <a href="mailto:jordanlbrammer@gmail.com">jordanlbrammer@gmail.com</a>; <a href="tel:7277417929">727 741 7929</a>
+                    &bull; Jordan: <a href="mailto:jordanlbrammer@gmail.com">jordanlbrammer@gmail.com</a> | <a href="tel:7277417929">727 741 7929</a>
                   </div>
                 </div>
               </div>
@@ -4241,6 +4296,26 @@
           const targetModal = document.getElementById(targetId);
           if (targetModal) {
             openModal(targetModal);
+          }
+        });
+      });
+
+      document.querySelectorAll('[data-open-modal]').forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const targetId = link.getAttribute('data-open-modal');
+          const targetTab = link.getAttribute('data-open-tab');
+          modalOverlays.forEach(overlay => closeModal(overlay));
+          const targetModal = document.getElementById(targetId);
+          if (targetModal) {
+            openModal(targetModal);
+            if (targetTab) {
+              const tabBtn = targetModal.querySelector(`[data-tab="${targetTab}"]`) || targetModal.querySelector(`[data-category="${targetTab}"]`);
+              if (tabBtn) {
+                tabBtn.click();
+              }
+            }
           }
         });
       });

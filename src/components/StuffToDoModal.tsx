@@ -50,14 +50,14 @@ export const StuffToDoModal: React.FC<StuffToDoModalProps> = ({ isOpen, onClose 
             <span>•</span>
             <span>TRACK 03</span>
             <span>•</span>
-            <span>AUSTIN GUIDE</span>
+            <span>AROUND TOWN</span>
           </div>
 
           <h2 id="stuff-to-do-title" className="text-2xl sm:text-3xl font-black tracking-tight text-[#1F2923] font-serif">
-            Stuff to Do
+            Around Town
           </h2>
           <p className="text-sm text-[#2D2824]/80 mt-1 font-sans leading-relaxed max-w-xl">
-            A few of our favorite spots around Austin to explore:
+            A few of our favorite spots around Austin:
           </p>
 
           {/* Refined Midcentury Category Tabs */}
