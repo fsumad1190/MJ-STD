@@ -524,7 +524,7 @@
       }
     }
 
-    /* SCENE GROUP CONTAINER */
+    /* SCENE GROUP CONTAINER (Hidden until all assets are loaded) */
     #scene-group {
       position: relative;
       width: var(--sleeve-size);
@@ -535,6 +535,116 @@
       backface-visibility: visible;
       -webkit-backface-visibility: visible;
       transform-style: flat;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.65s ease;
+    }
+
+    body.is-loaded #scene-group {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* SITE PRELOADER SCREEN */
+    #site-preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      z-index: 99999;
+      background-color: #F1EBE1;
+      background-image: 
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.038'/%3E%3C/svg%3E"),
+        radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6) 0%, rgba(255, 252, 245, 0.25) 45%, transparent 80%),
+        linear-gradient(135deg, #F8F4EB 0%, #EFE8DB 45%, #E3DAC9 85%, #DDD1BF 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+      opacity: 1;
+      visibility: visible;
+      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    body.is-loaded #site-preloader {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .preloader-disc-wrap {
+      position: relative;
+      width: 58px;
+      height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.15rem;
+    }
+
+    .preloader-vinyl-disc {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #2A2A2A 0%, #151515 65%, #0A0A0A 100%);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: spinPreloader 2.8s linear infinite;
+    }
+
+    .preloader-groove {
+      position: absolute;
+      inset: 6px;
+      border-radius: 50%;
+      border: 1px dashed rgba(255, 255, 255, 0.12);
+    }
+
+    .preloader-label {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #C29F62;
+      border: 1px solid #1A1A1A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preloader-spindle {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #F1EBE1;
+      border: 1px solid #1A1A1A;
+    }
+
+    .preloader-text {
+      font-family: var(--font-soft);
+      font-size: 0.82rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #394B3C;
+      font-weight: 600;
+      opacity: 0.85;
+      animation: pulsePreloaderText 2s ease-in-out infinite;
+    }
+
+    @keyframes spinPreloader {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulsePreloaderText {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1.0; }
     }
 
     @media (max-width: 768px) {
@@ -2983,6 +3093,19 @@
   <!-- Fixed Full-Bleed Tabletop Canvas Background Layer (Eliminates iOS Safari fixed-background scrolling glitches) -->
   <div id="tabletop-bg" aria-hidden="true"></div>
 
+  <!-- Site Preloader Screen (Holds until all assets, fonts, & cover image are fully loaded) -->
+  <div id="site-preloader" aria-label="Loading record experience">
+    <div class="preloader-disc-wrap">
+      <div class="preloader-vinyl-disc">
+        <div class="preloader-groove"></div>
+        <div class="preloader-label">
+          <div class="preloader-spindle"></div>
+        </div>
+      </div>
+    </div>
+    <div class="preloader-text">Loading Record</div>
+  </div>
+
   <!-- Scroll Height Container for GSAP ScrollTrigger Scrubbing -->
   <div id="scroll-container">
 
@@ -4088,16 +4211,10 @@
       const centerLabel = document.getElementById('center-label');
       const menuArcContainer = document.getElementById('menu-arc-container');
       const scrollCueArrow = document.getElementById('scroll-cue-arrow');
+      const sleeveCoverImg = document.getElementById('sleeve-cover-image');
 
       const vinylSheen = document.getElementById('vinyl-sheen');
       const vinylGlint = document.getElementById('vinyl-glint');
-
-      // Scroll Cue Arrow: Appear after a moment (1.2s) and allow click-to-scroll
-      setTimeout(() => {
-        if (scrollCueArrow && window.scrollY < 20) {
-          scrollCueArrow.classList.add('is-visible');
-        }
-      }, 1200);
 
       if (scrollCueArrow) {
         scrollCueArrow.addEventListener('click', () => {
@@ -4108,9 +4225,55 @@
         });
       }
 
-      // Ensure ScrollTrigger refreshes calculations after resources load
-      window.addEventListener('load', () => {
+      // PRELOADER & ASSET ORCHESTRATION
+      // Ensures the album cover, custom typography fonts, and window resources are fully decoded before unveiling the page
+      const waitForImage = (img) => {
+        if (!img) return Promise.resolve();
+        if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+        return new Promise((resolve) => {
+          const onDone = () => {
+            img.removeEventListener('load', onDone);
+            img.removeEventListener('error', onDone);
+            resolve();
+          };
+          img.addEventListener('load', onDone);
+          img.addEventListener('error', onDone);
+        });
+      };
+
+      const waitForFonts = () => {
+        if (document.fonts && document.fonts.ready) {
+          return document.fonts.ready.catch(() => {});
+        }
+        return Promise.resolve();
+      };
+
+      const waitForWindowLoad = () => {
+        if (document.readyState === 'complete') return Promise.resolve();
+        return new Promise((resolve) => {
+          window.addEventListener('load', resolve, { once: true });
+        });
+      };
+
+      // Safety timeout: guarantees reveal within max 2.2s even on slow connections
+      const safetyTimeout = new Promise((resolve) => setTimeout(resolve, 2200));
+
+      Promise.race([
+        Promise.all([waitForImage(sleeveCoverImg), waitForFonts(), waitForWindowLoad()]),
+        safetyTimeout
+      ]).then(() => {
+        // Refresh ScrollTrigger calculations with exact loaded image/font metrics
         ScrollTrigger.refresh();
+        
+        // Reveal application scene cleanly
+        document.body.classList.add('is-loaded');
+
+        // Scroll Cue Arrow: Appear after entrance
+        setTimeout(() => {
+          if (scrollCueArrow && window.scrollY < 20) {
+            scrollCueArrow.classList.add('is-visible');
+          }
+        }, 900);
       });
 
       // Calculate dynamic zoom scale:
