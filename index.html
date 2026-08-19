@@ -2564,6 +2564,26 @@
       margin-bottom: 0.85rem;
     }
 
+    .driskill-address-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.86rem;
+      color: #A6472D;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-color: rgba(166, 71, 45, 0.4);
+      transition: color 0.2s ease, text-decoration-color 0.2s ease;
+      cursor: pointer;
+    }
+
+    .driskill-address-link:hover {
+      color: #7D311D;
+      text-decoration-color: #7D311D;
+    }
+
     .driskill-map-actions {
       display: flex;
       flex-wrap: wrap;
@@ -3540,7 +3560,20 @@
               </div>
 
               <div class="driskill-address-heading">The Driskill</div>
-              <div class="driskill-address-sub" style="margin-bottom: 0;">604 Brazos St, Austin, TX 78701 (Corner of 6th &amp; Brazos)</div>
+              <a 
+                href="https://maps.google.com/?q=The+Driskill,+604+Brazos+St,+Austin,+TX+78701" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="driskill-address-link" 
+                title="Open 604 Brazos St in Maps"
+              >
+                <span>604 Brazos St, Austin, TX 78701 (Corner of 6th &amp; Brazos)</span>
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+              </a>
             </div>
 
             <!-- Transit & Airport Details -->
@@ -3604,7 +3637,7 @@
             
             <div class="driskill-booking-hero">
               <p class="driskill-booking-desc" style="margin-bottom: 1.5rem;">
-                Our group block is open at a discounted rate via the link below. The rate extends a few days before and after Saturday, so feel free to turn the weekend into a longer trip.
+                Our group block is open at a discounted rate via the link below. The rate extends a few days before and after the weekend, so feel free to turn your visit into a longer trip.
               </p>
 
               <!-- Direct Reservation Link -->
