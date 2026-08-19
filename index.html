@@ -989,7 +989,8 @@
 
     /* COLUMN B (SIDE B) ACTIVE MENU ITEMS - WARM RUST (#C97A59) SECONDARY INTERACTIVE */
     .label-menu-item.right-col {
-      font-size: 35px;        /* <-- ADJUST SIDE B FONT SIZE HERE (Default: 30px) */
+      font-size: 46px;        /* <-- Matched to Side A font size (46px) */
+      letter-spacing: 1.5px;  /* <-- Matched to Side A letter spacing */
       fill: #C97A59;          /* Warm Rust - Secondary Interactive */
       opacity: 0.95;
     }
@@ -998,8 +999,8 @@
     .label-menu-header {
       font-family: var(--font-jaro);
       font-weight: 400;
-      font-size: 28px;        /* <-- ADJUST SIDE A & SIDE B HEADERS FONT SIZE */
-      letter-spacing: 3px;    /* <-- ADJUST HEADER LETTER SPACING */
+      font-size: 32px;        /* <-- Matched to Side A header font size (32px) */
+      letter-spacing: 3.5px;  /* <-- Matched to Side A header letter spacing */
       text-transform: uppercase;
       fill: #C29F62;          /* Mustard Gold */
       text-rendering: optimizeLegibility;
@@ -1022,6 +1023,8 @@
 
     /* SIDE B BADGE - MUTED RUST (#B26A4C) SIDE B HEADER */
     #header-side-b .label-menu-header {
+      font-size: 32px;
+      letter-spacing: 3.5px;
       fill: #B26A4C;          /* Muted Rust */
       filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 4px rgba(178, 106, 76, 0.25));
     }
@@ -3285,60 +3288,60 @@
                      COLUMN A: "SIDE A" HEADER & MENU ITEMS (Left side arc)
                      ------------------------------------------------------------- -->
 
-                <!-- Header: SIDE A (y=278, x=325 - sitting 60px above Item 1) -->
+                <!-- Header: SIDE A (y=230, x=325 - sitting 60px above Item 1) -->
                 <g id="header-side-a">
-                  <!-- Pill container centered around x=325, y=278 -->
-                  <rect class="label-menu-header-pill" x="248" y="258" width="154" height="40" rx="20" ry="20" />
-                  <text class="label-menu-header" x="325" y="278" text-anchor="middle">SIDE A</text>
+                  <!-- Pill container centered around x=325, y=230 -->
+                  <rect class="label-menu-header-pill" x="248" y="210" width="154" height="40" rx="20" ry="20" />
+                  <text class="label-menu-header" x="325" y="230" text-anchor="middle">SIDE A</text>
                 </g>
 
-                <!-- 1. Our Story (Row 1: y=338, x=300) -->
-                <text class="label-menu-item" data-target="modal-about" x="300" y="338" text-anchor="middle">1. Our Story</text>
+                <!-- 1. Our Story (Row 1: y=290, x=300) -->
+                <text class="label-menu-item" data-target="modal-about" x="300" y="290" text-anchor="middle">1. Our Story</text>
 
-                <!-- 2. The Driskill (Row 2: y=446, x=250) -->
-                <text class="label-menu-item" data-target="modal-driskill" x="250" y="446" text-anchor="middle">2. The Driskill</text>
+                <!-- 2. The Driskill (Row 2: y=430, x=250) -->
+                <text class="label-menu-item" data-target="modal-driskill" x="250" y="430" text-anchor="middle">2. The Driskill</text>
 
-                <!-- 3. Around Town (Row 3: y=554, x=250) -->
-                <text class="label-menu-item" data-target="modal-spots" x="250" y="554" text-anchor="middle">3. Around Town</text>
+                <!-- 3. Around Town (Row 3: y=570, x=250) -->
+                <text class="label-menu-item" data-target="modal-spots" x="250" y="570" text-anchor="middle">3. Around Town</text>
 
-                <!-- 4. Where to Stay (Row 4: y=662, x=325) -->
-                <text class="label-menu-item" data-target="modal-stay" x="325" y="662" text-anchor="middle">4. Where to Stay</text>
+                <!-- 4. Where to Stay (Row 4: y=710, x=325) -->
+                <text class="label-menu-item" data-target="modal-stay" x="325" y="710" text-anchor="middle">4. Where to Stay</text>
 
 
                 <!-- -------------------------------------------------------------
-                     COLUMN B: "SIDE B" HEADER & MENU ITEMS (Right side arc - Shifted +30px right)
+                     COLUMN B: "SIDE B" HEADER & MENU ITEMS (Equidistant mirror of Side A across center line x=500)
                      ------------------------------------------------------------- -->
 
-                <!-- Header: SIDE B (y=323, x=685 - sitting above Item 5) -->
+                <!-- Header: SIDE B (y=230, x=675 - mirror of Side A x=325, distance 175px from center x=500) -->
                 <g id="header-side-b">
-                  <!-- Pill container centered around x=685, y=323 -->
-                  <rect class="label-menu-header-pill" x="615" y="305" width="140" height="36" />
-                  <text class="label-menu-header" x="685" y="323" text-anchor="middle">SIDE B</text>
+                  <!-- Pill container centered around x=675, y=230 (width 154 matching Side A, x=675-77=598) -->
+                  <rect class="label-menu-header-pill" x="598" y="210" width="154" height="40" rx="20" ry="20" />
+                  <text class="label-menu-header" x="675" y="230" text-anchor="middle">SIDE B</text>
                 </g>
 
-                <!-- 5. Schedule (Row 1: y=382, x=680) - Disabled/Coming Soon -->
+                <!-- 5. Schedule (Row 1: y=290, x=700 - mirror of Side A Row 1 x=300, distance 200px from center x=500) - Disabled/Coming Soon -->
                 <g id="schedule-item-group" tabindex="0" role="button" aria-label="5. Schedule - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
-                  <text class="label-menu-item right-col item-dead" x="680" y="382" text-anchor="middle">5. Schedule</text>
+                  <text class="label-menu-item right-col item-dead" x="700" y="290" text-anchor="middle">5. Schedule</text>
                   <!-- Hover Tooltip overlay: explicit SVG coordinates -->
                   <g class="label-tooltip">
-                    <rect class="label-tooltip-rect" x="590" y="361" width="180" height="42" />
-                    <text class="label-tooltip-text" x="680" y="382">Coming Soon</text>
+                    <rect class="label-tooltip-rect" x="610" y="269" width="180" height="42" />
+                    <text class="label-tooltip-text" x="700" y="290">Coming Soon</text>
                   </g>
                 </g>
 
-                <!-- 6. Registry (Row 2: y=460, x=745) -->
-                <text class="label-menu-item right-col" data-target="modal-registry" x="745" y="460" text-anchor="middle">6. Registry</text>
+                <!-- 6. Registry (Row 2: y=430, x=750 - mirror of Side A Row 2 x=250, distance 250px from center x=500) -->
+                <text class="label-menu-item right-col" data-target="modal-registry" x="750" y="430" text-anchor="middle">6. Registry</text>
 
-                <!-- 7. FAQ (Row 3: y=538, x=730) -->
-                <text class="label-menu-item right-col" data-target="modal-faq" x="730" y="538" text-anchor="middle">7. FAQ</text>
+                <!-- 7. FAQ (Row 3: y=570, x=750 - mirror of Side A Row 3 x=250, distance 250px from center x=500) -->
+                <text class="label-menu-item right-col" data-target="modal-faq" x="750" y="570" text-anchor="middle">7. FAQ</text>
 
-                <!-- 8. RSVP (Row 4: y=616, x=680) - Disabled/Coming Soon -->
+                <!-- 8. RSVP (Row 4: y=710, x=675 - mirror of Side A Row 4 x=325, distance 175px from center x=500) - Disabled/Coming Soon -->
                 <g id="rsvp-item-group" tabindex="0" role="button" aria-label="8. RSVP - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
-                  <text class="label-menu-item right-col item-dead" x="680" y="616" text-anchor="middle">8. RSVP</text>
+                  <text class="label-menu-item right-col item-dead" x="675" y="710" text-anchor="middle">8. RSVP</text>
                   <!-- Hover Tooltip overlay: explicit SVG coordinates -->
                   <g class="label-tooltip">
-                    <rect class="label-tooltip-rect" x="590" y="595" width="180" height="42" />
-                    <text class="label-tooltip-text" x="680" y="616">Coming Soon</text>
+                    <rect class="label-tooltip-rect" x="585" y="689" width="180" height="42" />
+                    <text class="label-tooltip-text" x="675" y="710">Coming Soon</text>
                   </g>
                 </g>
 
@@ -4227,17 +4230,67 @@
 
       // PRELOADER & ASSET ORCHESTRATION
       // Ensures the album cover, custom typography fonts, and window resources are fully decoded before unveiling the page
-      const waitForImage = (img) => {
+      const waitForCoverImage = () => {
+        const img = document.getElementById('sleeve-cover-image');
         if (!img) return Promise.resolve();
-        if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+
+        const candidateUrls = [
+          img.getAttribute('src'),
+          './Weston-4.png',
+          'Weston-4.png',
+          './public/Weston-4.png',
+          'public/Weston-4.png',
+          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/Weston-4.png',
+          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/Weston-4.png'
+        ].filter(Boolean);
+
         return new Promise((resolve) => {
-          const onDone = () => {
-            img.removeEventListener('load', onDone);
-            img.removeEventListener('error', onDone);
-            resolve();
-          };
-          img.addEventListener('load', onDone);
-          img.addEventListener('error', onDone);
+          // If already fully complete with native dimensions, ensure GPU decode
+          if (img.complete && img.naturalWidth > 0) {
+            if (typeof img.decode === 'function') {
+              img.decode().then(resolve).catch(() => resolve());
+            } else {
+              resolve();
+            }
+            return;
+          }
+
+          let candidateIdx = 0;
+
+          function tryNextCandidate() {
+            if (candidateIdx >= candidateUrls.length) {
+              resolve();
+              return;
+            }
+
+            const currentUrl = candidateUrls[candidateIdx];
+            const probe = new Image();
+            probe.crossOrigin = 'anonymous';
+
+            probe.onload = () => {
+              img.src = currentUrl;
+              if (typeof probe.decode === 'function') {
+                probe.decode().then(() => {
+                  if (typeof img.decode === 'function') {
+                    img.decode().then(resolve).catch(() => resolve());
+                  } else {
+                    resolve();
+                  }
+                }).catch(() => resolve());
+              } else {
+                resolve();
+              }
+            };
+
+            probe.onerror = () => {
+              candidateIdx++;
+              tryNextCandidate();
+            };
+
+            probe.src = currentUrl;
+          }
+
+          tryNextCandidate();
         });
       };
 
@@ -4255,11 +4308,11 @@
         });
       };
 
-      // Safety timeout: guarantees reveal within max 2.2s even on slow connections
-      const safetyTimeout = new Promise((resolve) => setTimeout(resolve, 2200));
+      // Safety timeout: 8.5s fallback to avoid any premature reveal on mobile cellular networks
+      const safetyTimeout = new Promise((resolve) => setTimeout(resolve, 8500));
 
       Promise.race([
-        Promise.all([waitForImage(sleeveCoverImg), waitForFonts(), waitForWindowLoad()]),
+        Promise.all([waitForCoverImage(), waitForFonts(), waitForWindowLoad()]),
         safetyTimeout
       ]).then(() => {
         // Refresh ScrollTrigger calculations with exact loaded image/font metrics
