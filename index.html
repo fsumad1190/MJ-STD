@@ -1345,6 +1345,7 @@
     body.modal-open {
       /* Keep document dimensions intact to preserve window.scrollY */
       -webkit-overflow-scrolling: touch;
+      overscroll-behavior: none;
     }
 
     body.modal-open #stage,
@@ -1466,6 +1467,9 @@
       max-height: 88vh;
       max-height: 88dvh;
       overflow-y: auto;
+      overscroll-behavior: contain;
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch;
       padding: 2.35rem 2.5rem;
       box-sizing: border-box;
     }
@@ -4527,15 +4531,38 @@
       }, phase1Duration);
 
       // -------------------------------------------------------------
-      // INTERACTIVE MODAL EVENT LISTENERS & BACKDROP ISOLATION
-      // Clean, seamless modal interaction with standard internal scrolling
+      // INTERACTIVE MODAL EVENT LISTENERS & BACKGROUND SCROLL ISOLATION
+      // Clean, seamless modal interaction with isolated internal scrolling
       // -------------------------------------------------------------
       const menuInteractiveItems = document.querySelectorAll('.label-menu-item, .surface-menu-item');
       const modalOverlays = document.querySelectorAll('.modal-overlay');
 
+      let lockedPageScrollY = 0;
+      let isModalActive = false;
+
+      // Helper to find the scrollable ancestor within the active modal
+      function getScrollableAncestor(el, stopEl) {
+        let cur = el;
+        while (cur && cur !== stopEl && cur !== document.body && cur !== document.documentElement) {
+          if (cur.nodeType === 1) {
+            const style = window.getComputedStyle(cur);
+            const overflowY = style.overflowY;
+            const canScrollY = (overflowY === 'auto' || overflowY === 'scroll') && (cur.scrollHeight > cur.clientHeight + 1);
+            if (canScrollY) return cur;
+          }
+          cur = cur.parentElement;
+        }
+        return null;
+      }
+
       const openModal = (targetModal) => {
         if (!targetModal) return;
         
+        if (!isModalActive) {
+          lockedPageScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+        }
+        isModalActive = true;
+
         targetModal.classList.add('active');
         document.documentElement.classList.add('modal-open');
         document.body.classList.add('modal-open');
@@ -4558,24 +4585,162 @@
         
         const activeModals = Array.from(modalOverlays).filter(m => m.classList.contains('active'));
         if (activeModals.length === 0) {
+          isModalActive = false;
           document.documentElement.classList.remove('modal-open');
           document.body.classList.remove('modal-open');
+          window.scrollTo(0, lockedPageScrollY);
         }
       };
 
-      // Modal Backdrop Isolation: prevent background window from scrolling when mousewheel/touch is on the backdrop
-      modalOverlays.forEach(overlay => {
-        overlay.addEventListener('wheel', (e) => {
-          if (!e.target.closest('.modal-card')) {
-            e.preventDefault();
+      // 1. Maintain background page scroll lock while any modal is open
+      window.addEventListener('scroll', () => {
+        if (isModalActive) {
+          const curY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+          if (Math.abs(curY - lockedPageScrollY) > 0.5) {
+            window.scrollTo(0, lockedPageScrollY);
           }
-        }, { passive: false });
+        }
+      }, { passive: true });
 
-        overlay.addEventListener('touchmove', (e) => {
-          if (!e.target.closest('.modal-card')) {
+      // 2. Prevent wheel scroll bleed from modal container boundaries to background page
+      window.addEventListener('wheel', (e) => {
+        if (!isModalActive) return;
+
+        const activeModal = document.querySelector('.modal-overlay.active');
+        if (!activeModal) return;
+
+        // If wheel is outside active modal card, block immediately
+        if (!e.target.closest('.modal-card') || !activeModal.contains(e.target)) {
+          e.preventDefault();
+          return;
+        }
+
+        const scrollContainer = getScrollableAncestor(e.target, activeModal);
+        if (!scrollContainer) {
+          // Hovering non-scrollable region of modal card (e.g. fixed header, title, close button)
+          e.preventDefault();
+          return;
+        }
+
+        const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+        const deltaY = e.deltaY;
+
+        // At top boundary and scrolling up
+        if (deltaY < 0 && scrollTop <= 0) {
+          e.preventDefault();
+          return;
+        }
+
+        // At bottom boundary and scrolling down
+        if (deltaY > 0 && (scrollTop + clientHeight >= scrollHeight - 1)) {
+          e.preventDefault();
+          return;
+        }
+      }, { passive: false });
+
+      // 3. Touch scrolling containment for mobile & trackpads
+      let touchStartY = 0;
+      window.addEventListener('touchstart', (e) => {
+        if (isModalActive && e.touches && e.touches.length > 0) {
+          touchStartY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
+      window.addEventListener('touchmove', (e) => {
+        if (!isModalActive || !e.touches || e.touches.length === 0) return;
+
+        const activeModal = document.querySelector('.modal-overlay.active');
+        if (!activeModal) return;
+
+        if (!e.target.closest('.modal-card') || !activeModal.contains(e.target)) {
+          e.preventDefault();
+          return;
+        }
+
+        const scrollContainer = getScrollableAncestor(e.target, activeModal);
+        if (!scrollContainer) {
+          e.preventDefault();
+          return;
+        }
+
+        const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
+        const currentY = e.touches[0].clientY;
+        const deltaY = currentY - touchStartY; // > 0 means dragging down (scrolling content toward top)
+
+        if (deltaY > 0 && scrollTop <= 0) {
+          e.preventDefault();
+          return;
+        }
+
+        if (deltaY < 0 && (scrollTop + clientHeight >= scrollHeight - 1)) {
+          e.preventDefault();
+          return;
+        }
+      }, { passive: false });
+
+      // 4. Keyboard page-scroll keys containment
+      window.addEventListener('keydown', (e) => {
+        if (!isModalActive) return;
+
+        if (e.key === 'Escape') {
+          modalOverlays.forEach(overlay => closeModal(overlay));
+          return;
+        }
+
+        const pageScrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' '];
+        if (pageScrollKeys.includes(e.key)) {
+          const activeModal = document.querySelector('.modal-overlay.active');
+          if (!activeModal) return;
+
+          const scrollContainer = getScrollableAncestor(document.activeElement, activeModal) ||
+                                  activeModal.querySelector('.stay-cards-scroll') ||
+                                  activeModal.querySelector('.driskill-cards-scroll') ||
+                                  activeModal.querySelector('.spots-cards-scroll') ||
+                                  activeModal.querySelector('.timeline-scroller') ||
+                                  activeModal.querySelector('.modal-card-inner') ||
+                                  activeModal.querySelector('.modal-card');
+
+          if (!scrollContainer) {
             e.preventDefault();
+            return;
           }
-        }, { passive: false });
+
+          if (e.key === 'ArrowUp') {
+            if (scrollContainer.scrollTop <= 0) {
+              e.preventDefault();
+            } else {
+              e.preventDefault();
+              scrollContainer.scrollTop -= 40;
+            }
+          } else if (e.key === 'ArrowDown') {
+            if (scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 1) {
+              e.preventDefault();
+            } else {
+              e.preventDefault();
+              scrollContainer.scrollTop += 40;
+            }
+          } else if (e.key === 'PageUp') {
+            if (scrollContainer.scrollTop <= 0) {
+              e.preventDefault();
+            } else {
+              e.preventDefault();
+              scrollContainer.scrollTop -= 240;
+            }
+          } else if (e.key === 'PageDown' || e.key === ' ') {
+            if (scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight - 1) {
+              e.preventDefault();
+            } else {
+              e.preventDefault();
+              scrollContainer.scrollTop += 240;
+            }
+          } else if (e.key === 'Home') {
+            e.preventDefault();
+            scrollContainer.scrollTop = 0;
+          } else if (e.key === 'End') {
+            e.preventDefault();
+            scrollContainer.scrollTop = scrollContainer.scrollHeight;
+          }
+        }
       });
 
       menuInteractiveItems.forEach(item => {
@@ -4639,15 +4804,6 @@
           }
           isBackdropPointerDown = false;
         });
-      });
-
-      // Close open modals on Escape key press
-      window.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-          modalOverlays.forEach(overlay => {
-            closeModal(overlay);
-          });
-        }
       });
 
       // Google Calendar Add Button Handler
