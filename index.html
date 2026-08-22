@@ -608,22 +608,22 @@
     }
 
     .preloader-label {
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: #C29F62;
-      border: 1px solid #1A1A1A;
+      background: #394B3C;
+      border: 1px solid #C29F62;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .preloader-spindle {
-      width: 5px;
-      height: 5px;
+      width: 3px;
+      height: 3px;
       border-radius: 50%;
-      background: #F1EBE1;
-      border: 1px solid #1A1A1A;
+      background: #0D0D0D;
+      border: none;
     }
 
     .preloader-text {
@@ -1044,7 +1044,7 @@
       filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.7)) drop-shadow(0 0 3px rgba(194, 159, 98, 0.2));
     }
 
-    /* COLUMN B DISABLED OPTIONS (5. Schedule & 8. RSVP) - FADED SAGE (#6A7C6E) */
+    /* COLUMN B DISABLED OPTIONS (8. RSVP) - FADED SAGE (#6A7C6E) */
     .label-menu-item.item-dead {
       fill: #6A7C6E;          /* Faded Sage - Disabled */
       opacity: 0.95;
@@ -1068,9 +1068,7 @@
     }
 
     #rsvp-item-group:hover .label-tooltip,
-    #rsvp-item-group:focus-within .label-tooltip,
-    #schedule-item-group:hover .label-tooltip,
-    #schedule-item-group:focus-within .label-tooltip {
+    #rsvp-item-group:focus-within .label-tooltip {
       opacity: 1;
     }
 
@@ -1113,24 +1111,6 @@
         drop-shadow(0 0 3px #FFFFFF)
         drop-shadow(0 0 10px rgba(201, 122, 89, 0.98)) 
         drop-shadow(0 0 22px rgba(178, 106, 76, 0.85));
-    }
-
-    /* Center Spindle Hole */
-    .spindle-hole {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 14px;
-      height: 14px;
-      background: #0E0E0E;
-      border-radius: 50%;
-      border: 2px solid #D5C088;
-      z-index: 20;
-      box-shadow: 
-        inset 0 1px 3px rgba(0, 0, 0, 0.9),
-        0 0 0 1px rgba(0, 0, 0, 0.6);
-      pointer-events: none;
     }
 
     /* SLEEVE FRONT COVER */
@@ -1744,9 +1724,10 @@
       font-family: 'Montserrat', sans-serif;
       font-size: 0.72rem;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: #3F4941;
+      line-height: 1.35;
     }
 
     .registry-vendor-title {
@@ -1770,6 +1751,111 @@
 
     .registry-card:hover .registry-link-arrow {
       transform: translateX(5px);
+    }
+
+    /* ==========================================================================
+       SCHEDULE / WEEKEND ITINERARY MODAL STYLES (Editorial Midcentury Aesthetic)
+       ========================================================================== */
+    .schedule-header {
+      margin-bottom: 1.35rem;
+    }
+
+    .schedule-subhead {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.96rem;
+      color: #525C54;
+      line-height: 1.62;
+      margin: 0;
+      font-weight: 400;
+    }
+
+    .schedule-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+      padding-top: 0.25rem;
+      padding-bottom: 0.5rem;
+    }
+
+    .schedule-item {
+      border-bottom: 1px solid #DDD7C8;
+      padding-bottom: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.45rem;
+    }
+
+    .schedule-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0.25rem;
+    }
+
+    .schedule-date-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3.5px 10px;
+      background: #E6E1D4;
+      border: 1px solid #DDD7C8;
+      border-radius: 4px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: #3F4941;
+      text-transform: uppercase;
+      margin-bottom: 0.15rem;
+    }
+
+    .schedule-item-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.22rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #1E2320;
+      margin: 0;
+      line-height: 1.26;
+    }
+
+    .schedule-tag {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #B86B47;
+      letter-spacing: -0.01em;
+      margin-top: -0.1rem;
+      margin-bottom: 0.15rem;
+      text-align: left;
+    }
+
+    .schedule-item-desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.95rem;
+      color: #454E47;
+      line-height: 1.65;
+      font-weight: 400;
+      margin: 0;
+      text-align: left;
+    }
+
+    .schedule-footer-note {
+      margin-top: 1.35rem;
+      padding: 0.95rem 1.15rem;
+      background: #EFE9D8;
+      border: 1px solid #DDD7C8;
+      border-left: 3.5px solid #C97A59;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-style: italic;
+      font-size: 0.87rem;
+      color: #4A544C;
+      line-height: 1.55;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
     .primary-btn {
@@ -3185,9 +3271,9 @@
                 <text class="surface-menu-header" id="menu-tracklist-header" x="715" y="500">SELECT A TRACK</text>
                 <line x1="865" y1="500" x2="975" y2="500" stroke="#C29F62" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="3 3" />
               </g>
-              <!-- 1. The Details (Angle: -24.5°) -->
+              <!-- 1. Our Story (Angle: -24.5°) -->
               <g id="spoke-g-1" transform="rotate(-24.5 500 500)">
-                <text class="surface-menu-item" id="menu-details-text" data-target="modal-details" x="715" y="500">1. The Details</text>
+                <text class="surface-menu-item" id="menu-details-text" data-target="modal-about" x="715" y="500">1. Our Story</text>
               </g>
               <!-- 2. The Driskill (Angle: -17.5°) -->
               <g id="spoke-g-2" transform="rotate(-17.5 500 500)">
@@ -3201,25 +3287,21 @@
               <g id="spoke-g-4" transform="rotate(-3.5 500 500)">
                 <text class="surface-menu-item" id="menu-spots-text" data-target="modal-spots" x="715" y="500">4. Around Town</text>
               </g>
-              <!-- 5. About Us (Angle: +3.5°) -->
+              <!-- 5. Schedule (Angle: +3.5°) -->
               <g id="spoke-g-5" transform="rotate(3.5 500 500)">
-                <text class="surface-menu-item" id="menu-about-text" data-target="modal-about" x="715" y="500">5. About Us</text>
+                <text class="surface-menu-item side-b-spoke" id="menu-schedule-text" data-target="modal-schedule" x="715" y="500">5. Schedule</text>
               </g>
-              <!-- 6. Coming Soon (Angle: +10.5°) -->
+              <!-- 6. Registry (Angle: +10.5°) -->
               <g id="spoke-g-6" transform="rotate(10.5 500 500)">
-                <text class="surface-menu-item" id="menu-coming-soon-text" data-target="modal-coming-soon" x="715" y="500">6. Coming Soon</text>
+                <text class="surface-menu-item side-b-spoke" id="menu-registry-text" data-target="modal-registry" x="715" y="500">6. Registry</text>
               </g>
-              <!-- 7. Invitation to Follow (Angle: +17.5°) -->
+              <!-- 7. FAQ (Angle: +17.5°) -->
               <g id="spoke-g-7" transform="rotate(17.5 500 500)">
-                <text class="surface-menu-item" id="menu-invitation-text" data-target="modal-invitation" x="715" y="500">7. Invitation to Follow</text>
+                <text class="surface-menu-item side-b-spoke" id="menu-faq-text" data-target="modal-faq" x="715" y="500">7. FAQ</text>
               </g>
-              <!-- 8. Registry (Angle: +24.5°) -->
+              <!-- 8. RSVP (Angle: +24.5°) -->
               <g id="spoke-g-8" transform="rotate(24.5 500 500)">
-                <text class="surface-menu-item side-b-spoke" id="menu-registry-text" data-target="modal-registry" x="715" y="500">8. Registry</text>
-              </g>
-              <!-- 9. FAQ (Angle: +31.5°) -->
-              <g id="spoke-g-9" transform="rotate(31.5 500 500)">
-                <text class="surface-menu-item side-b-spoke" id="menu-faq-text" data-target="modal-faq" x="715" y="500">9. FAQ</text>
+                <text class="surface-menu-item side-b-spoke" id="menu-rsvp-text" data-target="modal-faq" x="715" y="500">8. RSVP</text>
               </g>
             </g>
           </svg>
@@ -3284,6 +3366,12 @@
                 <circle cx="500" cy="500" r="125" fill="none" stroke="#C29F62" stroke-width="1.5" stroke-opacity="0.22" />
               </g>
 
+              <!-- Center Spindle Hole (Authentic 7.26% Standard LP Ratio: Diameter 73px at cx=500, cy=500, r=36.5) -->
+              <g id="label-spindle-hole" style="pointer-events: none;">
+                <circle cx="500" cy="500" r="36.5" fill="#0D0D0D" />
+                <circle cx="500" cy="500" r="36.5" fill="none" stroke="#C29F62" stroke-width="1.2" stroke-opacity="0.35" />
+              </g>
+
               <!-- Faint Archival Monogram Catalog Sub-Mark (Centered at X: 50%, Y: 57%) -->
               <text class="label-monogram-submark" x="500" y="570" text-anchor="middle">JB • MM</text>
 
@@ -3343,15 +3431,8 @@
                   <text class="label-menu-header" x="675" y="230" text-anchor="middle">SIDE B</text>
                 </g>
 
-                <!-- 5. Schedule (Row 1: y=290, x=700 - mirror of Side A Row 1 x=300, distance 200px from center x=500) - Disabled/Coming Soon -->
-                <g id="schedule-item-group" tabindex="0" role="button" aria-label="5. Schedule - Coming Soon" style="cursor: default; outline: none; pointer-events: auto;">
-                  <text class="label-menu-item right-col item-dead" x="700" y="290" text-anchor="middle">5. Schedule</text>
-                  <!-- Hover Tooltip overlay: explicit SVG coordinates -->
-                  <g class="label-tooltip">
-                    <rect class="label-tooltip-rect" x="610" y="269" width="180" height="42" />
-                    <text class="label-tooltip-text" x="700" y="290">Coming Soon</text>
-                  </g>
-                </g>
+                <!-- 5. Schedule (Row 1: y=290, x=700 - mirror of Side A Row 1 x=300, distance 200px from center x=500) -->
+                <text class="label-menu-item right-col" data-target="modal-schedule" x="700" y="290" text-anchor="middle">5. Schedule</text>
 
                 <!-- 6. Registry (Row 2: y=430, x=750 - mirror of Side A Row 2 x=250, distance 250px from center x=500) -->
                 <text class="label-menu-item right-col" data-target="modal-registry" x="750" y="430" text-anchor="middle">6. Registry</text>
@@ -3384,9 +3465,6 @@
                 </textPath>
               </text>
             </svg>
-
-            <!-- Spindle Hole -->
-            <div class="spindle-hole"></div>
           </div>
 
         </div><!-- /vinyl-record -->
@@ -3688,7 +3766,8 @@
           
           <!-- Sticky / Fixed Category Tabs -->
           <div class="spots-tabs" role="tablist" aria-label="Stuff to Do Categories">
-            <button class="spots-tab-btn active" data-category="food-drink" role="tab" aria-selected="true">Food &amp; Drink</button>
+            <button class="spots-tab-btn active" data-category="coffee-breakfast" role="tab" aria-selected="true">Coffee &amp; Breakfast</button>
+            <button class="spots-tab-btn" data-category="dinner-drinks" role="tab" aria-selected="false">Dinner &amp; Drinks</button>
             <button class="spots-tab-btn" data-category="parks-outdoors" role="tab" aria-selected="false">Parks &amp; Outdoors</button>
             <button class="spots-tab-btn" data-category="sights-culture" role="tab" aria-selected="false">Sights &amp; Culture</button>
           </div>
@@ -3697,11 +3776,158 @@
         <!-- Scrollable Editorial Directory Area -->
         <div class="spots-cards-scroll">
           
-          <!-- Category Panel 1: Food & Drink -->
-          <div class="spots-category-panel" data-panel="food-drink">
+          <!-- Category Panel 1: Coffee & Breakfast -->
+          <div class="spots-category-panel" data-panel="coffee-breakfast">
             <div class="spots-editorial-list">
               
-              <!-- 1. Whisler's -->
+              <!-- 1. Veracruz All Natural (at the LINE) -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.veracruzallnatural.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Veracruz All Natural (at the LINE)</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Central Austin</span>
+                    <a href="https://maps.google.com/?q=Veracruz+All+Natural,+111+E+Cesar+Chavez+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Walkable from the Driskill. Essential breakfast tacos right by the bridge. Get the migas poblano.</p>
+              </div>
+
+              <!-- 2. Houndstooth Coffee -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://houndstoothcoffee.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Houndstooth Coffee</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Central Austin</span>
+                    <a href="https://maps.google.com/?q=Houndstooth+Coffee,+401+Congress+Ave+%23100c,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Sleek espresso bar three blocks south on Congress. Our pick for great pour-overs and quick morning pastries.</p>
+              </div>
+
+              <!-- 3. Halcyon -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://halcyoncoffeebar.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Halcyon</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Central Austin</span>
+                    <a href="https://maps.google.com/?q=Halcyon,+218+W+4th+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Relaxed 4th Street coffeehouse with great cold brew.</p>
+              </div>
+
+              <!-- 4. 1886 Café & Bakery -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://driskillhotel.com/dining/1886-cafe-bakery/" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>1886 Café &amp; Bakery</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Central Austin</span>
+                    <a href="https://maps.google.com/?q=1886+Cafe+%26+Bakery,+118+E+7th+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Classic Victorian bakery right in the Driskill lobby. Famous for cinnamon rolls and pecan pie.</p>
+              </div>
+
+              <!-- 5. Sour Duck Market -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.sourduckmarket.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Sour Duck Market</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">East Austin</span>
+                    <a href="https://maps.app.goo.gl/H3o75phMYTY2gS9f7" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Our default East Side bakery and all-day café. Great patio and stellar pastries.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Category Panel 2: Dinner & Drinks -->
+          <div class="spots-category-panel" data-panel="dinner-drinks" style="display: none;">
+            <div class="spots-editorial-list">
+              
+              <!-- 1. Casino el Camino -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.casinoelcamino.net" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Casino el Camino</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Central Austin</span>
+                    <a href="https://maps.google.com/?q=Casino+El+Camino,+517+E+6th+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Legendary 6th Street dive bar with a great back patio and one of the best burgers in town.</p>
+              </div>
+
+              <!-- 2. Small Victory -->
+              <div class="spots-entry-row">
+                <div class="spots-entry-top">
+                  <a href="https://www.smallvictorybar.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                    <span>Small Victory</span>
+                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="4" y1="12" x2="20" y2="12"></line>
+                      <polyline points="13 5 20 12 13 19"></polyline>
+                    </svg>
+                  </a>
+                  <div class="spots-entry-meta">
+                    <span class="spots-neighborhood-tag">Central Austin</span>
+                    <a href="https://maps.google.com/?q=Small+Victory,+108+E+7th+St,+Austin,+TX+78701" target="_blank" rel="noopener noreferrer" class="spots-map-link">
+                      Map &rarr;
+                    </a>
+                  </div>
+                </div>
+                <p class="spots-entry-blurb">Hidden upstairs cocktail speakeasy across the street. Exceptional classic drinks.</p>
+              </div>
+
+              <!-- 3. Whisler's -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
                   <a href="https://www.whislersatx.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
@@ -3718,10 +3944,10 @@
                     </a>
                   </div>
                 </div>
-                <p class="spots-entry-blurb">Outstanding mezcal bar and patio; Mike’s pick for a smoky Old Fashioned.</p>
+                <p class="spots-entry-blurb">Outstanding mezcal bar and weathered stone patio; Mike’s pick for a smoky Old Fashioned.</p>
               </div>
 
-              <!-- 2. Terry Black's BBQ -->
+              <!-- 4. Terry Black's BBQ -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
                   <a href="https://terryblacksbbq.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
@@ -3739,46 +3965,6 @@
                   </div>
                 </div>
                 <p class="spots-entry-blurb">Texas barbecue done right. Don't skip the brisket or the creamed corn.</p>
-              </div>
-
-              <!-- 3. El Chilito -->
-              <div class="spots-entry-row">
-                <div class="spots-entry-top">
-                  <a href="https://www.elchilito.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
-                    <span>El Chilito</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="4" y1="12" x2="20" y2="12"></line>
-                      <polyline points="13 5 20 12 13 19"></polyline>
-                    </svg>
-                  </a>
-                  <div class="spots-entry-meta">
-                    <span class="spots-neighborhood-tag">East Austin</span>
-                    <a href="https://maps.app.goo.gl/tJg66wHrkTriGTAWA" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map &rarr;
-                    </a>
-                  </div>
-                </div>
-                <p class="spots-entry-blurb">Jordan’s breakfast taco standard. Order the Cherrywood.</p>
-              </div>
-
-              <!-- 4. Sour Duck Market -->
-              <div class="spots-entry-row">
-                <div class="spots-entry-top">
-                  <a href="https://www.sourduckmarket.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
-                    <span>Sour Duck Market</span>
-                    <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                      <line x1="4" y1="12" x2="20" y2="12"></line>
-                      <polyline points="13 5 20 12 13 19"></polyline>
-                    </svg>
-                  </a>
-                  <div class="spots-entry-meta">
-                    <span class="spots-neighborhood-tag">East Austin</span>
-                    <a href="https://maps.app.goo.gl/H3o75phMYTY2gS9f7" target="_blank" rel="noopener noreferrer" class="spots-map-link">
-                      Map &rarr;
-                    </a>
-                  </div>
-                </div>
-                <p class="spots-entry-blurb">Our default east side dinner and bakery. Great patio, incredible burger.</p>
               </div>
 
               <!-- 5. Meanwhile Brewing -->
@@ -4151,26 +4337,76 @@
     </div>
   </div>
 
-  <!-- 5. Registry Modal (Side B, Track 06) -->
+  <!-- 5. Schedule / Weekend Itinerary Modal (Side B, Track 05) -->
+  <div id="modal-schedule" class="modal-overlay" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <button class="modal-close" aria-label="Close modal">&times;</button>
+      <div class="modal-card-inner">
+        
+        <!-- Header -->
+        <div class="schedule-header">
+          <h2 class="modal-title" style="margin-bottom: 0.55rem;">Schedule</h2>
+          <p class="schedule-subhead">Full schedule, attire notes, and specific venue details will be updated here closer to the date.</p>
+        </div>
+
+        <div class="modal-body" style="margin-top: 1.25rem;">
+          <div class="schedule-list">
+
+            <!-- Friday, April 23, 2027 -->
+            <div class="schedule-item">
+              <span class="schedule-date-badge">Friday, April 23, 2027</span>
+              <h3 class="schedule-item-title">Welcome Drinks</h3>
+              <div class="schedule-tag">Evening &middot; Location TBA</div>
+              <p class="schedule-item-desc">Join us for casual drinks and light bites to kick off the weekend.</p>
+            </div>
+
+            <!-- Saturday, April 24, 2027 -->
+            <div class="schedule-item">
+              <span class="schedule-date-badge">Saturday, April 24, 2027</span>
+              <h3 class="schedule-item-title">The Main Event</h3>
+              <div class="schedule-tag">Late Afternoon &amp; Evening &middot; The Driskill</div>
+              <p class="schedule-item-desc">Ceremony, cocktail hour, dinner, and dancing, all hosted on-site at the Driskill</p>
+            </div>
+
+            <!-- Sunday, April 25, 2027 -->
+            <div class="schedule-item">
+              <span class="schedule-date-badge">Sunday, April 25, 2027</span>
+              <h3 class="schedule-item-title">Informal Farewell</h3>
+              <div class="schedule-tag">Morning &middot; Location TBA</div>
+              <p class="schedule-item-desc">Grab some breakfast tacos, coffee, and say hi/bye before heading home.</p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Registry Modal (Side B, Track 06) -->
   <div id="modal-registry" class="modal-overlay" role="dialog" aria-modal="true">
     <div class="modal-card">
       <button class="modal-close" aria-label="Close modal">&times;</button>
       <div class="modal-card-inner">
-        <h2 class="modal-title">Registry</h2>
+        <h2 class="modal-title" style="margin-bottom: 0.55rem;">Registry</h2>
         <div class="modal-body">
+          <p class="registry-intro-desc" style="font-family: 'Montserrat', sans-serif; font-size: 0.96rem; color: #525C54; line-height: 1.62; margin: 0 0 1.35rem 0; font-weight: 400;">
+            We're fortunate to already have most of the essentials, but we’ve put together a small wish list of upgrades, group gifts, and a fund toward our honeymoon. Your presence in Austin is truly the best gift, but if you’d like to celebrate with a gift, you can find both our registries linked below.
+          </p>
           <div class="registry-grid">
-            <a href="https://www.zola.com" target="_blank" rel="noopener noreferrer" class="registry-card">
+            <a href="https://www.crateandbarrel.com" target="_blank" rel="noopener noreferrer" class="registry-card">
               <div class="registry-card-content">
-                <span class="registry-vendor-tag">Registry</span>
-                <h3 class="registry-vendor-title">Zola</h3>
+                <span class="registry-vendor-tag">Registry: Household Items and Group Gifts</span>
+                <h3 class="registry-vendor-title">Crate &amp; Barrel</h3>
               </div>
               <span class="registry-link-arrow">&rarr;</span>
             </a>
 
-            <a href="https://www.crateandbarrel.com" target="_blank" rel="noopener noreferrer" class="registry-card">
+            <a href="https://www.zola.com" target="_blank" rel="noopener noreferrer" class="registry-card">
               <div class="registry-card-content">
-                <span class="registry-vendor-tag">Registry</span>
-                <h3 class="registry-vendor-title">Crate &amp; Barrel</h3>
+                <span class="registry-vendor-tag">Registry: Honeymoon Fund</span>
+                <h3 class="registry-vendor-title">Zola</h3>
               </div>
               <span class="registry-link-arrow">&rarr;</span>
             </a>
@@ -4201,7 +4437,7 @@
             <div class="faq-item">
               <h3 class="faq-q">Will there be events on Friday?</h3>
               <div class="faq-a">
-                <p>Yes. We are hosting a welcome party on Friday evening with food and drinks. Full timing and location details will follow with formal invitations.</p>
+                <p>Yes. We are hosting a welcome party for all on Friday evening with food and drinks. Full timing and location details will follow with formal invitations.</p>
               </div>
             </div>
 
@@ -4828,6 +5064,23 @@
         const scrollContainer = modalAbout.querySelector('.modal-card-inner') || modalAbout.querySelector('.modal-card');
         const storyTriggerItems = document.querySelectorAll('[data-target="modal-about"]');
         storyTriggerItems.forEach(trigger => {
+          trigger.addEventListener('click', () => {
+            if (scrollContainer) {
+              scrollContainer.scrollTop = 0;
+            }
+          });
+        });
+      }
+
+      // -------------------------------------------------------------
+      // SCHEDULE / WEEKEND ITINERARY MODAL
+      // - Reset scroll position on opening
+      // -------------------------------------------------------------
+      const modalSchedule = document.getElementById('modal-schedule');
+      if (modalSchedule) {
+        const scrollContainer = modalSchedule.querySelector('.modal-card-inner') || modalSchedule.querySelector('.modal-card');
+        const scheduleTriggerItems = document.querySelectorAll('[data-target="modal-schedule"]');
+        scheduleTriggerItems.forEach(trigger => {
           trigger.addEventListener('click', () => {
             if (scrollContainer) {
               scrollContainer.scrollTop = 0;
