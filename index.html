@@ -1698,6 +1698,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1.15rem;
       padding: 1.15rem 1.35rem;
       background: #F6F3EC;
       border: 1px solid #DDD7C8;
@@ -1717,26 +1718,25 @@
     .registry-card-content {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .registry-vendor-tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #3F4941;
-      line-height: 1.35;
+      gap: 0.3rem;
     }
 
     .registry-vendor-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 800;
       letter-spacing: -0.015em;
       color: #1E2320;
       margin: 0;
+    }
+
+    .registry-vendor-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #525C54;
+      line-height: 1.4;
     }
 
     .registry-link-arrow {
@@ -1746,6 +1746,7 @@
       color: #B86B47;
       line-height: 1;
       display: inline-block;
+      flex-shrink: 0;
       transition: transform 0.2s ease;
     }
 
@@ -3471,7 +3472,7 @@
 
         <!-- SLEEVE FRONT COVER (z-index: 10, sits in front of vinyl-record with notch cutout) -->
         <div class="sleeve-front">
-          <img id="sleeve-cover-image" src="./Weston-4.png" alt="Mike & Jordan Album Cover" class="sleeve-photo" referrerPolicy="no-referrer" onerror="const c=['./public/Weston-4.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/Weston-4.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/Weston-4.png','Weston-4.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
+          <img id="sleeve-cover-image" src="./album_cover_final.png" alt="Mike & Jordan Album Cover" class="sleeve-photo" referrerPolicy="no-referrer" onerror="const c=['./public/album_cover_final.png','album_cover_final.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/album_cover_final.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/album_cover_final.png','./Weston-7.png','./public/Weston-7.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
         </div><!-- /sleeve-front -->
 
       </div><!-- /scene-group -->
@@ -3509,7 +3510,7 @@
             <div class="timeline-node" data-index="1">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/kellogg.png" alt="Mike finishes his MBA; we move into an apartment in Ravenswood." class="timeline-photo-img img-kellogg" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/kellogg.png'; if(!this.src) this.src='./kellogg.png';" />
+                  <img src="./kellogg.png" alt="Mike finishes his MBA; we move into an apartment in Ravenswood." class="timeline-photo-img img-kellogg" referrerPolicy="no-referrer" onerror="const c=['./public/kellogg.png','kellogg.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/kellogg.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/kellogg.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
                 </div>
               </div>
               <div class="timeline-info">
@@ -3535,7 +3536,7 @@
             <div class="timeline-node" data-index="3">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/finley.png" alt="Finley enters the picture." class="timeline-photo-img img-finley" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./finley.png';" />
+                  <img src="./finley.png" alt="Finley enters the picture." class="timeline-photo-img img-finley" referrerPolicy="no-referrer" onerror="const c=['./public/finley.png','finley.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/finley.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/finley.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
                 </div>
               </div>
               <div class="timeline-info">
@@ -3548,7 +3549,7 @@
             <div class="timeline-node" data-index="4">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/engaged.png" alt="Mutual proposal in Texas." class="timeline-photo-img img-engaged" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./engaged.png';" />
+                  <img src="./engaged.png" alt="Mutual proposal in Texas." class="timeline-photo-img img-engaged" referrerPolicy="no-referrer" onerror="const c=['./public/engaged.png','engaged.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/engaged.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/engaged.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
                 </div>
               </div>
               <div class="timeline-info">
@@ -4346,34 +4347,24 @@
         <!-- Header -->
         <div class="schedule-header">
           <h2 class="modal-title" style="margin-bottom: 0.55rem;">Schedule</h2>
-          <p class="schedule-subhead">Full schedule, attire notes, and specific venue details will be updated here closer to the date.</p>
+          <p class="schedule-subhead">Full schedule, attire notes, and specific venue details will be updated here later, but here are the details we know so far:</p>
         </div>
 
         <div class="modal-body" style="margin-top: 1.25rem;">
           <div class="schedule-list">
 
-            <!-- Friday, April 23, 2027 -->
+            <!-- Friday Evening -->
             <div class="schedule-item">
-              <span class="schedule-date-badge">Friday, April 23, 2027</span>
               <h3 class="schedule-item-title">Welcome Drinks</h3>
-              <div class="schedule-tag">Evening &middot; Location TBA</div>
+              <div class="schedule-tag">Friday Evening &middot; Location TBA</div>
               <p class="schedule-item-desc">Join us for casual drinks and light bites to kick off the weekend.</p>
             </div>
 
-            <!-- Saturday, April 24, 2027 -->
+            <!-- Saturday Late Afternoon & Evening -->
             <div class="schedule-item">
-              <span class="schedule-date-badge">Saturday, April 24, 2027</span>
               <h3 class="schedule-item-title">The Main Event</h3>
-              <div class="schedule-tag">Late Afternoon &amp; Evening &middot; The Driskill</div>
-              <p class="schedule-item-desc">Ceremony, cocktail hour, dinner, and dancing, all hosted on-site at the Driskill</p>
-            </div>
-
-            <!-- Sunday, April 25, 2027 -->
-            <div class="schedule-item">
-              <span class="schedule-date-badge">Sunday, April 25, 2027</span>
-              <h3 class="schedule-item-title">Informal Farewell</h3>
-              <div class="schedule-tag">Morning &middot; Location TBA</div>
-              <p class="schedule-item-desc">Grab some breakfast tacos, coffee, and say hi/bye before heading home.</p>
+              <div class="schedule-tag">Saturday Late Afternoon &amp; Evening &middot; The Driskill</div>
+              <p class="schedule-item-desc">Ceremony, cocktail hour, dinner, and dancing, all hosted on-site at the Driskill.</p>
             </div>
 
           </div>
@@ -4391,22 +4382,19 @@
       <div class="modal-card-inner">
         <h2 class="modal-title" style="margin-bottom: 0.55rem;">Registry</h2>
         <div class="modal-body">
-          <p class="registry-intro-desc" style="font-family: 'Montserrat', sans-serif; font-size: 0.96rem; color: #525C54; line-height: 1.62; margin: 0 0 1.35rem 0; font-weight: 400;">
-            We're fortunate to already have most of the essentials, but we’ve put together a small wish list of upgrades, group gifts, and a fund toward our honeymoon. Your presence in Austin is truly the best gift, but if you’d like to celebrate with a gift, you can find both our registries linked below.
-          </p>
           <div class="registry-grid">
-            <a href="https://www.crateandbarrel.com" target="_blank" rel="noopener noreferrer" class="registry-card">
+            <a href="https://www.crateandbarrel.com/gift-registry/mike-miller-and-jordan-brammer/r7614370" target="_blank" rel="noopener noreferrer" class="registry-card">
               <div class="registry-card-content">
-                <span class="registry-vendor-tag">Registry: Household Items and Group Gifts</span>
                 <h3 class="registry-vendor-title">Crate &amp; Barrel</h3>
+                <span class="registry-vendor-tag">Home &middot; Kitchen &middot; Entertaining</span>
               </div>
               <span class="registry-link-arrow">&rarr;</span>
             </a>
 
-            <a href="https://www.zola.com" target="_blank" rel="noopener noreferrer" class="registry-card">
+            <a href="https://www.zola.com/registry/millerbrammerwedding" target="_blank" rel="noopener noreferrer" class="registry-card">
               <div class="registry-card-content">
-                <span class="registry-vendor-tag">Registry: Honeymoon Fund</span>
-                <h3 class="registry-vendor-title">Zola</h3>
+                <h3 class="registry-vendor-title">Honeymoon Fund</h3>
+                <span class="registry-vendor-tag">We're still deciding where we'll go, but we're pretty sure there will be a beach.</span>
               </div>
               <span class="registry-link-arrow">&rarr;</span>
             </a>
@@ -4469,7 +4457,7 @@
             <div class="faq-item">
               <h3 class="faq-q">Do I need to rent a car?</h3>
               <div class="faq-a">
-                <p>Only if you plan to explore the Hill Country or outer Austin. The Driskill sits in the heart of downtown; everything from restaurants to the river is either walkable or a quick rideshare away.</p>
+                <p>Probably not. The Driskill sits in the heart of downtown; most everything you'd need is either walkable or a quick rideshare away. You may want to rent a car if you plan to explore outer Austin or Hill Country, though.</p>
               </div>
             </div>
 
@@ -4549,12 +4537,12 @@
 
         const candidateUrls = [
           img.getAttribute('src'),
-          './Weston-4.png',
-          'Weston-4.png',
-          './public/Weston-4.png',
-          'public/Weston-4.png',
-          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/Weston-4.png',
-          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/Weston-4.png'
+          './album_cover_final.png',
+          'album_cover_final.png',
+          './public/album_cover_final.png',
+          'public/album_cover_final.png',
+          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/album_cover_final.png',
+          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/album_cover_final.png'
         ].filter(Boolean);
 
         return new Promise((resolve) => {
