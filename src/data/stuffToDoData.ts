@@ -6,46 +6,9 @@ export interface SpotItem {
   mapsUrl: string;
 }
 
-export type CategoryKey = "Food & Drink" | "Parks & Outdoors" | "Sights & Culture";
+export type CategoryKey = "Parks & Outdoors" | "Sights & Culture";
 
 export const stuffToDoData: Record<CategoryKey, SpotItem[]> = {
-  "Food & Drink": [
-    {
-      name: "Whisler’s",
-      neighborhood: "East Austin",
-      description: "Outstanding mezcal bar and patio; Mike’s pick for a smoky Old Fashioned.",
-      placeUrl: "https://www.whislersatx.com",
-      mapsUrl: "https://maps.app.goo.gl/hENcunwcRqbhDHTn8"
-    },
-    {
-      name: "Terry Black’s BBQ",
-      neighborhood: "Barton Springs Rd",
-      description: "Texas barbecue done right. Don't skip the brisket or the creamed corn.",
-      placeUrl: "https://terryblacksbbq.com",
-      mapsUrl: "https://maps.app.goo.gl/nRZ4MZbjo2mw7gmWA"
-    },
-    {
-      name: "El Chilito",
-      neighborhood: "East Austin",
-      description: "Jordan’s breakfast taco standard. Order the Cherrywood.",
-      placeUrl: "https://www.elchilito.com",
-      mapsUrl: "https://maps.app.goo.gl/tJg66wHrkTriGTAWA"
-    },
-    {
-      name: "Sour Duck Market",
-      neighborhood: "East Austin",
-      description: "Our default east side dinner and bakery. Great patio, incredible burger.",
-      placeUrl: "https://www.sourduckmarket.com",
-      mapsUrl: "https://maps.app.goo.gl/H3o75phMYTY2gS9f7"
-    },
-    {
-      name: "Meanwhile Brewing",
-      neighborhood: "South Austin",
-      description: "Massive tree canopy, stellar house beers, and high-caliber food trucks.",
-      placeUrl: "https://www.meanwhilebeer.com",
-      mapsUrl: "https://maps.app.goo.gl/7RR1dZ3cpXLf5DeS9"
-    }
-  ],
   "Parks & Outdoors": [
     {
       name: "Barton Springs Pool",

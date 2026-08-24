@@ -8,12 +8,11 @@ interface StuffToDoModalProps {
 }
 
 export const StuffToDoModal: React.FC<StuffToDoModalProps> = ({ isOpen, onClose }) => {
-  const [activeCategory, setActiveCategory] = useState<CategoryKey>("Food & Drink");
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>("Parks & Outdoors");
 
   if (!isOpen) return null;
 
   const categories: CategoryKey[] = [
-    "Food & Drink",
     "Parks & Outdoors",
     "Sights & Culture"
   ];
