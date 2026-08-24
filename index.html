@@ -1698,6 +1698,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1.15rem;
       padding: 1.15rem 1.35rem;
       background: #F6F3EC;
       border: 1px solid #DDD7C8;
@@ -1717,26 +1718,25 @@
     .registry-card-content {
       display: flex;
       flex-direction: column;
-      gap: 0.2rem;
-    }
-
-    .registry-vendor-tag {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #3F4941;
-      line-height: 1.35;
+      gap: 0.3rem;
     }
 
     .registry-vendor-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 800;
       letter-spacing: -0.015em;
       color: #1E2320;
       margin: 0;
+    }
+
+    .registry-vendor-tag {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      color: #525C54;
+      line-height: 1.4;
     }
 
     .registry-link-arrow {
@@ -1746,6 +1746,7 @@
       color: #B86B47;
       line-height: 1;
       display: inline-block;
+      flex-shrink: 0;
       transition: transform 0.2s ease;
     }
 
@@ -2170,6 +2171,7 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       touch-action: pan-x;
+      -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
     }
 
@@ -2211,6 +2213,46 @@
       height: 2.5px;
       background: #B86B47;
       border-radius: 2px 2px 0 0;
+    }
+
+    /* Modal Tabs Layout & Subtle Scrolling Reminder */
+    .modal-tabs-wrapper {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .modal-tab-scroll-cue {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 2.5rem;
+      pointer-events: none;
+      user-select: none;
+      z-index: 5;
+      background: linear-gradient(to right, rgba(246, 243, 236, 0) 0%, rgba(246, 243, 236, 0.8) 50%, rgba(246, 243, 236, 0.98) 100%);
+      transition: opacity 0.25s ease, visibility 0.25s ease;
+      opacity: 0.85;
+    }
+
+    .modal-tab-scroll-cue .scroll-cue-chevron {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #B86B47;
+      line-height: 1;
+      padding-right: 0.25rem;
+      display: inline-block;
+      animation: subtlePulseRight 1.5s ease-in-out infinite;
+    }
+
+    @keyframes subtlePulseRight {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(3px); }
     }
 
     /* Scrollable Editorial Directory Area */
@@ -2291,6 +2333,7 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       touch-action: pan-x;
+      -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
     }
 
@@ -2409,6 +2452,7 @@
       scrollbar-width: none;
       -ms-overflow-style: none;
       touch-action: pan-x;
+      -webkit-overflow-scrolling: touch;
       overscroll-behavior: contain;
     }
 
@@ -3471,7 +3515,7 @@
 
         <!-- SLEEVE FRONT COVER (z-index: 10, sits in front of vinyl-record with notch cutout) -->
         <div class="sleeve-front">
-          <img id="sleeve-cover-image" src="./Weston-4.png" alt="Mike & Jordan Album Cover" class="sleeve-photo" referrerPolicy="no-referrer" onerror="const c=['./public/Weston-4.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/Weston-4.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/Weston-4.png','Weston-4.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
+          <img id="sleeve-cover-image" src="./album_cover_final.png" alt="Mike & Jordan Album Cover" class="sleeve-photo" referrerPolicy="no-referrer" onerror="const c=['./public/album_cover_final.png','album_cover_final.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/album_cover_final.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/album_cover_final.png','./Weston-7.png','./public/Weston-7.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
         </div><!-- /sleeve-front -->
 
       </div><!-- /scene-group -->
@@ -3509,7 +3553,7 @@
             <div class="timeline-node" data-index="1">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/kellogg.png" alt="Mike finishes his MBA; we move into an apartment in Ravenswood." class="timeline-photo-img img-kellogg" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/kellogg.png'; if(!this.src) this.src='./kellogg.png';" />
+                  <img src="./kellogg.png" alt="Mike finishes his MBA; we move into an apartment in Ravenswood." class="timeline-photo-img img-kellogg" referrerPolicy="no-referrer" onerror="const c=['./public/kellogg.png','kellogg.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/kellogg.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/kellogg.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
                 </div>
               </div>
               <div class="timeline-info">
@@ -3535,7 +3579,7 @@
             <div class="timeline-node" data-index="3">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/finley.png" alt="Finley enters the picture." class="timeline-photo-img img-finley" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./finley.png';" />
+                  <img src="./finley.png" alt="Finley enters the picture." class="timeline-photo-img img-finley" referrerPolicy="no-referrer" onerror="const c=['./public/finley.png','finley.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/finley.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/finley.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
                 </div>
               </div>
               <div class="timeline-info">
@@ -3548,7 +3592,7 @@
             <div class="timeline-node" data-index="4">
               <div class="timeline-frame-wrap">
                 <div class="timeline-photo-frame">
-                  <img src="https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/engaged.png" alt="Mutual proposal in Texas." class="timeline-photo-img img-engaged" referrerPolicy="no-referrer" onerror="this.onerror=null; this.src='./engaged.png';" />
+                  <img src="./engaged.png" alt="Mutual proposal in Texas." class="timeline-photo-img img-engaged" referrerPolicy="no-referrer" onerror="const c=['./public/engaged.png','engaged.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/engaged.png','https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/engaged.png']; let i=+this.dataset.i||0; if(i<c.length){ this.dataset.i=i+1; this.src=c[i]; } else { this.onerror=null; }" />
                 </div>
               </div>
               <div class="timeline-info">
@@ -3586,11 +3630,16 @@
         <div class="driskill-header-fixed">
           <h2 class="driskill-title">The Driskill</h2>
           
-          <!-- Sticky / Fixed Category Tabs -->
-          <div class="driskill-tabs" role="tablist" aria-label="The Driskill Details">
-            <button class="driskill-tab-btn active" data-tab="hotel" role="tab" aria-selected="true">Overview</button>
-            <button class="driskill-tab-btn" data-tab="location" role="tab" aria-selected="false">Location &amp; Transit</button>
-            <button class="driskill-tab-btn" data-tab="booking" role="tab" aria-selected="false">Room Block</button>
+          <!-- Sticky / Fixed Category Tabs Wrapper -->
+          <div class="modal-tabs-wrapper">
+            <div class="driskill-tabs" role="tablist" aria-label="The Driskill Details">
+              <button class="driskill-tab-btn active" data-tab="hotel" role="tab" aria-selected="true">Overview</button>
+              <button class="driskill-tab-btn" data-tab="location" role="tab" aria-selected="false">Location &amp; Transit</button>
+              <button class="driskill-tab-btn" data-tab="booking" role="tab" aria-selected="false">Room Block</button>
+            </div>
+            <div class="modal-tab-scroll-cue" aria-hidden="true">
+              <span class="scroll-cue-chevron">&rarr;</span>
+            </div>
           </div>
         </div>
 
@@ -3764,12 +3813,17 @@
           <h2 class="spots-title">Around Town</h2>
           <p class="spots-intro">A few of our favorite spots around Austin:</p>
           
-          <!-- Sticky / Fixed Category Tabs -->
-          <div class="spots-tabs" role="tablist" aria-label="Stuff to Do Categories">
-            <button class="spots-tab-btn active" data-category="coffee-breakfast" role="tab" aria-selected="true">Coffee &amp; Breakfast</button>
-            <button class="spots-tab-btn" data-category="dinner-drinks" role="tab" aria-selected="false">Dinner &amp; Drinks</button>
-            <button class="spots-tab-btn" data-category="parks-outdoors" role="tab" aria-selected="false">Parks &amp; Outdoors</button>
-            <button class="spots-tab-btn" data-category="sights-culture" role="tab" aria-selected="false">Sights &amp; Culture</button>
+          <!-- Sticky / Fixed Category Tabs Wrapper -->
+          <div class="modal-tabs-wrapper">
+            <div class="spots-tabs" role="tablist" aria-label="Stuff to Do Categories">
+              <button class="spots-tab-btn active" data-category="coffee-breakfast" role="tab" aria-selected="true">Coffee &amp; Breakfast</button>
+              <button class="spots-tab-btn" data-category="dinner-drinks" role="tab" aria-selected="false">Dinner &amp; Drinks</button>
+              <button class="spots-tab-btn" data-category="parks-outdoors" role="tab" aria-selected="false">Parks &amp; Outdoors</button>
+              <button class="spots-tab-btn" data-category="sights-culture" role="tab" aria-selected="false">Sights &amp; Culture</button>
+            </div>
+            <div class="modal-tab-scroll-cue" aria-hidden="true">
+              <span class="scroll-cue-chevron">&rarr;</span>
+            </div>
           </div>
         </div>
 
@@ -3843,7 +3897,7 @@
               <!-- 4. 1886 Café & Bakery -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
-                  <a href="https://driskillhotel.com/dining/1886-cafe-bakery/" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                  <a href="https://driskillhotel.com/dining/1886-café-bakery/" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>1886 Café &amp; Bakery</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -3910,7 +3964,7 @@
               <!-- 2. Small Victory -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
-                  <a href="https://www.smallvictorybar.com" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                  <a href="https://www.smallvictory.bar" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Small Victory</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -4144,7 +4198,7 @@
               <!-- 5. SoCo Shopping District -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
-                  <a href="https://www.austintexas.org/things-to-do/shopping/south-congress-district/" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                  <a href="https://visitsoco.com/visit-soco" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>SoCo Shopping District</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -4224,7 +4278,7 @@
           <!-- Tab Panel 2: Other Nearby Options -->
           <div class="stay-tab-panel" data-panel="other-hotels" style="display: none;">
             <p class="driskill-booking-desc" style="margin-bottom: 1.15rem;">
-              If you'd rather stay elsewhere downtown or get an Airbnb, these are all solid, walkable alternatives:
+              There are plenty of walkable alternatives downtown, and Airbnb and Vrbo work great too. A few of our recommendations:
             </p>
             <div class="spots-editorial-list">
               
@@ -4251,7 +4305,7 @@
               <!-- 2. Hyatt Place Downtown -->
               <div class="spots-entry-row">
                 <div class="spots-entry-top">
-                  <a href="https://www.hyatt.com/hyatt-place/en-US/ausda-hyatt-place-austin-downtown" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
+                  <a href="https://www.hyatt.com/hyatt-place/en-US/auszd-hyatt-place-austin-downtown" target="_blank" rel="noopener noreferrer" class="spots-entry-title">
                     <span>Hyatt Place Downtown</span>
                     <svg class="ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                       <line x1="4" y1="12" x2="20" y2="12"></line>
@@ -4346,34 +4400,24 @@
         <!-- Header -->
         <div class="schedule-header">
           <h2 class="modal-title" style="margin-bottom: 0.55rem;">Schedule</h2>
-          <p class="schedule-subhead">Full schedule, attire notes, and specific venue details will be updated here closer to the date.</p>
+          <p class="schedule-subhead">Full schedule, attire notes, and specific venue details will be updated here later, but here are the details we know so far:</p>
         </div>
 
         <div class="modal-body" style="margin-top: 1.25rem;">
           <div class="schedule-list">
 
-            <!-- Friday, April 23, 2027 -->
+            <!-- Friday Evening -->
             <div class="schedule-item">
-              <span class="schedule-date-badge">Friday, April 23, 2027</span>
               <h3 class="schedule-item-title">Welcome Drinks</h3>
-              <div class="schedule-tag">Evening &middot; Location TBA</div>
+              <div class="schedule-tag">Friday Evening &middot; Location TBA</div>
               <p class="schedule-item-desc">Join us for casual drinks and light bites to kick off the weekend.</p>
             </div>
 
-            <!-- Saturday, April 24, 2027 -->
+            <!-- Saturday Late Afternoon & Evening -->
             <div class="schedule-item">
-              <span class="schedule-date-badge">Saturday, April 24, 2027</span>
               <h3 class="schedule-item-title">The Main Event</h3>
-              <div class="schedule-tag">Late Afternoon &amp; Evening &middot; The Driskill</div>
-              <p class="schedule-item-desc">Ceremony, cocktail hour, dinner, and dancing, all hosted on-site at the Driskill</p>
-            </div>
-
-            <!-- Sunday, April 25, 2027 -->
-            <div class="schedule-item">
-              <span class="schedule-date-badge">Sunday, April 25, 2027</span>
-              <h3 class="schedule-item-title">Informal Farewell</h3>
-              <div class="schedule-tag">Morning &middot; Location TBA</div>
-              <p class="schedule-item-desc">Grab some breakfast tacos, coffee, and say hi/bye before heading home.</p>
+              <div class="schedule-tag">Saturday Late Afternoon &amp; Evening &middot; The Driskill</div>
+              <p class="schedule-item-desc">Ceremony, cocktail hour, dinner, and dancing, all hosted on-site at the Driskill.</p>
             </div>
 
           </div>
@@ -4391,22 +4435,19 @@
       <div class="modal-card-inner">
         <h2 class="modal-title" style="margin-bottom: 0.55rem;">Registry</h2>
         <div class="modal-body">
-          <p class="registry-intro-desc" style="font-family: 'Montserrat', sans-serif; font-size: 0.96rem; color: #525C54; line-height: 1.62; margin: 0 0 1.35rem 0; font-weight: 400;">
-            We're fortunate to already have most of the essentials, but we’ve put together a small wish list of upgrades, group gifts, and a fund toward our honeymoon. Your presence in Austin is truly the best gift, but if you’d like to celebrate with a gift, you can find both our registries linked below.
-          </p>
           <div class="registry-grid">
-            <a href="https://www.crateandbarrel.com" target="_blank" rel="noopener noreferrer" class="registry-card">
+            <a href="https://www.crateandbarrel.com/gift-registry/mike-miller-and-jordan-brammer/r7614370" target="_blank" rel="noopener noreferrer" class="registry-card">
               <div class="registry-card-content">
-                <span class="registry-vendor-tag">Registry: Household Items and Group Gifts</span>
                 <h3 class="registry-vendor-title">Crate &amp; Barrel</h3>
+                <span class="registry-vendor-tag">Home &middot; Kitchen &middot; Entertaining</span>
               </div>
               <span class="registry-link-arrow">&rarr;</span>
             </a>
 
-            <a href="https://www.zola.com" target="_blank" rel="noopener noreferrer" class="registry-card">
+            <a href="https://www.zola.com/registry/millerbrammerwedding" target="_blank" rel="noopener noreferrer" class="registry-card">
               <div class="registry-card-content">
-                <span class="registry-vendor-tag">Registry: Honeymoon Fund</span>
-                <h3 class="registry-vendor-title">Zola</h3>
+                <h3 class="registry-vendor-title">Honeymoon Fund</h3>
+                <span class="registry-vendor-tag">We're still deciding where we'll go, but we're pretty sure there will be a beach.</span>
               </div>
               <span class="registry-link-arrow">&rarr;</span>
             </a>
@@ -4469,7 +4510,7 @@
             <div class="faq-item">
               <h3 class="faq-q">Do I need to rent a car?</h3>
               <div class="faq-a">
-                <p>Only if you plan to explore the Hill Country or outer Austin. The Driskill sits in the heart of downtown; everything from restaurants to the river is either walkable or a quick rideshare away.</p>
+                <p>Probably not. The Driskill sits in the heart of downtown; most everything you'd need is either walkable or a quick rideshare away. You may want to rent a car if you plan to explore outer Austin or Hill Country, though.</p>
               </div>
             </div>
 
@@ -4549,12 +4590,12 @@
 
         const candidateUrls = [
           img.getAttribute('src'),
-          './Weston-4.png',
-          'Weston-4.png',
-          './public/Weston-4.png',
-          'public/Weston-4.png',
-          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/Weston-4.png',
-          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/Weston-4.png'
+          './album_cover_final.png',
+          'album_cover_final.png',
+          './public/album_cover_final.png',
+          'public/album_cover_final.png',
+          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/album_cover_final.png',
+          'https://raw.githubusercontent.com/fsumad1190/MJ-STD/main/public/album_cover_final.png'
         ].filter(Boolean);
 
         return new Promise((resolve) => {
@@ -4776,7 +4817,7 @@
       let lockedPageScrollY = 0;
       let isModalActive = false;
 
-      // Helper to find the scrollable ancestor within the active modal
+      // Helper to find the vertically scrollable ancestor within the active modal
       function getScrollableAncestor(el, stopEl) {
         let cur = el;
         while (cur && cur !== stopEl && cur !== document.body && cur !== document.documentElement) {
@@ -4785,6 +4826,21 @@
             const overflowY = style.overflowY;
             const canScrollY = (overflowY === 'auto' || overflowY === 'scroll') && (cur.scrollHeight > cur.clientHeight + 1);
             if (canScrollY) return cur;
+          }
+          cur = cur.parentElement;
+        }
+        return null;
+      }
+
+      // Helper to find horizontally scrollable headers/tabs within the active modal
+      function getHorizontallyScrollableAncestor(el, stopEl) {
+        let cur = el;
+        while (cur && cur !== stopEl && cur !== document.body && cur !== document.documentElement) {
+          if (cur.nodeType === 1) {
+            const style = window.getComputedStyle(cur);
+            const overflowX = style.overflowX;
+            const canScrollX = (overflowX === 'auto' || overflowX === 'scroll') && (cur.scrollWidth > cur.clientWidth + 1);
+            if (canScrollX) return cur;
           }
           cur = cur.parentElement;
         }
@@ -4812,6 +4868,14 @@
                             targetModal.querySelector('.modal-card');
         if (innerScroll) {
           innerScroll.scrollTop = 0;
+        }
+
+        // Reset tabs horizontal scroll and reminder opacity if present
+        const tabsEl = targetModal.querySelector('.driskill-tabs, .spots-tabs, .stay-tabs');
+        if (tabsEl) {
+          tabsEl.scrollLeft = 0;
+          const cue = targetModal.querySelector('.modal-tab-scroll-cue');
+          if (cue) cue.style.opacity = '0.8';
         }
       };
 
@@ -4851,6 +4915,23 @@
           return;
         }
 
+        // If cursor is hovering over horizontally scrollable tabs/header, scroll tabs left/right
+        const hScrollContainer = getHorizontallyScrollableAncestor(e.target, activeModal);
+        if (hScrollContainer) {
+          e.preventDefault();
+          const delta = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+          hScrollContainer.scrollLeft += delta;
+          const cue = activeModal.querySelector('.modal-tab-scroll-cue');
+          if (cue) {
+            if (hScrollContainer.scrollLeft > 6 || hScrollContainer.scrollLeft + hScrollContainer.clientWidth >= hScrollContainer.scrollWidth - 6) {
+              cue.style.opacity = '0';
+            } else {
+              cue.style.opacity = '0.85';
+            }
+          }
+          return;
+        }
+
         const scrollContainer = getScrollableAncestor(e.target, activeModal);
         if (!scrollContainer) {
           // Hovering non-scrollable region of modal card (e.g. fixed header, title, close button)
@@ -4874,10 +4955,82 @@
         }
       }, { passive: false });
 
+      // Helper to enable smooth desktop mouse click-and-drag and cue management on tab headers
+      function setupTabContainerScrolling(container, cueEl) {
+        if (!container) return () => {};
+
+        let isDown = false;
+        let startX = 0;
+        let scrollLeft = 0;
+        let dragged = false;
+
+        const updateCueVisibility = () => {
+          if (!cueEl) return;
+          const canScroll = container.scrollWidth > container.clientWidth + 4;
+          const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 6;
+          const hasScrolled = container.scrollLeft > 6;
+          if (!canScroll || hasScrolled || atEnd) {
+            cueEl.style.opacity = '0';
+          } else {
+            cueEl.style.opacity = '0.85';
+          }
+        };
+
+        container.addEventListener('mousedown', (e) => {
+          if (e.button !== 0) return;
+          isDown = true;
+          dragged = false;
+          startX = e.pageX - container.offsetLeft;
+          scrollLeft = container.scrollLeft;
+        });
+
+        window.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          const x = e.pageX - container.offsetLeft;
+          const walk = (x - startX);
+          if (Math.abs(walk) > 3) {
+            dragged = true;
+            container.style.cursor = 'grabbing';
+            container.style.userSelect = 'none';
+          }
+          container.scrollLeft = scrollLeft - walk;
+          updateCueVisibility();
+        });
+
+        window.addEventListener('mouseup', () => {
+          if (isDown) {
+            isDown = false;
+            container.style.cursor = '';
+            container.style.removeProperty('user-select');
+            setTimeout(() => { dragged = false; }, 60);
+          }
+        });
+
+        // Prevent tab button trigger if the action was a click-and-drag
+        container.addEventListener('click', (e) => {
+          if (dragged) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }, true);
+
+        container.addEventListener('scroll', () => {
+          updateCueVisibility();
+        }, { passive: true });
+
+        window.addEventListener('resize', () => {
+          updateCueVisibility();
+        }, { passive: true });
+
+        return updateCueVisibility;
+      }
+
       // 3. Touch scrolling containment for mobile & trackpads
+      let touchStartX = 0;
       let touchStartY = 0;
       window.addEventListener('touchstart', (e) => {
         if (isModalActive && e.touches && e.touches.length > 0) {
+          touchStartX = e.touches[0].clientX;
           touchStartY = e.touches[0].clientY;
         }
       }, { passive: true });
@@ -4893,15 +5046,26 @@
           return;
         }
 
+        const currentX = e.touches[0].clientX;
+        const currentY = e.touches[0].clientY;
+        const deltaX = currentX - touchStartX;
+        const deltaY = currentY - touchStartY;
+        const isHorizontalGesture = Math.abs(deltaX) > Math.abs(deltaY);
+
+        // If swiping inside horizontally scrollable tab headers, allow native horizontal scroll
+        const hScrollContainer = getHorizontallyScrollableAncestor(e.target, activeModal);
+        if (hScrollContainer && isHorizontalGesture) {
+          return;
+        }
+
         const scrollContainer = getScrollableAncestor(e.target, activeModal);
         if (!scrollContainer) {
+          if (hScrollContainer) return;
           e.preventDefault();
           return;
         }
 
         const { scrollTop, scrollHeight, clientHeight } = scrollContainer;
-        const currentY = e.touches[0].clientY;
-        const deltaY = currentY - touchStartY; // > 0 means dragging down (scrolling content toward top)
 
         if (deltaY > 0 && scrollTop <= 0) {
           e.preventDefault();
@@ -5099,6 +5263,10 @@
         const driskillTabs = modalDriskill.querySelectorAll('.driskill-tab-btn');
         const driskillPanels = modalDriskill.querySelectorAll('.driskill-tab-panel');
         const driskillScroll = modalDriskill.querySelector('.driskill-cards-scroll');
+        const driskillTabsContainer = modalDriskill.querySelector('.driskill-tabs');
+        const driskillCue = modalDriskill.querySelector('.modal-tab-scroll-cue');
+
+        const updateDriskillCue = setupTabContainerScrolling(driskillTabsContainer, driskillCue);
 
         driskillTabs.forEach(btn => {
           btn.addEventListener('click', (e) => {
@@ -5111,6 +5279,9 @@
               b.classList.toggle('active', isCurrent);
               b.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
             });
+
+            // Bring active tab into view if needed
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
 
             // Update tab panel visibility
             driskillPanels.forEach(panel => {
@@ -5135,6 +5306,10 @@
             if (driskillScroll) {
               driskillScroll.scrollTop = 0;
             }
+            if (driskillTabsContainer) {
+              driskillTabsContainer.scrollLeft = 0;
+            }
+            setTimeout(updateDriskillCue, 50);
           });
         });
       }
@@ -5149,6 +5324,10 @@
         const tabButtons = modalSpots.querySelectorAll('.spots-tab-btn');
         const panels = modalSpots.querySelectorAll('.spots-category-panel');
         const scrollContainer = modalSpots.querySelector('.spots-cards-scroll');
+        const spotsTabsContainer = modalSpots.querySelector('.spots-tabs');
+        const spotsCue = modalSpots.querySelector('.modal-tab-scroll-cue');
+
+        const updateSpotsCue = setupTabContainerScrolling(spotsTabsContainer, spotsCue);
 
         tabButtons.forEach(btn => {
           btn.addEventListener('click', (e) => {
@@ -5161,6 +5340,9 @@
               b.classList.toggle('active', isCurrent);
               b.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
             });
+
+            // Bring active tab into view if needed
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
 
             // Update category panels display
             panels.forEach(panel => {
@@ -5182,6 +5364,10 @@
             if (scrollContainer) {
               scrollContainer.scrollTop = 0;
             }
+            if (spotsTabsContainer) {
+              spotsTabsContainer.scrollLeft = 0;
+            }
+            setTimeout(updateSpotsCue, 50);
           });
         });
       }
@@ -5195,6 +5381,9 @@
         const stayTabs = modalStay.querySelectorAll('.stay-tab-btn');
         const stayPanels = modalStay.querySelectorAll('.stay-tab-panel');
         const stayScroll = modalStay.querySelector('.stay-cards-scroll');
+        const stayTabsContainer = modalStay.querySelector('.stay-tabs');
+
+        setupTabContainerScrolling(stayTabsContainer, null);
 
         stayTabs.forEach(btn => {
           btn.addEventListener('click', (e) => {
@@ -5207,6 +5396,9 @@
               b.classList.toggle('active', isCurrent);
               b.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
             });
+
+            // Bring active tab into view if needed
+            btn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
 
             // Update tab panel visibility
             stayPanels.forEach(panel => {
@@ -5230,6 +5422,9 @@
             }
             if (stayScroll) {
               stayScroll.scrollTop = 0;
+            }
+            if (stayTabsContainer) {
+              stayTabsContainer.scrollLeft = 0;
             }
           });
         });
