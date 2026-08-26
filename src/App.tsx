@@ -4,6 +4,7 @@
  */
 
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { StuffToDoModal } from './components/StuffToDoModal';
 
 export default function App() {
@@ -12,6 +13,7 @@ export default function App() {
   return (
     <div className="hidden">
       <StuffToDoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <Analytics />
     </div>
   );
 }
